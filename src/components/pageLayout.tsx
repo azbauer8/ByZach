@@ -9,7 +9,7 @@ interface PageLayoutProps {
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
   return (
-    <div className="relative flex h-full min-h-screen w-full bg-black text-white">
+    <div className="relative flex h-full min-h-screen w-full">
       <Sidebar />
       <div className="flex-1">
         <Topbar />
