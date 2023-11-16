@@ -17,7 +17,7 @@ export default function Home() {
           role="list"
           className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
         >
-          <a href="http://games.zachbauer.me">
+          <a href="http://games.byzach.dev">
             <li className="group relative flex flex-col items-start">
               <h2 className="text-xl font-semibold text-zinc-100">
                 <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95  bg-zinc-800/50 opacity-0 transition group-hover:scale-100 group-hover:border-4 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl"></div>
@@ -38,7 +38,7 @@ export default function Home() {
                     fill="currentColor"
                   ></path>
                 </svg>
-                <span className="ml-2">games.zachbauer.me</span>
+                <span className="ml-2">games.byzach.dev</span>
               </p>
             </li>
           </a>
