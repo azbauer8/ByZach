@@ -34,7 +34,8 @@ const SidebarContents = ({
     <div className="flex-1 space-y-1 px-3 py-3">
       <ul className="space-y-1">
         <SidebarLink to="/" text="Home" setOpen={setOpen} />
-        <SidebarLink to="/blog" text="Blog" setOpen={setOpen} />
+        <SidebarLink to="/journal" text="Journal" setOpen={setOpen} />
+        <SidebarLink to="/notebook" text="Notebook" setOpen={setOpen} />
       </ul>
     </div>
   );
