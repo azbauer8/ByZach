@@ -1,15 +1,15 @@
-import { Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
-import PageLayout from "./components/pageLayout";
-import Home from "./pages/home";
+import PageLayout from "@/components/PageLayout";
+import Home from "@/pages/Home";
 
 function App() {
   return (
-    <PageLayout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </PageLayout>
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+      <PageLayout>
+        <Home />
+      </PageLayout>
+    </ThemeProvider>
   );
 }
 
