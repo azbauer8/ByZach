@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 
-import Header from "./Header.tsx";
-import Footer from "./Footer";
+import Header from "./header.tsx";
+import Footer from "./footer.tsx.tsx";
 
 interface PageLayoutProps {
   children: ReactNode;
