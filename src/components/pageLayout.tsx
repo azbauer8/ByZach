@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 
-import Header from "./header";
-import Footer from "./footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface PageLayoutProps {
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
   return (
-    <div className="mx-auto max-w-3xl space-y-5">
+    <div className="mx-auto mb-10 max-w-3xl space-y-5">
       <Header />
       <div className="m-5 space-y-8 md:m-0">
         <main>{children}</main>
