@@ -1,7 +1,7 @@
-import { ThemeProvider } from "@/components/ui/theme-provider";
+import { ThemeProvider } from "./components/ui/theme-provider";
 
-import PageLayout from "@/components/PageLayout";
-import Home from "@/pages/Home";
+import PageLayout from "./components/PageLayout.tsx";
+import Home from "./pages/Home.tsx";
 
 function App() {
   return (

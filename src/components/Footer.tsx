@@ -8,7 +8,7 @@ import { HiDocumentArrowDown } from "react-icons/hi2";
 import { SiTrakt } from "react-icons/si";
 import { MdAlternateEmail } from "react-icons/md";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button.tsx";
 
 const Footer = () => {
   return (
