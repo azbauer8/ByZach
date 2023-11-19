@@ -7,7 +7,11 @@ export function ModeToggle() {
   const { setTheme } = useTheme();
 
   return (
-    <Button variant="ghost" size="icon">
+    <Button
+      variant="ghost"
+      size="icon"
+      className="hover:bg-transparent focus-visible:ring-transparent dark:hover:bg-transparent dark:focus-visible:ring-transparent"
+    >
       <PiSunDuotone
         className="h-[1.5rem] w-[1.5rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
         onClick={() => setTheme("dark")}
