@@ -1,7 +1,7 @@
 import { PiMoonStarsFill, PiSunDuotone } from "react-icons/pi";
 
-import { Button } from "./button.tsx";
-import { useTheme } from "./theme-provider.tsx";
+import { Button } from "./button";
+import { useTheme } from "./theme-provider";
 
 export function ModeToggle() {
   const { setTheme } = useTheme();

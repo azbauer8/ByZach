@@ -8,7 +8,7 @@ import { HiDocumentArrowDown } from "react-icons/hi2";
 import { SiTrakt } from "react-icons/si";
 import { MdAlternateEmail } from "react-icons/md";
 
-import { Button } from "./ui/button.tsx";
+import { Button } from "./ui/button";
 
 const Footer = () => {
   return (
@@ -89,7 +89,7 @@ const Footer = () => {
           className="group inline-flex"
         >
           <FaGithub className="mr-2 h-6 w-6" />
-          <p className="decoration-zinc-150 group-hover:decoration-zinc-450 dark:decoration-zinc-450 dark:group-hover:decoration-zinc-150 underline decoration-2 underline-offset-2">
+          <p className="underline decoration-zinc-150 decoration-2 underline-offset-2 group-hover:decoration-zinc-450 dark:decoration-zinc-450 dark:group-hover:decoration-zinc-150">
             By Zach Bauer, 2023
           </p>
         </a>
