@@ -1,9 +1,11 @@
 import ProjectCard from "../components/ProjectCard";
+import Link from "../components/Link";
 import projects from "../data/projects.json";
+import links from "../data/links.json";
 
 export default function Home() {
   return (
-    <div className="space-y-8 md:space-y-12">
+    <div className="space-y-8">
       <div className="space-y-8">
         <div className="space-y-1">
           <h1 className="text-2xl font-semibold">Zach Bauer</h1>
@@ -11,18 +13,26 @@ export default function Home() {
             Full Stack Developer
           </h2>
         </div>
-        <p className="max-w-xl leading-loose">
-          Hey there! I'm Zach. I'm currently living in <Philly /> and working at{" "}
-          <a href="https://sig.com/" className="link">
-            SIG
-          </a>{" "}
-          developing internal monitoring and operations tools for support teams.
-          In 2021, I graduated from{" "}
-          <a href="https://www.pitt.edu/" className="link">
-            Pitt
-          </a>{" "}
-          with a bachelor's in information science.
-        </p>
+        <div>
+          <p className="max-w-xl leading-loose">
+            Hey there! I'm Zach. I'm currently living in <Philly /> and working
+            at{" "}
+            <a href="https://sig.com/" className="link">
+              SIG
+            </a>{" "}
+            developing internal monitoring and operations tools for support
+            teams. In 2021, I graduated from{" "}
+            <a href="https://www.pitt.edu/" className="link">
+              Pitt
+            </a>{" "}
+            with a bachelor's in information science.
+          </p>
+          <div className="mt-3 space-x-2">
+            {links[0].map((link, index) => (
+              <Link key={index} name={link.name} link={link.link} />
+            ))}
+          </div>
+        </div>
       </div>
       <div className="space-y-5">
         <div>
@@ -44,13 +54,25 @@ export default function Home() {
           })}
         </div>
       </div>
+      <div className="space-y-5">
+        <div>
+          <h1 className="text-xl font-bold">Follow me on</h1>
+        </div>
+        <div className="mb-5 space-y-0">
+          <div className="flex flex-wrap space-x-3">
+            {links[1].map((link, index) => (
+              <Link key={index} name={link.name} link={link.link} />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 function Philly() {
   return (
     <span className="group/korok inline-flex">
-      <span className="group/korok cursor-birds inline-flex group-hover/korok:text-[#004C54] md:text-zinc-800 dark:md:text-zinc-50">
+      <span className="group/korok inline-flex cursor-birds group-hover/korok:text-[#004C54] md:text-zinc-800 dark:md:text-zinc-50">
         <span className="sr-only">Philly</span>
         <span
           className="transition delay-[50ms] duration-75 group-hover/korok:-translate-y-px"
