@@ -16,7 +16,7 @@ const Link: React.FC<LinkProps> = ({ name, link }) => {
       asChild
       className="mr-3 bg-transparent p-2 pl-0 text-zinc-800 hover:bg-transparent hover:text-zinc-450 dark:bg-transparent dark:text-zinc-50 dark:hover:bg-transparent dark:hover:text-zinc-450"
     >
-      <a href={link}>
+      <a href={link} aria-label="Social Link">
         {name === "GitHub" ? (
           <FaGithub className="mr-2 h-6 w-6" />
         ) : name === "Email" ? (

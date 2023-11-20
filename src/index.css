@@ -17,5 +17,5 @@ a,
   @apply text-zinc-400 dark:text-zinc-450;
 }
 .link {
-  @apply font-pop decoration-zinc-150 underline-offset-2 hover:underline dark:decoration-zinc-450;
+  @apply underline decoration-zinc-150 decoration-2 underline-offset-2 hover:decoration-zinc-450 dark:decoration-zinc-450 dark:hover:decoration-zinc-150;
 }

@@ -17,12 +17,12 @@ export default function Home() {
           <p className="max-w-xl leading-loose">
             Hey there! I'm Zach. I'm currently living in <Philly /> and working
             at{" "}
-            <a href="https://sig.com/" className="link">
+            <a href="https://sig.com/" aria-label="SIG" className="link">
               SIG
             </a>{" "}
             developing internal monitoring and operations tools for support
             teams. In 2021, I graduated from{" "}
-            <a href="https://www.pitt.edu/" className="link">
+            <a href="https://www.pitt.edu/" aria-label="Pitt" className="link">
               Pitt
             </a>{" "}
             with a bachelor's in information science.
@@ -72,7 +72,7 @@ export default function Home() {
 function Philly() {
   return (
     <span className="group/korok inline-flex">
-      <span className="group/korok inline-flex cursor-birds group-hover/korok:text-[#004C54] md:text-zinc-800 dark:md:text-zinc-50">
+      <span className="group/korok inline-flex cursor-birds decoration-zinc-150 decoration-2 underline-offset-2 hover:no-underline group-hover/korok:text-[#004C54] dark:decoration-zinc-450 md:text-zinc-800 md:underline dark:md:text-zinc-50">
         <span className="sr-only">Philly</span>
         <span
           className="transition delay-[50ms] duration-75 group-hover/korok:-translate-y-px"
