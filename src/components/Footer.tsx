@@ -1,9 +1,4 @@
-import {
-  FaGithub,
-  FaLinkedin,
-  FaSquareLastfm,
-  FaGoodreads,
-} from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaSquareLastfm } from "react-icons/fa6";
 import { HiDocumentArrowDown } from "react-icons/hi2";
 import { SiTrakt } from "react-icons/si";
 import { MdAlternateEmail } from "react-icons/md";
