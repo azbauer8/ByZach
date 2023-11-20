@@ -14,7 +14,8 @@ module.exports = {
         },
       },
       cursor: {
-        birds: "url(eagles.png), pointer",
+        birds:
+          "url(https://play.tailwindcss.com/favicons/favicon-16x16.png?v=3), pointer",
       },
     },
   },
