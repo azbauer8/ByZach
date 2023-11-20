@@ -13,8 +13,8 @@ import { Button } from "./ui/button";
 const Footer = () => {
   return (
     <footer>
-      <hr className="mb-5 dark:border-zinc-800" />
-      <div className="mb-2 space-y-0">
+      <hr className="mb-8 dark:border-zinc-800" />
+      <div className="mb-5 space-y-0">
         <div className="flex flex-wrap justify-center space-x-3">
           <Button
             asChild
@@ -52,8 +52,7 @@ const Footer = () => {
               Resume
             </a>
           </Button>
-        </div>
-        <div className="flex flex-wrap justify-center space-x-3">
+
           <Button
             asChild
             className="mb-3 bg-rose-700 p-3 text-white hover:bg-rose-900 dark:bg-rose-700 dark:text-white dark:hover:bg-rose-900"
@@ -70,15 +69,6 @@ const Footer = () => {
             <a href="https://trakt.tv/users/zacharlatan">
               <SiTrakt className="mr-2 h-6 w-6" />
               Trakt
-            </a>
-          </Button>
-          <Button
-            asChild
-            className="bg-green-700 p-3 text-white hover:bg-green-900 dark:bg-green-700 dark:text-white dark:hover:bg-green-900"
-          >
-            <a href="https://www.goodreads.com/zacharlatan">
-              <FaGoodreads className="mr-2 h-6 w-6" />
-              GoodReads
             </a>
           </Button>
         </div>

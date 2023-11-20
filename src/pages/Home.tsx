@@ -1,4 +1,4 @@
-import { FaGithub } from "react-icons/fa6";
+import { FaGithub, FaLink } from "react-icons/fa6";
 
 export default function Home() {
   return (
@@ -6,7 +6,7 @@ export default function Home() {
       <div className="space-y-8">
         <div className="space-y-1">
           <h1 className="text-2xl font-semibold">Zach Bauer</h1>
-          <h2 className="dark:text-zinc-450 text-lg text-zinc-400">
+          <h2 className="text-lg text-zinc-400 dark:text-zinc-450">
             Full Stack Developer
           </h2>
         </div>
@@ -37,9 +37,10 @@ export default function Home() {
               </p>
               <a
                 href="https://games.byzach.dev"
-                className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-zinc-200 px-2.5 py-2 font-medium  hover:bg-zinc-300 dark:bg-zinc-500 dark:hover:bg-zinc-600"
+                className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-zinc-200 px-2.5 py-2  hover:bg-zinc-300 dark:bg-zinc-500 dark:hover:bg-zinc-600"
               >
-                Check it out
+                <FaLink className="mr-1" />
+                games.byzach.dev
               </a>
             </div>
           </div>
@@ -72,9 +73,10 @@ export default function Home() {
               </p>
               <a
                 href="https://uses.byzach.dev"
-                className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-zinc-200 px-2.5 py-2 font-medium  hover:bg-zinc-300 dark:bg-zinc-500 dark:hover:bg-zinc-600"
+                className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-zinc-200 px-2.5  py-2 hover:bg-zinc-300 dark:bg-zinc-500 dark:hover:bg-zinc-600"
               >
-                Check it out
+                <FaLink className="mr-1" />
+                uses.byzach.dev
               </a>
             </div>
           </div>
