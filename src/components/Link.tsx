@@ -14,7 +14,7 @@ const Link: React.FC<LinkProps> = ({ name, link }) => {
   return (
     <Button
       asChild
-      className="mb-3 bg-transparent p-3 text-zinc-800 hover:bg-transparent hover:text-zinc-450 dark:bg-transparent dark:text-zinc-50 dark:hover:bg-transparent dark:hover:text-zinc-450"
+      className="mr-3 bg-transparent p-2 pl-0 text-zinc-800 hover:bg-transparent hover:text-zinc-450 dark:bg-transparent dark:text-zinc-50 dark:hover:bg-transparent dark:hover:text-zinc-450"
     >
       <a href={link}>
         {name === "GitHub" ? (

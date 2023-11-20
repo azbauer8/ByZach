@@ -27,7 +27,7 @@ export default function Home() {
             </a>{" "}
             with a bachelor's in information science.
           </p>
-          <div className="mt-3 space-x-2">
+          <div className="mt-3">
             {links[0].map((link, index) => (
               <Link key={index} name={link.name} link={link.link} />
             ))}
@@ -59,7 +59,7 @@ export default function Home() {
           <h1 className="text-xl font-bold">Follow me on</h1>
         </div>
         <div className="mb-5 space-y-0">
-          <div className="flex flex-wrap space-x-3">
+          <div className="flex flex-wrap">
             {links[1].map((link, index) => (
               <Link key={index} name={link.name} link={link.link} />
             ))}
