@@ -9,9 +9,7 @@ export default function Home() {
       <div className="space-y-8">
         <div className="space-y-1">
           <h1 className="text-2xl font-semibold">Zach Bauer</h1>
-          <h2 className="text-lg text-zinc-400 dark:text-zinc-450">
-            Full Stack Developer
-          </h2>
+          <h2 className="font-default text-lg">Full Stack Developer</h2>
         </div>
         <div>
           <p className="max-w-xl leading-loose">
