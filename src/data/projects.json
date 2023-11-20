@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Games Radar",
+    "description": "A micro-service site showing recent game releases fetched from rawg's api (also loosely cloned their layout).",
+    "github": "https://github.com/azbauer8/Games",
+    "link": "https://games.byzach.dev",
+    "linkTitle": "games.byzach.dev"
+  },
+  {
+    "name": "Dotfiles",
+    "description": "A collection of configuration files I've tweaked for a variety of tools I use on Windows and Mac.",
+    "github": "https://github.com/azbauer8/Dotfiles"
+  },
+  {
+    "name": "Uses",
+    "description": "The apps and tools I'm using to get stuff done. May be a little outdated, I'm looking to find a better workflow for maintaining this.",
+    "github": "https://github.com/azbauer8/Uses",
+    "link": "https://uses.byzach.dev",
+    "linkTitle": "uses.byzach.dev"
+  }
+]

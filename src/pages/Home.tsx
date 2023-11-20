@@ -1,4 +1,5 @@
-import { FaGithub, FaLink } from "react-icons/fa6";
+import ProjectCard from "../components/ProjectCard";
+import projects from "../data/projects.json";
 
 export default function Home() {
   return (
@@ -11,77 +12,83 @@ export default function Home() {
           </h2>
         </div>
         <p className="max-w-xl leading-loose">
-          Hey there! I'm Zach. I'm currently living in Philly and working at SIG
+          Hey there! I'm Zach. I'm currently living in <Philly /> and working at{" "}
+          <a href="https://sig.com/" className="link">
+            SIG
+          </a>{" "}
           developing internal monitoring and operations tools for support teams.
-          Before that, I graduated from Pitt in 2021 with a bachelor's in
-          information science.
+          In 2021, I graduated from{" "}
+          <a href="https://www.pitt.edu/" className="link">
+            Pitt
+          </a>{" "}
+          with a bachelor's in information science.
         </p>
       </div>
       <div className="space-y-5">
         <div>
           <h1 className="text-xl font-bold">Projects</h1>
-          <p>A selection of projects I've worked on in my spare time.</p>
+          <p>Some projects I've worked on in my spare time.</p>
         </div>
         <div className="lg:max-w-screen-md-8 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8">
-          <div className="relative flex flex-col rounded-lg border border-zinc-200 dark:border-zinc-800">
-            <div className="absolute right-3 top-5">
-              <a href="https://github.com/azbauer8/Games">
-                <FaGithub className="font-default mr-2 h-6 w-6" />
-              </a>
-            </div>
-            <div className="p-5">
-              <h3 className="font-pop mb-2 font-semibold">Games Radar</h3>
-              <p className="leading-relaxed">
-                A micro-service site showing recent game releases fetched from
-                rawg's api (also loosely cloned their layout).
-              </p>
-              <a
-                href="https://games.byzach.dev"
-                className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-zinc-200 px-2.5 py-2  hover:bg-zinc-300 dark:bg-zinc-500 dark:hover:bg-zinc-600"
-              >
-                <FaLink className="mr-1" />
-                games.byzach.dev
-              </a>
-            </div>
-          </div>
-          <div className="relative flex flex-col rounded-lg border border-zinc-200 dark:border-zinc-800">
-            <div className="absolute right-3 top-5">
-              <a href="https://github.com/azbauer8/Dotfiles">
-                <FaGithub className="font-default mr-2 h-6 w-6" />
-              </a>
-            </div>
-            <div className="p-5">
-              <h3 className="font-pop mb-2 font-semibold">Dotfiles</h3>
-              <p className="leading-relaxed">
-                A collection of configuration files I've tweaked for a variety
-                of tools I use on Windows and Mac.
-              </p>
-            </div>
-          </div>
-          <div className="relative flex flex-col rounded-lg border border-zinc-200 dark:border-zinc-800">
-            <div className="absolute right-3 top-5">
-              <a href="https://github.com/azbauer8/Uses">
-                <FaGithub className="font-default mr-2 h-6 w-6" />
-              </a>
-            </div>
-            <div className="p-5">
-              <h3 className="font-pop mb-2 font-semibold">Uses</h3>
-              <p className="leading-relaxed">
-                The apps and tools I'm using to get stuff done. May be a little
-                outdated, I'm looking to find a better workflow for maintaining
-                this.
-              </p>
-              <a
-                href="https://uses.byzach.dev"
-                className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-zinc-200 px-2.5  py-2 hover:bg-zinc-300 dark:bg-zinc-500 dark:hover:bg-zinc-600"
-              >
-                <FaLink className="mr-1" />
-                uses.byzach.dev
-              </a>
-            </div>
-          </div>
+          {projects.map((project, index) => {
+            return (
+              <ProjectCard
+                key={index}
+                name={project.name}
+                description={project.description}
+                github={project.github}
+                link={project.link}
+                linkTitle={project.linkTitle}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
+  );
+}
+function Philly() {
+  return (
+    <span className="group/korok inline-flex">
+      <span className="group/korok cursor-birds inline-flex group-hover/korok:text-[#004C54] md:text-zinc-800 dark:md:text-zinc-50">
+        <span className="sr-only">Philly</span>
+        <span
+          className="transition delay-[50ms] duration-75 group-hover/korok:-translate-y-px"
+          aria-hidden="true"
+        >
+          P
+        </span>
+        <span
+          className="transition delay-[75ms] duration-75 group-hover/korok:-translate-y-px"
+          aria-hidden="true"
+        >
+          h
+        </span>
+        <span
+          className="transition delay-[100ms] duration-75 group-hover/korok:-translate-y-px"
+          aria-hidden="true"
+        >
+          i
+        </span>
+        <span
+          className="transition delay-[125ms] duration-75 group-hover/korok:-translate-y-px"
+          aria-hidden="true"
+        >
+          l
+        </span>
+        <span
+          className="transition delay-[150ms] duration-75 group-hover/korok:-translate-y-px"
+          aria-hidden="true"
+        >
+          l
+        </span>
+        <span
+          className="transition delay-[200ms] duration-75 group-hover/korok:-translate-y-px"
+          aria-hidden="true"
+        >
+          y
+        </span>
+      </span>
+    </span>
   );
 }

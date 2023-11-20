@@ -13,6 +13,9 @@ module.exports = {
           450: "#898992",
         },
       },
+      cursor: {
+        birds: "url(eagles.png), pointer",
+      },
     },
   },
   plugins: [],
