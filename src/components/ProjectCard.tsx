@@ -30,7 +30,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <a
             href={link}
             aria-label="Project Link"
-            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-zinc-200 px-2.5 py-2 text-zinc-800 hover:bg-zinc-300 dark:bg-zinc-500 dark:text-zinc-100 dark:hover:bg-zinc-600"
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-zinc-200/70 px-2.5 py-2 text-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700/30 dark:text-zinc-100 dark:hover:bg-zinc-700/50"
           >
             <HiExternalLink className="mr-1" />
             {linkTitle}
