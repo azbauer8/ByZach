@@ -10,6 +10,14 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+const backendUrl =
+  import.meta.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
+
+fetch(`${backendUrl}/api/data`)
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.error("Error:", error));
+
 export default function Home() {
   return (
     <div className="space-y-8">
