@@ -10,46 +10,39 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import * as dotenv from "dotenv";
-
-dotenv.config();
-
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
-console.log("backendurl: ", backendUrl);
+const backendUrl =
+  import.meta.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
 
 fetch(`${backendUrl}/api/lastfm`)
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
-    // console.log(
-    //   "%c LAST.FM ",
-    //   "background-color: #C7382F; color: white; font-style: italic; border: 5px solid black; font-size: 2em;",
-    // );
-    // console.log(
-    //   "Now playing?",
-    //   data.recenttracks.track[0]["@attr"]?.nowplaying !== undefined,
-    // );
-    // console.log("Title: ", data.recenttracks.track[0].name);
-    // console.log("Artist: ", data.recenttracks.track[0].artist["#text"]);
-    // console.log("Album: ", data.recenttracks.track[0].album["#text"]);
+    console.log(
+      "%c LAST.FM ",
+      "background-color: #C7382F; color: white; font-style: italic; border: 5px solid black; font-size: 2em;",
+    );
+    console.log(
+      "Now playing?",
+      data.recenttracks.track[0]["@attr"]?.nowplaying !== undefined,
+    );
+    console.log("Title: ", data.recenttracks.track[0].name);
+    console.log("Artist: ", data.recenttracks.track[0].artist["#text"]);
+    console.log("Album: ", data.recenttracks.track[0].album["#text"]);
   })
   .catch((error) => console.error("Error:", error));
 
 fetch(`${backendUrl}/api/trakt`)
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
-    // console.log(
-    //   "%c TRAKT ",
-    //   "background-color: black; color: white; font-style: italic; border: 5px solid #C7382F; font-size: 2em;",
-    // );
-    // if (data[0].type === "episode") {
-    //   console.log("Show: ", data[0].show);
-    //   console.log("Episode: ", data[0].episode);
-    // } else {
-    //   console.log(data[0].movie);
-    // }
+    console.log(
+      "%c TRAKT ",
+      "background-color: black; color: white; font-style: italic; border: 5px solid #C7382F; font-size: 2em;",
+    );
+    if (data[0].type === "episode") {
+      console.log("Show: ", data[0].show);
+      console.log("Episode: ", data[0].episode);
+    } else {
+      console.log(data[0].movie);
+    }
   })
   .catch((error) => console.error("Error:", error));
 
