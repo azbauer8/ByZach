@@ -1,27 +1,54 @@
 import express from "express";
 import cors from "cors";
-//import axios from "axios";
-const app = express();
+import axios from "axios";
+import * as dotenv from "dotenv";
+dotenv.config();
 
-//const API_KEY = "YOUR_API_KEY"; // Replace with your actual API key
+const app = express();
+const LAST_FM_API = dotenv.config().parsed.LAST_FM_API;
+const TRAKT_API = dotenv.config().parsed.TRAKT_API;
+
 app.use(cors());
-app.get("/api/data", async (req, res) => {
+app.get("/api/lastfm", async (req, res) => {
   try {
-    // const response = await axios.get("https://external-service.com/api/data", {
-    //   headers: {
-    //     Authorization: `Bearer ${API_KEY}`,
-    //   },
-    //   params: req.query, // Pass query parameters if needed
-    // });
-    res.json("Hello world");
+    const response = await axios.get(
+      `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${LAST_FM_API}&format=json`,
+      {},
+    );
+    res.json(response.data);
   } catch (error) {
     res.status(500);
   }
 });
 
-// Other routes as needed...
+app.get("/api/trakt", async (req, res) => {
+  let response = await axios.get(
+    `https://api.trakt.tv/users/zacharlatan/watching/`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "trakt-api-key": `${TRAKT_API}`,
+        "trakt-api-version": "2",
+      },
+    },
+  );
+  if (response.status == 204) {
+    response = await axios.get(
+      `https://api.trakt.tv/users/zacharlatan/history/`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "trakt-api-key": `${TRAKT_API}`,
+          "trakt-api-version": "2",
+        },
+      },
+    );
+  }
 
-const PORT = 3001;
+  res.json(response.data);
+});
+
+const PORT = 3002;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
