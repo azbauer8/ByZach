@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/tooltip";
 
 const backendUrl =
-  import.meta.env.REACT_APP_BACKEND_URL || "http://localhost:3002";
+  import.meta.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
 
 fetch(`${backendUrl}/api/lastfm`)
   .then((response) => response.json())

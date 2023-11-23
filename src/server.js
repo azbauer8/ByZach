@@ -48,7 +48,7 @@ app.get("/api/trakt", async (req, res) => {
   res.json(response.data);
 });
 
-const PORT = 3002;
+const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
