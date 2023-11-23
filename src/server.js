@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import axios from "axios";
+//import axios from "axios";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -10,42 +10,43 @@ const TRAKT_API = dotenv.config().parsed.TRAKT_API;
 
 app.use(cors());
 app.get("/api/lastfm", async (req, res) => {
-  try {
-    const response = await axios.get(
-      `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${LAST_FM_API}&format=json`,
-      {},
-    );
-    res.json(response.data);
-  } catch (error) {
-    res.status(500);
-  }
+  // try {
+  //   const response = await axios.get(
+  //     `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${LAST_FM_API}&format=json`,
+  //     {},
+  //   );
+  //   res.json(response.data);
+  // } catch (error) {
+  //   res.status(500);
+  // }
+  res.json(LAST_FM_API);
 });
 
 app.get("/api/trakt", async (req, res) => {
-  let response = await axios.get(
-    `https://api.trakt.tv/users/zacharlatan/watching/`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        "trakt-api-key": `${TRAKT_API}`,
-        "trakt-api-version": "2",
-      },
-    },
-  );
-  if (response.status == 204) {
-    response = await axios.get(
-      `https://api.trakt.tv/users/zacharlatan/history/`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "trakt-api-key": `${TRAKT_API}`,
-          "trakt-api-version": "2",
-        },
-      },
-    );
-  }
+  // let response = await axios.get(
+  //   `https://api.trakt.tv/users/zacharlatan/watching/`,
+  //   {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "trakt-api-key": `${TRAKT_API}`,
+  //       "trakt-api-version": "2",
+  //     },
+  //   },
+  // );
+  // if (response.status == 204) {
+  //   response = await axios.get(
+  //     `https://api.trakt.tv/users/zacharlatan/history/`,
+  //     {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "trakt-api-key": `${TRAKT_API}`,
+  //         "trakt-api-version": "2",
+  //       },
+  //     },
+  //   );
+  // }
 
-  res.json(response.data);
+  res.json(TRAKT_API);
 });
 
 const PORT = 3001;
