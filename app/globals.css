@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply overscroll-none bg-zinc-50 text-zinc-600/90 dark:bg-zinc-900 dark:text-zinc-150;
+  @apply overscroll-none bg-zinc-50 text-zinc-600/90 dark:bg-zinc-900 dark:text-zinc-150 h-screen;
 }
 .font-default {
   @apply text-zinc-500 dark:text-zinc-150;
