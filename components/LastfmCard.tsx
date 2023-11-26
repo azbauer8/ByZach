@@ -13,7 +13,6 @@ const LastFmCard = () => {
   }
   if (isSuccess) {
     const latestTrack = data.recenttracks.track[0];
-    console.log(latestTrack);
     let playingWhen;
     latestTrack["@attr"]?.nowplaying === undefined
       ? (playingWhen = getTimeDiff(latestTrack.date["#text"]))
@@ -68,14 +67,12 @@ function getTimeDiff(givenDate: string) {
     ((timeDifferenceInSeconds % secondsInDay) % secondsInHour) / secondsInMinute
   );
 
-  console.log(daysAgo, hoursAgo, minutesAgo);
-
   if (daysAgo === 0 && hoursAgo === 0) {
-    return `About ${minutesAgo} mins ago`;
+    return `${minutesAgo} mins ago`;
   } else if (daysAgo === 0) {
-    return `About ${hoursAgo} hours ago`;
+    return `${hoursAgo} hours ago`;
   } else {
-    return `About ${daysAgo} days ago`;
+    return `${daysAgo} days ago`;
   }
 }
 
