@@ -3,7 +3,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { FaGithub, FaSquareLastfm, FaGoodreads } from "react-icons/fa6";
 import { SiTrakt } from "react-icons/si";
 
-import { Button } from "../components/ui/button";
+import { Button } from "@/components/ui/button";
 
 type LinkProps = {
   name: string;
