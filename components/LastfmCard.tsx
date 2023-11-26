@@ -20,17 +20,18 @@ const LastFmCard = () => {
       : (playingWhen = "Now Playing");
     return (
       <a
-        className="flex flex-row max-w-xl rounded-lg space-x-5 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40 w-fit"
+        className="flex flex-row max-w-xl rounded-lg space-x-5 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
         href={latestTrack.url}
       >
         <Image
           src={latestTrack.image[3]["#text"]}
           alt={latestTrack.album["#text"]}
-          width={75}
-          height={75}
-          className="rounded-lg"
+          width={0}
+          height={0}
+          sizes="100vw"
+          className="rounded-lg flex-none w-1/4 items-center justify-center self-center"
         />
-        <div className="my-auto">
+        <div className="my-auto flex-grow">
           <div className="flex flex-row space-x-1 text-red-400 items-center">
             <PiWaveformBold className="w-5 h-5" />
             <p className="text-sm font-medium">{playingWhen}</p>
