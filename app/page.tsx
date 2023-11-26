@@ -9,7 +9,7 @@ export default function Home() {
     <div className="space-y-8">
       <About />
       <Projects />
-      {/* <Activity /> */}
+      <Activity />
       <Socials />
     </div>
   );
