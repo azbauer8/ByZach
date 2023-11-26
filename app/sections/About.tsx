@@ -17,7 +17,8 @@ export default function About() {
       </div>
       <div>
         <p className="max-w-xl leading-loose">
-          {`Hey there! I'm Zach. I'm currently living in <Philly /> and working at `}
+          {`Hey there! I'm Zach. I'm currently living in `}
+          <Philly /> {`and working at `}
           <a href="https://sig.com/" aria-label="SIG" className="link">
             SIG
           </a>
