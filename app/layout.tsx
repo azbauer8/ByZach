@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} h-screen w-screen`}>
         <Providers>
           <div className="mx-auto mb-10 max-w-3xl space-y-5">
             <Header />
