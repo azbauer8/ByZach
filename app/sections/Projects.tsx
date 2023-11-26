@@ -4,7 +4,7 @@ import ProjectCard from "@/components/ProjectCard";
 export default function Projects() {
   return (
     <div className="space-y-5">
-      <div>
+      <div className="space-y-2">
         <h1 className="text-xl font-bold">Projects</h1>
         <p>{`Some projects I've worked on in my spare time.`}</p>
       </div>

@@ -16,7 +16,7 @@ export default function About() {
         <h2 className="font-default text-lg">Full Stack Developer</h2>
       </div>
       <div>
-        <p className="max-w-xl leading-loose">
+        <div className="max-w-xl leading-loose">
           {`Hey there! I'm Zach. I'm currently living in `}
           <Philly /> {`and working at `}
           <a href="https://sig.com/" aria-label="SIG" className="link">
@@ -27,7 +27,7 @@ export default function About() {
             Pitt
           </a>
           {` with a bachelor's in information science.`}
-        </p>
+        </div>
         <div className="mt-3">
           {links[0].map((link, index) => (
             <Link key={index} name={link.name} link={link.link} />
@@ -86,9 +86,9 @@ function Philly() {
           </span>
         </TooltipTrigger>
         <TooltipContent className="bg-[#004C54] dark:bg-[#004C54]">
-          <p className="font-mono text-lg font-semibold tracking-wider">
+          <div className="font-mono text-lg font-semibold tracking-wider">
             GO BIRDS!
-          </p>
+          </div>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
