@@ -48,7 +48,7 @@ const TraktCard = () => {
   else if (isSuccess) {
     latestWatch = data;
     watching = true;
-    playingWhen = "Now Watching";
+    playingWhen = "Currently Watching";
   }
 
   // show
@@ -151,8 +151,8 @@ function getTimeDiff(givenDate: string) {
   );
 
   if (daysAgo === 0 && hoursAgo === 0) {
-    if (minutesAgo === 1) {
-      return `${minutesAgo} min ago`;
+    if (minutesAgo < 10) {
+      return "Currently Watching";
     }
     return `${minutesAgo} mins ago`;
   } else if (daysAgo === 0) {
