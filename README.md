@@ -1,6 +1,8 @@
 # [ByZach.dev](https://byzach.dev)
 
-My personal site.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b2b8ad71-1db2-4daa-9475-e29e38c29fff/deploy-status)](https://app.netlify.com/sites/beamish-tarsier-25be02/deploys)
+
+My personal website
 
 - Built with [Next.js 14](https://nextjs.org) and [TypeScript](https://www.typescriptlang.org)
 - Styled with [Tailwind](https://tailwindcss.com)
