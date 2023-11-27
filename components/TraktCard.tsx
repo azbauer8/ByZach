@@ -13,14 +13,17 @@ const TraktCard = () => {
   });
   const { isSuccess: isSuccessImdb, data: dataImdb } = useQuery({
     queryKey: ["imdb"],
-    queryFn: () =>
-      data instanceof Array && data[0].type === "episode"
-        ? fetchImdb(data[0].show.ids.imdb)
-        : data instanceof Array && data[0].type === "movie"
-        ? fetchImdb(data[0].movie.ids.imdb)
-        : data.type === "episode"
-        ? fetchImdb(data.show.ids.imdb)
-        : fetchImdb(data.movie.ids.imdb),
+    queryFn: () => {
+      const imdbId =
+        data instanceof Array
+          ? data[0].type === "episode"
+            ? data[0].show.ids.imdb
+            : data[0].movie.ids.imdb
+          : data.type === "episode"
+          ? data.show.ids.imdb
+          : data.movie.ids.imdb;
+      return fetchImdb(imdbId);
+    },
     enabled: !!data,
   });
   if (isLoading) {
@@ -102,14 +105,11 @@ function getTimeDiff(givenDate: string) {
   const givenDatetime = new Date(`${givenDate}`);
   const currentDatetime = new Date();
 
-  // Calculate the time difference in milliseconds
   const timeDifferenceInMilliseconds =
     currentDatetime.valueOf() - givenDatetime.valueOf();
 
-  // Convert milliseconds to seconds
   const timeDifferenceInSeconds = timeDifferenceInMilliseconds / 1000;
 
-  // Convert seconds to minutes, hours, days, etc. based on your requirements
   const secondsInMinute = 60;
   const secondsInHour = secondsInMinute * 60;
   const secondsInDay = secondsInHour * 24;

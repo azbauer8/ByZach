@@ -57,14 +57,11 @@ function getTimeDiff(givenDate: string) {
   const givenDatetime = new Date(`${givenDate} UTC`);
   const currentDatetime = new Date();
 
-  // Calculate the time difference in milliseconds
   const timeDifferenceInMilliseconds =
     currentDatetime.valueOf() - givenDatetime.valueOf();
 
-  // Convert milliseconds to seconds
   const timeDifferenceInSeconds = timeDifferenceInMilliseconds / 1000;
 
-  // Convert seconds to minutes, hours, days, etc. based on your requirements
   const secondsInMinute = 60;
   const secondsInHour = secondsInMinute * 60;
   const secondsInDay = secondsInHour * 24;
