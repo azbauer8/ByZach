@@ -3,43 +3,33 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { PiWaveformBold } from "react-icons/pi";
 import { Skeleton } from "./ui/skeleton";
+import lastFmPlaceholder from "../assets/lastfm_placeholder.png";
 
 const LastFmCard = () => {
   const { isSuccess, isLoading, data } = useQuery({
     queryKey: ["lastfm"],
     queryFn: () => fetchLastFm(),
   });
-  if (isLoading) {
-    return (
-      <div className="flex items-center space-x-4">
-        <Skeleton className="h-36 w-36 rounded-lg" />
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-[150px]" />
-          <Skeleton className="h-4 w-[150px]" />
+
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <div className="my-auto flex-grow space-y-3">
           <Skeleton className="h-4 w-[100px]" />
+          <Skeleton className="h-4 w-[150px]" />
+          <Skeleton className="h-4 w-[125px]" />
         </div>
-      </div>
-    );
-  }
-  if (isSuccess) {
-    const latestTrack = data.recenttracks.track[0];
-    let playingWhen;
-    latestTrack["@attr"]?.nowplaying === undefined
-      ? (playingWhen = getTimeDiff(latestTrack.date["#text"]))
-      : (playingWhen = "Now Playing");
-    return (
-      <a
-        className="flex flex-row max-w-xl rounded-lg space-x-5 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
-        href={latestTrack.url}
-      >
-        <Image
-          src={latestTrack.image[3]["#text"]}
-          alt={latestTrack.album["#text"]}
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="rounded-lg flex-none w-1/4 items-center justify-center self-center"
-        />
+      );
+    }
+
+    if (isSuccess && data) {
+      const latestTrack = data.recenttracks.track[0];
+      let playingWhen;
+      latestTrack["@attr"]?.nowplaying === undefined
+        ? (playingWhen = getTimeDiff(latestTrack.date["#text"]))
+        : (playingWhen = "Now Playing");
+
+      return (
         <div className="my-auto flex-grow">
           <div className="flex flex-row space-x-1 text-red-400 items-center">
             <PiWaveformBold className="w-5 h-5" />
@@ -48,9 +38,38 @@ const LastFmCard = () => {
           <p className="font-pop font-semibold text-lg">{latestTrack.name}</p>
           <p className="font-default">{latestTrack.artist["#text"]}</p>
         </div>
-      </a>
-    );
-  }
+      );
+    }
+
+    return null;
+  };
+
+  return (
+    <a
+      className={`flex items-center space-x-5 max-w-xl ${
+        isSuccess
+          ? "ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
+          : null
+      }`}
+      href={isSuccess ? data.recenttracks.track[0].url : null}
+    >
+      <Image
+        src={
+          isSuccess && data.recenttracks.track[0].image[3]["#text"] !== ""
+            ? data.recenttracks.track[0].image[3]["#text"]
+            : lastFmPlaceholder
+        }
+        alt="Placeholder album art"
+        width={0}
+        height={0}
+        sizes="100vw"
+        className={`rounded-lg flex-none w-1/4 items-center justify-center self-center ${
+          isLoading ? "animate-pulse" : null
+        }`}
+      />
+      {renderContent()}
+    </a>
+  );
 };
 
 function getTimeDiff(givenDate: string) {
