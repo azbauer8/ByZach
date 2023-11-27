@@ -30,7 +30,7 @@ const LastFmCard = () => {
         : (playingWhen = "Now Playing");
 
       return (
-        <div className="my-auto flex-grow">
+        <div className="my-auto flex-grow space-y-0.5">
           <div className="flex flex-row space-x-1 text-red-400 items-center">
             <PiWaveformBold className="w-5 h-5" />
             <p className="text-sm font-medium">{playingWhen}</p>

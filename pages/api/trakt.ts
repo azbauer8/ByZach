@@ -6,7 +6,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   let response = await axios.get(
-    `https://api.trakt.tv/users/zacharlatan/watching/`,
+    `https://api.trakt.tv/users/zacharlatan/watching?extended=full`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export default async function handler(
   );
   if (response.status == 204) {
     response = await axios.get(
-      `https://api.trakt.tv/users/zacharlatan/history/`,
+      `https://api.trakt.tv/users/zacharlatan/history?extended=full`,
       {
         headers: {
           "Content-Type": "application/json",

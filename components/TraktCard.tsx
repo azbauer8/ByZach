@@ -12,9 +12,12 @@ const TraktCard = () => {
     title,
     url = "",
     episode,
+    season,
+    epiNumber,
     id,
     slug,
-    latestWatch;
+    latestWatch,
+    tagline;
   const { isSuccess, isLoading, data } = useQuery({
     queryKey: ["trakt"],
     queryFn: () => fetchTrakt(),
@@ -55,6 +58,8 @@ const TraktCard = () => {
     url = `https://trakt.tv/shows/${latestWatch.show.ids.slug}`;
     id = latestWatch.show.ids.imdb;
     slug = latestWatch.show.ids.slug;
+    season = latestWatch.episode.season;
+    epiNumber = latestWatch.episode.number;
   }
   // movie
   else if (isSuccess) {
@@ -62,6 +67,7 @@ const TraktCard = () => {
     url = `https://trakt.tv/movies/${latestWatch.movie.ids.slug}`;
     id = latestWatch.movie.ids.imdb;
     slug = latestWatch.movie.ids.slug;
+    tagline = latestWatch.movie.tagline;
   }
 
   return (
@@ -92,15 +98,15 @@ const TraktCard = () => {
           className="rounded-lg flex-none w-1/4 items-center justify-center self-center animate-pulse"
         />
       )}
-      <div className="my-auto flex-grow space-y-3">
+      <>
         {isLoading ? (
-          <>
+          <div className="my-auto flex-grow space-y-3">
             <Skeleton className="h-4 w-[100px]" />
             <Skeleton className="h-4 w-[150px]" />
             <Skeleton className="h-4 w-[125px]" />
-          </>
+          </div>
         ) : (
-          <>
+          <div className="my-auto flex-grow space-y-0.5">
             <div className="flex flex-row space-x-1 text-red-400 items-center">
               <PiPopcornDuotone className="w-5 h-5" />
               <p className="text-sm font-medium">{playingWhen}</p>
@@ -108,14 +114,17 @@ const TraktCard = () => {
             {episode ? (
               <>
                 <p className="font-pop font-semibold text-lg">{title}</p>
-                <p className="font-default text-lg">{episode}</p>
+                <p className="font-default text-lg">{`S${season}E${epiNumber}: ${episode}`}</p>
               </>
             ) : (
-              <p className="font-pop font-semibold text-lg">{title}</p>
+              <>
+                <p className="font-pop font-semibold text-lg">{title}</p>
+                <p className="font-default text-lg italic">{tagline}</p>
+              </>
             )}
-          </>
+          </div>
         )}
-      </div>
+      </>
     </a>
   );
 };
