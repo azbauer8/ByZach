@@ -86,7 +86,7 @@ function Philly() {
           </span>
         </TooltipTrigger>
         <TooltipContent className="bg-[#004C54] dark:bg-[#004C54]">
-          <div className="font-mono text-lg font-semibold tracking-wider">
+          <div className="font-mono text-lg font-semibold tracking-wider text-white dark:text-white">
             GO BIRDS!
           </div>
         </TooltipContent>
