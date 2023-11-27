@@ -3,6 +3,7 @@ import fetchImdb from "@/lib/fetchImdb";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { PiPopcornDuotone } from "react-icons/pi";
+import { Skeleton } from "./ui/skeleton";
 
 const TraktCard = () => {
   let watching, playingWhen, title, url, episode, id, slug, latestWatch;
@@ -23,7 +24,15 @@ const TraktCard = () => {
     enabled: !!data,
   });
   if (isLoading) {
-    return <p>Loading Trakt data...</p>;
+    return (
+      <div className="flex items-center space-x-4">
+        <Skeleton className="h-56 w-36 rounded-lg" />
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-[125px]" />
+          <Skeleton className="h-4 w-[150px]" />
+        </div>
+      </div>
+    );
   }
   if (isSuccess) {
     // history

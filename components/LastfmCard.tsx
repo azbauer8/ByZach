@@ -2,6 +2,7 @@ import fetchLastFm from "@/lib/fetchLastFm";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { PiWaveformBold } from "react-icons/pi";
+import { Skeleton } from "./ui/skeleton";
 
 const LastFmCard = () => {
   const { isSuccess, isLoading, data } = useQuery({
@@ -9,7 +10,16 @@ const LastFmCard = () => {
     queryFn: () => fetchLastFm(),
   });
   if (isLoading) {
-    return <p>Loading LastFM data...</p>;
+    return (
+      <div className="flex items-center space-x-4">
+        <Skeleton className="h-36 w-36 rounded-lg" />
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-[150px]" />
+          <Skeleton className="h-4 w-[150px]" />
+          <Skeleton className="h-4 w-[100px]" />
+        </div>
+      </div>
+    );
   }
   if (isSuccess) {
     const latestTrack = data.recenttracks.track[0];
