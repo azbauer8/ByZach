@@ -9,7 +9,7 @@ export default function Activity() {
         <p>{`I enjoy consuming media, sometimes.`}</p>
       </div>
       <LastFmCard />
-      {/* <TraktCard /> */}
+      <TraktCard />
     </div>
   );
 }

@@ -68,10 +68,19 @@ function getTimeDiff(givenDate: string) {
   );
 
   if (daysAgo === 0 && hoursAgo === 0) {
+    if (minutesAgo === 1) {
+      return `${minutesAgo} min ago`;
+    }
     return `${minutesAgo} mins ago`;
   } else if (daysAgo === 0) {
+    if (hoursAgo === 1) {
+      return `${hoursAgo} hour ago`;
+    }
     return `${hoursAgo} hours ago`;
   } else {
+    if (daysAgo === 1) {
+      return `${daysAgo} day ago`;
+    }
     return `${daysAgo} days ago`;
   }
 }
