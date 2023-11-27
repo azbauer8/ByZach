@@ -39,13 +39,13 @@ const TraktCard = () => {
     if (data instanceof Array) {
       latestWatch = data[0];
       watching = false;
-      playingWhen = latestWatch.watched_at;
+      playingWhen = getTimeDiff(latestWatch.watched_at);
     }
     // watching
     else {
       latestWatch = data;
       watching = true;
-      playingWhen = latestWatch.started_at;
+      playingWhen = "Now Watching";
     }
 
     // show
@@ -63,7 +63,6 @@ const TraktCard = () => {
       id = latestWatch.movie.ids.imdb;
       slug = latestWatch.movie.ids.slug;
     }
-    playingWhen = getTimeDiff(playingWhen);
 
     return (
       <a
