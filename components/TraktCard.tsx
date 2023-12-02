@@ -22,7 +22,11 @@ const TraktCard = () => {
     queryKey: ["trakt"],
     queryFn: () => fetchTrakt(),
   });
-  const { isSuccess: isSuccessImdb, data: dataImdb } = useQuery({
+  const {
+    isSuccess: isSuccessImdb,
+    data: dataImdb,
+    isLoading: isLoadingImdb,
+  } = useQuery({
     queryKey: ["imdb"],
     queryFn: () => {
       const imdbId =
@@ -95,7 +99,9 @@ const TraktCard = () => {
           width={0}
           height={0}
           sizes="100vw"
-          className="rounded-lg flex-none w-1/4 items-center justify-center self-center animate-pulse"
+          className={`rounded-lg flex-none w-1/4 items-center justify-center self-center ${
+            isLoadingImdb ? `animate-pulse` : ""
+          }`}
         />
       )}
       <>
