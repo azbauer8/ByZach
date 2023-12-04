@@ -87,6 +87,7 @@ const TraktCard = () => {
         <Image
           src={dataImdb}
           alt={title}
+          priority
           width={0}
           height={0}
           sizes="100vw"

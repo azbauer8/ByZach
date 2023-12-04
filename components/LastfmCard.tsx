@@ -60,6 +60,7 @@ const LastFmCard = () => {
             : lastFmPlaceholder
         }
         alt="Placeholder album art"
+        priority
         width={0}
         height={0}
         sizes="100vw"
