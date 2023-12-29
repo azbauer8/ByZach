@@ -10,7 +10,6 @@ const Footer = () => {
           href="https://github.com/azbauer8/ByZach"
           className="group inline-flex"
         >
-          <FaGithub className="mr-2 h-6 w-6" />
           <p className="underline decoration-zinc-150 decoration-2 underline-offset-2 group-hover:decoration-zinc-450 dark:decoration-zinc-450 dark:group-hover:decoration-zinc-150">
             By Zach Bauer, 2023
           </p>

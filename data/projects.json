@@ -1,5 +1,10 @@
 [
   {
+    "name": "Scrumble",
+    "description": "A simple cross-platform Markdown editor. Built with Tauri, React, Remirror, and ShadCN UI.",
+    "github": "https://github.com/azbauer8/Scrumble"
+  },
+  {
     "name": "Games Radar",
     "description": "A micro-service site showing recent game releases fetched from rawg's api (also loosely cloned their layout).",
     "github": "https://github.com/azbauer8/Games",
