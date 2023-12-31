@@ -25,8 +25,6 @@ const Link: React.FC<LinkProps> = ({ name, link }) => {
           <HiDocumentArrowDown className="mr-2 h-6 w-6" />
         ) : name === "Last.fm" ? (
           <FaSquareLastfm className="mr-2 h-6 w-6" />
-        ) : name === "Goodreads" ? (
-          <FaGoodreads className="mr-2 h-6 w-6" />
         ) : name === "Trakt" ? (
           <SiTrakt className="mr-2 h-6 w-6" />
         ) : null}
