@@ -11,7 +11,7 @@ const Footer = () => {
           className="group inline-flex"
         >
           <p className="underline decoration-zinc-150 decoration-2 underline-offset-2 group-hover:decoration-zinc-450 dark:decoration-zinc-450 dark:group-hover:decoration-zinc-150">
-            By Zach Bauer, 2023
+            By Zach Bauer, {new Date().getFullYear()}
           </p>
         </a>
       </div>
