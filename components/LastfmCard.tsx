@@ -2,8 +2,9 @@ import fetchLastFm from "@/lib/fetchLastFm";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { PiWaveformBold } from "react-icons/pi";
-import { Skeleton } from "./ui/skeleton";
+
 import lastFmPlaceholder from "../assets/lastfm_placeholder.png";
+import { Skeleton } from "./ui/skeleton";
 
 const LastFmCard = () => {
   const { isSuccess, isLoading, data } = useQuery({
@@ -31,11 +32,11 @@ const LastFmCard = () => {
 
       return (
         <div className="my-auto flex-grow space-y-0.5">
-          <div className="flex flex-row space-x-1 text-emerald-500 items-center">
-            <PiWaveformBold className="w-5 h-5" />
+          <div className="flex flex-row items-center space-x-1 text-emerald-500">
+            <PiWaveformBold className="h-5 w-5" />
             <p className="text-sm font-medium">{playingWhen}</p>
           </div>
-          <p className="font-pop font-semibold text-lg">{latestTrack.name}</p>
+          <p className="font-pop text-lg font-semibold">{latestTrack.name}</p>
           <p className="font-default">{latestTrack.artist["#text"]}</p>
         </div>
       );
@@ -46,7 +47,7 @@ const LastFmCard = () => {
 
   return (
     <a
-      className={`flex items-center space-x-5 max-w-xl ${
+      className={`flex max-w-xl items-center space-x-5 ${
         isSuccess
           ? "ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
           : null
@@ -64,7 +65,7 @@ const LastFmCard = () => {
         width={0}
         height={0}
         sizes="100vw"
-        className={`rounded-lg flex-none w-1/4 items-center justify-center self-center ${
+        className={`w-1/4 flex-none items-center justify-center self-center rounded-lg ${
           isLoading ? "animate-pulse" : null
         }`}
       />
@@ -88,10 +89,11 @@ function getTimeDiff(givenDate: string) {
 
   const daysAgo = Math.floor(timeDifferenceInSeconds / secondsInDay);
   const hoursAgo = Math.floor(
-    (timeDifferenceInSeconds % secondsInDay) / secondsInHour
+    (timeDifferenceInSeconds % secondsInDay) / secondsInHour,
   );
   const minutesAgo = Math.floor(
-    ((timeDifferenceInSeconds % secondsInDay) % secondsInHour) / secondsInMinute
+    ((timeDifferenceInSeconds % secondsInDay) % secondsInHour) /
+      secondsInMinute,
   );
 
   if (daysAgo === 0 && hoursAgo === 0) {

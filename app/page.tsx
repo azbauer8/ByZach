@@ -1,8 +1,9 @@
 "use client";
+
 import About from "@/sections/About";
+import Activity from "@/sections/Activity";
 import Projects from "@/sections/Projects";
 import Socials from "@/sections/Socials";
-import Activity from "@/sections/Activity";
 
 export default function Home() {
   return (

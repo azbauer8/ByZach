@@ -1,16 +1,16 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     const response = await axios.get(
       `http://img.omdbapi.com/?apikey=${process.env.OMDB_API}&i=${req.query.id}`,
       {
         responseType: "stream",
-      }
+      },
     );
     await new Promise<void>((resolve) => {
       response.data.pipe(res);

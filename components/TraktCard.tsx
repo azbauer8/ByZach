@@ -27,7 +27,7 @@ const TraktCard = () => {
     data: dataImdb,
     isLoading: isLoadingImdb,
   } = useQuery({
-    queryKey: ["imdb"],
+  queryKey: ["imdb"],
     queryFn: () => {
       const imdbId =
         data instanceof Array

@@ -11,7 +11,7 @@ export default function Page() {
         seems to have totally vanished into thin air.`}
       </p>
       <Link
-        className="border rounded-lg p-3 border-zinc-200 dark:border-zinc-800"
+        className="rounded-lg border border-zinc-200 p-3 dark:border-zinc-800"
         href="/"
       >
         {`Let's get you back on track`}

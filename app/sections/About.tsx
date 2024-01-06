@@ -1,12 +1,11 @@
 import Link from "@/components/Link";
-import links from "@/data/links.json";
-
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import links from "@/data/links.json";
 
 export default function About() {
   return (
