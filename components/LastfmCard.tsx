@@ -45,6 +45,8 @@ const LastFmCard = () => {
     return null;
   };
 
+  isSuccess && console.log(data)
+
   return (
     <a
       className={`flex max-w-xl items-center space-x-5 ${
@@ -54,21 +56,28 @@ const LastFmCard = () => {
       }`}
       href={isSuccess ? data.recenttracks.track[0].url : null}
     >
-      <Image
-        src={
-          isSuccess && data.recenttracks.track[0].image[3]["#text"] !== ""
-            ? data.recenttracks.track[0].image[3]["#text"]
-            : lastFmPlaceholder
-        }
-        alt="Placeholder album art"
-        priority
-        width={0}
-        height={0}
-        sizes="100vw"
-        className={`w-1/4 flex-none items-center justify-center self-center rounded-lg ${
-          isLoading ? "animate-pulse" : null
-        }`}
-      />
+      {isSuccess && data.recenttracks.track[0].image[3]["#text"] !== "" ? (
+        <Image
+          src={data.recenttracks.track[0].image[3]["#text"]}
+          alt={data.recenttracks.track[0].album["#text"]}
+          priority
+          width={0}
+          height={0}
+          sizes="100vw"
+          className="rounded-lg flex-none w-1/4 items-center justify-center self-center"
+        />
+      ) : (
+        <Image
+          src={lastFmPlaceholder}
+          alt="Placeholder album art"
+          width={0}
+          height={0}
+          sizes="100vw"
+          className={`rounded-lg flex-none w-1/4 items-center justify-center self-center ${
+            isLoading ? `animate-pulse` : ""
+          }`}
+        />
+      )}
       {renderContent()}
     </a>
   );
@@ -78,8 +87,7 @@ function getTimeDiff(givenDate: string) {
   const givenDatetime = new Date(`${givenDate} UTC`);
   const currentDatetime = new Date();
 
-  const timeDifferenceInMilliseconds =
-    currentDatetime.valueOf() - givenDatetime.valueOf();
+  const timeDifferenceInMilliseconds = currentDatetime.valueOf() - givenDatetime.valueOf();
 
   const timeDifferenceInSeconds = timeDifferenceInMilliseconds / 1000;
 
@@ -88,13 +96,8 @@ function getTimeDiff(givenDate: string) {
   const secondsInDay = secondsInHour * 24;
 
   const daysAgo = Math.floor(timeDifferenceInSeconds / secondsInDay);
-  const hoursAgo = Math.floor(
-    (timeDifferenceInSeconds % secondsInDay) / secondsInHour,
-  );
-  const minutesAgo = Math.floor(
-    ((timeDifferenceInSeconds % secondsInDay) % secondsInHour) /
-      secondsInMinute,
-  );
+  const hoursAgo = Math.floor((timeDifferenceInSeconds % secondsInDay) / secondsInHour);
+  const minutesAgo = Math.floor(((timeDifferenceInSeconds % secondsInDay) % secondsInHour) / secondsInMinute);
 
   if (daysAgo === 0 && hoursAgo === 0) {
     if (minutesAgo === 1) {
