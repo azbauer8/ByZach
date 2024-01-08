@@ -1,11 +1,12 @@
-import Link from "@/components/Link";
+import links from "@/data/links.json"
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import links from "@/data/links.json";
+} from "@/components/ui/tooltip"
+import Link from "@/components/Link"
 
 export default function About() {
   return (
@@ -34,7 +35,7 @@ export default function About() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function Philly() {
@@ -91,5 +92,5 @@ function Philly() {
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
-  );
+  )
 }

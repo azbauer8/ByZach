@@ -1,5 +1,6 @@
-import Link from "@/components/Link";
-import links from "@/data/links.json";
+import links from "@/data/links.json"
+
+import Link from "@/components/Link"
 
 export default function Socials() {
   return (
@@ -13,5 +14,5 @@ export default function Socials() {
         </div>
       </div>
     </div>
-  );
+  )
 }

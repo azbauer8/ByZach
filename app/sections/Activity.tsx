@@ -1,5 +1,5 @@
-import LastFmCard from "@/components/LastfmCard";
-import TraktCard from "@/components/TraktCard";
+import LastFmCard from "@/components/LastfmCard"
+import TraktCard from "@/components/TraktCard"
 
 export default function Activity() {
   return (
@@ -11,5 +11,5 @@ export default function Activity() {
       <LastFmCard />
       <TraktCard />
     </div>
-  );
+  )
 }

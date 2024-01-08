@@ -1,5 +1,6 @@
-import ProjectCard from "@/components/ProjectCard";
-import projects from "@/data/projects.json";
+import projects from "@/data/projects.json"
+
+import ProjectCard from "@/components/ProjectCard"
 
 export default function Projects() {
   return (
@@ -19,9 +20,9 @@ export default function Projects() {
               link={project.link}
               linkTitle={project.linkTitle}
             />
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }

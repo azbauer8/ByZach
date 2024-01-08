@@ -1,16 +1,17 @@
-import fetchLastFm from "@/lib/fetchLastFm";
-import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import { PiWaveformBold } from "react-icons/pi";
+import Image from "next/image"
+import { useQuery } from "@tanstack/react-query"
+import { PiWaveformBold } from "react-icons/pi"
 
-import lastFmPlaceholder from "../assets/lastfm_placeholder.png";
-import { Skeleton } from "./ui/skeleton";
+import fetchLastFm from "@/lib/fetchLastFm"
+
+import lastFmPlaceholder from "../assets/lastfm_placeholder.png"
+import { Skeleton } from "./ui/skeleton"
 
 const LastFmCard = () => {
   const { isSuccess, isLoading, data } = useQuery({
     queryKey: ["lastfm"],
     queryFn: () => fetchLastFm(),
-  });
+  })
 
   const renderContent = () => {
     if (isLoading) {
@@ -20,15 +21,15 @@ const LastFmCard = () => {
           <Skeleton className="h-4 w-[150px]" />
           <Skeleton className="h-4 w-[125px]" />
         </div>
-      );
+      )
     }
 
     if (isSuccess && data) {
-      const latestTrack = data.recenttracks.track[0];
-      let playingWhen;
+      const latestTrack = data.recenttracks.track[0]
+      let playingWhen
       latestTrack["@attr"]?.nowplaying === undefined
         ? (playingWhen = getTimeDiff(latestTrack.date["#text"]))
-        : (playingWhen = "Now Playing");
+        : (playingWhen = "Now Playing")
 
       return (
         <div className="my-auto flex-grow space-y-0.5">
@@ -39,11 +40,11 @@ const LastFmCard = () => {
           <p className="font-pop text-lg font-semibold">{latestTrack.name}</p>
           <p className="font-default">{latestTrack.artist["#text"]}</p>
         </div>
-      );
+      )
     }
 
-    return null;
-  };
+    return null
+  }
 
   isSuccess && console.log(data)
 
@@ -64,7 +65,7 @@ const LastFmCard = () => {
           width={0}
           height={0}
           sizes="100vw"
-          className="rounded-lg flex-none w-1/4 items-center justify-center self-center"
+          className="w-1/4 flex-none items-center justify-center self-center rounded-lg"
         />
       ) : (
         <Image
@@ -73,48 +74,53 @@ const LastFmCard = () => {
           width={0}
           height={0}
           sizes="100vw"
-          className={`rounded-lg flex-none w-1/4 items-center justify-center self-center ${
+          className={`w-1/4 flex-none items-center justify-center self-center rounded-lg ${
             isLoading ? `animate-pulse` : ""
           }`}
         />
       )}
       {renderContent()}
     </a>
-  );
-};
+  )
+}
 
 function getTimeDiff(givenDate: string) {
-  const givenDatetime = new Date(`${givenDate} UTC`);
-  const currentDatetime = new Date();
+  const givenDatetime = new Date(`${givenDate} UTC`)
+  const currentDatetime = new Date()
 
-  const timeDifferenceInMilliseconds = currentDatetime.valueOf() - givenDatetime.valueOf();
+  const timeDifferenceInMilliseconds =
+    currentDatetime.valueOf() - givenDatetime.valueOf()
 
-  const timeDifferenceInSeconds = timeDifferenceInMilliseconds / 1000;
+  const timeDifferenceInSeconds = timeDifferenceInMilliseconds / 1000
 
-  const secondsInMinute = 60;
-  const secondsInHour = secondsInMinute * 60;
-  const secondsInDay = secondsInHour * 24;
+  const secondsInMinute = 60
+  const secondsInHour = secondsInMinute * 60
+  const secondsInDay = secondsInHour * 24
 
-  const daysAgo = Math.floor(timeDifferenceInSeconds / secondsInDay);
-  const hoursAgo = Math.floor((timeDifferenceInSeconds % secondsInDay) / secondsInHour);
-  const minutesAgo = Math.floor(((timeDifferenceInSeconds % secondsInDay) % secondsInHour) / secondsInMinute);
+  const daysAgo = Math.floor(timeDifferenceInSeconds / secondsInDay)
+  const hoursAgo = Math.floor(
+    (timeDifferenceInSeconds % secondsInDay) / secondsInHour
+  )
+  const minutesAgo = Math.floor(
+    ((timeDifferenceInSeconds % secondsInDay) % secondsInHour) / secondsInMinute
+  )
 
   if (daysAgo === 0 && hoursAgo === 0) {
     if (minutesAgo === 1) {
-      return `${minutesAgo} min ago`;
+      return `${minutesAgo} min ago`
     }
-    return `${minutesAgo} mins ago`;
+    return `${minutesAgo} mins ago`
   } else if (daysAgo === 0) {
     if (hoursAgo === 1) {
-      return `${hoursAgo} hour ago`;
+      return `${hoursAgo} hour ago`
     }
-    return `${hoursAgo} hours ago`;
+    return `${hoursAgo} hours ago`
   } else {
     if (daysAgo === 1) {
-      return `${daysAgo} day ago`;
+      return `${daysAgo} day ago`
     }
-    return `${daysAgo} days ago`;
+    return `${daysAgo} days ago`
   }
 }
 
-export default LastFmCard;
+export default LastFmCard

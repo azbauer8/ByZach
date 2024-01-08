@@ -1,13 +1,13 @@
-import { FaGithub } from "react-icons/fa6";
-import { HiExternalLink } from "react-icons/hi";
+import { FaGithub } from "react-icons/fa6"
+import { HiExternalLink } from "react-icons/hi"
 
 type ProjectCardProps = {
-  name: string;
-  description: string;
-  github: string;
-  link?: string;
-  linkTitle?: string;
-};
+  name: string
+  description: string
+  github: string
+  link?: string
+  linkTitle?: string
+}
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   name,
@@ -38,7 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         ) : null}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProjectCard;
+export default ProjectCard

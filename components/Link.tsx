@@ -1,13 +1,14 @@
-import { Button } from "@/components/ui/button";
-import { FaGithub, FaGoodreads, FaSquareLastfm } from "react-icons/fa6";
-import { HiDocumentArrowDown } from "react-icons/hi2";
-import { MdAlternateEmail } from "react-icons/md";
-import { SiTrakt } from "react-icons/si";
+import { FaGithub, FaGoodreads, FaSquareLastfm } from "react-icons/fa6"
+import { HiDocumentArrowDown } from "react-icons/hi2"
+import { MdAlternateEmail } from "react-icons/md"
+import { SiTrakt } from "react-icons/si"
+
+import { Button } from "@/components/ui/button"
 
 type LinkProps = {
-  name: string;
-  link: string;
-};
+  name: string
+  link: string
+}
 
 const Link: React.FC<LinkProps> = ({ name, link }) => {
   return (
@@ -30,7 +31,7 @@ const Link: React.FC<LinkProps> = ({ name, link }) => {
         {name}
       </a>
     </Button>
-  );
-};
+  )
+}
 
-export default Link;
+export default Link

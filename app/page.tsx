@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import About from "@/sections/About";
-import Activity from "@/sections/Activity";
-import Projects from "@/sections/Projects";
-import Socials from "@/sections/Socials";
+import About from "@/sections/About"
+import Activity from "@/sections/Activity"
+import Projects from "@/sections/Projects"
+import Socials from "@/sections/Socials"
 
 export default function Home() {
   return (
@@ -13,5 +13,5 @@ export default function Home() {
       <Activity />
       <Socials />
     </div>
-  );
+  )
 }

@@ -20,6 +20,7 @@ My personal website
    ```
 
 3. Install dependencies
+
    ```bash
    npm install
    ```
