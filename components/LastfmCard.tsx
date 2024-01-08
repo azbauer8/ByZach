@@ -16,7 +16,7 @@ const LastFmCard = () => {
   const renderContent = () => {
     if (isLoading) {
       return (
-        <div className="my-auto flex-grow space-y-3">
+        <div className="my-auto grow space-y-3">
           <Skeleton className="h-4 w-[100px]" />
           <Skeleton className="h-4 w-[150px]" />
           <Skeleton className="h-4 w-[125px]" />
@@ -32,7 +32,7 @@ const LastFmCard = () => {
         : (playingWhen = "Now Playing")
 
       return (
-        <div className="my-auto flex-grow space-y-0.5">
+        <div className="my-auto grow space-y-0.5">
           <div className="flex flex-row items-center space-x-1 text-emerald-500">
             <PiWaveformBold className="h-5 w-5" />
             <p className="text-sm font-medium">{playingWhen}</p>

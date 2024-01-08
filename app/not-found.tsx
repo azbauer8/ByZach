@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function Page() {
   return (
-    <main className="content flex flex-1 flex-col items-center justify-center py-8 text-center">
+    <main className="flex flex-1 flex-col items-center justify-center py-8 text-center">
       <h1 className="mb-3 text-3xl font-extrabold text-zinc-800 dark:text-zinc-100 sm:mb-4 sm:text-4xl">
         Zoinks!
       </h1>

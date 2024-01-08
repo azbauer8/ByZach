@@ -9,7 +9,7 @@ export default function Projects() {
         <h1 className="text-xl font-bold">Projects</h1>
         <p>{`Some projects I've worked on in my spare time.`}</p>
       </div>
-      <div className="lg:max-w-screen-md-8 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8 lg:max-w-md">
         {projects.map((project, index) => {
           return (
             <ProjectCard

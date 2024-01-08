@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useMutation, useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import { PiPopcornDuotone } from "react-icons/pi"
 
 import fetchImdb from "@/lib/fetchImdb"
@@ -9,15 +9,12 @@ import traktPlaceholder from "../assets/trakt_placeholder.svg"
 import { Skeleton } from "./ui/skeleton"
 
 const TraktCard = () => {
-  let watching,
-    playingWhen,
+  let playingWhen,
     title,
     url = "",
     episode,
     season,
     epiNumber,
-    id,
-    slug,
     latestWatch,
     tagline
   const { isSuccess, isLoading, data } = useQuery({
@@ -47,13 +44,11 @@ const TraktCard = () => {
   // history
   if (isSuccess && data instanceof Array) {
     latestWatch = data[0]
-    watching = false
     playingWhen = getTimeDiff(latestWatch.watched_at)
   }
   // watching
   else if (isSuccess) {
     latestWatch = data
-    watching = true
     playingWhen = "Currently Watching"
   }
 
@@ -62,8 +57,6 @@ const TraktCard = () => {
     title = latestWatch.show.title
     episode = latestWatch.episode.title
     url = `https://trakt.tv/shows/${latestWatch.show.ids.slug}`
-    id = latestWatch.show.ids.imdb
-    slug = latestWatch.show.ids.slug
     season = latestWatch.episode.season
     epiNumber = latestWatch.episode.number
   }
@@ -71,8 +64,6 @@ const TraktCard = () => {
   else if (isSuccess) {
     title = latestWatch.movie.title
     url = `https://trakt.tv/movies/${latestWatch.movie.ids.slug}`
-    id = latestWatch.movie.ids.imdb
-    slug = latestWatch.movie.ids.slug
     tagline = latestWatch.movie.tagline
   }
 
@@ -109,13 +100,13 @@ const TraktCard = () => {
       )}
       <>
         {isLoading ? (
-          <div className="my-auto flex-grow space-y-3">
+          <div className="my-auto grow space-y-3">
             <Skeleton className="h-4 w-[100px]" />
             <Skeleton className="h-4 w-[150px]" />
             <Skeleton className="h-4 w-[125px]" />
           </div>
         ) : (
-          <div className="my-auto flex-grow space-y-0.5">
+          <div className="my-auto grow space-y-0.5">
             <div className="flex flex-row items-center space-x-1 text-red-400">
               <PiPopcornDuotone className="h-5 w-5" />
               <p className="text-sm font-medium">{playingWhen}</p>
