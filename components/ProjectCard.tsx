@@ -1,5 +1,5 @@
-import { FaGithub } from "react-icons/fa6"
 import { HiExternalLink } from "react-icons/hi"
+import { PiGithubLogoDuotone } from "react-icons/pi"
 
 type ProjectCardProps = {
   name: string
@@ -20,7 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <div className="relative flex flex-col rounded-lg border border-zinc-200 dark:border-zinc-800">
       <div className="absolute right-3 top-5">
         <a href={github} aria-label="GitHub">
-          <FaGithub className="font-default mr-2 h-6 w-6" />
+          <PiGithubLogoDuotone className="font-default mr-2 h-6 w-6" />
         </a>
       </div>
       <div className="p-5">
