@@ -1,6 +1,6 @@
-import links from "@/data/links.json"
+import { links } from "@/data/links"
 
-import Link from "@/components/Link"
+import IconLink from "@/components/IconLink"
 
 export default function Socials() {
   return (
@@ -8,8 +8,8 @@ export default function Socials() {
       <h1 className="text-xl font-bold">Follow me on</h1>
       <div className="mb-5 space-y-0">
         <div className="flex flex-wrap">
-          {links[1].map((link, index) => (
-            <Link key={index} name={link.name} link={link.link} />
+          {links.socials.map((link, index) => (
+            <IconLink key={index} link={link} />
           ))}
         </div>
       </div>

@@ -1,6 +1,6 @@
-import projects from "@/data/projects.json"
+import { projects } from "@/data/projects"
 
-import ProjectCard from "@/components/ProjectCard"
+import ProjectCard from "./ProjectCard"
 
 export default function Projects() {
   return (
@@ -11,16 +11,7 @@ export default function Projects() {
       </div>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8">
         {projects.map((project, index) => {
-          return (
-            <ProjectCard
-              key={index}
-              name={project.name}
-              description={project.description}
-              github={project.github}
-              link={project.link}
-              linkTitle={project.linkTitle}
-            />
-          )
+          return <ProjectCard key={index} project={project} />
         })}
       </div>
     </div>

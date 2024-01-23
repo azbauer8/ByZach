@@ -1,5 +1,5 @@
-import LastFmCard from "@/components/LastfmCard"
-import TraktCard from "@/components/TraktCard"
+import LastFmCard from "./LastfmCard"
+import TraktCard from "./TraktCard"
 
 export default function Activity() {
   return (
