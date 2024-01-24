@@ -30,7 +30,7 @@ export default async function LastFmCard() {
   const latestTrack = data.recenttracks.track[0]
   let playingWhen
   latestTrack["@attr"]?.nowplaying === undefined
-    ? (playingWhen = getTimeDiff(latestTrack.date["#text"]))
+    ? (playingWhen = getTimeDiff(latestTrack.date["#text"], "lastfm"))
     : (playingWhen = "Now Playing")
 
   return (
@@ -62,7 +62,11 @@ export default async function LastFmCard() {
       )}
       <div className="my-auto grow space-y-0.5">
         <div className="flex flex-row items-center space-x-1 text-emerald-500">
-          <PiWaveformBold className="h-5 w-5" />
+          {playingWhen === "Now Playing" ? (
+            <Image src="/bars.svg" alt="Now Playing" width={14} height={14} />
+          ) : (
+            <PiWaveformBold className="h-5 w-5" />
+          )}
           <p className="text-sm font-medium">{playingWhen}</p>
         </div>
         <p className="font-pop text-lg font-semibold">{latestTrack.name}</p>

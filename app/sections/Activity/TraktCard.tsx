@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { PiPopcornDuotone } from "react-icons/pi"
 
-import { formatTraktData } from "@/lib/formatData"
+import { getTimeDiff } from "@/lib/timeCalc"
 
 async function loader() {
   try {
@@ -40,7 +40,13 @@ async function loader() {
           ? traktData.show.ids.imdb
           : traktData.movie.ids.imdb
 
-    return { traktData: traktData, poster: imdbId }
+    const imdbData = await fetch(
+      `http://omdbapi.com/?apikey=${process.env.OMDB_API}&i=${imdbId}`
+    )
+
+    const { Poster } = await imdbData.json()
+
+    return { traktData: traktData, poster: Poster }
   } catch (error) {
     console.error("Error fetching Trakt data:", error)
     return
@@ -59,7 +65,7 @@ export default async function TraktCard() {
     >
       {data ? (
         <Image
-          src={`http://img.omdbapi.com/?apikey=${process.env.OMDB_API}&i=${data.poster}`}
+          src={data.poster}
           alt={traktData.title}
           priority
           width={0}
@@ -97,4 +103,42 @@ export default async function TraktCard() {
       </div>
     </a>
   )
+}
+
+function formatTraktData(data: any) {
+  let title,
+    url = "",
+    episode,
+    season,
+    epiNumber,
+    tagline
+
+  const latestWatch = data instanceof Array ? data[0] : data
+  const playingWhen = latestWatch.watched_at
+    ? getTimeDiff(latestWatch.watched_at, "trakt")
+    : "Currently Watching"
+
+  // show
+  if (latestWatch.type === "episode") {
+    title = latestWatch.show.title
+    episode = latestWatch.episode.title
+    url = `https://trakt.tv/shows/${latestWatch.show.ids.slug}`
+    season = latestWatch.episode.season
+    epiNumber = latestWatch.episode.number
+  }
+  // movie
+  else {
+    title = latestWatch.movie.title
+    url = `https://trakt.tv/movies/${latestWatch.movie.ids.slug}`
+    tagline = latestWatch.movie.tagline
+  }
+  return {
+    title,
+    url,
+    episode,
+    season,
+    epiNumber,
+    tagline,
+    playingWhen,
+  }
 }
