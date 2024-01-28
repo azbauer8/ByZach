@@ -26,9 +26,10 @@ export default async function LastFmCard() {
 	if (!data) return
 
 	const latestTrack = data.recenttracks.track[0]
+	console.log(latestTrack)
 	const playingWhen = latestTrack["@attr"]?.nowplaying
-		? getTimeDiff(latestTrack.date["#text"], "lastfm")
-		: "Now Playing"
+		? "Now Playing"
+		: getTimeDiff(latestTrack.date["#text"], "lastfm")
 
 	return (
 		<a
