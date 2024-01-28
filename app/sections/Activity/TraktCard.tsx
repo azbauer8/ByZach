@@ -2,143 +2,95 @@ import Image from "next/image"
 import { PiPopcornDuotone } from "react-icons/pi"
 
 import { getTimeDiff } from "@/lib/timeCalc"
+import { TraktEntry } from "@/types/apiData"
 
 async function loader() {
-  try {
-    let response = await fetch(
-      `https://api.trakt.tv/users/zacharlatan/watching?extended=full`,
-      {
-        next: { revalidate: 60 },
-        headers: {
-          "Content-Type": "application/json",
-          "trakt-api-key": `${process.env.TRAKT_API}`,
-          "trakt-api-version": "2",
-        },
-      }
-    )
-    if (response.status == 204) {
-      response = await fetch(
-        `https://api.trakt.tv/users/zacharlatan/history?extended=full`,
-        {
-          next: { revalidate: 60 },
-          headers: {
-            "Content-Type": "application/json",
-            "trakt-api-key": `${process.env.TRAKT_API}`,
-            "trakt-api-version": "2",
-          },
-        }
-      )
-    }
-    const traktData = await response.json()
+	try {
+		const response = await fetch(
+			"https://api.trakt.tv/users/zacharlatan/history?extended=full",
+			{
+				headers: {
+					"Content-Type": "application/json",
+					"trakt-api-key": `${process.env.TRAKT_API}`,
+					"trakt-api-version": "2",
+				},
+			},
+		)
+		const traktData = await response.json()
 
-    const imdbId =
-      traktData instanceof Array
-        ? traktData[0].type === "episode"
-          ? traktData[0].show.ids.imdb
-          : traktData[0].movie.ids.imdb
-        : traktData.type === "episode"
-          ? traktData.show.ids.imdb
-          : traktData.movie.ids.imdb
+		const imdbId =
+			traktData[0].type === "episode"
+				? traktData[0].show.ids.imdb
+				: traktData[0].movie.ids.imdb
 
-    const imdbData = await fetch(
-      `http://omdbapi.com/?apikey=${process.env.OMDB_API}&i=${imdbId}`
-    )
+		const imdbData = await fetch(
+			`http://omdbapi.com/?apikey=${process.env.OMDB_API}&i=${imdbId}`,
+		)
 
-    const { Poster } = await imdbData.json()
+		const { Poster } = await imdbData.json()
 
-    return { traktData: traktData, poster: Poster }
-  } catch (error) {
-    console.error("Error fetching Trakt data:", error)
-    return
-  }
+		return { traktData: traktData as TraktEntry[], poster: Poster as string }
+	} catch (error) {
+		console.error("Error fetching Trakt data:", error)
+		return
+	}
 }
 
 export default async function TraktCard() {
-  const data = await loader()
+	const data = await loader()
 
-  const traktData = formatTraktData(data?.traktData)
+	if (!data) return
 
-  return (
-    <a
-      className="flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
-      href={traktData.url || undefined}
-    >
-      {data ? (
-        <Image
-          src={data.poster}
-          alt={traktData.title}
-          priority
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="w-1/4 flex-none items-center justify-center self-center rounded-lg"
-        />
-      ) : (
-        <Image
-          src={"/trakt_placeholder.svg"}
-          alt="Placeholder poster"
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="w-1/4 flex-none items-center justify-center self-center rounded-lg"
-        />
-      )}
+	const traktData = {
+		title: data.traktData[0].show
+			? data.traktData[0].show.title
+			: data.traktData[0].movie
+			  ? data.traktData[0].movie.title
+			  : "",
+		url: data.traktData[0].show
+			? `https://trakt.tv/shows/${data.traktData[0].show.ids.slug}`
+			: `https://trakt.tv/movies/${data.traktData[0].movie?.ids.slug}`,
+		episode: data.traktData[0].episode?.title,
+		season: data.traktData[0].episode?.season,
+		episodeNum: data.traktData[0].episode?.number,
+		tagline: data.traktData[0].movie?.tagline,
+		playingWhen: data.traktData[0].watched_at
+			? getTimeDiff(data.traktData[0].watched_at, "trakt")
+			: "Currently Watching",
+	}
 
-      <div className="my-auto grow space-y-0.5">
-        <div className="flex flex-row items-center space-x-1 text-red-400">
-          <PiPopcornDuotone className="h-5 w-5" />
-          <p className="text-sm font-medium">{traktData.playingWhen}</p>
-        </div>
-        {traktData.episode ? (
-          <>
-            <p className="font-pop text-lg font-semibold">{traktData.title}</p>
-            <p className="font-default text-lg">{`S${traktData.season}E${traktData.epiNumber}: ${traktData.episode}`}</p>
-          </>
-        ) : (
-          <>
-            <p className="font-pop text-lg font-semibold">{traktData.title}</p>
-            <p className="font-default text-lg italic">{traktData.tagline}</p>
-          </>
-        )}
-      </div>
-    </a>
-  )
-}
+	return (
+		<a
+			className="flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
+			href={traktData.url}
+		>
+			<Image
+				src={data.poster}
+				alt={traktData.title}
+				priority
+				width={0}
+				height={0}
+				sizes="100vw"
+				className="w-1/4 flex-none items-center justify-center self-center rounded-lg"
+			/>
 
-function formatTraktData(data: any) {
-  let title,
-    url = "",
-    episode,
-    season,
-    epiNumber,
-    tagline
-
-  const latestWatch = data instanceof Array ? data[0] : data
-  const playingWhen = latestWatch.watched_at
-    ? getTimeDiff(latestWatch.watched_at, "trakt")
-    : "Currently Watching"
-
-  // show
-  if (latestWatch.type === "episode") {
-    title = latestWatch.show.title
-    episode = latestWatch.episode.title
-    url = `https://trakt.tv/shows/${latestWatch.show.ids.slug}`
-    season = latestWatch.episode.season
-    epiNumber = latestWatch.episode.number
-  }
-  // movie
-  else {
-    title = latestWatch.movie.title
-    url = `https://trakt.tv/movies/${latestWatch.movie.ids.slug}`
-    tagline = latestWatch.movie.tagline
-  }
-  return {
-    title,
-    url,
-    episode,
-    season,
-    epiNumber,
-    tagline,
-    playingWhen,
-  }
+			<div className="my-auto grow space-y-0.5">
+				<div className="flex flex-row items-center space-x-1 text-red-400">
+					<PiPopcornDuotone className="h-5 w-5" />
+					<p className="text-sm font-medium">{traktData.playingWhen}</p>
+				</div>
+				{traktData.episode ? (
+					<>
+						<p className="font-pop text-lg font-semibold">{traktData.title}</p>
+						<p className="font-default text-lg">{`S${traktData.season}E${traktData.episodeNum}: ${traktData.episode}`}</p>
+					</>
+				) : (
+					<>
+						<p className="font-pop text-lg font-semibold">{traktData.title}</p>
+						<p className="font-default text-lg italic">{traktData.tagline}</p>
+					</>
+				)}
+			</div>
+		</a>
+	)
 }
