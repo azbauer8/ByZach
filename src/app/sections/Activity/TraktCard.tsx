@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { PiPopcornDuotone } from "react-icons/pi"
 
 import { getTimeDiff } from "@/lib/timeCalc"
@@ -14,6 +13,9 @@ async function loader() {
 					"trakt-api-key": `${process.env.TRAKT_API}`,
 					"trakt-api-version": "2",
 				},
+				next: {
+					revalidate: 0,
+				},
 			},
 		)
 		const traktData = await response.json()
@@ -25,6 +27,9 @@ async function loader() {
 
 		const imdbData = await fetch(
 			`http://omdbapi.com/?apikey=${process.env.OMDB_API}&i=${imdbId}`,
+			{
+				next: { revalidate: 0 },
+			},
 		)
 
 		const { Poster } = await imdbData.json()

@@ -8,6 +8,9 @@ async function loader() {
 	try {
 		const response = await fetch(
 			`http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
+			{
+				next: { revalidate: 0 },
+			},
 		)
 		if (!response.ok) {
 			throw new Error("Network response was not ok")
