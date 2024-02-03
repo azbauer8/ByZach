@@ -64,10 +64,9 @@ export default async function TraktCard() {
 			className="flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
 			href={traktData.url}
 		>
-			<Image
+			<img
 				src={data.poster}
 				alt={traktData.title}
-				priority
 				width={0}
 				height={0}
 				sizes="100vw"

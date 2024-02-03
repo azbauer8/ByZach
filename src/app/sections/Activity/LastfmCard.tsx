@@ -26,7 +26,6 @@ export default async function LastFmCard() {
 	if (!data) return
 
 	const latestTrack = data.recenttracks.track[0]
-	console.log(latestTrack)
 	const playingWhen = latestTrack["@attr"]?.nowplaying
 		? "Now Playing"
 		: getTimeDiff(latestTrack.date["#text"], "lastfm")
@@ -38,10 +37,9 @@ export default async function LastFmCard() {
 			}
 			href={latestTrack.url}
 		>
-			<Image
+			<img
 				src={latestTrack.image[3]["#text"]}
 				alt={latestTrack.album["#text"]}
-				priority
 				width={0}
 				height={0}
 				sizes="100vw"

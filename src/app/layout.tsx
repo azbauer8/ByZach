@@ -12,8 +12,7 @@ import { Providers } from "./providers"
 
 const inter = Inter({ subsets: ["latin"] })
 
-// auto revalidate api requests every 60 seconds
-export const revalidate = 60
+export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
 	title: "Zach Bauer",
