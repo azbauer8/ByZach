@@ -10,15 +10,14 @@ async function loader() {
 			`http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
 			{
 				next: {
-					revalidate: 60,
+					revalidate: 0,
 				},
 			},
 		)
 		if (!response.ok) {
 			throw new Error("Network response was not ok")
 		}
-		const data: LastFmData = await response.json()
-		return data
+		return (await response.json()) as LastFmData
 	} catch (error) {
 		console.error("Error fetching LastFM data:", error)
 		return
