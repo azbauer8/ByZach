@@ -1,9 +1,11 @@
+import { unstable_noStore as noStore } from "next/cache"
 import { PiPopcornDuotone } from "react-icons/pi"
 
 import { getTimeDiff } from "@/lib/timeCalc"
 import { TraktEntry } from "@/types/apiData"
 
 async function loader() {
+	noStore()
 	const response = await fetch(
 		"https://api.trakt.tv/users/zacharlatan/history?extended=full",
 		{
@@ -12,7 +14,6 @@ async function loader() {
 				"trakt-api-key": `${process.env.TRAKT_API}`,
 				"trakt-api-version": "2",
 			},
-			cache: "no-store",
 		},
 	)
 	const traktData: TraktEntry[] = await response.json()
@@ -22,8 +23,8 @@ async function loader() {
 		title: latest.show
 			? latest.show.title
 			: latest.movie
-				? latest.movie.title
-				: "",
+			  ? latest.movie.title
+			  : "",
 		url: latest.show
 			? `https://trakt.tv/shows/${latest.show.ids.slug}`
 			: `https://trakt.tv/movies/${latest.movie?.ids.slug}`,
@@ -32,10 +33,9 @@ async function loader() {
 			? getTimeDiff(latest.watched_at, "trakt")
 			: "Currently Watching",
 		tagline: latest.movie?.tagline,
-		episode: latest.type === "episode" ? latest.episode?.title : undefined,
-		season: latest.type === "episode" ? latest.episode?.season : undefined,
-		episodeNum:
-			latest.type === "episode" ? latest.episode?.number : undefined,
+		episode: latest.episode?.title ?? undefined,
+		season: latest.episode?.season ?? undefined,
+		episodeNum: latest.episode?.number ?? undefined,
 	}
 
 	const imdbId =
@@ -43,9 +43,6 @@ async function loader() {
 
 	const imdbData = await fetch(
 		`http://omdbapi.com/?apikey=${process.env.OMDB_API}&i=${imdbId}`,
-		{
-			cache: "no-store",
-		},
 	)
 
 	const { Poster }: { Poster: string } = await imdbData.json()

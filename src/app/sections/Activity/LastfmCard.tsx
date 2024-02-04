@@ -1,3 +1,5 @@
+import { unstable_noStore as noStore } from "next/cache"
+
 import Image from "next/image"
 import { PiWaveformBold } from "react-icons/pi"
 
@@ -5,16 +7,14 @@ import { getTimeDiff } from "@/lib/timeCalc"
 import { LastFmData } from "@/types/apiData"
 
 async function loader() {
-		const response = await fetch(
-			`http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
-			{
-				cache: "no-store",
-			},
-		)
-		if (!response.ok) {
-			throw new Error("Network response was not ok")
-		}
-		return (await response.json()) as LastFmData
+	noStore()
+	const response = await fetch(
+		`http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
+	)
+	if (!response.ok) {
+		throw new Error("Network response was not ok")
+	}
+	return (await response.json()) as LastFmData
 }
 
 export default async function LastFmCard() {
@@ -34,7 +34,7 @@ export default async function LastFmCard() {
 			}
 			href={latestTrack.url}
 		>
-			<img
+			<Image
 				src={latestTrack.image[3]["#text"]}
 				alt={latestTrack.album["#text"]}
 				width={0}
