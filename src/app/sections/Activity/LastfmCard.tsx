@@ -5,7 +5,6 @@ import { getTimeDiff } from "@/lib/timeCalc"
 import { LastFmData } from "@/types/apiData"
 
 async function loader() {
-	try {
 		const response = await fetch(
 			`http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
 			{
@@ -16,10 +15,6 @@ async function loader() {
 			throw new Error("Network response was not ok")
 		}
 		return (await response.json()) as LastFmData
-	} catch (error) {
-		console.error("Error fetching LastFM data:", error)
-		return
-	}
 }
 
 export default async function LastFmCard() {
