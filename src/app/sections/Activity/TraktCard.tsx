@@ -3,6 +3,7 @@ import { PiPopcornDuotone } from "react-icons/pi"
 
 import { getTimeDiff } from "@/lib/timeCalc"
 import { TraktEntry } from "@/types/apiData"
+import Image from "next/image"
 
 async function loader() {
 	noStore()
@@ -53,14 +54,12 @@ async function loader() {
 export default async function TraktCard() {
 	const data = await loader()
 
-	if (!data) return
-
 	return (
 		<a
 			className="flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
 			href={data.traktData.url}
 		>
-			<img
+			<Image
 				src={data.poster}
 				alt={data.traktData.title}
 				width={0}

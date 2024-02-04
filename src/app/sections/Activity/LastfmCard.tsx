@@ -11,16 +11,11 @@ async function loader() {
 	const response = await fetch(
 		`http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
 	)
-	if (!response.ok) {
-		throw new Error("Network response was not ok")
-	}
 	return (await response.json()) as LastFmData
 }
 
 export default async function LastFmCard() {
 	const data = await loader()
-
-	if (!data) return
 
 	const latestTrack = data.recenttracks.track[0]
 	const playingWhen = latestTrack["@attr"]?.nowplaying

@@ -3,7 +3,8 @@
 My personal website
 
 - Built with [Next.js 14](https://nextjs.org) and [TypeScript](https://www.typescriptlang.org)
-- Styled with [Tailwind](https://tailwindcss.com)
+  - Utilizing Next 14's experimental [Partial Prerendering](https://vercel.com/blog/partial-prerendering-with-next-js-creating-a-new-default-rendering-model#try-ppr-on-vercel-today) feature
+- Styled with [Tailwind](https://tailwindcss.com) and a few components from [shadcn/ui](https://ui.shadcn.com/)
 - Using APIs from [Last.fm](https://www.last.fm/api), [Trakt](https://trakt.docs.apiary.io/), and [OMDb](https://www.omdbapi.com/)
 - Hosted on [Vercel](https://vercel.com/)
 
