@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 import LastFmCard from "./LastfmCard"
 import TraktCard from "./TraktCard"
-import LoadingActivity from "./loading"
+import { LoadingLastFm, LoadingTrakt } from "./loading"
 
 export default function Activity() {
 	return (
@@ -10,8 +10,10 @@ export default function Activity() {
 				<h1 className="text-xl font-bold">Activity</h1>
 				<p>I enjoy consuming media, sometimes.</p>
 			</div>
-			<Suspense fallback={<LoadingActivity />}>
+			<Suspense fallback={<LoadingLastFm />}>
 				<LastFmCard />
+			</Suspense>
+			<Suspense fallback={<LoadingTrakt />}>
 				<TraktCard />
 			</Suspense>
 		</div>

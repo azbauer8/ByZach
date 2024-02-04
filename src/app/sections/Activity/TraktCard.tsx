@@ -13,10 +13,7 @@ async function loader() {
 					"trakt-api-key": `${process.env.TRAKT_API}`,
 					"trakt-api-version": "2",
 				},
-
-				next: {
-					revalidate: 0,
-				},
+				cache: "no-store",
 			},
 		)
 		const traktData: TraktEntry[] = await response.json()
@@ -48,9 +45,7 @@ async function loader() {
 		const imdbData = await fetch(
 			`http://omdbapi.com/?apikey=${process.env.OMDB_API}&i=${imdbId}`,
 			{
-				next: {
-					revalidate: 0,
-				},
+				cache: "no-store",
 			},
 		)
 
