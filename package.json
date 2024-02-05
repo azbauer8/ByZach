@@ -6,7 +6,8 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "npx biome lint ."
+    "lint": "npx biome lint ./src",
+    "format": "npx biome format --write ./src"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
