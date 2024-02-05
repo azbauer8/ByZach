@@ -1,4 +1,3 @@
-import { unstable_noStore as noStore } from "next/cache"
 import { PiPopcornDuotone } from "react-icons/pi"
 
 import { getTimeDiff } from "@/lib/timeCalc"
@@ -6,7 +5,6 @@ import { TraktEntry } from "@/types/apiData"
 import Image from "next/image"
 
 async function loader() {
-	noStore()
 	const response = await fetch(
 		"https://api.trakt.tv/users/zacharlatan/history?extended=full",
 		{
@@ -14,6 +12,9 @@ async function loader() {
 				"Content-Type": "application/json",
 				"trakt-api-key": `${process.env.TRAKT_API}`,
 				"trakt-api-version": "2",
+			},
+			next: {
+				revalidate: 60,
 			},
 		},
 	)
@@ -44,6 +45,11 @@ async function loader() {
 
 	const imdbData = await fetch(
 		`http://omdbapi.com/?apikey=${process.env.OMDB_API}&i=${imdbId}`,
+		{
+			next: {
+				revalidate: 60,
+			},
+		},
 	)
 
 	const { Poster }: { Poster: string } = await imdbData.json()

@@ -1,5 +1,3 @@
-import { unstable_noStore as noStore } from "next/cache"
-
 import Image from "next/image"
 import { PiWaveformBold } from "react-icons/pi"
 
@@ -7,9 +5,13 @@ import { getTimeDiff } from "@/lib/timeCalc"
 import { LastFmData } from "@/types/apiData"
 
 async function loader() {
-	noStore()
 	const response = await fetch(
 		`http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
+		{
+			next: {
+				revalidate: 60,
+			},
+		},
 	)
 	return (await response.json()) as LastFmData
 }
