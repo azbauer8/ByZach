@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: `Zach Bauer's Personal Website`,
 }
 
+export const fetchCache = "default-no-store"
+
 export default function RootLayout({
   children,
 }: {
