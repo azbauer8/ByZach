@@ -31,6 +31,7 @@ export default async function LastFmCard() {
         alt={latestTrack.album["#text"]}
         width={0}
         height={0}
+        priority
         sizes="100vw"
         className="w-1/4 flex-none items-center justify-center self-center rounded-lg"
       />
