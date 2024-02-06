@@ -10,12 +10,12 @@ export default function Activity() {
         <h1 className="text-xl font-bold">Activity</h1>
         <p>I enjoy consuming media, sometimes.</p>
       </div>
-      {/* <Suspense fallback={<LoadingLastFm />}> */}
+      <Suspense fallback={<LoadingLastFm />}>
         <LastFmCard />
-        {/* </Suspense> */}
-        {/* <Suspense fallback={<LoadingTrakt />}> */}
+      </Suspense>
+      <Suspense fallback={<LoadingTrakt />}>
         <TraktCard />
-      {/* </Suspense> */}
+      </Suspense>
     </div>
   )
 }
