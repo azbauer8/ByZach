@@ -61,7 +61,7 @@ export default async function TraktCard() {
         src={data.poster}
         alt={data.traktData.title}
         width={144}
-        height={144}
+        height={216}
         priority
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
