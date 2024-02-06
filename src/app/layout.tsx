@@ -1,5 +1,4 @@
 import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
@@ -33,7 +32,6 @@ export default function RootLayout({
             <div className="m-5 space-y-8 md:m-0">
               <main>
                 {children}
-                <SpeedInsights />
                 <Analytics />
               </main>
               <Footer />
