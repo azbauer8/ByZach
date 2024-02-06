@@ -29,9 +29,11 @@ export default async function LastFmCard() {
       <Image
         src={latestTrack.image[3]["#text"]}
         alt={latestTrack.album["#text"]}
-        width={0}
-        height={0}
+        width={144}
+        height={144}
         priority
+        placeholder="blur"
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
         sizes="100vw"
         className="w-1/4 flex-none items-center justify-center self-center rounded-lg"
       />
