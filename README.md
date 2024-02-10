@@ -8,7 +8,7 @@ My personal website
 - Using APIs from [Last.fm](https://www.last.fm/api), [Trakt](https://trakt.docs.apiary.io/), and [OMDb](https://www.omdbapi.com/)
 - Hosted on [Vercel](https://vercel.com/)
 
-## Installation
+## Get Started
 
 1. Clone this repo
 
