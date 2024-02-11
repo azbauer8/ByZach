@@ -15,9 +15,9 @@ import clsx from "clsx"
 
 export function ThemeToggle() {
   const { theme, systemTheme, setTheme } = useTheme()
+
   return (
     <Dropdown
-      showArrow
       classNames={{
         base: "before:bg-default-200",
         content: "p-0 border-small border-divider bg-background",
