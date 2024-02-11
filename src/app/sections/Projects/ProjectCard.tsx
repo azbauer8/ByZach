@@ -16,7 +16,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         <h1 className="mb-2 font-semibold text-pop">{project.name}</h1>
         <Button
           as={Link}
-          variant="light"
+          variant="bordered"
           href={project.github}
           isExternal
           isIconOnly
