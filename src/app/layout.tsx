@@ -1,19 +1,27 @@
-import { Analytics } from "@vercel/analytics/react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
-
-import "./globals.css"
-
-import { Providers } from "./providers"
-
-const inter = Inter({ subsets: ["latin"] })
+import { Providers } from "@/app/_global/Providers"
+import "@/app/_global/styles.css"
+import { siteConfig } from "@/data/site"
+import clsx from "clsx"
+import { Metadata, Viewport } from "next"
+import Footer from "./_global/Footer"
+import { ThemeToggle } from "./_global/ThemeToggle"
 
 export const metadata: Metadata = {
-  title: "Zach Bauer",
-  description: `Zach Bauer's Personal Website`,
+  title: {
+    default: siteConfig.title,
+    template: `%s - ${siteConfig.title}`,
+  },
+  description: siteConfig.description,
+  icons: {
+    icon: "/favicon.png",
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
 }
 
 export const fetchCache = "default-no-store"
@@ -25,17 +33,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className}`}>
-        <Providers>
-          <div className="mx-auto max-w-3xl space-y-5">
-            <Header />
-            <div className="m-5 space-y-8 md:m-0">
-              <main>
-                {children}
-                <Analytics />
-              </main>
-              <Footer />
+      <head />
+      <body
+        className={clsx("bg-background antialiased", siteConfig.font.className)}
+      >
+        <Providers
+          themeProps={{
+            attribute: "class",
+            defaultTheme: "system",
+            enableSystem: true,
+            disableTransitionOnChange: true,
+          }}
+        >
+          <div className="mx-auto max-w-3xl space-y-5 mb-10">
+            <nav className="flex w-full justify-end px-6 py-5">
+              <ThemeToggle />
+            </nav>
+            <div className="m-5 space-y-8 lg:m-0">
+              <main>{children}</main>
             </div>
+            <Footer />
           </div>
         </Providers>
       </body>

@@ -1,28 +1,42 @@
 import { links } from "@/data/links"
 
+import Philly from "@/app/sections/About/Philly"
 import IconLink from "@/components/IconLink"
-import Philly from "@/components/Philly"
+import { siteConfig } from "@/data/site"
+import { Link } from "@nextui-org/react"
 
 export default function About() {
   return (
     <div className="space-y-8">
       <div className="space-y-1">
-        <h1 className="text-2xl font-semibold">Zach Bauer</h1>
-        <h2 className="font-default text-lg">Full Stack Developer</h2>
+        <h1 className="text-2xl font-semibold text-pop">Zach Bauer</h1>
+        <h2 className="text-lg">Full Stack Developer</h2>
       </div>
       <div>
         <div className="max-w-xl leading-loose">
           {`Hey there! I'm Zach. I'm currently living in `}
           <Philly /> {"and working at "}
-          <a href="https://sig.com/" aria-label="SIG" className="link">
+          <Link
+            href={siteConfig.links.sig}
+            aria-label="SIG"
+            color="foreground"
+            underline="always"
+            className="text-pop"
+          >
             SIG
-          </a>
+          </Link>
           {
             " developing internal monitoring and operations tools for support teams. In 2021, I graduated from "
           }
-          <a href="https://www.pitt.edu/" aria-label="Pitt" className="link">
+          <Link
+            href={siteConfig.links.pitt}
+            aria-label="Pitt"
+            color="foreground"
+            underline="always"
+            className="text-pop"
+          >
             Pitt
-          </a>
+          </Link>
           {` with a bachelor's in information science.`}
         </div>
         <div className="mt-3">

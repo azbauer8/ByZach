@@ -1,8 +1,8 @@
 import { PiPopcornDuotone } from "react-icons/pi"
 
-import { getTimeDiff } from "@/lib/timeCalc"
 import { TraktEntry } from "@/types/apiData"
 import Image from "next/image"
+import { getTimeDiff } from "./timeCalc"
 
 async function loader() {
   const response = await fetch(
@@ -54,7 +54,7 @@ export default async function TraktCard() {
 
   return (
     <a
-      className="flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
+      className="flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60"
       href={data.traktData.url}
     >
       <Image
@@ -76,19 +76,17 @@ export default async function TraktCard() {
         </div>
         {data.traktData.episode ? (
           <>
-            <p className="font-pop text-lg font-semibold">
+            <p className="text-pop text-lg font-semibold">
               {data.traktData.title}
             </p>
-            <p className="font-default text-lg">{`S${data.traktData.season}E${data.traktData.episodeNum}: ${data.traktData.episode}`}</p>
+            <p className="text-lg">{`S${data.traktData.season}E${data.traktData.episodeNum}: ${data.traktData.episode}`}</p>
           </>
         ) : (
           <>
-            <p className="font-pop text-lg font-semibold">
+            <p className="text-pop text-lg font-semibold">
               {data.traktData.title}
             </p>
-            <p className="font-default text-lg italic">
-              {data.traktData.tagline}
-            </p>
+            <p className="text-lg italic">{data.traktData.tagline}</p>
           </>
         )}
       </div>

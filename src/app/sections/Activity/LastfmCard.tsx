@@ -1,8 +1,8 @@
 import Image from "next/image"
 import { PiWaveformBold } from "react-icons/pi"
 
-import { getTimeDiff } from "@/lib/timeCalc"
 import { LastFmData } from "@/types/apiData"
+import { getTimeDiff } from "./timeCalc"
 
 async function loader() {
   const response = await fetch(
@@ -22,7 +22,7 @@ export default async function LastFmCard() {
   return (
     <a
       className={
-        "flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
+        "flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60"
       }
       href={latestTrack.url}
     >
@@ -47,8 +47,8 @@ export default async function LastFmCard() {
           )}
           <p className="text-sm font-medium">{playingWhen}</p>
         </div>
-        <p className="font-pop text-lg font-semibold">{latestTrack.name}</p>
-        <p className="font-default">{latestTrack.artist["#text"]}</p>
+        <p className="text-pop text-lg font-semibold">{latestTrack.name}</p>
+        <p>{latestTrack.artist["#text"]}</p>
       </div>
     </a>
   )
