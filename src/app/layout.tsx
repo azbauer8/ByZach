@@ -17,13 +17,6 @@ export const metadata: Metadata = {
   },
 }
 
-export const viewport: Viewport = {
-  themeColor: [
-    {
-      color: "var(--tux-background)",
-    },
-  ],
-}
 export const fetchCache = "default-no-store"
 
 export default function RootLayout({
