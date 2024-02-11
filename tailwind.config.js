@@ -19,14 +19,15 @@ module.exports = {
           "2xl": "1400px",
         },
       },
-			cursor: {
-				birds: "url(/eagles.png), pointer",
-			},
+      cursor: {
+        birds: "url(/eagles.png), pointer",
+      },
     },
   },
   darkMode: "class",
   plugins: [
     nextui({
+      prefix: "tux",
       themes: {
         light: {
           colors: {

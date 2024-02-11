@@ -15,7 +15,6 @@ import clsx from "clsx"
 
 export function ThemeToggle() {
   const { theme, systemTheme, setTheme } = useTheme()
-
   return (
     <Dropdown
       classNames={{
