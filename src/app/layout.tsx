@@ -2,7 +2,7 @@ import { Providers } from "@/app/_global/Providers"
 import "@/app/_global/styles.css"
 import { siteConfig } from "@/data/site"
 import clsx from "clsx"
-import { Metadata, Viewport } from "next"
+import { Metadata } from "next"
 import Footer from "./_global/Footer"
 import { ThemeToggle } from "./_global/ThemeToggle"
 

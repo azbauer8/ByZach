@@ -23,7 +23,7 @@ export function ThemeToggle() {
       }}
     >
       <DropdownTrigger>
-        <Button isIconOnly variant="light">
+        <Button isIconOnly variant="light" aria-label="Toggle Theme">
           {(theme === "system" && systemTheme === "light") ||
           theme === "light" ? (
             <SunIcon className="size-[1.2rem]" />

@@ -15,6 +15,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       <CardHeader className="flex items-center justify-between">
         <h1 className="mb-2 font-semibold text-pop">{project.name}</h1>
         <Button
+          aria-label={project.name}
           as={Link}
           variant="light"
           className="text-foreground hover:text-pop"
