@@ -35,7 +35,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={clsx("bg-background antialiased", siteConfig.font.className)}
+        className={clsx(
+          "bg-background text-foreground antialiased",
+          siteConfig.font.className,
+        )}
       >
         <Providers
           themeProps={{
