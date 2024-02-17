@@ -1,6 +1,6 @@
 import { Providers } from "@/app/_global/Providers"
+import { siteConfig } from "@/app/_global/config"
 import "@/app/_global/styles.css"
-import { siteConfig } from "@/data/site"
 import clsx from "clsx"
 import { Metadata } from "next"
 import Footer from "./_global/Footer"
@@ -33,14 +33,7 @@ export default function RootLayout({
           siteConfig.font.className,
         )}
       >
-        <Providers
-          themeProps={{
-            attribute: "class",
-            defaultTheme: "system",
-            enableSystem: true,
-            disableTransitionOnChange: true,
-          }}
-        >
+        <Providers>
           <div className="mx-auto max-w-3xl space-y-5 mb-10">
             <nav className="flex w-full justify-end px-6 py-5">
               <ThemeToggle />

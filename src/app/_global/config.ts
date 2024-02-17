@@ -12,5 +12,5 @@ export const siteConfig = {
     github: "https://github.com/azbauer8/ByZach",
     sig: "https://sig.com/",
     pitt: "https://www.pitt.edu/",
-  }
+  },
 }

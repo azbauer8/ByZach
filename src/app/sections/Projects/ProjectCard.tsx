@@ -1,4 +1,3 @@
-import { Project } from "@/data/projects"
 import {
   Button,
   Card,
@@ -8,6 +7,7 @@ import {
   Link,
 } from "@nextui-org/react"
 import { GithubIcon } from "lucide-react"
+import { Project } from "."
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (

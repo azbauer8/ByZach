@@ -1,9 +1,27 @@
-import { links } from "@/data/links"
-
+import { siteConfig } from "@/app/_global/config"
 import Philly from "@/app/sections/About/Philly"
-import IconLink from "@/components/IconLink"
-import { siteConfig } from "@/data/site"
-import { Link } from "@nextui-org/react"
+import { Button, Link } from "@nextui-org/react"
+import { FaGithub } from "react-icons/fa6"
+import { HiDocumentArrowDown } from "react-icons/hi2"
+import { MdAlternateEmail } from "react-icons/md"
+
+const aboutLinks = [
+  {
+    name: "GitHub",
+    url: "https://github.com/azbauer8",
+    icon: <FaGithub className="mr-2 h-6 w-6" />,
+  },
+  {
+    name: "Email",
+    url: "mailto:hi@byzach.dev",
+    icon: <MdAlternateEmail className="mr-2 h-6 w-6" />,
+  },
+  {
+    name: "Resume",
+    url: "/Resume.pdf",
+    icon: <HiDocumentArrowDown className="mr-2 h-6 w-6" />,
+  },
+]
 
 export default function About() {
   return (
@@ -40,8 +58,18 @@ export default function About() {
           {` with a bachelor's in information science.`}
         </div>
         <div className="mt-3">
-          {links.about.map((link) => (
-            <IconLink key={link.url} link={link} />
+          {aboutLinks.map((link) => (
+            <Button
+              key={link.url}
+              as={Link}
+              href={link.url}
+              aria-label={link.name}
+              startContent={link.icon}
+              variant="light"
+              className="gap-0"
+            >
+              {link.name}
+            </Button>
           ))}
         </div>
       </div>
