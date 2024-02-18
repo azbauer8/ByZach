@@ -1,7 +1,8 @@
 "use client"
 
-import { siteConfig } from "@/app/_global/config"
 import { Link } from "@nextui-org/react"
+
+import { siteConfig } from "@/app/_global/config"
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
         <Link
           href={siteConfig.links.github}
           color="foreground"
-          underline="always"
+          underline="hover"
         >
           By Zach Bauer, {new Date().getFullYear()}
         </Link>

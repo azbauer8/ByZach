@@ -7,7 +7,8 @@ import {
   Link,
 } from "@nextui-org/react"
 import { GithubIcon } from "lucide-react"
-import { Project } from "."
+
+import { Project } from "./projects"
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
@@ -23,7 +24,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           isExternal
           isIconOnly
         >
-          <GithubIcon className="h-6 w-6" />
+          <GithubIcon className="size-6" />
         </Button>
       </CardHeader>
       <CardBody>

@@ -1,4 +1,3 @@
-
 # [ByZach.dev](https://byzach.dev)
 
 My personal website
@@ -19,11 +18,13 @@ My personal website
    TRAKT_API=
    OMDB_API=
    ```
+
 3. Install dependencies
 
    ```bash
    npm install
    ```
+
 4. Run it
 
    ```bash

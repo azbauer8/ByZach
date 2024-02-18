@@ -1,8 +1,11 @@
-import { Providers } from "@/app/_global/Providers"
 import { siteConfig } from "@/app/_global/config"
+import { Providers } from "@/app/_global/Providers"
+
 import "@/app/_global/styles.css"
-import clsx from "clsx"
+
 import { Metadata } from "next"
+import clsx from "clsx"
+
 import Footer from "./_global/Footer"
 import { ThemeToggle } from "./_global/ThemeToggle"
 
@@ -30,11 +33,11 @@ export default function RootLayout({
       <body
         className={clsx(
           "bg-background text-foreground antialiased",
-          siteConfig.font.className,
+          siteConfig.font.className
         )}
       >
         <Providers>
-          <div className="mx-auto max-w-3xl space-y-5 mb-10">
+          <div className="mx-auto mb-10 max-w-3xl space-y-5">
             <nav className="flex w-full justify-end px-6 py-5">
               <ThemeToggle />
             </nav>

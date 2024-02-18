@@ -1,7 +1,8 @@
 import { Suspense } from "react"
+
 import LastFmCard from "./LastfmCard"
+import { LoadingLastFm, LoadingTrakt } from "./loaders"
 import TraktCard from "./TraktCard"
-import { LoadingLastFm, LoadingTrakt } from "./loading"
 
 export default function Activity() {
   return (

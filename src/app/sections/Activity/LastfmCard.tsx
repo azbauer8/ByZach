@@ -2,17 +2,25 @@ import Image from "next/image"
 import { PiWaveformBold } from "react-icons/pi"
 
 import { LastFmData } from "@/types/apiData"
+
+import { LoadingLastFm } from "./loaders"
 import { getTimeDiff } from "./timeCalc"
 
 async function loader() {
-  const response = await fetch(
-    `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
-  )
-  return (await response.json()) as LastFmData
+  try {
+    const response = await fetch(
+      `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`
+    )
+    return (await response.json()) as LastFmData
+  } catch (e) {
+    return
+  }
 }
 
 export default async function LastFmCard() {
   const data = await loader()
+
+  if (!data) return <LoadingLastFm />
 
   const latestTrack = data.recenttracks.track[0]
   const playingWhen = latestTrack["@attr"]?.nowplaying
@@ -43,11 +51,11 @@ export default async function LastFmCard() {
           {playingWhen === "Now Playing" ? (
             <Image src="/bars.svg" alt="Now Playing" width={14} height={14} />
           ) : (
-            <PiWaveformBold className="h-5 w-5" />
+            <PiWaveformBold className="size-5" />
           )}
           <p className="text-sm font-medium">{playingWhen}</p>
         </div>
-        <p className="text-pop text-lg font-semibold">{latestTrack.name}</p>
+        <p className="text-lg font-semibold text-pop">{latestTrack.name}</p>
         <p>{latestTrack.artist["#text"]}</p>
       </div>
     </a>

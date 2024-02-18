@@ -14,11 +14,10 @@ export function getTimeDiff(givenDate: string, type: "lastfm" | "trakt") {
 
   const daysAgo = Math.floor(timeDifferenceInSeconds / secondsInDay)
   const hoursAgo = Math.floor(
-    (timeDifferenceInSeconds % secondsInDay) / secondsInHour,
+    (timeDifferenceInSeconds % secondsInDay) / secondsInHour
   )
   const minutesAgo = Math.floor(
-    ((timeDifferenceInSeconds % secondsInDay) % secondsInHour) /
-      secondsInMinute,
+    ((timeDifferenceInSeconds % secondsInDay) % secondsInHour) / secondsInMinute
   )
 
   if (daysAgo === 0 && hoursAgo === 0) {

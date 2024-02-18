@@ -1,7 +1,8 @@
-import About from "@/app/sections/About"
 import Activity from "@/sections/Activity"
 import Projects from "@/sections/Projects"
 import Socials from "@/sections/Socials"
+
+import About from "@/app/sections/About"
 
 export default function Home() {
   return (
