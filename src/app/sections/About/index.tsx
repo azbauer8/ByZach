@@ -1,9 +1,9 @@
+import { siteConfig } from "@/config"
 import { Button, Link } from "@nextui-org/react"
 import { FaGithub } from "react-icons/fa6"
 import { HiDocumentArrowDown } from "react-icons/hi2"
 import { MdAlternateEmail } from "react-icons/md"
 
-import { siteConfig } from "@/app/_global/config"
 import Philly from "@/app/sections/About/Philly"
 
 const aboutLinks = [

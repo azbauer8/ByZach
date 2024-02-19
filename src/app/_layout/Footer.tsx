@@ -1,8 +1,7 @@
 "use client"
 
+import { siteConfig } from "@/config"
 import { Link } from "@nextui-org/react"
-
-import { siteConfig } from "@/app/_global/config"
 
 export default function Footer() {
   return (

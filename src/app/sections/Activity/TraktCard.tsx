@@ -19,8 +19,6 @@ async function loader() {
       }
     )
     const traktData: TraktEntry[] = await response.json()
-    console.log("🚀 ~ loader ~ response:", response)
-    console.log("🚀 ~ loader ~ traktData:", traktData)
     const latest = traktData[0]
     const latestData = {
       type: latest.type,

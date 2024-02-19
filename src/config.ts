@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const siteConfig = {
   title: "Zach Bauer",
   description: `Zach Bauer's Personal Website`,
+  favicon: "/favicon.png",
   font: inter,
   links: {
     github: "https://github.com/azbauer8/ByZach",

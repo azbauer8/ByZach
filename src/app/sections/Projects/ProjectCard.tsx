@@ -12,8 +12,8 @@ import { Project } from "./projects"
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card>
-      <CardHeader className="flex items-center justify-between">
+    <Card className="bg-opacity-50">
+      <CardHeader className="flex items-center justify-between pb-0">
         <h1 className="mb-2 font-semibold text-pop">{project.name}</h1>
         <Button
           aria-label={project.name}
@@ -27,7 +27,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           <GithubIcon className="size-6" />
         </Button>
       </CardHeader>
-      <CardBody>
+      <CardBody className="py-0">
         <p className="leading-relaxed">{project.description}</p>
       </CardBody>
       {project.link && project.linkTitle && (
@@ -38,7 +38,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             isExternal
             showAnchorIcon
             className="w-full"
-            variant="faded"
+            variant="flat"
           >
             {project.linkTitle}
           </Button>

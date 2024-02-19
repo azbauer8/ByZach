@@ -1,13 +1,14 @@
-import { siteConfig } from "@/app/_global/config"
-import { Providers } from "@/app/_global/Providers"
+import { siteConfig } from "@/config"
 
-import "@/app/_global/styles.css"
+import { Providers } from "./_layout/Providers"
+
+import "@/styles.css"
 
 import { Metadata } from "next"
 import clsx from "clsx"
 
-import Footer from "./_global/Footer"
-import { ThemeToggle } from "./_global/ThemeToggle"
+import Footer from "./_layout/Footer"
+import { ThemeToggle } from "./_layout/ThemeToggle"
 
 export const metadata: Metadata = {
   title: {
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: "/favicon.png",
+    icon: siteConfig.favicon,
   },
 }
 
