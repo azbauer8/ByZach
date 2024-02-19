@@ -12,7 +12,7 @@ import { Project } from "./projects"
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card className="bg-opacity-50">
+    <Card className="bg-content1/50">
       <CardHeader className="flex items-center justify-between pb-0">
         <h1 className="mb-2 font-semibold text-pop">{project.name}</h1>
         <Button

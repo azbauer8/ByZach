@@ -10,17 +10,17 @@ const aboutLinks = [
   {
     name: "GitHub",
     url: "https://github.com/azbauer8",
-    icon: <FaGithub className="mr-2 h-6 w-6" />,
+    icon: <FaGithub className="mr-2 size-6" />,
   },
   {
     name: "Email",
     url: "mailto:hi@byzach.dev",
-    icon: <MdAlternateEmail className="mr-2 h-6 w-6" />,
+    icon: <MdAlternateEmail className="mr-2 size-6" />,
   },
   {
     name: "Resume",
     url: "/Resume.pdf",
-    icon: <HiDocumentArrowDown className="mr-2 h-6 w-6" />,
+    icon: <HiDocumentArrowDown className="mr-2 size-6" />,
   },
 ]
 

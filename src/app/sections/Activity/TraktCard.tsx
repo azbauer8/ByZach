@@ -1,3 +1,4 @@
+import { unstable_noStore } from "next/cache"
 import Image from "next/image"
 import { PiPopcornDuotone } from "react-icons/pi"
 
@@ -7,6 +8,7 @@ import { LoadingTrakt } from "./loaders"
 import { getTimeDiff } from "./timeCalc"
 
 async function loader() {
+  unstable_noStore()
   try {
     const response = await fetch(
       "https://api.trakt.tv/users/zacharlatan/history?extended=full",
