@@ -27,7 +27,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           <GithubIcon className="size-6" />
         </Button>
       </CardHeader>
-      <CardBody className="py-0">
+      <CardBody className={project.link ? "py-0" :"pt-0 pb-2"}>
         <p className="leading-relaxed">{project.description}</p>
       </CardBody>
       {project.link && project.linkTitle && (
