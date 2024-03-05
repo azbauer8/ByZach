@@ -1,8 +1,8 @@
-import { Inter } from "next/font/google"
+import { Asap } from "next/font/google"
 
 export type SiteConfig = typeof siteConfig
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Asap({ subsets: ["latin"] })
 
 export const siteConfig = {
   title: "Zach Bauer",
