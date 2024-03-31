@@ -1,19 +1,17 @@
 import { siteConfig } from "@/config"
 
-import { Providers } from "./_layout/Providers"
-
 import "@/styles.css"
 
 import { Metadata } from "next"
-import clsx from "clsx"
 
-import Footer from "./_layout/Footer"
-import { ThemeToggle } from "./_layout/ThemeToggle"
+import { cn } from "@/lib/utils"
+import { Providers } from "@/components/Providers"
+import { MobileSidebar, Sidebar } from "@/components/Sidebar"
 
 export const metadata: Metadata = {
   title: {
     default: siteConfig.title,
-    template: `%s - ${siteConfig.title}`,
+    template: `%s | ${siteConfig.title}`,
   },
   description: siteConfig.description,
   icons: {
@@ -30,21 +28,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={clsx(
-          "bg-background text-foreground antialiased",
-          siteConfig.font.className
+        className={cn(
+          "relative flex h-full min-h-dvh w-full bg-background font-sans text-foreground antialiased",
+          siteConfig.font.variable
         )}
       >
         <Providers>
-          <div className="mx-auto mb-10 max-w-3xl space-y-5">
-            <nav className="flex w-full justify-end px-6 py-5">
-              <ThemeToggle />
-            </nav>
-            <div className="m-5 space-y-8 lg:m-0">
-              <main>{children}</main>
-            </div>
-            <Footer />
-          </div>
+          <Sidebar />
+          <MobileSidebar />
+          <div className="flex-1">{children}</div>
         </Providers>
       </body>
     </html>
