@@ -68,7 +68,7 @@ export function SidebarToggle() {
 
 export function Sidebar() {
   return (
-    <nav className="absolute flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col gap-7 border-r border-border bg-accent p-3 transition duration-200 ease-in-out lg:relative lg:translate-x-0">
+    <nav className="absolute z-30  flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col gap-7 border-r border-border bg-accent p-3 transition duration-200 ease-in-out lg:relative lg:translate-x-0">
       <div className="flex items-center justify-between pl-3">
         <h1 className="text-sm font-bold">{siteConfig.urlShortened}</h1>
         <ThemeToggle />
@@ -115,7 +115,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
               "bg-muted text-foreground":
                 link.href === "/"
                   ? pathname === link.href
-                  : pathname.includes(link.href),
+                  : pathname.startsWith(link.href),
             }
           )}
           onClick={() => mobile && setSidebarOpen(false)}
