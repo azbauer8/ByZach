@@ -1,6 +1,6 @@
 ---
 title: 'I just keep coming back to Next.js'
-status: 'published'
+status: 'draft'
 author:
   name: 'Zach Bauer'
   picture: 'https://avatars.githubusercontent.com/u/8096606?v=4'
