@@ -1,4 +1,5 @@
-import DiscoveryItem from "@/app/(content-lists)/discoveries/DiscoveryItem"
+import { ListLayout } from "@/components/Layouts"
+import ListItem from "@/components/ListItem"
 
 const discoveries = [
   {
@@ -55,9 +56,17 @@ const discoveries = [
 
 export default function Discoveries() {
   return (
+    <ListLayout title="Discoveries">
+      <DiscoveriesList />
+    </ListLayout>
+  )
+}
+
+export function DiscoveriesList() {
+  return (
     <>
       {discoveries.map((project) => (
-        <DiscoveryItem
+        <ListItem
           key={project.title}
           title={project.title}
           link={project.link}

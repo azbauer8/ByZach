@@ -1,4 +1,5 @@
-import ThoughtItem from "@/app/(content-lists)/thoughts/ThoughtItem"
+import { ListLayout } from "@/components/Layouts"
+import ListItem from "@/components/ListItem"
 
 const thoughts = [
   {
@@ -85,9 +86,17 @@ const thoughts = [
 
 export default function Thoughts() {
   return (
+    <ListLayout title="Thoughts">
+      <ThoughtsList />
+    </ListLayout>
+  )
+}
+
+export function ThoughtsList() {
+  return (
     <>
       {thoughts.map((project) => (
-        <ThoughtItem
+        <ListItem
           key={project.title}
           title={project.title}
           link={project.link}

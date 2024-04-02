@@ -1,4 +1,5 @@
-import ProjectItem from "./ProjectItem"
+import { ListLayout } from "@/components/Layouts"
+import ListItem from "@/components/ListItem"
 
 const projects = [
   {
@@ -61,9 +62,17 @@ const projects = [
 
 export default function Projects() {
   return (
+    <ListLayout title="Projects">
+      <ProjectsList />
+    </ListLayout>
+  )
+}
+
+export function ProjectsList() {
+  return (
     <>
       {projects.map((project) => (
-        <ProjectItem
+        <ListItem
           key={project.title}
           title={project.title}
           link={project.link}

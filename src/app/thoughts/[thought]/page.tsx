@@ -1,11 +1,14 @@
-import PageHeader from "@/components/PageHeader"
+import { ContentLayout } from "@/components/Layouts"
+import { ThoughtsList } from "@/app/thoughts/page"
 
-export default function Project({ params }: { params: { project: string } }) {
+export default function Project({ params }: { params: { thought: string } }) {
   return (
-    <>
-      <PageHeader title={params.project} isContent />
-
-      <div>Good project!</div>
+    <ContentLayout
+      type="Thoughts"
+      title={params.thought}
+      list={<ThoughtsList />}
+    >
+      <div>Good thought!</div>
       <div>
         Pariatur enim occaecat est sunt tempor est sit esse eiusmod. Deserunt
         nisi minim id cillum Lorem esse eu nulla reprehenderit. Sit sunt ut
@@ -246,6 +249,6 @@ export default function Project({ params }: { params: { project: string } }) {
         Ut elit irure est ex. Ullamco Lorem reprehenderit qui tempor magna
         labore nulla labore minim deserunt.
       </div>
-    </>
+    </ContentLayout>
   )
 }

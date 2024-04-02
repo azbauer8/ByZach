@@ -1,4 +1,5 @@
-import UseItem from "@/app/(content-lists)/uses/UseItem"
+import { ListLayout } from "@/components/Layouts"
+import ListItem from "@/components/ListItem"
 
 const projects = [
   {
@@ -65,9 +66,17 @@ const projects = [
 
 export default function Uses() {
   return (
+    <ListLayout title="Uses">
+      <UsesList />
+    </ListLayout>
+  )
+}
+
+export function UsesList() {
+  return (
     <>
       {projects.map((project) => (
-        <UseItem
+        <ListItem
           key={project.title}
           title={project.title}
           link={project.link}

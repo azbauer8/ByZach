@@ -6,7 +6,7 @@ import { Metadata } from "next"
 
 import { cn } from "@/lib/utils"
 import { Providers } from "@/components/Providers"
-import { MobileSidebar, Sidebar } from "@/components/Sidebar"
+import { Sidebar } from "@/components/Sidebar"
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +35,6 @@ export default function RootLayout({
       >
         <Providers>
           <Sidebar />
-          <MobileSidebar />
           <div className="flex-1">{children}</div>
         </Providers>
       </body>

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 
-export default function DiscoveryItem({
+export default function ListItem({
   title,
   link,
   linkTitle,
@@ -31,13 +31,6 @@ export default function DiscoveryItem({
         <div className="line-clamp-3 font-medium text-foreground">{title}</div>
         <div className="line-clamp-1 text-opacity-60">
           <div className="flex items-center space-x-2">
-            {/* <img
-              src={icon}
-              alt="Favicon for collabfund.com"
-              className="h-4 w-4 rounded"
-              width="16px"
-              height="16px"
-            /> */}
             <span>{linkTitle}</span>
           </div>
         </div>

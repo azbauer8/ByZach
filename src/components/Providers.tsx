@@ -3,6 +3,8 @@
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 
+import TailwindIndicator from "@/components/ui/tailwind-indicator"
+
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <NextThemesProvider
@@ -12,6 +14,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       disableTransitionOnChange
     >
       {children}
+      <TailwindIndicator />
     </NextThemesProvider>
   )
 }

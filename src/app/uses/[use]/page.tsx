@@ -1,11 +1,10 @@
-import PageHeader from "@/components/PageHeader"
+import { ContentLayout } from "@/components/Layouts"
+import { UsesList } from "@/app/uses/page"
 
-export default function Project({ params }: { params: { discovery: string } }) {
+export default function Project({ params }: { params: { use: string } }) {
   return (
-    <>
-      <PageHeader title={params.discovery} isContent />
-
-      <div>Good discovery!</div>
+    <ContentLayout type="Uses" title={params.use} list={<UsesList />}>
+      <div>Good use!</div>
       <div>
         Pariatur enim occaecat est sunt tempor est sit esse eiusmod. Deserunt
         nisi minim id cillum Lorem esse eu nulla reprehenderit. Sit sunt ut
@@ -246,6 +245,6 @@ export default function Project({ params }: { params: { discovery: string } }) {
         Ut elit irure est ex. Ullamco Lorem reprehenderit qui tempor magna
         labore nulla labore minim deserunt.
       </div>
-    </>
+    </ContentLayout>
   )
 }
