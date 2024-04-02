@@ -1,5 +1,5 @@
+import { ThoughtsList } from "@/components/ContentLists"
 import { ContentLayout } from "@/components/Layouts"
-import { ThoughtsList } from "@/app/thoughts/page"
 
 export default function Project({ params }: { params: { thought: string } }) {
   return (

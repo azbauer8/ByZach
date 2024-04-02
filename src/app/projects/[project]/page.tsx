@@ -1,5 +1,5 @@
+import { ProjectsList } from "@/components/ContentLists"
 import { ContentLayout } from "@/components/Layouts"
-import { ProjectsList } from "@/app/projects/page"
 
 export default function Project({ params }: { params: { project: string } }) {
   return (

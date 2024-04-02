@@ -1,5 +1,5 @@
+import { DiscoveriesList } from "@/components/ContentLists"
 import { ContentLayout } from "@/components/Layouts"
-import { DiscoveriesList } from "@/app/discoveries/page"
 
 export default function Project({ params }: { params: { discovery: string } }) {
   return (

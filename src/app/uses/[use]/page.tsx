@@ -1,5 +1,5 @@
+import { UsesList } from "@/components/ContentLists"
 import { ContentLayout } from "@/components/Layouts"
-import { UsesList } from "@/app/uses/page"
 
 export default function Project({ params }: { params: { use: string } }) {
   return (
