@@ -131,7 +131,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           prefetch
           className={cn(
-            "flex items-center space-x-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground",
+            "flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground",
             {
               "bg-muted text-foreground":
                 link.href === "/"
@@ -245,16 +245,25 @@ export function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")} className="text-xs">
+        <DropdownMenuItem
+          onClick={() => setTheme("light")}
+          className="gap-1.5 text-xs"
+        >
+          <PiSunDuotone size={16} />
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")} className="text-xs">
+        <DropdownMenuItem
+          onClick={() => setTheme("dark")}
+          className="gap-1.5 text-xs"
+        >
+          <PiMoonStarsDuotone size={16} />
           Dark
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("system")}
-          className="text-xs"
+          className="gap-1.5 text-xs"
         >
+          <PiMonitorDuotone size={16} />
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
