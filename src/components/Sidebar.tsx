@@ -4,7 +4,6 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { siteConfig } from "@/config"
 import { useAtom } from "jotai"
-import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import {
   FaArrowUpRightFromSquare,
@@ -16,7 +15,13 @@ import {
   FaLaptopCode,
   FaToolbox,
 } from "react-icons/fa6"
-import { PiSidebarSimple } from "react-icons/pi"
+import { LuArrowUpRight } from "react-icons/lu"
+import {
+  PiMonitorDuotone,
+  PiMoonStarsDuotone,
+  PiSidebarSimple,
+  PiSunDuotone,
+} from "react-icons/pi"
 
 import { sidebarAtom } from "@/lib/store"
 import { cn } from "@/lib/utils"
@@ -82,7 +87,7 @@ export function Sidebar() {
     <>
       <nav className="absolute z-30  flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col gap-7 border-r border-border bg-accent p-3 transition duration-200 ease-in-out lg:relative lg:translate-x-0">
         <div className="flex items-center justify-between pl-3">
-          <h1 className="text-sm font-bold">{siteConfig.urlTitle}</h1>
+          <Typography affects="small">{siteConfig.urlTitle}</Typography>
           <ThemeToggle />
         </div>
         <SidebarLinks />
@@ -99,7 +104,7 @@ export function MobileSidebar() {
     <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
       <SheetContent
         side="left"
-        className="w-80 border-border bg-accent sm:w-72 md:w-64 lg:w-56"
+        className="flex w-80 flex-col border-border bg-accent sm:w-72 md:w-64 lg:w-56"
       >
         <SheetHeader>
           <div className="flex w-full items-center justify-between">
@@ -108,6 +113,7 @@ export function MobileSidebar() {
           </div>
         </SheetHeader>
         <SidebarLinks mobile />
+        <SourceCode />
       </SheetContent>
     </Sheet>
   )
@@ -148,15 +154,17 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center space-x-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
           onClick={() => mobile && setSidebarOpen(false)}
         >
           {link.icon}
-          <span className="flex-1">{link.name}</span>
-          <FaArrowUpRightFromSquare
-            size={12}
-            className="opacity-0 group-hover:opacity-100"
-          />
+          <span className="flex gap-0.5">
+            {link.name}
+            <LuArrowUpRight
+              size={12}
+              className="opacity-0 group-hover:opacity-100"
+            />
+          </span>
         </a>
       ))}
       <Typography affects="small" className="px-2 pb-2 pt-5">
@@ -168,15 +176,17 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center space-x-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
           onClick={() => mobile && setSidebarOpen(false)}
         >
           {link.icon}
-          <span className="flex-1">{link.name}</span>
-          <FaArrowUpRightFromSquare
-            size={12}
-            className="opacity-0 group-hover:opacity-100"
-          />
+          <span className="flex gap-0.5">
+            {link.name}
+            <LuArrowUpRight
+              size={12}
+              className="opacity-0 group-hover:opacity-100"
+            />
+          </span>
         </a>
       ))}
     </div>
@@ -214,7 +224,7 @@ export function GoBack() {
 }
 
 export function ThemeToggle() {
-  const { setTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -223,8 +233,14 @@ export function ThemeToggle() {
           size="icon"
           className="size-fit p-1.5 hover:bg-muted"
         >
-          <Sun className="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          {theme === "light" ? (
+            <PiSunDuotone size={16} />
+          ) : theme === "dark" ? (
+            <PiMoonStarsDuotone size={16} />
+          ) : (
+            <PiMonitorDuotone size={16} />
+          )}
+
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>

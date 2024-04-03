@@ -1,14 +1,9 @@
-import { DiscoveriesList } from "@/components/ContentLists"
-import { ContentLayout } from "@/components/Layouts"
+import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
-export default function Project({ params }: { params: { discovery: string } }) {
+export default function Project({ params }: { params: { use: string } }) {
   return (
-    <ContentLayout
-      type="Discoveries"
-      title={params.discovery}
-      list={<DiscoveriesList />}
-    >
-      <div>Good discovery!</div>
+    <ContentWrapper title={params.use}>
+      <div>Good use!</div>
       <div>
         Pariatur enim occaecat est sunt tempor est sit esse eiusmod. Deserunt
         nisi minim id cillum Lorem esse eu nulla reprehenderit. Sit sunt ut
@@ -249,6 +244,6 @@ export default function Project({ params }: { params: { discovery: string } }) {
         Ut elit irure est ex. Ullamco Lorem reprehenderit qui tempor magna
         labore nulla labore minim deserunt.
       </div>
-    </ContentLayout>
+    </ContentWrapper>
   )
 }

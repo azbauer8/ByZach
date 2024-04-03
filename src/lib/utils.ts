@@ -7,3 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const twx = createTwc({ compose: cn })
+
+export function capitalize(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}

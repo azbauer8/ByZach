@@ -1,14 +1,9 @@
-import { ThoughtsList } from "@/components/ContentLists"
-import { ContentLayout } from "@/components/Layouts"
+import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
-export default function Project({ params }: { params: { thought: string } }) {
+export default function Project({ params }: { params: { project: string } }) {
   return (
-    <ContentLayout
-      type="Thoughts"
-      title={params.thought}
-      list={<ThoughtsList />}
-    >
-      <div>Good thought!</div>
+    <ContentWrapper title={params.project}>
+      <div>Good project!</div>
       <div>
         Pariatur enim occaecat est sunt tempor est sit esse eiusmod. Deserunt
         nisi minim id cillum Lorem esse eu nulla reprehenderit. Sit sunt ut
@@ -249,6 +244,6 @@ export default function Project({ params }: { params: { thought: string } }) {
         Ut elit irure est ex. Ullamco Lorem reprehenderit qui tempor magna
         labore nulla labore minim deserunt.
       </div>
-    </ContentLayout>
+    </ContentWrapper>
   )
 }

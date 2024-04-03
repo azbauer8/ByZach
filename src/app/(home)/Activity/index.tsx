@@ -10,7 +10,7 @@ export default function Activity() {
   return (
     <div className="space-y-5">
       <div className="space-y-2">
-        <h1 className="text-xl font-bold">Activity</h1>
+        <Typography variant="h4">Activity</Typography>
         <Typography variant="p" affects="muted">
           I enjoy consuming media, sometimes.
         </Typography>

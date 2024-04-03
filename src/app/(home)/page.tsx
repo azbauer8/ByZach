@@ -1,8 +1,10 @@
+import React from "react"
 import { Metadata } from "next/types"
-import { siteConfig } from "@/config"
 
-import { Anchor, Typography } from "@/components/ui/typography"
-import { HomeLayout } from "@/components/Layouts"
+import { Dots } from "@/components/ui/bg-patterns"
+import { Typography } from "@/components/ui/typography"
+import { SidebarToggle } from "@/components/Sidebar"
+import About from "@/app/(home)/About"
 import Activity from "@/app/(home)/Activity"
 
 export const metadata: Metadata = {
@@ -12,19 +14,28 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <HomeLayout>
-      <div>
-        <Typography variant="h2">Zach Bauer</Typography>
-        <Typography affects="lead">Full Stack Developer</Typography>
-      </div>
-      <Typography variant="p" affects="muted">
-        {`Hey there! I'm Zach. I'm currently living in Philly
-   and working at `}
-        <Anchor href={siteConfig.links.sig}>SIG</Anchor>
-        {` developing internal monitoring and operations tools for support teams. In 2021, I graduated from `}
-        <Anchor href={siteConfig.links.pitt}>Pitt</Anchor>
-        {` with a bachelor's in information science.`}
-      </Typography>
+      <About />
       <Activity />
     </HomeLayout>
+  )
+}
+
+function HomeLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <Dots className="flex max-h-dvh min-h-dvh w-full flex-col overflow-y-auto">
+      <div className="z-10">
+        <div className="sticky top-0 z-10 flex max-h-12 min-h-12 items-center justify-between border-b border-border bg-background/10 px-3 py-2 backdrop-blur-lg">
+          <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-0.5">
+              <SidebarToggle />
+            </div>
+            <Typography affects="small">Home</Typography>
+          </div>
+        </div>
+        <div className="mx-auto max-w-3xl space-y-8 px-4 py-12 md:px-8">
+          {children}
+        </div>
+      </div>
+    </Dots>
   )
 }
