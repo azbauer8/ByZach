@@ -135,7 +135,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
               "bg-muted text-foreground":
                 link.href === "/"
                   ? pathname === link.href
-                  : pathname.startsWith(link.href),
+                  : pathname?.startsWith(link.href),
             }
           )}
           onClick={() => mobile && setSidebarOpen(false)}
@@ -215,7 +215,9 @@ export function GoBack() {
       variant="ghost"
       size="icon"
       className="size-fit p-2 lg:hidden"
-      onClick={() => router.push(path.substring(0, path.indexOf("/", 1)))}
+      onClick={() =>
+        path ? router.push(path.substring(0, path.indexOf("/", 1))) : null
+      }
     >
       <FaChevronLeft />
     </Button>

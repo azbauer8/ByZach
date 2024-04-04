@@ -11,15 +11,15 @@ import Uses from "@/app/(content-lists)/uses/page"
 
 export function ContentListColumn() {
   const pathname = usePathname()
-  const title = pathname.split("/")[2]
+  const title = pathname?.split("/")[2]
   let list: JSX.Element | undefined = undefined
-  if (pathname.startsWith("/projects")) {
+  if (pathname?.startsWith("/projects")) {
     list = <Projects />
-  } else if (pathname.startsWith("/thoughts")) {
+  } else if (pathname?.startsWith("/thoughts")) {
     list = <Thoughts />
-  } else if (pathname.startsWith("/discoveries")) {
+  } else if (pathname?.startsWith("/discoveries")) {
     list = <Discoveries />
-  } else if (pathname.startsWith("/uses")) {
+  } else if (pathname?.startsWith("/uses")) {
     list = <Uses />
   }
 

@@ -8,7 +8,12 @@ import { SidebarToggle } from "@/components/Sidebar"
 
 export function ListColumnHeader() {
   const pathname = usePathname()
-  const title = pathname === "/" ? "Home" : capitalize(pathname.split("/")[1])
+  const title =
+    pathname === "/"
+      ? "Home"
+      : pathname
+        ? capitalize(pathname.split("/")[1])
+        : ""
   return (
     <div
       className={cn(
