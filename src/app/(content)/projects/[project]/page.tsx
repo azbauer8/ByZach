@@ -10,9 +10,11 @@ import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
 export async function generateStaticParams() {
   const projects = await getProjects()
-  return projects?.map((project) => ({
-    project: project.slug,
-  }))
+  return (
+    projects?.map((project) => ({
+      project: project.slug,
+    })) ?? []
+  )
 }
 
 export default async function Project({
