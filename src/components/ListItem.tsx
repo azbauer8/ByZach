@@ -22,13 +22,18 @@ export default function ListItem({
       prefetch
       className={cn(
         "flex space-x-3 border-b border-accent px-3.5 py-3 text-sm hover:cursor-pointer hover:bg-muted lg:rounded-lg lg:border-none lg:py-2",
-        {
-          "bg-muted": pathname === link,
-        }
+        pathname === link && "bg-muted"
       )}
     >
-      <div className="flex flex-col justify-center space-y-1">
-        <div className="line-clamp-3 font-medium text-foreground">{title}</div>
+      <div className="flex flex-col justify-center space-y-1 text-muted-foreground">
+        <div
+          className={cn(
+            "line-clamp-3 font-medium",
+            pathname === link && "text-foreground"
+          )}
+        >
+          {title}
+        </div>
         <div className="line-clamp-1 text-opacity-60">
           <div className="flex items-center space-x-2">
             <span>{linkTitle}</span>

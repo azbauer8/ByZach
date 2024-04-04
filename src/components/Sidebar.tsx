@@ -2,11 +2,10 @@
 
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { siteConfig } from "@/config"
+import { siteConfig, siteLinks } from "@/config"
 import { useAtom } from "jotai"
 import { useTheme } from "next-themes"
 import {
-  FaArrowUpRightFromSquare,
   FaBrain,
   FaChevronLeft,
   FaFire,
@@ -148,7 +147,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
       <Typography affects="small" className="px-2 pb-2 pt-5">
         Socials
       </Typography>
-      {siteConfig.links.social.map((link) => (
+      {siteLinks.social.map((link) => (
         <a
           key={link.href}
           href={link.href}
@@ -170,7 +169,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
       <Typography affects="small" className="px-2 pb-2 pt-5">
         Work
       </Typography>
-      {siteConfig.links.work.map((link) => (
+      {siteLinks.work.map((link) => (
         <a
           key={link.href}
           href={link.href}
@@ -200,7 +199,7 @@ function SourceCode() {
       variant="outline"
       className="gap-1.5 hover:bg-muted hover:text-foreground"
     >
-      <a href={siteConfig.links.source} target="_blank">
+      <a href={siteLinks.source} target="_blank">
         <FaGithub className="size-4" />
         Source
       </a>
