@@ -78,6 +78,11 @@ export default defineConfig({
           },
           {
             type: "string",
+            label: "Category",
+            name: "category",
+          },
+          {
+            type: "string",
             label: "Link",
             name: "link",
           },

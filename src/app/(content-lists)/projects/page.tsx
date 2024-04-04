@@ -1,75 +1,36 @@
-import ListItem from "@/components/ListItem"
+import Image from "next/image"
+import Link from "next/link"
 
-export default function Projects() {
+import { getProjects } from "@/lib/getContent"
+import { Typography } from "@/components/ui/typography"
+import NavLink from "@/components/NavLink"
+
+export default async function Projects() {
+  const projects = await getProjects()
+  if (!projects) return null
+
   return (
     <>
       {projects.map((project) => (
-        <ListItem
-          key={project.title}
-          title={project.title}
-          link={project.link}
-          linkTitle={project.linkTitle}
-        />
+        <Link key={project.slug} href={`/projects/${project.slug}`} prefetch>
+          <NavLink link={`/projects/${project.slug}`}>
+            <div className="flex items-center gap-2">
+              {project.icon ? (
+                <Image
+                  src={project.icon}
+                  alt={project.title ?? ""}
+                  width={25}
+                  height={25}
+                />
+              ) : null}
+              <div className="flex flex-col">
+                <h1 className="font-semibold">{project.title}</h1>
+                <h3 className="text-xs">{project.category}</h3>
+              </div>
+            </div>
+          </NavLink>
+        </Link>
       ))}
     </>
   )
 }
-
-const projects = [
-  {
-    title: "Project 1",
-    link: "/projects/project-1",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Project 2",
-    link: "/projects/project-2",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Project 3",
-    link: "/projects/project-3",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Project 4",
-    link: "/projects/project-4",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Project 5",
-    link: "/projects/project-5",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Project 6",
-    link: "/projects/project-6",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Project 7",
-    link: "/projects/project-7",
-    icon: "👨‍💻",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Project 8",
-    link: "/projects/project-8",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Project 9",
-    link: "/projects/project-9",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Project 10",
-    link: "/projects/project-10",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Project 11",
-    link: "/projects/project-11",
-    linkTitle: "wasd",
-  },
-] as const

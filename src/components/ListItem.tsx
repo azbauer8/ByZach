@@ -11,8 +11,9 @@ export default function ListItem({
   linkTitle,
 }: {
   title: string
-  link: string
-  linkTitle: string
+  link?: string
+  linkTitle?: string
+  icon?: string
 }) {
   const pathname = usePathname()
 

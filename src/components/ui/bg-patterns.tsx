@@ -10,12 +10,12 @@ export function Dots({
   return (
     <div
       className={cn(
-        "dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative",
+        "relative bg-dot-black/[0.2] dark:bg-dot-white/[0.2]",
         className
       )}
     >
-      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-      {children}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      <div className={cn("z-10", className)}>{children}</div>
     </div>
   )
 }
@@ -30,7 +30,7 @@ export function Grid({
   return (
     <div
       className={cn(
-        "dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative",
+        "relative bg-grid-black/[0.2] dark:bg-grid-white/[0.2]",
         className
       )}
     >
@@ -50,7 +50,7 @@ export function GridSmall({
   return (
     <div
       className={cn(
-        "dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] relative",
+        "relative bg-grid-small-black/[0.2] dark:bg-grid-small-white/[0.2]",
         className
       )}
     >
