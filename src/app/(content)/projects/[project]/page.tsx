@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
+export const dynamic = "force-static"
 export const dynamicParams = false
 
 export async function generateStaticParams() {
