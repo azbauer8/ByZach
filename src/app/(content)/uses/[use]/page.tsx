@@ -1,10 +1,10 @@
+import { FaLink } from "react-icons/fa6"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 
 import { getUse, getUses } from "@/lib/getContent"
-import { formatUrl, getFavicon } from "@/lib/utils"
+import { formatUrl } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
-import FallbackFavicon from "@/components/FallbackFavicon"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
 export const dynamicParams = false
@@ -35,12 +35,7 @@ export default async function Use({ params }: { params: { use: string } }) {
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 decoration-muted-foreground hover:underline hover:underline-offset-2"
         >
-          <FallbackFavicon
-            src={getFavicon(use.link ?? "")}
-            alt={use.title ?? ""}
-            width={16}
-            height={16}
-          />
+          <FaLink width={16} height={16} />
           <Typography affects="muted">{linkTitle}</Typography>
         </a>
       </div>

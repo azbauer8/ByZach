@@ -1,8 +1,8 @@
 import Link from "next/link"
+import { FaLink } from "react-icons/fa6"
 
 import { getDiscoveries } from "@/lib/getContent"
-import { formatUrl, getFavicon } from "@/lib/utils"
-import FallbackFavicon from "@/components/FallbackFavicon"
+import { formatUrl } from "@/lib/utils"
 import NavLink from "@/app/(content-lists)/NavLink"
 
 export default async function Discoveries() {
@@ -17,12 +17,7 @@ export default async function Discoveries() {
           <div className="flex flex-col gap-1">
             <h1 className="font-medium">{discovery.title}</h1>
             <div className="flex items-center gap-1.5">
-              <FallbackFavicon
-                src={getFavicon(discovery.link ?? "")}
-                alt={discovery.title ?? ""}
-                width={16}
-                height={16}
-              />
+              <FaLink width={16} height={16} />
               <h3 className="text-sm text-muted-foreground">{linkTitle}</h3>
             </div>
           </div>

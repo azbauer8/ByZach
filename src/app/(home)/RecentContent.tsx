@@ -1,11 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
 import { format } from "date-fns"
+import { FaLink } from "react-icons/fa6"
 
 import { getDiscoveries, getProjects, getThoughts } from "@/lib/getContent"
-import { formatUrl, getFavicon } from "@/lib/utils"
+import { formatUrl } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
-import FallbackFavicon from "@/components/FallbackFavicon"
 
 export default async function RecentContent() {
   const projects = await getProjects(5)
@@ -33,12 +33,7 @@ export default async function RecentContent() {
                       height={20}
                     />
                   ) : (
-                    <FallbackFavicon
-                      src={getFavicon(project.link ?? "")}
-                      alt={project.title ?? ""}
-                      width={20}
-                      height={20}
-                    />
+                    <FaLink width={20} height={20} />
                   )}
                   <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
                     {project.title}
@@ -82,12 +77,7 @@ export default async function RecentContent() {
               className="group flex items-center gap-5"
             >
               <div className="flex items-center gap-1.5">
-                <FallbackFavicon
-                  src={getFavicon(discovery.link ?? "")}
-                  alt={discovery.title ?? ""}
-                  width={20}
-                  height={20}
-                />
+                <FaLink width={20} height={20} />
                 <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
                   {discovery.title}
                 </Typography>
