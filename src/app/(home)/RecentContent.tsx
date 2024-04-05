@@ -4,7 +4,6 @@ import { format } from "date-fns"
 
 import { getDiscoveries, getProjects, getThoughts } from "@/lib/getContent"
 import { formatUrl, getFavicon } from "@/lib/utils"
-import { Separator } from "@/components/ui/separator"
 import { Typography } from "@/components/ui/typography"
 import FallbackFavicon from "@/components/FallbackFavicon"
 

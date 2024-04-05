@@ -4,6 +4,10 @@ import { cn } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
 import { GoBack } from "@/components/Sidebar"
 
+import "@/styles/prose.css"
+
+import StickyHeader from "@/components/StickyHeader"
+
 export function ContentWrapper({
   title,
   children,
@@ -23,11 +27,11 @@ export function ContentWrapper({
 
 function ContentHeader({ title }: { title: string }) {
   return (
-    <div className="sticky top-0 z-10 flex max-h-12 min-h-12 items-center justify-between border-b border-border bg-accent/10 px-3 py-2 backdrop-blur-lg">
+    <StickyHeader className="bg-accent/10">
       <div className="flex items-center space-x-2">
         <GoBack />
         <Typography affects="small">{title}</Typography>
       </div>
-    </div>
+    </StickyHeader>
   )
 }

@@ -5,7 +5,6 @@ import { getThought, getThoughts } from "@/lib/getContent"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
-export const dynamic = "force-static"
 export const dynamicParams = false
 export async function generateStaticParams() {
   const thoughts = await getThoughts()

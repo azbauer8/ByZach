@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { capitalize, cn } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
 import { SidebarToggle } from "@/components/Sidebar"
+import StickyHeader from "@/components/StickyHeader"
 
 export function ListColumnHeader() {
   const pathname = usePathname()
@@ -15,9 +16,8 @@ export function ListColumnHeader() {
         ? capitalize(pathname.split("/")[1])
         : ""
   return (
-    <div
+    <StickyHeader
       className={cn(
-        "sticky top-0 z-10 flex max-h-12 min-h-12 items-center justify-between border-b border-border px-3 py-2 backdrop-blur-lg",
         title && title === "Home" ? "bg-background/10" : "bg-accent/10"
       )}
     >
@@ -27,6 +27,6 @@ export function ListColumnHeader() {
         </div>
         <Typography affects="small">{title}</Typography>
       </div>
-    </div>
+    </StickyHeader>
   )
 }
