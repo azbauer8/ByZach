@@ -1,16 +1,16 @@
 import Link from "next/link"
 
 import { getDiscoveries } from "@/lib/getContent"
-import { getFavicon } from "@/lib/utils"
+import { formatUrl, getFavicon } from "@/lib/utils"
 import FallbackFavicon from "@/components/FallbackFavicon"
-import NavLink from "@/components/NavLink"
+import NavLink from "@/app/(content-lists)/NavLink"
 
 export default async function Discoveries() {
   const discoveries = await getDiscoveries()
   if (!discoveries) return null
 
   return discoveries.map((discovery) => {
-    const linkTitle = new URL(discovery.link ?? "").hostname.replace("www.", "")
+    const linkTitle = formatUrl(discovery.link)
     return (
       <Link
         key={discovery.slug}

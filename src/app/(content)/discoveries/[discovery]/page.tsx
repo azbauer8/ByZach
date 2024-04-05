@@ -1,5 +1,5 @@
 import { getDiscoveries, getDiscovery } from "@/lib/getContent"
-import { getFavicon } from "@/lib/utils"
+import { formatUrl, getFavicon } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
 import FallbackFavicon from "@/components/FallbackFavicon"
@@ -20,7 +20,7 @@ export default async function Discovery({
 }) {
   const discoveryData = await getDiscovery(params.discovery)
   const discovery = discoveryData.data.discoveries
-  const linkTitle = new URL(discovery.link ?? "").hostname.replace("www.", "")
+  const linkTitle = formatUrl(discovery.link)
 
   return (
     <ContentWrapper title={discovery.title} className="content-wrapper">

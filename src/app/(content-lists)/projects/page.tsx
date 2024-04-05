@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { getProjects } from "@/lib/getContent"
-import NavLink from "@/components/NavLink"
+import NavLink from "@/app/(content-lists)/NavLink"
 
 export default async function Projects() {
   const projects = await getProjects()

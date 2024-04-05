@@ -1,7 +1,7 @@
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 
 import { getUse, getUses } from "@/lib/getContent"
-import { getFavicon } from "@/lib/utils"
+import { formatUrl, getFavicon } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
 import FallbackFavicon from "@/components/FallbackFavicon"
@@ -15,10 +15,10 @@ export async function generateStaticParams() {
     })) ?? []
   )
 }
-export default async function Project({ params }: { params: { use: string } }) {
+export default async function Use({ params }: { params: { use: string } }) {
   const useData = await getUse(params.use)
   const use = useData.data.uses
-  const linkTitle = new URL(use.link ?? "").hostname.replace("www.", "")
+  const linkTitle = formatUrl(use.link)
   return (
     <ContentWrapper title={use.title} className="content-wrapper">
       <div className="space-y-2 pb-8 pt-12">

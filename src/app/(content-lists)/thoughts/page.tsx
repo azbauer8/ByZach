@@ -2,7 +2,7 @@ import Link from "next/link"
 import { format } from "date-fns"
 
 import { getThoughts } from "@/lib/getContent"
-import NavLink from "@/components/NavLink"
+import NavLink from "@/app/(content-lists)/NavLink"
 
 export default async function Thoughts() {
   const thoughts = await getThoughts()

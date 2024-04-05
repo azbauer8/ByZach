@@ -15,3 +15,7 @@ export function capitalize(string: string) {
 export function getFavicon(url: string) {
   return `https://www.google.com/s2/favicons?domain=${url}&sz=512`
 }
+
+export function formatUrl(url: string | undefined | null) {
+  return new URL(url ?? "").hostname.replace("www.", "")
+}

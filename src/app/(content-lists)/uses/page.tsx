@@ -1,16 +1,16 @@
 import Link from "next/link"
 
 import { getUses } from "@/lib/getContent"
-import { getFavicon } from "@/lib/utils"
+import { formatUrl, getFavicon } from "@/lib/utils"
 import FallbackFavicon from "@/components/FallbackFavicon"
-import NavLink from "@/components/NavLink"
+import NavLink from "@/app/(content-lists)/NavLink"
 
 export default async function Uses() {
   const uses = await getUses()
   if (!uses) return null
 
   return uses.map((use) => {
-    const linkTitle = new URL(use.link ?? "").hostname.replace("www.", "")
+    const linkTitle = formatUrl(use.link)
     return (
       <Link key={use.slug} href={`/uses/${use.slug}`} prefetch>
         <NavLink link={`/uses/${use.slug}`}>
