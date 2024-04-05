@@ -21,12 +21,12 @@ export default async function RecentContent() {
           {projects?.map((project) => (
             <Link
               key={project.slug}
-              prefetch
+              prefetch={false}
               href={`/projects/${project.slug}`}
             >
               <Link
                 key={project.slug}
-                prefetch
+                prefetch={false}
                 href={`/projects/${project.slug}`}
                 className="group flex items-center gap-5"
               >
@@ -63,7 +63,7 @@ export default async function RecentContent() {
           {thoughts?.map((thought) => (
             <Link
               key={thought.slug}
-              prefetch
+              prefetch={false}
               href={`/thoughts/${thought.slug}`}
               className="group flex items-center gap-5"
             >
@@ -85,7 +85,7 @@ export default async function RecentContent() {
           {discoveries?.map((discovery) => (
             <Link
               key={discovery.slug}
-              prefetch
+              prefetch={false}
               href={`/discoveries/${discovery.slug}`}
               className="group flex items-center gap-5"
             >

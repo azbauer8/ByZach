@@ -15,7 +15,7 @@ export default async function Discoveries() {
       <Link
         key={discovery.slug}
         href={`/discoveries/${discovery.slug}`}
-        prefetch
+        prefetch={false}
       >
         <NavLink link={`/discoveries/${discovery.slug}`}>
           <div className="flex flex-col gap-1">

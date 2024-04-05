@@ -11,7 +11,11 @@ export default async function Projects() {
   return (
     <>
       {projects.map((project) => (
-        <Link key={project.slug} href={`/projects/${project.slug}`} prefetch>
+        <Link
+          key={project.slug}
+          href={`/projects/${project.slug}`}
+          prefetch={false}
+        >
           <NavLink link={`/projects/${project.slug}`}>
             <div className="flex items-center gap-2">
               {project.icon ? (

@@ -11,7 +11,11 @@ export default async function Thoughts() {
   return (
     <>
       {thoughts.map((thought) => (
-        <Link key={thought.slug} href={`/thoughts/${thought.slug}`} prefetch>
+        <Link
+          key={thought.slug}
+          href={`/thoughts/${thought.slug}`}
+          prefetch={false}
+        >
           <NavLink link={`/thoughts/${thought.slug}`}>
             <div className="flex flex-col gap-1">
               <h1 className="line-clamp-3 font-medium">{thought.title}</h1>
