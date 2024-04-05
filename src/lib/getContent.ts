@@ -1,7 +1,9 @@
 import client from "../../tina/__generated__/client"
 
-export async function getProjects() {
-  const projectsResponse = await client.queries.projectsConnection()
+export async function getProjects(limit?: number) {
+  const projectsResponse = await client.queries.projectsConnection({
+    first: limit ?? undefined,
+  })
   return projectsResponse.data.projectsConnection.edges?.map((project) => {
     return {
       slug: project?.node?._sys.filename,
@@ -14,4 +16,61 @@ export async function getProjects() {
 
 export async function getProject(fileName: string) {
   return await client.queries.projects({ relativePath: `${fileName}.mdx` })
+}
+
+export async function getThoughts(limit?: number) {
+  const thoughtsResponse = await client.queries.thoughtsConnection({
+    first: limit ?? undefined,
+  })
+  return thoughtsResponse.data.thoughtsConnection.edges?.map((thought) => {
+    return {
+      slug: thought?.node?._sys.filename,
+      title: thought?.node?.title,
+      createdAt: thought?.node?.createdAt,
+    }
+  })
+}
+
+export async function getThought(fileName: string) {
+  return await client.queries.thoughts({ relativePath: `${fileName}.mdx` })
+}
+
+export async function getDiscoveries(limit?: number) {
+  const discoveriesResponse = await client.queries.discoveriesConnection({
+    first: limit ?? undefined,
+  })
+  return discoveriesResponse.data.discoveriesConnection.edges?.map(
+    (discovery) => {
+      return {
+        slug: discovery?.node?._sys.filename,
+        title: discovery?.node?.title,
+        link: discovery?.node?.link,
+      }
+    }
+  )
+}
+
+export async function getDiscovery(fileName: string) {
+  return await client.queries.discoveries({ relativePath: `${fileName}.json` })
+}
+
+export async function getUses(limit?: number) {
+  const usesResponse = await client.queries.usesConnection({
+    first: limit ?? undefined,
+  })
+  return usesResponse.data.usesConnection.edges?.map((use) => {
+    return {
+      slug: use?.node?._sys.filename,
+      title: use?.node?.title,
+      link: use?.node?.link,
+      description: use?.node?.description,
+      category: use?.node?.category,
+      platform: use?.node?.platform,
+      cost: use?.node?.cost,
+    }
+  })
+}
+
+export async function getUse(fileName: string) {
+  return await client.queries.uses({ relativePath: `${fileName}.mdx` })
 }

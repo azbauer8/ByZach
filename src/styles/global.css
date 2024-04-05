@@ -70,3 +70,18 @@
         linear-gradient(to right, rgba(45, 45, 45, 0.25) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(45, 45, 45, 0.25) 1px, transparent 1px);
 }
+
+
+/* https://www.joshwcomeau.com/css/full-bleed/ */
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr min(60ch, calc(100% - 64px)) 1fr;
+  grid-column-gap: 32px;
+}
+.content-wrapper > * {
+  grid-column: 2;
+}
+.full-bleed {
+  width: 100%;
+  grid-column: 1 / 4;
+}

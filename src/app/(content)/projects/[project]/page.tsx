@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { FaArrowUpRightFromSquare, FaGithub, FaLink } from "react-icons/fa6"
+import { FaArrowUpRightFromSquare, FaGithub } from "react-icons/fa6"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 
 import { getProject, getProjects } from "@/lib/getContent"
@@ -25,8 +25,8 @@ export default async function Project({
   const projectData = await getProject(params.project)
   const project = projectData.data.projects
   return (
-    <ContentWrapper title={params.project}>
-      <div className="flex items-center justify-between gap-2">
+    <ContentWrapper title={project.title}>
+      <div className="mx-auto flex max-w-xl items-center justify-between gap-2 px-3 pb-8 pt-12">
         <div className="flex items-center gap-2">
           <Image
             src={project?.icon ?? ""}
@@ -60,10 +60,9 @@ export default async function Project({
           )}
         </div>
       </div>
-
-      <div className="prose prose-neutral dark:prose-invert pt-8">
+      <main className="content-wrapper prose">
         <TinaMarkdown content={project.description} />
-      </div>
+      </main>
     </ContentWrapper>
   )
 }

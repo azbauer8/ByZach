@@ -1,6 +1,6 @@
 import { Dots } from "@/components/ui/bg-patterns"
 
-import "@/styles.css"
+import "@/styles/prose.css"
 
 import { headers } from "next/headers"
 import { NextRequest } from "next/server"

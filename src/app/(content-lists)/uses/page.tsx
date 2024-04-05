@@ -1,79 +1,33 @@
-import ListItem from "@/components/ListItem"
+import Link from "next/link"
 
-export default function Uses() {
-  return (
-    <>
-      {uses.map((use) => (
-        <ListItem
-          key={use.title}
-          title={use.title}
-          link={use.link}
-          linkTitle={use.linkTitle}
-        />
-      ))}
-    </>
-  )
+import { getUses } from "@/lib/getContent"
+import { getFavicon } from "@/lib/utils"
+import FallbackFavicon from "@/components/FallbackFavicon"
+import NavLink from "@/components/NavLink"
+
+export default async function Uses() {
+  const uses = await getUses()
+  if (!uses) return null
+
+  return uses.map((use) => {
+    const linkTitle = new URL(use.link ?? "").hostname.replace("www.", "")
+    return (
+      <Link key={use.slug} href={`/uses/${use.slug}`} prefetch>
+        <NavLink link={`/uses/${use.slug}`}>
+          <div className="flex flex-col gap-1">
+            <h1 className="font-medium">{use.title}</h1>
+            <div className="flex items-center gap-1.5">
+              <FallbackFavicon
+                src={getFavicon(use.link ?? "")}
+                alt={use.title ?? ""}
+                width={16}
+                height={16}
+              />
+              <h3 className="text-sm text-muted-foreground">{linkTitle}</h3>
+            </div>
+          </div>
+        </NavLink>
+      </Link>
+    )
+  })
 }
-
-const uses = [
-  {
-    title: "Use 1",
-    link: "/uses/use-1",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 2",
-    link: "/uses/use-2",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 3",
-    link: "/uses/use-3",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 4",
-    link: "/uses/use-4",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 5",
-    link: "/uses/use-5",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 6",
-    link: "/uses/use-6",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 7",
-    link: "/uses/use-7",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 8",
-    link: "/uses/use-8",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 9",
-    link: "/uses/use-9",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 10",
-    link: "/uses/use-10",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 11",
-    link: "/uses/use-11",
-    linkTitle: "wasd",
-  },
-  {
-    title: "Use 12",
-    link: "/uses/use-12",
-    linkTitle: "wasd",
-  },
-] as const

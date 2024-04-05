@@ -1,5 +1,6 @@
 {
   "title": "Knip",
   "link": "https://knip.dev/",
+  "category": "Dev Tools",
   "description": "Find unused files, dependencies and exports in JavaScript and TypeScript projects."
 }

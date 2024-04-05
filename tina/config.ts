@@ -6,6 +6,10 @@ export default defineConfig({
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   token: process.env.TINA_TOKEN,
 
+  cmsCallback(cms) {
+    cms.Time
+  },
+
   build: {
     outputFolder: "admin",
     publicFolder: "public",
@@ -31,6 +35,11 @@ export default defineConfig({
             name: "title",
             isTitle: true,
             required: true,
+          },
+          {
+            type: "datetime",
+            name: "createdAt",
+            label: "Created At",
           },
           {
             type: "rich-text",
@@ -116,6 +125,11 @@ export default defineConfig({
             type: "string",
             label: "Link",
             name: "link",
+          },
+          {
+            type: "string",
+            label: "Category",
+            name: "category",
           },
           {
             type: "string",

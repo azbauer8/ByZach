@@ -6,6 +6,7 @@ import { Typography } from "@/components/ui/typography"
 import { SidebarToggle } from "@/components/Sidebar"
 import About from "@/app/(home)/About"
 import Activity from "@/app/(home)/Activity"
+import RecentContent from "@/app/(home)/RecentContent"
 
 export const metadata: Metadata = {
   title: "Home",
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <HomeLayout>
       <About />
+      <RecentContent />
       <Activity />
     </HomeLayout>
   )

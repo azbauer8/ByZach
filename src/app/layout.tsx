@@ -1,6 +1,6 @@
 import { siteConfig } from "@/config"
 
-import "@/styles.css"
+import "@/styles/global.css"
 
 import { Metadata } from "next"
 
