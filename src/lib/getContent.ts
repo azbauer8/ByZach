@@ -10,6 +10,8 @@ export async function getProjects(limit?: number) {
       title: project?.node?.title,
       icon: project?.node?.icon,
       category: project?.node?.category,
+      link: project?.node?.link,
+      source: project?.node?.source,
     }
   })
 }

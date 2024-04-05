@@ -38,7 +38,14 @@ export default async function RecentContent() {
                       width={20}
                       height={20}
                     />
-                  ) : null}
+                  ) : (
+                    <FallbackFavicon
+                      src={getFavicon(project.link ?? "")}
+                      alt={project.title ?? ""}
+                      width={20}
+                      height={20}
+                    />
+                  )}
                   <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
                     {project.title}
                   </Typography>
