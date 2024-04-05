@@ -5,6 +5,8 @@ import { getThought, getThoughts } from "@/lib/getContent"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
+export const dynamic = "force-static"
+export const dynamicParams = false
 export async function generateStaticParams() {
   const thoughts = await getThoughts()
   return (
@@ -18,8 +20,7 @@ export default async function Thought({
 }: {
   params: { thought: string }
 }) {
-  const thoughtData = await getThought(params.thought)
-  const thought = thoughtData.data.thoughts
+  const thought = await getThought(params.thought)
   return (
     <ContentWrapper title={thought.title} className="content-wrapper">
       <div className="space-y-2 pb-8 pt-12">

@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
+export const dynamic = "force-static"
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const projects = await getProjects()
   return (
@@ -22,8 +25,7 @@ export default async function Project({
 }: {
   params: { project: string }
 }) {
-  const projectData = await getProject(params.project)
-  const project = projectData.data.projects
+  const project = await getProject(params.project)
   return (
     <ContentWrapper title={project.title}>
       <div className="mx-auto flex max-w-xl items-center justify-between gap-2 px-3 pb-8 pt-12">

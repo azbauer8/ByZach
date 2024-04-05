@@ -17,7 +17,10 @@ export async function getProjects(limit?: number) {
 }
 
 export async function getProject(fileName: string) {
-  return await client.queries.projects({ relativePath: `${fileName}.mdx` })
+  const project = await client.queries.projects({
+    relativePath: `${fileName}.mdx`,
+  })
+  return project.data.projects
 }
 
 export async function getThoughts(limit?: number) {
@@ -34,7 +37,10 @@ export async function getThoughts(limit?: number) {
 }
 
 export async function getThought(fileName: string) {
-  return await client.queries.thoughts({ relativePath: `${fileName}.mdx` })
+  const thought = await client.queries.thoughts({
+    relativePath: `${fileName}.mdx`,
+  })
+  return thought.data.thoughts
 }
 
 export async function getDiscoveries(limit?: number) {
@@ -53,7 +59,10 @@ export async function getDiscoveries(limit?: number) {
 }
 
 export async function getDiscovery(fileName: string) {
-  return await client.queries.discoveries({ relativePath: `${fileName}.json` })
+  const discovery = await client.queries.discoveries({
+    relativePath: `${fileName}.json`,
+  })
+  return discovery.data.discoveries
 }
 
 export async function getUses(limit?: number) {
@@ -74,5 +83,6 @@ export async function getUses(limit?: number) {
 }
 
 export async function getUse(fileName: string) {
-  return await client.queries.uses({ relativePath: `${fileName}.mdx` })
+  const use = await client.queries.uses({ relativePath: `${fileName}.mdx` })
+  return use.data.uses
 }

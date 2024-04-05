@@ -7,6 +7,8 @@ import { Typography } from "@/components/ui/typography"
 import FallbackFavicon from "@/components/FallbackFavicon"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
+export const dynamic = "force-static"
+export const dynamicParams = false
 export async function generateStaticParams() {
   const uses = await getUses()
   return (
@@ -16,8 +18,7 @@ export async function generateStaticParams() {
   )
 }
 export default async function Use({ params }: { params: { use: string } }) {
-  const useData = await getUse(params.use)
-  const use = useData.data.uses
+  const use = await getUse(params.use)
   const linkTitle = formatUrl(use.link)
   return (
     <ContentWrapper title={use.title} className="content-wrapper">

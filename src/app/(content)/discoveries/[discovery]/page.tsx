@@ -5,6 +5,8 @@ import { Typography } from "@/components/ui/typography"
 import FallbackFavicon from "@/components/FallbackFavicon"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
+export const dynamic = "force-static"
+export const dynamicParams = false
 export async function generateStaticParams() {
   const discoveries = await getDiscoveries()
   return (
@@ -18,8 +20,7 @@ export default async function Discovery({
 }: {
   params: { discovery: string }
 }) {
-  const discoveryData = await getDiscovery(params.discovery)
-  const discovery = discoveryData.data.discoveries
+  const discovery = await getDiscovery(params.discovery)
   const linkTitle = formatUrl(discovery.link)
 
   return (
