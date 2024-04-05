@@ -19,7 +19,6 @@ export default function ListItem({
   return (
     <Link
       href={link}
-      prefetch={false}
       className={cn(
         "flex space-x-3 border-b border-accent px-3.5 py-3 text-sm hover:cursor-pointer hover:bg-muted lg:rounded-lg lg:border-none lg:py-2",
         pathname === link && "bg-muted"

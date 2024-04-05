@@ -12,7 +12,7 @@ export default async function Uses() {
   return uses.map((use) => {
     const linkTitle = formatUrl(use.link)
     return (
-      <Link key={use.slug} href={`/uses/${use.slug}`} prefetch={false}>
+      <Link key={use.slug} href={`/uses/${use.slug}`}>
         <NavLink link={`/uses/${use.slug}`}>
           <div className="flex flex-col gap-1">
             <h1 className="font-medium">{use.title}</h1>

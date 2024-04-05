@@ -19,14 +19,9 @@ export default async function RecentContent() {
         <Typography variant="h4">Projects</Typography>
         <div className="flex flex-col gap-2 py-4">
           {projects?.map((project) => (
-            <Link
-              key={project.slug}
-              prefetch={false}
-              href={`/projects/${project.slug}`}
-            >
+            <Link key={project.slug} href={`/projects/${project.slug}`}>
               <Link
                 key={project.slug}
-                prefetch={false}
                 href={`/projects/${project.slug}`}
                 className="group flex items-center gap-5"
               >
@@ -63,7 +58,6 @@ export default async function RecentContent() {
           {thoughts?.map((thought) => (
             <Link
               key={thought.slug}
-              prefetch={false}
               href={`/thoughts/${thought.slug}`}
               className="group flex items-center gap-5"
             >
@@ -85,7 +79,6 @@ export default async function RecentContent() {
           {discoveries?.map((discovery) => (
             <Link
               key={discovery.slug}
-              prefetch={false}
               href={`/discoveries/${discovery.slug}`}
               className="group flex items-center gap-5"
             >

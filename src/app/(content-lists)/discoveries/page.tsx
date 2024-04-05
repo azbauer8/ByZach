@@ -12,11 +12,7 @@ export default async function Discoveries() {
   return discoveries.map((discovery) => {
     const linkTitle = formatUrl(discovery.link)
     return (
-      <Link
-        key={discovery.slug}
-        href={`/discoveries/${discovery.slug}`}
-        prefetch={false}
-      >
+      <Link key={discovery.slug} href={`/discoveries/${discovery.slug}`}>
         <NavLink link={`/discoveries/${discovery.slug}`}>
           <div className="flex flex-col gap-1">
             <h1 className="font-medium">{discovery.title}</h1>
