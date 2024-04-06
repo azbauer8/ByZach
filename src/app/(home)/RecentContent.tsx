@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 import { format } from "date-fns"
 import { FaLink } from "react-icons/fa6"
@@ -24,17 +23,9 @@ export default async function RecentContent() {
                 href={`/projects/${project.slug}`}
                 className="group flex items-center gap-5"
               >
-                <div className="flex items-center gap-1.5">
-                  <Image
-                    src={project.icon ?? ""}
-                    alt={project.title ?? ""}
-                    width={20}
-                    height={20}
-                  />
-                  <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
-                    {project.title}
-                  </Typography>
-                </div>
+                <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
+                  {project.title}
+                </Typography>
                 <div className="h-1 flex-1 border-b-2 border-dashed " />
                 <Typography affects="muted">{project.category}</Typography>
               </Link>
@@ -72,12 +63,9 @@ export default async function RecentContent() {
               href={`/discoveries/${discovery.slug}`}
               className="group flex items-center gap-5"
             >
-              <div className="flex items-center gap-1.5">
-                <FaLink width={20} height={20} />
-                <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
-                  {discovery.title}
-                </Typography>
-              </div>
+              <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
+                {discovery.title}
+              </Typography>
               <div className="h-1 flex-1 border-b-2 border-dashed " />
               <Typography affects="muted">
                 {formatUrl(discovery.link)}
