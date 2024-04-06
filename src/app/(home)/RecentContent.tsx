@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { format } from "date-fns"
-import { FaLink } from "react-icons/fa6"
 
 import { getDiscoveries, getProjects, getThoughts } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"

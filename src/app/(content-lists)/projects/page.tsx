@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 
 import { getProjects } from "@/lib/getContent"
@@ -15,19 +14,9 @@ export default async function Projects() {
           <NavLink link={`/projects/${project.slug}`}>
             <div className="flex flex-col gap-1">
               <h1 className="font-medium">{project.title}</h1>
-              <div className="flex items-center gap-1.5">
-                {project.icon ? (
-                  <Image
-                    src={project.icon}
-                    alt={project.title ?? ""}
-                    width={16}
-                    height={16}
-                  />
-                ) : null}
-                <h3 className="text-sm text-muted-foreground">
-                  {project.category}
-                </h3>
-              </div>
+              <h3 className="text-sm text-muted-foreground">
+                {project.category}
+              </h3>
             </div>
           </NavLink>
         </Link>
