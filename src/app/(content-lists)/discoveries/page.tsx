@@ -2,7 +2,6 @@ import Link from "next/link"
 import { FaLink } from "react-icons/fa6"
 
 import { getDiscoveries } from "@/lib/getContent"
-import { formatUrl } from "@/lib/utils"
 import NavLink from "@/app/(content-lists)/NavLink"
 
 export default async function Discoveries() {
@@ -10,7 +9,6 @@ export default async function Discoveries() {
   if (!discoveries) return null
 
   return discoveries.map((discovery) => {
-    const linkTitle = formatUrl(discovery.link)
     return (
       <Link key={discovery.slug} href={`/discoveries/${discovery.slug}`}>
         <NavLink link={`/discoveries/${discovery.slug}`}>
@@ -18,7 +16,9 @@ export default async function Discoveries() {
             <h1 className="font-medium">{discovery.title}</h1>
             <div className="flex items-center gap-1.5">
               <FaLink width={16} height={16} />
-              <h3 className="text-sm text-muted-foreground">{linkTitle}</h3>
+              <h3 className="text-sm text-muted-foreground">
+                {discovery.category}
+              </h3>
             </div>
           </div>
         </NavLink>

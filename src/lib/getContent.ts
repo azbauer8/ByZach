@@ -53,6 +53,7 @@ export async function getDiscoveries(limit?: number) {
         slug: discovery?.node?._sys.filename,
         title: discovery?.node?.title,
         link: discovery?.node?.link,
+        category: discovery?.node?.category,
       }
     }
   )
@@ -73,11 +74,7 @@ export async function getUses(limit?: number) {
     return {
       slug: use?.node?._sys.filename,
       title: use?.node?.title,
-      link: use?.node?.link,
-      description: use?.node?.description,
       category: use?.node?.category,
-      platform: use?.node?.platform,
-      cost: use?.node?.cost,
     }
   })
 }
