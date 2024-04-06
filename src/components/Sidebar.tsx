@@ -138,6 +138,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
             }
           )}
           onClick={() => mobile && setSidebarOpen(false)}
+          prefetch
         >
           {link.icon}
           <span className="flex-1">{link.name}</span>
@@ -152,7 +153,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-focused hover:text-foreground"
+          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused"
         >
           {link.icon}
           <span className="flex gap-0.5">
@@ -173,7 +174,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-focused hover:text-foreground"
+          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused "
         >
           {link.icon}
           <span className="flex gap-0.5">

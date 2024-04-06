@@ -19,6 +19,7 @@ export default async function RecentContent() {
               key={project.slug}
               href={`/projects/${project.slug}`}
               className="group flex items-center  justify-between gap-5"
+              prefetch
             >
               <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
                 {project.title}
@@ -41,6 +42,7 @@ export default async function RecentContent() {
               key={thought.slug}
               href={`/thoughts/${thought.slug}`}
               className="group flex items-center  justify-between gap-5"
+              prefetch
             >
               <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
                 {thought.title}
@@ -64,6 +66,7 @@ export default async function RecentContent() {
               key={discovery.slug}
               href={`/discoveries/${discovery.slug}`}
               className="group flex items-center  justify-between gap-5"
+              prefetch
             >
               <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
                 {discovery.title}

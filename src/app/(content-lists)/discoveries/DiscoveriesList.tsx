@@ -9,7 +9,11 @@ export default async function DiscoveriesList() {
 
   return discoveries.map((discovery) => {
     return (
-      <Link key={discovery.slug} href={`/discoveries/${discovery.slug}`}>
+      <Link
+        key={discovery.slug}
+        href={`/discoveries/${discovery.slug}`}
+        prefetch
+      >
         <NavLink link={`/discoveries/${discovery.slug}`}>
           <div className="flex flex-col gap-1">
             <h1 className="font-medium">{discovery.title}</h1>

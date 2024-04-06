@@ -8,7 +8,7 @@ export default async function ProjectsList() {
   if (!projects) return null
 
   return projects.map((project) => (
-    <Link key={project.slug} href={`/projects/${project.slug}`}>
+    <Link key={project.slug} href={`/projects/${project.slug}`} prefetch>
       <NavLink link={`/projects/${project.slug}`}>
         <div className="flex flex-col gap-1">
           <h1 className="font-medium">{project.title}</h1>

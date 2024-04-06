@@ -9,7 +9,7 @@ export default async function UsesList() {
 
   return uses.map((use) => {
     return (
-      <Link key={use.slug} href={`/uses/${use.slug}`}>
+      <Link key={use.slug} href={`/uses/${use.slug}`} prefetch>
         <NavLink link={`/uses/${use.slug}`}>
           <div className="flex flex-col gap-1">
             <h1 className="font-medium">{use.title}</h1>
