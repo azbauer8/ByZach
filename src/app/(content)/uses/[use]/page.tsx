@@ -33,7 +33,7 @@ export default async function Use({ params }: { params: { use: string } }) {
           href={use.link ?? ""}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 decoration-muted-foreground hover:underline hover:underline-offset-2"
+          className="flex items-center gap-1.5 decoration-muted-foreground underline-offset-2 hover:underline active:underline"
         >
           <FaLink width={16} height={16} />
           <Typography affects="muted">{linkTitle}</Typography>

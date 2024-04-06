@@ -21,12 +21,12 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
               prefetch
             >
-              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline group-active:text-blue-600 group-active:underline dark:group-hover:text-blue-500 dark:group-active:text-blue-500">
                 {project.title}
               </Typography>
               <Typography
                 affects="muted"
-                className="underline-offset-2 group-hover:underline"
+                className="underline-offset-2 group-hover:underline group-active:underline"
               >
                 {project.category}
               </Typography>
@@ -44,12 +44,12 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
               prefetch
             >
-              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline group-active:text-blue-600 group-active:underline dark:group-hover:text-blue-500 dark:group-active:text-blue-500">
                 {thought.title}
               </Typography>
               <Typography
                 affects="muted"
-                className="underline-offset-2 group-hover:underline"
+                className="underline-offset-2 group-hover:underline group-active:underline"
               >
                 {format(new Date(thought.createdAt ?? ""), "PPP")}
               </Typography>
@@ -68,12 +68,12 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
               prefetch
             >
-              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline group-active:text-blue-600 group-active:underline dark:group-hover:text-blue-500 dark:group-active:text-blue-500">
                 {discovery.title}
               </Typography>
               <Typography
                 affects="muted"
-                className="underline-offset-2 group-hover:underline"
+                className="underline-offset-2 group-hover:underline group-active:underline"
               >
                 {discovery.category}
               </Typography>

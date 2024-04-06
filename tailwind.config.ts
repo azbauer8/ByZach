@@ -8,9 +8,9 @@ const config = {
   darkMode: ["class"],
   content: ["./src/**/*.{ts,tsx}"],
   prefix: "",
-  // future: {
-  //   hoverOnlyWhenSupported: true,
-  // },
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     container: {
       center: true,
@@ -20,9 +20,6 @@ const config = {
       },
     },
     extend: {
-      screens: {
-        nomobile: { raw: "(hover: hover)" },
-      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },

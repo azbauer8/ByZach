@@ -16,8 +16,10 @@ export default function NavLink({
   return (
     <div
       className={cn(
-        "nomobile:hover:bg-focused border-b border-accent px-3.5 py-3 hover:cursor-pointer active:bg-focused lg:rounded-lg lg:border-none lg:py-2",
-        pathname === link && "bg-muted hover:bg-muted"
+        "px-3.5 py-3 hover:cursor-pointer lg:rounded-lg lg:border-none lg:py-2",
+        pathname === link
+          ? "bg-muted hover:bg-muted active:bg-muted"
+          : "hover:bg-focused active:bg-focused"
       )}
     >
       {children}

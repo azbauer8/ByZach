@@ -65,7 +65,7 @@ export default async function TraktCard() {
 
   return (
     <a
-      className="flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60"
+      className="flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 active:opacity-60"
       href={data.traktData.url}
     >
       <Image

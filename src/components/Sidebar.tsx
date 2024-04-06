@@ -135,9 +135,9 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
             key={link.href}
             href={link.href}
             className={cn(
-              "flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused",
+              "flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused active:bg-focused",
               {
-                "bg-muted hover:bg-muted":
+                "bg-muted hover:bg-muted active:bg-muted":
                   link.href === "/"
                     ? pathname === link.href
                     : pathname?.startsWith(link.href),
@@ -159,14 +159,14 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused"
+          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused active:bg-focused"
         >
           {link.icon}
           <span className="flex gap-0.5">
             {link.name}
             <LuArrowUpRight
               size={12}
-              className="opacity-0 group-hover:opacity-100"
+              className="opacity-0 group-hover:opacity-100 group-active:opacity-100"
             />
           </span>
         </a>
@@ -180,14 +180,14 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused "
+          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused active:bg-focused"
         >
           {link.icon}
           <span className="flex gap-0.5">
             {link.name}
             <LuArrowUpRight
               size={12}
-              className="opacity-0 group-hover:opacity-100"
+              className="opacity-0 group-hover:opacity-100 group-active:opacity-100"
             />
           </span>
         </a>
@@ -201,7 +201,7 @@ function SourceCode() {
     <Button
       asChild
       variant="outline"
-      className="gap-1.5 hover:bg-focused hover:text-foreground"
+      className="gap-1.5 hover:bg-focused hover:text-foreground active:bg-focused active:text-foreground"
     >
       <a href={siteLinks.source} target="_blank">
         <FaGithub className="size-4" />
@@ -236,7 +236,7 @@ export function ThemeToggle() {
         <Button
           variant="ghost"
           size="icon"
-          className="size-fit p-1.5 hover:bg-focused"
+          className="size-fit p-1.5 hover:bg-focused active:bg-focused"
         >
           {theme === "light" ? (
             <PiSunDuotone size={16} />

@@ -4,7 +4,7 @@ import { twc } from "react-twc"
 
 import { cn } from "@/lib/utils"
 
-const Anchor = twc.a`hover:underline text-[#3b82f6] decoration-[#3b82f6] hover:cursor-pointer underline-offset-2`
+const Anchor = twc.a`hover:underline active:underline text-[#3b82f6] decoration-[#3b82f6] hover:cursor-pointer underline-offset-2`
 
 export const typographyVariants = cva("", {
   variants: {

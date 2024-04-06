@@ -33,7 +33,7 @@ export default async function LastFmCard() {
   return (
     <a
       className={
-        "flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60"
+        "flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 active:opacity-60"
       }
       href={latestTrack.url}
     >

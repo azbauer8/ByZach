@@ -8,7 +8,7 @@ export default function ContentLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex">
+    <div className="flex size-full">
       <ContentListColumn title="Discoveries" list={<Discoveries />} />
       <Dots className="flex-1" childClassName="size-full">
         {children}
