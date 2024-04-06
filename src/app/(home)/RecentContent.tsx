@@ -25,16 +25,12 @@ export default async function RecentContent() {
                 className="group flex items-center gap-5"
               >
                 <div className="flex items-center gap-1.5">
-                  {project.icon ? (
-                    <Image
-                      src={project.icon}
-                      alt={project.title ?? ""}
-                      width={20}
-                      height={20}
-                    />
-                  ) : (
-                    <FaLink width={20} height={20} />
-                  )}
+                  <Image
+                    src={project.icon ?? ""}
+                    alt={project.title ?? ""}
+                    width={20}
+                    height={20}
+                  />
                   <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
                     {project.title}
                   </Typography>
