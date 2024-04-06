@@ -13,18 +13,18 @@ export default async function Projects() {
       {projects.map((project) => (
         <Link key={project.slug} href={`/projects/${project.slug}`}>
           <NavLink link={`/projects/${project.slug}`}>
-            <div className="flex items-center gap-2">
-              {project.icon ? (
-                <Image
-                  src={project.icon}
-                  alt={project.title ?? ""}
-                  width={35}
-                  height={35}
-                />
-              ) : null}
-              <div className="flex flex-col gap-1">
-                <h1 className="font-medium">{project.title}</h1>
-                <h3 className="text-xs text-muted-foreground">
+            <div className="flex flex-col gap-1">
+              <h1 className="font-medium">{project.title}</h1>
+              <div className="flex items-center gap-1.5">
+                {project.icon ? (
+                  <Image
+                    src={project.icon}
+                    alt={project.title ?? ""}
+                    width={16}
+                    height={16}
+                  />
+                ) : null}
+                <h3 className="text-sm text-muted-foreground">
                   {project.category}
                 </h3>
               </div>
