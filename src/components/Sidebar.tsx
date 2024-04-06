@@ -129,9 +129,9 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           key={link.href}
           href={link.href}
           className={cn(
-            "flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-focused hover:text-foreground",
+            "flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused",
             {
-              "bg-muted text-foreground":
+              "bg-muted hover:bg-muted":
                 link.href === "/"
                   ? pathname === link.href
                   : pathname?.startsWith(link.href),
