@@ -84,7 +84,7 @@ export function SidebarToggle() {
 export function Sidebar() {
   return (
     <>
-      <nav className="absolute z-30  flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col gap-7 border-r border-border bg-accent p-3 transition duration-200 ease-in-out lg:relative lg:translate-x-0">
+      <nav className="absolute z-30  flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col border-r border-border bg-accent p-3 transition duration-200 ease-in-out lg:relative lg:translate-x-0">
         <div className="flex items-center justify-between pl-3">
           <Typography affects="small">{siteConfig.urlTitle}</Typography>
           <ThemeToggle />
@@ -105,7 +105,7 @@ export function MobileSidebar() {
         side="left"
         className="flex w-80 flex-col border-border bg-accent sm:w-72 md:w-64 lg:w-56"
       >
-        <SheetHeader>
+        <SheetHeader className="pb-0">
           <div className="flex w-full items-center justify-between">
             <SheetTitle>{siteConfig.urlTitle}</SheetTitle>
             <ThemeToggle />
@@ -123,13 +123,13 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
   const [, setSidebarOpen] = useAtom(sidebarAtom)
 
   return (
-    <div className="flex-1 space-y-1 overflow-y-auto">
+    <div className={cn("flex-1 space-y-1 overflow-y-auto", !mobile && "pt-6")}>
       {sidebarLinks.map((link) => (
         <Link
           key={link.href}
           href={link.href}
           className={cn(
-            "hover:bg-focused flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground",
+            "flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-focused hover:text-foreground",
             {
               "bg-muted text-foreground":
                 link.href === "/"
@@ -152,7 +152,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:bg-focused group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-focused hover:text-foreground"
         >
           {link.icon}
           <span className="flex gap-0.5">
@@ -173,7 +173,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:bg-focused group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-focused hover:text-foreground"
         >
           {link.icon}
           <span className="flex gap-0.5">
@@ -194,7 +194,7 @@ function SourceCode() {
     <Button
       asChild
       variant="outline"
-      className="hover:bg-focused gap-1.5 hover:text-foreground"
+      className="gap-1.5 hover:bg-focused hover:text-foreground"
     >
       <a href={siteLinks.source} target="_blank">
         <FaGithub className="size-4" />
@@ -229,7 +229,7 @@ export function ThemeToggle() {
         <Button
           variant="ghost"
           size="icon"
-          className="hover:bg-focused size-fit p-1.5"
+          className="size-fit p-1.5 hover:bg-focused"
         >
           {theme === "light" ? (
             <PiSunDuotone size={16} />
