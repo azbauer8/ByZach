@@ -1,5 +1,5 @@
 import { Dots } from "@/components/ui/bg-patterns"
-import Thoughts from "@/app/(content-lists)/thoughts/page"
+import Thoughts from "@/app/(content-lists)/thoughts/ThoughtsList"
 import ContentListColumn from "@/app/(content)/ContentListColumn"
 
 export default function ContentLayout({

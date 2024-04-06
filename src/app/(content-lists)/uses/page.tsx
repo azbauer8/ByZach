@@ -1,22 +1,13 @@
-import Link from "next/link"
-
-import { getUses } from "@/lib/getContent"
-import NavLink from "@/app/(content-lists)/NavLink"
+import { ListColumnHeader } from "@/app/(content-lists)/ListHeader"
+import UsesList from "@/app/(content-lists)/uses/UsesList"
 
 export default async function Uses() {
-  const uses = await getUses()
-  if (!uses) return null
-
-  return uses.map((use) => {
-    return (
-      <Link key={use.slug} href={`/uses/${use.slug}`}>
-        <NavLink link={`/uses/${use.slug}`}>
-          <div className="flex flex-col gap-1">
-            <h1 className="font-medium">{use.title}</h1>
-            <h3 className="text-sm text-muted-foreground">{use.category}</h3>
-          </div>
-        </NavLink>
-      </Link>
-    )
-  })
+  return (
+    <>
+      <ListColumnHeader title="Uses" />
+      <div className="flex flex-col lg:gap-1 lg:p-3">
+        <UsesList />
+      </div>
+    </>
+  )
 }

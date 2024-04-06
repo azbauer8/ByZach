@@ -1,27 +1,13 @@
-import Link from "next/link"
-import { format } from "date-fns"
-
-import { getThoughts } from "@/lib/getContent"
-import NavLink from "@/app/(content-lists)/NavLink"
+import { ListColumnHeader } from "@/app/(content-lists)/ListHeader"
+import ThoughtsList from "@/app/(content-lists)/thoughts/ThoughtsList"
 
 export default async function Thoughts() {
-  const thoughts = await getThoughts()
-  if (!thoughts) return null
-
   return (
     <>
-      {thoughts.map((thought) => (
-        <Link key={thought.slug} href={`/thoughts/${thought.slug}`}>
-          <NavLink link={`/thoughts/${thought.slug}`}>
-            <div className="flex flex-col gap-1">
-              <h1 className="line-clamp-3 font-medium">{thought.title}</h1>
-              <h3 className="line-clamp-1 text-sm text-muted-foreground">
-                {format(new Date(thought.createdAt ?? ""), "PPP")}
-              </h3>
-            </div>
-          </NavLink>
-        </Link>
-      ))}
+      <ListColumnHeader title="Thoughts" />
+      <div className="flex flex-col lg:gap-1 lg:p-3">
+        <ThoughtsList />
+      </div>
     </>
   )
 }

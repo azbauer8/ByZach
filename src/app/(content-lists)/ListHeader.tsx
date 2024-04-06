@@ -1,20 +1,9 @@
-"use client"
-
-import { usePathname } from "next/navigation"
-
-import { capitalize, cn } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
 import { SidebarToggle } from "@/components/Sidebar"
 import StickyHeader from "@/components/StickyHeader"
 
-export function ListColumnHeader() {
-  const pathname = usePathname()
-  const title =
-    pathname === "/"
-      ? "Home"
-      : pathname
-        ? capitalize(pathname.split("/")[1])
-        : ""
+export function ListColumnHeader({ title }: { title: string }) {
   return (
     <StickyHeader
       className={cn(

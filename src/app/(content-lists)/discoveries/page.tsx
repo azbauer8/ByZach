@@ -1,24 +1,13 @@
-import Link from "next/link"
-
-import { getDiscoveries } from "@/lib/getContent"
-import NavLink from "@/app/(content-lists)/NavLink"
+import DiscoveriesList from "@/app/(content-lists)/discoveries/DiscoveriesList"
+import { ListColumnHeader } from "@/app/(content-lists)/ListHeader"
 
 export default async function Discoveries() {
-  const discoveries = await getDiscoveries()
-  if (!discoveries) return null
-
-  return discoveries.map((discovery) => {
-    return (
-      <Link key={discovery.slug} href={`/discoveries/${discovery.slug}`}>
-        <NavLink link={`/discoveries/${discovery.slug}`}>
-          <div className="flex flex-col gap-1">
-            <h1 className="font-medium">{discovery.title}</h1>
-            <h3 className="text-sm text-muted-foreground">
-              {discovery.category}
-            </h3>
-          </div>
-        </NavLink>
-      </Link>
-    )
-  })
+  return (
+    <>
+      <ListColumnHeader title="Discoveries" />
+      <div className="flex flex-col lg:gap-1 lg:p-3">
+        <DiscoveriesList />
+      </div>
+    </>
+  )
 }
