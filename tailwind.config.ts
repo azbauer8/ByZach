@@ -1,6 +1,5 @@
 import svgToDataUri from "mini-svg-data-uri"
 import type { Config } from "tailwindcss"
-import colors from "tailwindcss/colors"
 import { fontFamily } from "tailwindcss/defaultTheme"
 //@ts-expect-error no types provided
 import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette"
@@ -9,6 +8,9 @@ const config = {
   darkMode: ["class"],
   content: ["./src/**/*.{ts,tsx}"],
   prefix: "",
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     container: {
       center: true,
@@ -47,6 +49,7 @@ const config = {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        focused: "hsl(var(--focused))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

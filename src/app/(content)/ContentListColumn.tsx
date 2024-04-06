@@ -19,7 +19,7 @@ export default function ContentListColumn({
           <Typography affects="small">{title}</Typography>
         </div>
       </StickyHeader>
-      <div className="lg:space-y-1 lg:p-3"> {list}</div>
+      <div className="flex flex-col lg:gap-1 lg:p-3"> {list}</div>
     </div>
   )
 }

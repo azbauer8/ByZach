@@ -129,7 +129,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           key={link.href}
           href={link.href}
           className={cn(
-            "flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground",
+            "hover:bg-focused flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground",
             {
               "bg-muted text-foreground":
                 link.href === "/"
@@ -152,8 +152,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
-          onClick={() => mobile && setSidebarOpen(false)}
+          className="hover:bg-focused group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
         >
           {link.icon}
           <span className="flex gap-0.5">
@@ -174,8 +173,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
-          onClick={() => mobile && setSidebarOpen(false)}
+          className="hover:bg-focused group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
         >
           {link.icon}
           <span className="flex gap-0.5">
@@ -196,7 +194,7 @@ function SourceCode() {
     <Button
       asChild
       variant="outline"
-      className="gap-1.5 hover:bg-muted hover:text-foreground"
+      className="hover:bg-focused gap-1.5 hover:text-foreground"
     >
       <a href={siteLinks.source} target="_blank">
         <FaGithub className="size-4" />
@@ -231,7 +229,7 @@ export function ThemeToggle() {
         <Button
           variant="ghost"
           size="icon"
-          className="size-fit p-1.5 hover:bg-muted"
+          className="hover:bg-focused size-fit p-1.5"
         >
           {theme === "light" ? (
             <PiSunDuotone size={16} />
