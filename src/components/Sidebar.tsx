@@ -4,7 +4,7 @@ import { Fragment } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { siteConfig, siteLinks } from "@/config"
-import { useAtom } from "jotai"
+import { atom, useAtom } from "jotai"
 import { useTheme } from "next-themes"
 import {
   FaBrain,
@@ -23,7 +23,6 @@ import {
   PiSunDuotone,
 } from "react-icons/pi"
 
-import { sidebarAtom } from "@/lib/store"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -68,6 +67,8 @@ const sidebarLinks = [
     icon: <FaToolbox size={16} />,
   },
 ] as const
+
+export const sidebarAtom = atom(false)
 
 export function SidebarToggle() {
   const [sidebarOpen, setSidebarOpen] = useAtom(sidebarAtom)

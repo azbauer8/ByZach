@@ -1,7 +1,7 @@
 import React from "react"
 import { Metadata } from "next/types"
 
-import { Dots } from "@/components/ui/bg-patterns"
+import Dots from "@/components/ui/bg-patterns"
 import { SidebarToggle } from "@/components/Sidebar"
 import StickyHeader from "@/components/StickyHeader"
 import About from "@/app/(home)/About"
@@ -24,7 +24,7 @@ export default function Home() {
 
 function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
-    <Dots className="size-full" childClassName="size-full">
+    <Dots className="size-full">
       <StickyHeader className="bg-background/10 px-3">
         <div className="flex items-center space-x-2">
           <div className="flex items-center space-x-0.5">

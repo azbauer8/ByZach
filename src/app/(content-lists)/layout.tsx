@@ -1,4 +1,4 @@
-import { Dots } from "@/components/ui/bg-patterns"
+import Dots from "@/components/ui/bg-patterns"
 
 export default function ListLayout({
   children,
