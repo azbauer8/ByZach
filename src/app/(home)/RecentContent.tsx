@@ -2,7 +2,6 @@ import Link from "next/link"
 import { format } from "date-fns"
 
 import { getDiscoveries, getProjects, getThoughts } from "@/lib/getContent"
-import { formatUrl } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
 
 export default async function RecentContent() {
@@ -16,18 +15,20 @@ export default async function RecentContent() {
         <Typography variant="h4">Projects</Typography>
         <div className="flex flex-col gap-2 py-4">
           {projects?.map((project) => (
-            <Link key={project.slug} href={`/projects/${project.slug}`}>
-              <Link
-                key={project.slug}
-                href={`/projects/${project.slug}`}
-                className="group flex items-center gap-5"
+            <Link
+              key={project.slug}
+              href={`/projects/${project.slug}`}
+              className="group flex items-center  justify-between gap-5"
+            >
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
+                {project.title}
+              </Typography>
+              <Typography
+                affects="muted"
+                className="underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500 "
               >
-                <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
-                  {project.title}
-                </Typography>
-                <div className="h-1 flex-1 border-b-2 border-dashed " />
-                <Typography affects="muted">{project.category}</Typography>
-              </Link>
+                {project.category}
+              </Typography>
             </Link>
           ))}
         </div>
@@ -39,13 +40,15 @@ export default async function RecentContent() {
             <Link
               key={thought.slug}
               href={`/thoughts/${thought.slug}`}
-              className="group flex items-center gap-5"
+              className="group flex items-center  justify-between gap-5"
             >
-              <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
                 {thought.title}
               </Typography>
-              <div className="h-1 flex-1 border-b-2 border-dashed " />
-              <Typography affects="muted">
+              <Typography
+                affects="muted"
+                className="underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500 "
+              >
                 {format(new Date(thought.createdAt ?? ""), "PPP")}
               </Typography>
             </Link>
@@ -60,14 +63,16 @@ export default async function RecentContent() {
             <Link
               key={discovery.slug}
               href={`/discoveries/${discovery.slug}`}
-              className="group flex items-center gap-5"
+              className="group flex items-center  justify-between gap-5"
             >
-              <Typography className="break-words font-medium group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500">
                 {discovery.title}
               </Typography>
-              <div className="h-1 flex-1 border-b-2 border-dashed " />
-              <Typography affects="muted">
-                {formatUrl(discovery.link)}
+              <Typography
+                affects="muted"
+                className="underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500 "
+              >
+                {discovery.category}
               </Typography>
             </Link>
           ))}
