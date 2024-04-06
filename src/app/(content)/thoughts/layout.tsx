@@ -1,6 +1,6 @@
 import { Dots } from "@/components/ui/bg-patterns"
 import Thoughts from "@/app/(content-lists)/thoughts/ThoughtsList"
-import ContentListColumn from "@/app/(content)/ContentListColumn"
+import { ContentListColumn } from "@/app/(content)/ContentWrapper"
 
 export default function ContentLayout({
   children,
@@ -8,9 +8,11 @@ export default function ContentLayout({
   children: React.ReactNode
 }) {
   return (
-    <Dots className="flex size-full">
+    <div className="flex">
       <ContentListColumn title="Thoughts" list={<Thoughts />} />
-      {children}
-    </Dots>
+      <Dots className="flex-1" childClassName="size-full">
+        {children}
+      </Dots>
+    </div>
   )
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import { Fragment } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { siteConfig, siteLinks } from "@/config"
@@ -33,6 +34,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -84,7 +86,7 @@ export function SidebarToggle() {
 export function Sidebar() {
   return (
     <>
-      <nav className="absolute z-30  flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col border-r border-border bg-accent p-3 transition duration-200 ease-in-out lg:relative lg:translate-x-0">
+      <nav className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col gap-5 border-r border-border bg-accent p-3 transition duration-200 ease-in-out lg:sticky lg:translate-x-0">
         <div className="flex items-center justify-between pl-3">
           <Typography affects="small">{siteConfig.urlTitle}</Typography>
           <ThemeToggle />
@@ -120,29 +122,33 @@ export function MobileSidebar() {
 
 function SidebarLinks({ mobile }: { mobile?: boolean }) {
   const pathname = usePathname()
-  const [, setSidebarOpen] = useAtom(sidebarAtom)
+
+  const [SheetCloseWrapper, shetCloseWrapperProps] = mobile
+    ? [SheetClose, { asChild: true }]
+    : [Fragment, {}]
 
   return (
-    <div className={cn("flex-1 space-y-1 overflow-y-auto", !mobile && "pt-6")}>
+    <div className={cn("flex-1 space-y-1 overflow-y-auto")}>
       {sidebarLinks.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className={cn(
-            "flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused",
-            {
-              "bg-muted hover:bg-muted":
-                link.href === "/"
-                  ? pathname === link.href
-                  : pathname?.startsWith(link.href),
-            }
-          )}
-          onClick={() => mobile && setSidebarOpen(false)}
-          prefetch
-        >
-          {link.icon}
-          <span className="flex-1">{link.name}</span>
-        </Link>
+        <SheetCloseWrapper {...shetCloseWrapperProps} key={link.href}>
+          <Link
+            key={link.href}
+            href={link.href}
+            className={cn(
+              "flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused",
+              {
+                "bg-muted hover:bg-muted":
+                  link.href === "/"
+                    ? pathname === link.href
+                    : pathname?.startsWith(link.href),
+              }
+            )}
+            prefetch
+          >
+            {link.icon}
+            <span className="flex-1">{link.name}</span>
+          </Link>
+        </SheetCloseWrapper>
       ))}
       <Typography affects="small" className="px-2 pb-2 pt-5">
         Socials
@@ -153,7 +159,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused"
+          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused"
         >
           {link.icon}
           <span className="flex gap-0.5">
@@ -174,7 +180,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused "
+          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused "
         >
           {link.icon}
           <span className="flex gap-0.5">

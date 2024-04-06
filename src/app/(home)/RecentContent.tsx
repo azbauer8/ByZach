@@ -26,7 +26,7 @@ export default async function RecentContent() {
               </Typography>
               <Typography
                 affects="muted"
-                className="underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500 "
+                className="underline-offset-2 group-hover:underline"
               >
                 {project.category}
               </Typography>
@@ -49,7 +49,7 @@ export default async function RecentContent() {
               </Typography>
               <Typography
                 affects="muted"
-                className="underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500 "
+                className="underline-offset-2 group-hover:underline"
               >
                 {format(new Date(thought.createdAt ?? ""), "PPP")}
               </Typography>
@@ -73,7 +73,7 @@ export default async function RecentContent() {
               </Typography>
               <Typography
                 affects="muted"
-                className="underline-offset-2 group-hover:text-blue-600 group-hover:underline dark:group-hover:text-blue-500 "
+                className="underline-offset-2 group-hover:underline"
               >
                 {discovery.category}
               </Typography>

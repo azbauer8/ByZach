@@ -3,9 +3,11 @@ import { cn } from "@/lib/utils"
 export function Dots({
   children,
   className,
+  childClassName,
 }: {
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
+  childClassName?: string
 }) {
   return (
     <div
@@ -14,8 +16,8 @@ export function Dots({
         className
       )}
     >
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-      <div className={cn("z-10", className)}>{children}</div>
+      <div className="pointer-events-none absolute inset-0  flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      <div className={cn("relative", childClassName)}>{children}</div>
     </div>
   )
 }
