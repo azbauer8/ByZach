@@ -8,10 +8,8 @@ export async function getProjects(limit?: number) {
     return {
       slug: project?.node?._sys.filename,
       title: project?.node?.title,
-      icon: project?.node?.icon,
       category: project?.node?.category,
       link: project?.node?.link,
-      source: project?.node?.source,
     }
   })
 }
