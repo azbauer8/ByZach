@@ -1,4 +1,5 @@
 import { Chip } from "@nextui-org/chip"
+import { Link } from "@nextui-org/link"
 import { FaLink } from "react-icons/fa6"
 
 import { getDiscoveries, getDiscovery } from "@/lib/getContent"
@@ -21,26 +22,29 @@ export default async function Discovery({
   params: { discovery: string }
 }) {
   const discovery = await getDiscovery(params.discovery)
-  const linkTitle = formatUrl(discovery.link)
 
   return (
-    <ContentWrapper title={discovery.title} className="content-wrapper">
-      <div className="space-y-2 pb-8 pt-12">
-        <Chip variant="faded">{discovery.category}</Chip>
-        <Typography variant="h2">{discovery.title}</Typography>
-        <a
+    <ContentWrapper
+      title={discovery.title}
+      className="content-wrapper space-y-0.5"
+    >
+      <Chip variant="faded" size="sm">
+        {discovery.category}
+      </Chip>
+      <Typography variant="h2">{discovery.title}</Typography>
+      {discovery.link ? (
+        <Link
           href={discovery.link ?? ""}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 decoration-content1 underline-offset-2 hover:underline active:underline"
+          isExternal
+          className="flex items-center gap-1.5"
         >
           <FaLink width={16} height={16} />
-          <Typography affects="muted">{linkTitle}</Typography>
-        </a>
-        <Typography variant="p" affects="muted">
-          {discovery.description}
-        </Typography>
-      </div>
+          <Typography affects="muted">{formatUrl(discovery.link)}</Typography>
+        </Link>
+      ) : null}
+      <Typography variant="p" affects="muted">
+        {discovery.description}
+      </Typography>
     </ContentWrapper>
   )
 }

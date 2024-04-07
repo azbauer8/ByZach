@@ -81,11 +81,6 @@ export default defineConfig({
             required: true,
           },
           {
-            type: "image",
-            label: "Icon",
-            name: "icon",
-          },
-          {
             type: "string",
             label: "Category",
             name: "category",
@@ -94,11 +89,6 @@ export default defineConfig({
             type: "string",
             label: "Link",
             name: "link",
-          },
-          {
-            type: "string",
-            label: "Source Code",
-            name: "source",
           },
           {
             type: "rich-text",

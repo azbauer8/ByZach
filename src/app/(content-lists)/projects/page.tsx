@@ -5,7 +5,7 @@ export default async function Projects() {
   return (
     <>
       <ListColumnHeader title="Projects" />
-      <div className="flex flex-col lg:gap-1 lg:p-3">
+      <div className="flex flex-col gap-1 p-3">
         <ProjectsList />
       </div>
     </>

@@ -54,10 +54,10 @@ const Sheet = React.forwardRef<
       classNames={{
         base: `${
           side === "left" ? "left-0" : "right-0"
-        } fixed rounded-none h-screen m-0 md:m-0 sm:m-0 p-3 pt-3`,
+        } fixed rounded-none h-dvh m-0 md:m-0 sm:m-0 p-0 pt-3`,
         closeButton: "left-3 top-3.5 w-fit rounded-md p-1.5 text-foreground",
         header:
-          "flex w-full items-center justify-between p-0 pl-9 text-sm font-bold",
+          "flex w-full items-center justify-between p-0 pl-12 pr-3 text-sm font-bold",
       }}
       motionProps={{
         variants: {

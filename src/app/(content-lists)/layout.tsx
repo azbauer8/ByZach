@@ -7,7 +7,7 @@ export default function ListLayout({
 }) {
   return (
     <div className="flex">
-      <div className="max-h-dvh min-h-dvh w-full overflow-y-auto border-r-[0.5px] bg-content1 transition-all duration-200 ease-in-out lg:w-80 xl:w-96">
+      <div className="max-h-dvh min-h-dvh w-full overflow-y-auto border-r-[0.5px] bg-content1 transition-all duration-200 ease-in-out md:w-80">
         {children}
       </div>
       <Dots className="flex-1" />

@@ -21,8 +21,11 @@ export default async function Thought({
 }) {
   const thought = await getThought(params.thought)
   return (
-    <ContentWrapper title={thought.title} className="content-wrapper">
-      <div className="space-y-2 pb-8 pt-12">
+    <ContentWrapper
+      title={thought.title}
+      className="content-wrapper flex flex-col gap-5"
+    >
+      <div className="space-y-1.5">
         <Typography variant="h2">{thought.title}</Typography>
         <Typography affects="muted">
           {format(new Date(thought.createdAt ?? ""), "PPP")}

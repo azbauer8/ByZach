@@ -21,7 +21,7 @@ export function ContentWrapper({
   return (
     <>
       <ContentHeader title={title} />
-      <div className={cn("space-y-12", className)}>{children}</div>
+      <div className={cn("space-y-2 pb-8 pt-12", className)}>{children}</div>
     </>
   )
 }
@@ -29,10 +29,9 @@ export function ContentWrapper({
 function ContentHeader({ title }: { title: string }) {
   return (
     <StickyHeader className="bg-content1/10">
-      <div className="flex items-center space-x-2">
-        <GoBack />
-        <Typography affects="small">{title}</Typography>
-      </div>
+      <GoBack />
+      <Typography affects="small">{title}</Typography>
+      <div />
     </StickyHeader>
   )
 }
@@ -45,16 +44,13 @@ export function ContentListColumn({
   list: JSX.Element
 }) {
   return (
-    <div className="absolute h-dvh -translate-x-full overflow-y-auto border-r-[0.5px] bg-content1  transition duration-200 ease-in-out lg:relative lg:w-80 lg:translate-x-0 xl:w-96">
+    <div className="absolute h-dvh -translate-x-full overflow-y-auto border-r-[0.5px] bg-content1  transition duration-200 ease-in-out md:relative md:w-80 md:translate-x-0">
       <StickyHeader className=" bg-content1/10">
-        <div className="flex items-center space-x-2">
-          <div className="flex items-center space-x-0.5">
-            <SidebarToggle />
-          </div>
-          <Typography affects="small">{title}</Typography>
-        </div>
+        <SidebarToggle />
+        <Typography affects="small">{title}</Typography>
+        <div />
       </StickyHeader>
-      <div className="flex flex-col lg:gap-1 lg:p-3"> {list}</div>
+      <div className="flex flex-col gap-1 p-3"> {list}</div>
     </div>
   )
 }

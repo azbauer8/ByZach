@@ -1,4 +1,5 @@
 import { Chip } from "@nextui-org/chip"
+import { Link } from "@nextui-org/link"
 import { FaLink } from "react-icons/fa6"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 
@@ -18,21 +19,26 @@ export async function generateStaticParams() {
 }
 export default async function Use({ params }: { params: { use: string } }) {
   const use = await getUse(params.use)
-  const linkTitle = formatUrl(use.link)
   return (
-    <ContentWrapper title={use.title} className="content-wrapper">
-      <div className="space-y-2 pb-8 pt-12">
-        <Chip variant="faded">{use.category}</Chip>
+    <ContentWrapper
+      title={use.title}
+      className="content-wrapper flex flex-col gap-5"
+    >
+      <div className="space-y-0.5">
+        <Chip variant="faded" size="sm">
+          {use.category}
+        </Chip>
         <Typography variant="h2">{use.title}</Typography>
-        <a
-          href={use.link ?? ""}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 decoration-content1 underline-offset-2 hover:underline active:underline"
-        >
-          <FaLink width={16} height={16} />
-          <Typography affects="muted">{linkTitle}</Typography>
-        </a>
+        {use.link ? (
+          <Link
+            href={use.link ?? ""}
+            isExternal
+            className="flex items-center gap-1.5"
+          >
+            <FaLink width={16} height={16} />
+            <Typography affects="muted">{formatUrl(use.link)}</Typography>
+          </Link>
+        ) : null}
       </div>
       <main className="prose">
         <TinaMarkdown content={use.description} />

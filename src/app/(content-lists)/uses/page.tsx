@@ -5,7 +5,7 @@ export default async function Uses() {
   return (
     <>
       <ListColumnHeader title="Uses" />
-      <div className="flex flex-col lg:gap-1 lg:p-3">
+      <div className="flex flex-col gap-1 p-3">
         <UsesList />
       </div>
     </>
