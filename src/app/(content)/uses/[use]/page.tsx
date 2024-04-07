@@ -1,9 +1,9 @@
+import { Badge } from "@nextui-org/react"
 import { FaLink } from "react-icons/fa6"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 
 import { getUse, getUses } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
@@ -22,12 +22,7 @@ export default async function Use({ params }: { params: { use: string } }) {
   return (
     <ContentWrapper title={use.title} className="content-wrapper">
       <div className="space-y-2 pb-8 pt-12">
-        <Badge
-          variant="secondary"
-          className="rounded-full px-3 py-1 text-sm text-foreground/65"
-        >
-          {use.category}
-        </Badge>
+        <Badge variant="flat">{use.category}</Badge>
         <Typography variant="h2">{use.title}</Typography>
         <a
           href={use.link ?? ""}

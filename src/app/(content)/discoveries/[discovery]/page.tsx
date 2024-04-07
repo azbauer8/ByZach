@@ -1,8 +1,8 @@
+import { Badge } from "@nextui-org/react"
 import { FaLink } from "react-icons/fa6"
 
 import { getDiscoveries, getDiscovery } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
@@ -26,12 +26,7 @@ export default async function Discovery({
   return (
     <ContentWrapper title={discovery.title} className="content-wrapper">
       <div className="space-y-2 pb-8 pt-12">
-        <Badge
-          variant="secondary"
-          className="rounded-full px-3 py-1 text-sm text-foreground/65"
-        >
-          {discovery.category}
-        </Badge>
+        <Badge variant="flat">{discovery.category}</Badge>
         <Typography variant="h2">{discovery.title}</Typography>
         <a
           href={discovery.link ?? ""}

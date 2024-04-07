@@ -1,9 +1,15 @@
 "use client"
 
-import { Fragment } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { siteConfig, siteLinks } from "@/config"
+import {
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@nextui-org/react"
 import { atom, useAtom } from "jotai"
 import { useTheme } from "next-themes"
 import {
@@ -24,20 +30,7 @@ import {
 } from "react-icons/pi"
 
 import { cn } from "@/lib/utils"
-import Button from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetHeader } from "@/components/ui/sheet"
 import { Typography } from "@/components/ui/typography"
 
 const sidebarLinks = [
@@ -68,17 +61,12 @@ const sidebarLinks = [
   },
 ] as const
 
-export const sidebarAtom = atom(false)
+const sidebarAtom = atom(false)
 
 export function SidebarToggle() {
-  const [sidebarOpen, setSidebarOpen] = useAtom(sidebarAtom)
+  const [, setSidebarOpen] = useAtom(sidebarAtom)
   return (
-    <Button
-      $variant="ghost"
-      $size="icon"
-      className="size-fit p-2 lg:hidden"
-      onClick={() => setSidebarOpen(!sidebarOpen)}
-    >
+    <Button className="lg:hidden" onPress={() => setSidebarOpen(true)}>
       <PiSidebarSimple size={22} />
     </Button>
   )
@@ -102,15 +90,18 @@ export function Sidebar() {
 
 export function MobileSidebar() {
   const [sidebarOpen, setSidebarOpen] = useAtom(sidebarAtom)
+  console.log("🚀 ~ MobileSidebar ~ sidebarOpen:", sidebarOpen)
   return (
-    <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-      <SheetContent
-        side="left"
-        className="flex w-80 flex-col border-r-[0.5px] border-separator bg-secondary sm:w-72 md:w-64 lg:w-56"
-      >
+    <Sheet
+      isOpen={sidebarOpen}
+      onOpenChange={setSidebarOpen}
+      backdrop="blur"
+      side="left"
+    >
+      <SheetContent className="flex w-80 flex-col border-r-[0.5px] border-separator bg-secondary sm:w-72 md:w-64 lg:w-56">
         <SheetHeader className="pb-0">
           <div className="flex w-full items-center justify-between">
-            <SheetTitle>{siteConfig.urlTitle}</SheetTitle>
+            {siteConfig.urlTitle}
             <ThemeToggle />
           </div>
         </SheetHeader>
@@ -123,33 +114,29 @@ export function MobileSidebar() {
 
 function SidebarLinks({ mobile }: { mobile?: boolean }) {
   const pathname = usePathname()
-
-  const [SheetCloseWrapper, shetCloseWrapperProps] = mobile
-    ? [SheetClose, { asChild: true }]
-    : [Fragment, {}]
+  const [, setSidebarOpen] = useAtom(sidebarAtom)
 
   return (
     <div className={cn("flex-1 space-y-1 overflow-y-auto")}>
       {sidebarLinks.map((link) => (
-        <SheetCloseWrapper {...shetCloseWrapperProps} key={link.href}>
-          <Link
-            key={link.href}
-            href={link.href}
-            className={cn(
-              "text-muted flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium hover:bg-tertiary active:bg-tertiary",
-              {
-                "bg-tint hover:bg-tint active:bg-tint":
-                  link.href === "/"
-                    ? pathname === link.href
-                    : pathname?.startsWith(link.href),
-              }
-            )}
-            prefetch
-          >
-            {link.icon}
-            <span className="flex-1 text-foreground">{link.name}</span>
-          </Link>
-        </SheetCloseWrapper>
+        <Link
+          key={link.href}
+          href={link.href}
+          className={cn(
+            "flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-muted hover:bg-tertiary active:bg-tertiary",
+            {
+              "bg-tint hover:bg-tint active:bg-tint":
+                link.href === "/"
+                  ? pathname === link.href
+                  : pathname?.startsWith(link.href),
+            }
+          )}
+          onClick={() => mobile && setSidebarOpen(false)}
+          prefetch
+        >
+          {link.icon}
+          <span className="flex-1 text-foreground">{link.name}</span>
+        </Link>
       ))}
       <Typography affects="small" className="px-2 pb-2 pt-5">
         Socials
@@ -160,7 +147,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-muted group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium hover:bg-tertiary active:bg-tertiary"
+          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-muted hover:bg-tertiary active:bg-tertiary"
         >
           {link.icon}
           <span className="flex gap-0.5 text-foreground">
@@ -181,7 +168,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-muted group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium hover:bg-tertiary active:bg-tertiary"
+          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-muted hover:bg-tertiary active:bg-tertiary"
         >
           {link.icon}
           <span className="flex gap-0.5 text-foreground">
@@ -200,14 +187,13 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
 function SourceCode() {
   return (
     <Button
-      asChild
-      $variant="outline"
+      as="a"
       className="gap-1.5 hover:bg-tertiary active:bg-tertiary"
+      href={siteLinks.source}
+      target="_blank"
     >
-      <a href={siteLinks.source} target="_blank">
-        <FaGithub className="size-4" />
-        Source
-      </a>
+      <FaGithub className="size-4" />
+      Source
     </Button>
   )
 }
@@ -217,9 +203,7 @@ export function GoBack() {
   const path = usePathname()
   return (
     <Button
-      $variant="ghost"
-      $size="icon"
-      className="size-fit p-2 lg:hidden"
+      className="lg:hidden"
       onClick={() =>
         path ? router.push(path.substring(0, path.indexOf("/", 1))) : null
       }
@@ -232,9 +216,9 @@ export function GoBack() {
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button $variant="ghost" $size="icon" className="size-fit p-1.5">
+    <Dropdown>
+      <DropdownTrigger>
+        <Button>
           {theme === "light" ? (
             <PiSunDuotone size={16} />
           ) : theme === "dark" ? (
@@ -245,30 +229,30 @@ export function ThemeToggle() {
 
           <span className="sr-only">Toggle theme</span>
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem
+      </DropdownTrigger>
+      <DropdownMenu>
+        <DropdownItem
           onClick={() => setTheme("light")}
           className="gap-1.5 text-xs"
         >
           <PiSunDuotone size={16} />
           Light
-        </DropdownMenuItem>
-        <DropdownMenuItem
+        </DropdownItem>
+        <DropdownItem
           onClick={() => setTheme("dark")}
           className="gap-1.5 text-xs"
         >
           <PiMoonStarsDuotone size={16} />
           Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem
+        </DropdownItem>
+        <DropdownItem
           onClick={() => setTheme("system")}
           className="gap-1.5 text-xs"
         >
           <PiMonitorDuotone size={16} />
           System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
   )
 }

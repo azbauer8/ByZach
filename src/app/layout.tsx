@@ -29,7 +29,7 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "relative flex h-full min-h-dvh w-full bg-background font-sans text-foreground antialiased",
+          "bg-background font-sans text-foreground antialiased",
           siteConfig.font.variable
         )}
       >

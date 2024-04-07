@@ -1,3 +1,4 @@
+import { nextui } from "@nextui-org/react"
 import svgToDataUri from "mini-svg-data-uri"
 import type { Config } from "tailwindcss"
 import { fontFamily } from "tailwindcss/defaultTheme"
@@ -6,7 +7,10 @@ import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColo
 
 const config = {
   darkMode: ["class"],
-  content: ["./src/**/*.{ts,tsx}"],
+  content: [
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+  ],
   prefix: "",
   future: {
     hoverOnlyWhenSupported: true,
@@ -23,51 +27,11 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
-      colors: {
-        muted: "rgb(var(--muted))",
-        secondary: "rgb(var(--secondary))",
-        tertiary: "rgb(var(--tertiary))",
-        tint: "rgb(var(--tint))",
-        background: "rgb(var(--backgorund))",
-        foreground: "rgb(var(--foreground))",
-        separator: "rgb(var(--separator))",
-        selection: "rgb(var(--selection))",
-        placeholder: "rgb(var(--placeholder))",
-        link: "rgb(var(--link))",
-        fill: "rgb(var(--fill))",
-
-        iBue: "rgb(var(--blue))",
-        iGreen: "rgb(var(--green))",
-        iRed: "rgb(var(--red))",
-        iYellow: "rgb(var(--yellow))",
-        iOrange: "rgb(var(--orange))",
-        iPurple: "rgb(var(--purple))",
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
     },
   },
   plugins: [
-    require("tailwindcss-animate"),
+    nextui(),
     require("@tailwindcss/typography"),
-    addVariablesForColors,
     function ({ matchUtilities, theme }: any) {
       matchUtilities(
         {
@@ -82,16 +46,5 @@ const config = {
     },
   ],
 } satisfies Config
-
-function addVariablesForColors({ addBase, theme }: any) {
-  const allColors = flattenColorPalette(theme("colors"))
-  const newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-  )
-
-  addBase({
-    ":root": newVars,
-  })
-}
 
 export default config

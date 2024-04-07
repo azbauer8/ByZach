@@ -1,143 +1,94 @@
-"use client"
+import React from "react"
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+} from "@nextui-org/react"
 
-import * as React from "react"
-import * as SheetPrimitive from "@radix-ui/react-dialog"
-import { Cross2Icon } from "@radix-ui/react-icons"
-import { cva, type VariantProps } from "class-variance-authority"
+type Size =
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "full"
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+type SizeValueMap = {
+  [key in Size]: string
+}
 
-const Sheet = SheetPrimitive.Root
+const sizeValueMap: SizeValueMap = {
+  xs: "20rem",
+  sm: "24rem",
+  md: "28rem",
+  lg: "32rem",
+  xl: "36rem",
+  "2xl": "42rem",
+  "3xl": "48rem",
+  "4xl": "56rem",
+  "5xl": "64rem",
+  full: "100vw",
+}
 
-const SheetTrigger = SheetPrimitive.Trigger
+function getSizeValue(size: Size): string | undefined {
+  return sizeValueMap[size]
+}
 
-const SheetClose = SheetPrimitive.Close
-
-const SheetPortal = SheetPrimitive.Portal
-
-const SheetOverlay = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
->(({ className, ...props }, ref) => (
-  <SheetPrimitive.Overlay
-    className={cn(
-      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className
-    )}
-    {...props}
-    ref={ref}
-  />
-))
-SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
-
-const sheetVariants = cva(
-  "fixed z-50 gap-4 bg-background p-3 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out",
-  {
-    variants: {
-      side: {
-        top: "inset-x-0 top-0 border-b-[0.5px] data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
-        bottom:
-          "inset-x-0 bottom-0 border-t-[0.5px] data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-        left: "inset-y-0 left-0 h-full w-3/4 border-r-[0.5px] data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
-        right:
-          "inset-y-0 right-0 h-full w-3/4 border-l-[0.5px] data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
-      },
-    },
-    defaultVariants: {
-      side: "right",
-    },
+const Sheet = React.forwardRef<
+  React.ElementRef<typeof Modal>,
+  React.ComponentPropsWithoutRef<typeof Modal> & {
+    side?: "left" | "right"
   }
-)
-
-interface SheetContentProps
-  extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
-    VariantProps<typeof sheetVariants> {}
-
-const SheetContent = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Content>,
-  SheetContentProps
->(({ side = "right", className, children, ...props }, ref) => (
-  <SheetPortal>
-    <SheetOverlay />
-    <SheetPrimitive.Content
+>(({ className, children, side, ...props }, ref) => {
+  const { size } = props
+  const sheetSize = size ? getSizeValue(size) : getSizeValue("md")
+  return (
+    <Modal
+      className={className}
+      classNames={{
+        base: `${
+          side === "left" ? "left-0" : "right-0"
+        } fixed rounded-none h-screen m-0 md:m-0 sm:m-0`,
+      }}
+      motionProps={{
+        variants: {
+          enter: {
+            x: 0,
+            transition: {
+              duration: 0.5,
+              ease: [0.32, 0.72, 0, 1],
+            },
+          },
+          exit: {
+            x: side === "left" ? `-${sheetSize}` : sheetSize,
+            transition: {
+              duration: 0.2,
+              ease: [0.75, 0, 0.72, 0.32],
+            },
+          },
+        },
+      }}
       ref={ref}
-      className={cn(sheetVariants({ side }), className)}
       {...props}
     >
       {children}
-    </SheetPrimitive.Content>
-  </SheetPortal>
-))
-SheetContent.displayName = SheetPrimitive.Content.displayName
+    </Modal>
+  )
+})
+Sheet.displayName = Modal.displayName
 
-const SheetHeader = ({
-  className,
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("flex items-center gap-3 pb-7", className)} {...props}>
-    <SheetPrimitive.Close
-      className={cn(
-        buttonVariants({ $variant: "ghost", $size: "icon" }),
-        "h-fit w-fit translate-y-[1px] p-1.5 lg:hidden"
-      )}
-    >
-      <Cross2Icon className="size-4" />
-      <span className="sr-only">Close</span>
-    </SheetPrimitive.Close>
-    {children}
-  </div>
-)
-SheetHeader.displayName = "SheetHeader"
+const SheetContent = ModalContent
 
-const SheetFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-      className
-    )}
-    {...props}
-  />
-)
-SheetFooter.displayName = "SheetFooter"
+const SheetHeader = ModalHeader
 
-const SheetTitle = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <SheetPrimitive.Title
-    ref={ref}
-    className={cn("text-sm font-bold text-foreground", className)}
-    {...props}
-  />
-))
-SheetTitle.displayName = SheetPrimitive.Title.displayName
+const SheetBody = ModalBody
 
-const SheetDescription = React.forwardRef<
-  React.ElementRef<typeof SheetPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <SheetPrimitive.Description
-    ref={ref}
-    className={cn("text-sm text-secondary", className)}
-    {...props}
-  />
-))
-SheetDescription.displayName = SheetPrimitive.Description.displayName
+const SheetFooter = ModalFooter
 
-export {
-  Sheet,
-  SheetPortal,
-  SheetOverlay,
-  SheetTrigger,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
-  SheetDescription,
-}
+export { Sheet, SheetContent, SheetHeader, SheetBody, SheetFooter }
