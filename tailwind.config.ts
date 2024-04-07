@@ -1,4 +1,4 @@
-import { nextui } from "@nextui-org/react"
+import { nextui } from "@nextui-org/theme"
 import svgToDataUri from "mini-svg-data-uri"
 import type { Config } from "tailwindcss"
 import { fontFamily } from "tailwindcss/defaultTheme"

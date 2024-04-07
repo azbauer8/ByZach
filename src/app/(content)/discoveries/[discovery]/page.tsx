@@ -1,4 +1,4 @@
-import { Badge } from "@nextui-org/react"
+import { Chip } from "@nextui-org/chip"
 import { FaLink } from "react-icons/fa6"
 
 import { getDiscoveries, getDiscovery } from "@/lib/getContent"
@@ -26,13 +26,13 @@ export default async function Discovery({
   return (
     <ContentWrapper title={discovery.title} className="content-wrapper">
       <div className="space-y-2 pb-8 pt-12">
-        <Badge variant="flat">{discovery.category}</Badge>
+        <Chip variant="faded">{discovery.category}</Chip>
         <Typography variant="h2">{discovery.title}</Typography>
         <a
           href={discovery.link ?? ""}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 decoration-secondary underline-offset-2 hover:underline active:underline"
+          className="flex items-center gap-1.5 decoration-content1 underline-offset-2 hover:underline active:underline"
         >
           <FaLink width={16} height={16} />
           <Typography affects="muted">{linkTitle}</Typography>

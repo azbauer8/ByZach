@@ -1,6 +1,7 @@
 import { siteLinks } from "@/config"
+import { Link } from "@nextui-org/link"
 
-import { Anchor, Typography } from "@/components/ui/typography"
+import { Typography } from "@/components/ui/typography"
 
 export default function About() {
   return (
@@ -12,9 +13,13 @@ export default function About() {
       <Typography variant="p" affects="muted">
         {`Hey there! I'm Zach. I'm currently living in Philly
        and working at `}
-        <Anchor href={siteLinks.sig}>SIG</Anchor>
+        <Link href={siteLinks.sig} underline="hover">
+          SIG
+        </Link>
         {` developing internal monitoring and operations tools for support teams. In 2021, I graduated from `}
-        <Anchor href={siteLinks.pitt}>Pitt</Anchor>
+        <Link href={siteLinks.pitt} underline="hover">
+          Pitt
+        </Link>
         {` with a bachelor's in information science.`}
       </Typography>
     </>

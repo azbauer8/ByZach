@@ -18,8 +18,8 @@ export default function NavLink({
       className={cn(
         "px-3.5 py-3 hover:cursor-pointer lg:rounded-lg lg:border-none lg:py-2",
         pathname === link
-          ? "bg-tint hover:bg-tint active:bg-tint"
-          : "hover:bg-tertiary active:bg-tertiary"
+          ? "bg-focus hover:bg-focus active:bg-focus"
+          : "hover:bg-content2 active:bg-content2"
       )}
     >
       {children}

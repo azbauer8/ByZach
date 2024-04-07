@@ -1,4 +1,4 @@
-import { Badge } from "@nextui-org/react"
+import { Chip } from "@nextui-org/chip"
 import { FaLink } from "react-icons/fa6"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 
@@ -22,13 +22,13 @@ export default async function Use({ params }: { params: { use: string } }) {
   return (
     <ContentWrapper title={use.title} className="content-wrapper">
       <div className="space-y-2 pb-8 pt-12">
-        <Badge variant="flat">{use.category}</Badge>
+        <Chip variant="faded">{use.category}</Chip>
         <Typography variant="h2">{use.title}</Typography>
         <a
           href={use.link ?? ""}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 decoration-secondary underline-offset-2 hover:underline active:underline"
+          className="flex items-center gap-1.5 decoration-content1 underline-offset-2 hover:underline active:underline"
         >
           <FaLink width={16} height={16} />
           <Typography affects="muted">{linkTitle}</Typography>

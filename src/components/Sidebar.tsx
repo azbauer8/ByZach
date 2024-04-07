@@ -1,15 +1,16 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { siteConfig, siteLinks } from "@/config"
+import { Button } from "@nextui-org/button"
 import {
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-} from "@nextui-org/react"
+} from "@nextui-org/dropdown"
 import { atom, useAtom } from "jotai"
 import { useTheme } from "next-themes"
 import {
@@ -66,7 +67,13 @@ const sidebarAtom = atom(false)
 export function SidebarToggle() {
   const [, setSidebarOpen] = useAtom(sidebarAtom)
   return (
-    <Button className="lg:hidden" onPress={() => setSidebarOpen(true)}>
+    <Button
+      className="lg:hidden"
+      isIconOnly
+      size="sm"
+      variant="light"
+      onPress={() => setSidebarOpen(true)}
+    >
       <PiSidebarSimple size={22} />
     </Button>
   )
@@ -75,7 +82,7 @@ export function SidebarToggle() {
 export function Sidebar() {
   return (
     <>
-      <nav className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col gap-5 border-r-[0.5px] border-separator bg-secondary p-3 transition duration-200 ease-in-out lg:sticky lg:translate-x-0">
+      <nav className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col gap-5 border-r-[0.5px] bg-content1 p-3 transition duration-200 ease-in-out lg:sticky lg:translate-x-0">
         <div className="flex items-center justify-between pl-3">
           <Typography affects="small">{siteConfig.urlTitle}</Typography>
           <ThemeToggle />
@@ -90,20 +97,17 @@ export function Sidebar() {
 
 export function MobileSidebar() {
   const [sidebarOpen, setSidebarOpen] = useAtom(sidebarAtom)
-  console.log("🚀 ~ MobileSidebar ~ sidebarOpen:", sidebarOpen)
   return (
     <Sheet
       isOpen={sidebarOpen}
       onOpenChange={setSidebarOpen}
-      backdrop="blur"
+      backdrop="opaque"
       side="left"
     >
-      <SheetContent className="flex w-80 flex-col border-r-[0.5px] border-separator bg-secondary sm:w-72 md:w-64 lg:w-56">
-        <SheetHeader className="pb-0">
-          <div className="flex w-full items-center justify-between">
-            {siteConfig.urlTitle}
-            <ThemeToggle />
-          </div>
+      <SheetContent className="flex w-80 flex-col gap-2 border-r-[0.5px] bg-content1 sm:w-72 md:w-64 lg:w-56">
+        <SheetHeader>
+          {siteConfig.title}
+          <ThemeToggle />
         </SheetHeader>
         <SidebarLinks mobile />
         <SourceCode />
@@ -118,26 +122,37 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
 
   return (
     <div className={cn("flex-1 space-y-1 overflow-y-auto")}>
-      {sidebarLinks.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className={cn(
-            "flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-muted hover:bg-tertiary active:bg-tertiary",
-            {
-              "bg-tint hover:bg-tint active:bg-tint":
-                link.href === "/"
-                  ? pathname === link.href
-                  : pathname?.startsWith(link.href),
-            }
-          )}
-          onClick={() => mobile && setSidebarOpen(false)}
-          prefetch
-        >
-          {link.icon}
-          <span className="flex-1 text-foreground">{link.name}</span>
-        </Link>
-      ))}
+      {sidebarLinks.map((link) => {
+        const active =
+          link.href === "/"
+            ? pathname === link.href
+            : pathname?.startsWith(link.href)
+        return (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={cn(
+              "flex items-center gap-3 rounded-md px-2 py-1.5 text-sm text-foreground hover:bg-content2 active:bg-content2",
+
+              active &&
+                "bg-focus text-background hover:bg-focus active:bg-focus dark:text-foreground"
+            )}
+            onClick={() => mobile && setSidebarOpen(false)}
+            prefetch
+          >
+            <span
+              className={cn(
+                active
+                  ? "text-default-300 dark:text-default-600"
+                  : "text-default-500"
+              )}
+            >
+              {link.icon}
+            </span>
+            <span className="flex-1">{link.name}</span>
+          </Link>
+        )
+      })}
       <Typography affects="small" className="px-2 pb-2 pt-5">
         Socials
       </Typography>
@@ -147,14 +162,14 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-muted hover:bg-tertiary active:bg-tertiary"
+          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm  text-default-500 hover:bg-content2 active:bg-content2"
         >
           {link.icon}
           <span className="flex gap-0.5 text-foreground">
             {link.name}
             <LuArrowUpRight
               size={12}
-              className="text-muted opacity-0 group-hover:opacity-100 group-active:opacity-100"
+              className="text-default-500 opacity-0 group-hover:opacity-100 group-active:opacity-100"
             />
           </span>
         </a>
@@ -168,14 +183,14 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-muted hover:bg-tertiary active:bg-tertiary"
+          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm text-default-500 hover:bg-content2 active:bg-content2"
         >
           {link.icon}
           <span className="flex gap-0.5 text-foreground">
             {link.name}
             <LuArrowUpRight
               size={12}
-              className="text-muted opacity-0 group-hover:opacity-100 group-active:opacity-100"
+              className="text-default-500 opacity-0 group-hover:opacity-100 group-active:opacity-100"
             />
           </span>
         </a>
@@ -188,11 +203,12 @@ function SourceCode() {
   return (
     <Button
       as="a"
-      className="gap-1.5 hover:bg-tertiary active:bg-tertiary"
       href={siteLinks.source}
       target="_blank"
+      startContent={<FaGithub className="size-4" />}
+      variant="faded"
+      color="primary"
     >
-      <FaGithub className="size-4" />
       Source
     </Button>
   )
@@ -204,6 +220,9 @@ export function GoBack() {
   return (
     <Button
       className="lg:hidden"
+      isIconOnly
+      size="sm"
+      variant="light"
       onClick={() =>
         path ? router.push(path.substring(0, path.indexOf("/", 1))) : null
       }
@@ -215,10 +234,11 @@ export function GoBack() {
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
+  const [selectedKeys, setSelectedKeys] = useState(new Set([theme ?? "system"]))
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Button>
+        <Button isIconOnly variant="light">
           {theme === "light" ? (
             <PiSunDuotone size={16} />
           ) : theme === "dark" ? (
@@ -230,26 +250,31 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownTrigger>
-      <DropdownMenu>
+      <DropdownMenu
+        variant="faded"
+        selectionMode="single"
+        selectedKeys={selectedKeys}
+        onSelectionChange={(keys) => setSelectedKeys(keys as Set<string>)}
+      >
         <DropdownItem
+          key="light"
           onClick={() => setTheme("light")}
-          className="gap-1.5 text-xs"
+          startContent={<PiSunDuotone size={16} />}
         >
-          <PiSunDuotone size={16} />
           Light
         </DropdownItem>
         <DropdownItem
+          key="dark"
           onClick={() => setTheme("dark")}
-          className="gap-1.5 text-xs"
+          startContent={<PiMoonStarsDuotone size={16} />}
         >
-          <PiMoonStarsDuotone size={16} />
           Dark
         </DropdownItem>
         <DropdownItem
+          key="system"
           onClick={() => setTheme("system")}
-          className="gap-1.5 text-xs"
+          startContent={<PiMonitorDuotone size={16} />}
         >
-          <PiMonitorDuotone size={16} />
           System
         </DropdownItem>
       </DropdownMenu>

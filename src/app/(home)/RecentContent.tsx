@@ -21,7 +21,7 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
               prefetch
             >
-              <Typography className="group-hover:text-link group-active:text-link dark:group-hover:text-link dark:group-active:text-link break-words font-medium underline-offset-2 group-hover:underline group-active:underline">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-focus group-hover:underline group-active:text-focus group-active:underline">
                 {project.title}
               </Typography>
               <Typography
@@ -44,7 +44,7 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
               prefetch
             >
-              <Typography className="group-hover:text-link group-active:text-link dark:group-hover:text-link dark:group-active:text-link break-words font-medium underline-offset-2 group-hover:underline group-active:underline">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-focus group-hover:underline group-active:text-focus group-active:underline">
                 {thought.title}
               </Typography>
               <Typography
@@ -68,7 +68,7 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
               prefetch
             >
-              <Typography className="group-hover:text-link group-active:text-link dark:group-hover:text-link dark:group-active:text-link break-words font-medium underline-offset-2 group-hover:underline group-active:underline">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-focus group-hover:underline group-active:text-focus group-active:underline">
                 {discovery.title}
               </Typography>
               <Typography

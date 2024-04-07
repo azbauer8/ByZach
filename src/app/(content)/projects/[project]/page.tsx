@@ -1,5 +1,6 @@
 import Image from "next/image"
-import { Badge, Button } from "@nextui-org/react"
+import { Button } from "@nextui-org/button"
+import { Chip } from "@nextui-org/chip"
 import { FaArrowUpRightFromSquare, FaGithub } from "react-icons/fa6"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 
@@ -36,7 +37,7 @@ export default async function Project({
           />
           <div>
             <Typography variant="h2">{project.title}</Typography>
-            <Badge variant="flat">{project.category}</Badge>
+            <Chip variant="faded">{project.category}</Chip>
           </div>
         </div>
         <div className="flex items-center gap-1">
@@ -46,6 +47,8 @@ export default async function Project({
               href={project.source}
               target="_blank"
               rel="noopener noreferrer"
+              isIconOnly
+              variant="light"
             >
               <FaGithub className="size-6" />
             </Button>
@@ -56,6 +59,8 @@ export default async function Project({
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
+              isIconOnly
+              variant="light"
             >
               <FaArrowUpRightFromSquare className="size-5" />
             </Button>

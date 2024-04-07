@@ -4,7 +4,6 @@ import "@/styles/global.css"
 
 import { Metadata } from "next"
 
-import { cn } from "@/lib/utils"
 import { Providers } from "@/components/Providers"
 import { Sidebar } from "@/components/Sidebar"
 
@@ -27,12 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body
-        className={cn(
-          "bg-background font-sans text-foreground antialiased",
-          siteConfig.font.variable
-        )}
-      >
+      <body className={siteConfig.font.variable}>
         <Providers>
           <Sidebar />
           <div className="flex-1">{children}</div>

@@ -28,7 +28,7 @@ export function ContentWrapper({
 
 function ContentHeader({ title }: { title: string }) {
   return (
-    <StickyHeader className="bg-secondary/10">
+    <StickyHeader className="bg-content1/10">
       <div className="flex items-center space-x-2">
         <GoBack />
         <Typography affects="small">{title}</Typography>
@@ -45,8 +45,8 @@ export function ContentListColumn({
   list: JSX.Element
 }) {
   return (
-    <div className="absolute h-dvh -translate-x-full overflow-y-auto border-r-[0.5px] bg-secondary  transition duration-200 ease-in-out lg:relative lg:w-80 lg:translate-x-0 xl:w-96">
-      <StickyHeader className=" bg-secondary/10">
+    <div className="absolute h-dvh -translate-x-full overflow-y-auto border-r-[0.5px] bg-content1  transition duration-200 ease-in-out lg:relative lg:w-80 lg:translate-x-0 xl:w-96">
+      <StickyHeader className=" bg-content1/10">
         <div className="flex items-center space-x-2">
           <div className="flex items-center space-x-0.5">
             <SidebarToggle />

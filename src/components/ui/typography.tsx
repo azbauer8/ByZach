@@ -1,12 +1,10 @@
 import React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-import { twc } from "react-twc"
 
 import { cn } from "@/lib/utils"
 
-const Anchor = twc.a`hover:underline active:underline text-link decoration-link hover:cursor-pointer underline-offset-2`
-
-export const typographyVariants = cva("", {
+// eslint-disable-next-line tailwindcss/no-custom-classname
+const typographyVariants = cva("", {
   variants: {
     variant: {
       h1: "text-4xl font-extrabold tracking-tight lg:text-5xl",
@@ -17,15 +15,15 @@ export const typographyVariants = cva("", {
       p: "leading-7",
     },
     affects: {
-      lead: "text-lg text-muted",
+      lead: "text-muted text-lg",
       large: "text-lg font-semibold",
       small: "text-sm font-bold leading-none",
-      muted: "text-muted",
+      muted: "text-default-500/95",
     },
   },
 })
 
-export interface TypographyProps
+interface TypographyProps
   extends React.HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof typographyVariants> {}
 
@@ -41,6 +39,6 @@ const Typography = React.forwardRef<HTMLHeadingElement, TypographyProps>(
     )
   }
 )
-Typography.displayName = "H1"
+Typography.displayName = "Typography"
 
-export { Typography, Anchor }
+export { Typography, typographyVariants }
