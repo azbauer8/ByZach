@@ -12,7 +12,7 @@ export default async function ProjectsList() {
       <NavLink link={`/projects/${project.slug}`}>
         <div className="flex flex-col gap-1">
           <h1 className="font-medium">{project.title}</h1>
-          <h3 className="text-sm text-muted-foreground">{project.category}</h3>
+          <h3 className="text-sm text-foreground/60">{project.category}</h3>
         </div>
       </NavLink>
     </Link>

@@ -4,7 +4,7 @@ import { twc } from "react-twc"
 
 import { cn } from "@/lib/utils"
 
-const Anchor = twc.a`hover:underline active:underline text-[#3b82f6] decoration-[#3b82f6] hover:cursor-pointer underline-offset-2`
+const Anchor = twc.a`hover:underline active:underline text-link decoration-link hover:cursor-pointer underline-offset-2`
 
 export const typographyVariants = cva("", {
   variants: {
@@ -17,10 +17,10 @@ export const typographyVariants = cva("", {
       p: "leading-7",
     },
     affects: {
-      lead: "text-lg text-muted-foreground",
+      lead: "text-lg text-muted",
       large: "text-lg font-semibold",
       small: "text-sm font-bold leading-none",
-      muted: "text-muted-foreground",
+      muted: "text-muted",
     },
   },
 })

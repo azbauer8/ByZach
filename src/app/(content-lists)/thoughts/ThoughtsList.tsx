@@ -15,7 +15,7 @@ export default async function ThoughtsList() {
           <NavLink link={`/thoughts/${thought.slug}`}>
             <div className="flex flex-col gap-1">
               <h1 className="line-clamp-3 font-medium">{thought.title}</h1>
-              <h3 className="line-clamp-1 text-sm text-muted-foreground">
+              <h3 className="line-clamp-1 text-sm text-foreground/60">
                 {format(new Date(thought.createdAt ?? ""), "PPP")}
               </h3>
             </div>

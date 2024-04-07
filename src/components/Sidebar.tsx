@@ -24,7 +24,7 @@ import {
 } from "react-icons/pi"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import Button from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -74,8 +74,8 @@ export function SidebarToggle() {
   const [sidebarOpen, setSidebarOpen] = useAtom(sidebarAtom)
   return (
     <Button
-      variant="ghost"
-      size="icon"
+      $variant="ghost"
+      $size="icon"
       className="size-fit p-2 lg:hidden"
       onClick={() => setSidebarOpen(!sidebarOpen)}
     >
@@ -87,7 +87,7 @@ export function SidebarToggle() {
 export function Sidebar() {
   return (
     <>
-      <nav className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col gap-5 border-r border-border bg-accent p-3 transition duration-200 ease-in-out lg:sticky lg:translate-x-0">
+      <nav className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 -translate-x-full flex-col gap-5 border-r-[0.5px] border-separator bg-secondary p-3 transition duration-200 ease-in-out lg:sticky lg:translate-x-0">
         <div className="flex items-center justify-between pl-3">
           <Typography affects="small">{siteConfig.urlTitle}</Typography>
           <ThemeToggle />
@@ -106,7 +106,7 @@ export function MobileSidebar() {
     <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
       <SheetContent
         side="left"
-        className="flex w-80 flex-col border-border bg-accent sm:w-72 md:w-64 lg:w-56"
+        className="flex w-80 flex-col border-r-[0.5px] border-separator bg-secondary sm:w-72 md:w-64 lg:w-56"
       >
         <SheetHeader className="pb-0">
           <div className="flex w-full items-center justify-between">
@@ -136,9 +136,9 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
             key={link.href}
             href={link.href}
             className={cn(
-              "flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused active:bg-focused",
+              "text-muted flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium hover:bg-tertiary active:bg-tertiary",
               {
-                "bg-muted hover:bg-muted active:bg-muted":
+                "bg-tint hover:bg-tint active:bg-tint":
                   link.href === "/"
                     ? pathname === link.href
                     : pathname?.startsWith(link.href),
@@ -147,7 +147,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
             prefetch
           >
             {link.icon}
-            <span className="flex-1">{link.name}</span>
+            <span className="flex-1 text-foreground">{link.name}</span>
           </Link>
         </SheetCloseWrapper>
       ))}
@@ -160,14 +160,14 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused active:bg-focused"
+          className="text-muted group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium hover:bg-tertiary active:bg-tertiary"
         >
           {link.icon}
-          <span className="flex gap-0.5">
+          <span className="flex gap-0.5 text-foreground">
             {link.name}
             <LuArrowUpRight
               size={12}
-              className="opacity-0 group-hover:opacity-100 group-active:opacity-100"
+              className="text-muted opacity-0 group-hover:opacity-100 group-active:opacity-100"
             />
           </span>
         </a>
@@ -181,14 +181,14 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-focused active:bg-focused"
+          className="text-muted group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm font-medium hover:bg-tertiary active:bg-tertiary"
         >
           {link.icon}
-          <span className="flex gap-0.5">
+          <span className="flex gap-0.5 text-foreground">
             {link.name}
             <LuArrowUpRight
               size={12}
-              className="opacity-0 group-hover:opacity-100 group-active:opacity-100"
+              className="text-muted opacity-0 group-hover:opacity-100 group-active:opacity-100"
             />
           </span>
         </a>
@@ -201,8 +201,8 @@ function SourceCode() {
   return (
     <Button
       asChild
-      variant="outline"
-      className="gap-1.5 hover:bg-focused hover:text-foreground active:bg-focused active:text-foreground"
+      $variant="outline"
+      className="gap-1.5 hover:bg-tertiary active:bg-tertiary"
     >
       <a href={siteLinks.source} target="_blank">
         <FaGithub className="size-4" />
@@ -217,8 +217,8 @@ export function GoBack() {
   const path = usePathname()
   return (
     <Button
-      variant="ghost"
-      size="icon"
+      $variant="ghost"
+      $size="icon"
       className="size-fit p-2 lg:hidden"
       onClick={() =>
         path ? router.push(path.substring(0, path.indexOf("/", 1))) : null
@@ -234,11 +234,7 @@ export function ThemeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="size-fit p-1.5 hover:bg-focused active:bg-focused"
-        >
+        <Button $variant="ghost" $size="icon" className="size-fit p-1.5">
           {theme === "light" ? (
             <PiSunDuotone size={16} />
           ) : theme === "dark" ? (

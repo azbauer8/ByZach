@@ -21,7 +21,7 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
               prefetch
             >
-              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline group-active:text-blue-600 group-active:underline dark:group-hover:text-blue-500 dark:group-active:text-blue-500">
+              <Typography className="group-hover:text-link group-active:text-link dark:group-hover:text-link dark:group-active:text-link break-words font-medium underline-offset-2 group-hover:underline group-active:underline">
                 {project.title}
               </Typography>
               <Typography
@@ -44,7 +44,7 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
               prefetch
             >
-              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline group-active:text-blue-600 group-active:underline dark:group-hover:text-blue-500 dark:group-active:text-blue-500">
+              <Typography className="group-hover:text-link group-active:text-link dark:group-hover:text-link dark:group-active:text-link break-words font-medium underline-offset-2 group-hover:underline group-active:underline">
                 {thought.title}
               </Typography>
               <Typography
@@ -68,7 +68,7 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
               prefetch
             >
-              <Typography className="break-words font-medium underline-offset-2 group-hover:text-blue-600 group-hover:underline group-active:text-blue-600 group-active:underline dark:group-hover:text-blue-500 dark:group-active:text-blue-500">
+              <Typography className="group-hover:text-link group-active:text-link dark:group-hover:text-link dark:group-active:text-link break-words font-medium underline-offset-2 group-hover:underline group-active:underline">
                 {discovery.title}
               </Typography>
               <Typography

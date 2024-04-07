@@ -7,7 +7,7 @@ export function ListColumnHeader({ title }: { title: string }) {
   return (
     <StickyHeader
       className={cn(
-        title && title === "Home" ? "bg-background/10" : "bg-accent/10"
+        title && title === "Home" ? "bg-background/10" : "bg-secondary/10"
       )}
     >
       <div className="flex items-center space-x-2">

@@ -3,77 +3,57 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 0 0% 3.9%;
-      --muted: 0 0% 85%;
-      --muted-foreground: 0 0% 45.1%;
-      --popover: 0 0% 100%;
-      --popover-foreground: 0 0% 3.9%;
-      --card: 0 0% 100%;
-      --card-foreground: 0 0% 3.9%;
-      --border: 0 0% 89.8%;
-      --input: 0 0% 89.8%;
-      --primary: 0 0% 9%;
-      --primary-foreground: 0 0% 98%;
-      --secondary: 0 0% 96.1%;
-      --secondary-foreground: 0 0% 9%;
-      --accent: 0 0% 96.1%;
-      --accent-foreground: 0 0% 9%;
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 0 0% 98%;
-      --ring: 0 0% 3.9%;      
-      --focused: 0, 0%, 92%;
-      --radius: 0.5rem;
-    }
-  
-    .dark {
-      --background: 0 0% 3.9%;
-      --foreground: 0 0% 98%;
-      --muted: 0, 0%, 25%;
-      --muted-foreground: 0 0% 63.9%;
-      --popover: 0 0% 3.9%;
-      --popover-foreground: 0 0% 98%;
-      --card: 0 0% 3.9%;
-      --card-foreground: 0 0% 98%;
-      --border:0, 0%, 15%;
-      --input: 0 0% 14.9%;
-      --primary: 0 0% 98%;
-      --primary-foreground: 0 0% 9%;
-      --secondary: 0 0% 14.9%;
-      --secondary-foreground: 0 0% 98%;
-      --accent: 0, 0%, 9%;
-      --accent-foreground: 0 0% 98%;
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 0 0% 98%;
-      --ring: 0 0% 83.1%;
-      --focused: 0, 0%, 15%;
+  :root {
+    --radius: 0.5rem;
 
-    }
+    --tint: 11.041, 132.01, 255;
+    --backgorund: 254 255 255;
+    --foreground: 0 0 0;
+    --link: 11.041, 132.01, 255;
+    --selection: 0 122 254;
+    --separator: 197 198 199;
+    --placeholder: 197 197 198;
+    --fill: 229 228 230;
+    --muted: 142, 141, 146;
+    --secondary: 242, 241, 246;
+    --tertiary: 232, 231, 236;
+
+    --blue: 0 122 254;
+    --green: 50 199 90;
+    --red: 253 60 46;
+    --yellow: 254 203 0;
+    --orange: 255 148 0;
+    --purple: 176 79 222;
   }
+
+  .dark {
+    --muted: 142.22, 140.96, 146.46;
+    --secondary: 26.77, 28.041, 29.115;
+    --tertiary: 42.772, 44.042, 45.116;
+    --tint: 0, 122.92, 255;
+    --backgorund: 0 0 0;
+    --foreground: 255 255 255;
+    --separator: 68 67 71;
+    --placeholder: 100 101 104;
+    --link: 0, 122.92, 255;
+    --fill: 71 70 74;
+
+    --blue: 3 133 255;
+    --green: 46 209 88;
+    --red: 255 68 56;
+    --yellow: 254 215 9;
+    --orange: 255 160 10;
+    --purple: 192 90 243;
+  }
+}
 @layer base {
   * {
-    @apply border-border;
+    @apply border-separator;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
-.grid-bg {
-    height: full;
-    background-image:
-        linear-gradient(to right, rgba(215, 215, 215, 0.25) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(215, 215, 215, 0.25) 1px, transparent 1px);
-    background-size: 1.25rem 1.25rem;
-    background-position: center center;
-}
-
-.dark .grid-bg {
-    background-image:
-        linear-gradient(to right, rgba(45, 45, 45, 0.25) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(45, 45, 45, 0.25) 1px, transparent 1px);
-}
-
 
 /* https://www.joshwcomeau.com/css/full-bleed/ */
 .content-wrapper {

@@ -4,7 +4,7 @@ import { TinaMarkdown } from "tinacms/dist/rich-text"
 
 import { getProject, getProjects } from "@/lib/getContent"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import Button from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
@@ -42,7 +42,7 @@ export default async function Project({
         </div>
         <div className="flex items-center gap-1">
           {project.source && (
-            <Button asChild variant="ghost" size="icon">
+            <Button asChild $variant="ghost" $size="icon">
               <a
                 href={project.source}
                 target="_blank"
@@ -53,7 +53,7 @@ export default async function Project({
             </Button>
           )}
           {project.link && (
-            <Button asChild variant="ghost" size="icon">
+            <Button asChild $variant="ghost" $size="icon">
               <a href={project.link} target="_blank" rel="noopener noreferrer">
                 <FaArrowUpRightFromSquare className="size-5" />
               </a>

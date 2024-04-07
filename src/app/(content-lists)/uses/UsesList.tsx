@@ -13,7 +13,7 @@ export default async function UsesList() {
         <NavLink link={`/uses/${use.slug}`}>
           <div className="flex flex-col gap-1">
             <h1 className="font-medium">{use.title}</h1>
-            <h3 className="text-sm text-muted-foreground">{use.category}</h3>
+            <h3 className="text-sm text-foreground/60">{use.category}</h3>
           </div>
         </NavLink>
       </Link>

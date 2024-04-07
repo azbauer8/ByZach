@@ -17,9 +17,7 @@ export default async function DiscoveriesList() {
         <NavLink link={`/discoveries/${discovery.slug}`}>
           <div className="flex flex-col gap-1">
             <h1 className="font-medium">{discovery.title}</h1>
-            <h3 className="text-sm text-muted-foreground">
-              {discovery.category}
-            </h3>
+            <h3 className="text-sm text-foreground/60">{discovery.category}</h3>
           </div>
         </NavLink>
       </Link>
