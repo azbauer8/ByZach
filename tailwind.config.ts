@@ -30,7 +30,7 @@ const config = {
     },
   },
   plugins: [
-    nextui(),
+    nextui({}),
     require("@tailwindcss/typography"),
     function ({ matchUtilities, theme }: any) {
       matchUtilities(

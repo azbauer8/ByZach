@@ -49,6 +49,7 @@ export default async function Project({
               rel="noopener noreferrer"
               isIconOnly
               variant="light"
+              disableRipple
             >
               <FaGithub className="size-6" />
             </Button>
@@ -61,6 +62,7 @@ export default async function Project({
               rel="noopener noreferrer"
               isIconOnly
               variant="light"
+              disableRipple
             >
               <FaArrowUpRightFromSquare className="size-5" />
             </Button>

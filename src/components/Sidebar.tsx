@@ -11,6 +11,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/dropdown"
+import { Listbox, ListboxItem } from "@nextui-org/listbox"
 import { atom, useAtom } from "jotai"
 import { useTheme } from "next-themes"
 import {
@@ -73,6 +74,7 @@ export function SidebarToggle() {
       size="sm"
       variant="light"
       onPress={() => setSidebarOpen(true)}
+      disableRipple
     >
       <PiSidebarSimple size={22} />
     </Button>
@@ -119,82 +121,94 @@ export function MobileSidebar() {
 function SidebarLinks({ mobile }: { mobile?: boolean }) {
   const pathname = usePathname()
   const [, setSidebarOpen] = useAtom(sidebarAtom)
-
   return (
     <div className={cn("flex-1 space-y-1 overflow-y-auto")}>
-      {sidebarLinks.map((link) => {
-        const active =
-          link.href === "/"
-            ? pathname === link.href
-            : pathname?.startsWith(link.href)
-        return (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={cn(
-              "flex items-center gap-3 rounded-md px-2 py-1.5 text-sm text-foreground hover:bg-content2 active:bg-content2",
-
-              active &&
-                "bg-focus text-background hover:bg-focus active:bg-focus dark:text-foreground"
-            )}
-            onClick={() => mobile && setSidebarOpen(false)}
-            prefetch
-          >
-            <span
+      <Listbox
+        aria-label="Navigation Links"
+        variant="faded"
+        color="primary"
+        className="p-0"
+      >
+        {sidebarLinks.map((link) => {
+          const active =
+            link.href === "/"
+              ? pathname === link.href
+              : pathname?.startsWith(link.href)
+          return (
+            <ListboxItem
+              key={link.href}
+              href={link.href}
+              onPress={() => setSidebarOpen(false)}
               className={cn(
-                active
-                  ? "text-default-300 dark:text-default-600"
-                  : "text-default-500"
+                active && "border-default bg-default-100 text-primary"
               )}
+              startContent={
+                <div
+                  className={cn(active ? "text-primary" : "text-default-500")}
+                >
+                  {link.icon}
+                </div>
+              }
             >
-              {link.icon}
-            </span>
-            <span className="flex-1">{link.name}</span>
-          </Link>
-        )
-      })}
+              {link.name}
+            </ListboxItem>
+          )
+        })}
+      </Listbox>
       <Typography affects="small" className="px-2 pb-2 pt-5">
         Socials
       </Typography>
-      {siteLinks.social.map((link) => (
-        <a
-          key={link.href}
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm  text-default-500 hover:bg-content2 active:bg-content2"
-        >
-          {link.icon}
-          <span className="flex gap-0.5 text-foreground">
-            {link.name}
-            <LuArrowUpRight
-              size={12}
-              className="text-default-500 opacity-0 group-hover:opacity-100 group-active:opacity-100"
-            />
-          </span>
-        </a>
-      ))}
+      <Listbox
+        aria-label="Navigation Links"
+        variant="faded"
+        color="primary"
+        className="p-0"
+      >
+        {siteLinks.social.map((link) => {
+          return (
+            <ListboxItem
+              key={link.href}
+              href={link.href}
+              startContent={<div className="text-default-500">{link.icon}</div>}
+            >
+              <span className="flex gap-0.5">
+                {link.name}
+                <LuArrowUpRight
+                  size={12}
+                  className="opacity-0 group-hover:opacity-100 group-active:opacity-100"
+                />
+              </span>
+            </ListboxItem>
+          )
+        })}
+      </Listbox>
       <Typography affects="small" className="px-2 pb-2 pt-5">
         Work
       </Typography>
-      {siteLinks.work.map((link) => (
-        <a
-          key={link.href}
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-3 rounded-md px-2 py-1.5 text-sm text-default-500 hover:bg-content2 active:bg-content2"
-        >
-          {link.icon}
-          <span className="flex gap-0.5 text-foreground">
-            {link.name}
-            <LuArrowUpRight
-              size={12}
-              className="text-default-500 opacity-0 group-hover:opacity-100 group-active:opacity-100"
-            />
-          </span>
-        </a>
-      ))}
+      <Listbox
+        aria-label="Navigation Links"
+        variant="faded"
+        color="primary"
+        className="p-0"
+      >
+        {siteLinks.work.map((link) => {
+          return (
+            <ListboxItem
+              key={link.href}
+              href={link.href}
+              startContent={<div className="text-default-500">{link.icon}</div>}
+            >
+              <span className="flex gap-0.5">
+                {link.name}
+                <LuArrowUpRight
+                  size={12}
+                  className="opacity-0 group-hover:opacity-100 group-active:opacity-100"
+                />
+              </span>
+            </ListboxItem>
+          )
+        })}
+      </Listbox>
     </div>
   )
 }
@@ -208,6 +222,7 @@ function SourceCode() {
       startContent={<FaGithub className="size-4" />}
       variant="faded"
       color="primary"
+      disableRipple
     >
       Source
     </Button>
@@ -226,6 +241,7 @@ export function GoBack() {
       onClick={() =>
         path ? router.push(path.substring(0, path.indexOf("/", 1))) : null
       }
+      disableRipple
     >
       <FaChevronLeft />
     </Button>
@@ -238,13 +254,13 @@ export function ThemeToggle() {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Button isIconOnly variant="light">
+        <Button size="sm" isIconOnly variant="light" disableRipple>
           {theme === "light" ? (
-            <PiSunDuotone size={16} />
+            <PiSunDuotone size={18} />
           ) : theme === "dark" ? (
-            <PiMoonStarsDuotone size={16} />
+            <PiMoonStarsDuotone size={18} />
           ) : (
-            <PiMonitorDuotone size={16} />
+            <PiMonitorDuotone size={18} />
           )}
 
           <span className="sr-only">Toggle theme</span>
