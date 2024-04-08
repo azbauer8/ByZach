@@ -28,7 +28,6 @@
   grid-column: 1 / 4;
 }
 
-
 .prose > pre {
-  @apply break-words
+  @apply break-words;
 }

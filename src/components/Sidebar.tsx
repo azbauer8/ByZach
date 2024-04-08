@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { siteConfig, siteLinks } from "@/config"
 import { Button } from "@nextui-org/button"
@@ -20,6 +20,7 @@ import {
   FaHouse,
   FaLaptopCode,
   FaToolbox,
+  FaXmark,
 } from "react-icons/fa6"
 import { LuArrowUpRight } from "react-icons/lu"
 import {
@@ -106,12 +107,22 @@ export function MobileSidebar() {
       onOpenChange={setSidebarOpen}
       backdrop="opaque"
       side="left"
+      className="w-80 sm:w-72 md:w-64 lg:w-56"
     >
-      <SheetContent className="flex w-80 flex-col gap-2 border-r-[0.5px] bg-content1 sm:w-72 md:w-64 lg:w-56">
-        <SheetHeader>
-          {siteConfig.title}
+      <SheetContent>
+        <StickyHeader className="bg-content1/10">
+          <div className="flex items-center space-x-1.5">
+            <button
+              type="button"
+              onClick={() => setSidebarOpen(false)}
+              className="rounded-md p-1.5 hover:bg-content2"
+            >
+              <FaXmark size={14} />
+            </button>
+            <Typography affects="small">{siteConfig.title}</Typography>
+          </div>
           <ThemeToggle />
-        </SheetHeader>
+        </StickyHeader>
         <SidebarLinks />
       </SheetContent>
     </Sheet>
@@ -239,8 +250,24 @@ export function GoBack() {
 }
 
 export function ThemeToggle() {
+  const [mounted, setMounted] = useState(false)
+
   const { theme, setTheme } = useTheme()
   const [selectedKeys, setSelectedKeys] = useState(new Set([theme ?? "system"]))
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <Button size="sm" isIconOnly variant="light" isDisabled>
+        <PiMonitorDuotone size={18} />
+
+        <span className="sr-only">Toggle theme loading</span>
+      </Button>
+    )
+  }
   return (
     <Dropdown>
       <DropdownTrigger>
@@ -249,9 +276,9 @@ export function ThemeToggle() {
             <PiSunDuotone size={18} />
           ) : theme === "dark" ? (
             <PiMoonStarsDuotone size={18} />
-          ) : (
+          ) : theme === "system" ? (
             <PiMonitorDuotone size={18} />
-          )}
+          ) : null}
 
           <span className="sr-only">Toggle theme</span>
         </Button>
