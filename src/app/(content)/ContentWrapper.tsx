@@ -2,11 +2,7 @@ import React from "react"
 
 import { cn } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
-import { GoBack } from "@/components/Sidebar"
-
-import "@/styles/prose.css"
-
-import { SidebarToggle } from "@/components/Sidebar"
+import { GoBack, SidebarToggle } from "@/components/Sidebar"
 import StickyHeader from "@/components/StickyHeader"
 
 export function ContentWrapper({
