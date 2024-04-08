@@ -36,6 +36,7 @@ export default function NavList({
             className={cn(
               active && "border-default bg-default-100 text-primary"
             )}
+            textValue={link.title}
           >
             <div className="flex flex-col gap-1">
               <h1 className="font-medium">{link.title}</h1>

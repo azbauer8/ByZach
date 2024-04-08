@@ -3,6 +3,49 @@ title: 'Hello, World!'
 createdAt: 2024-04-04T04:00:00.000Z
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non lorem diam. Quisque vulputate nibh sodales eros pretium tincidunt. Aenean porttitor efficitur convallis. Nulla sagittis finibus convallis. Phasellus in fermentum quam, eu egestas tortor. Maecenas ac mollis leo. Integer maximus eu nisl vel sagittis.
+# Heading 1
 
-Suspendisse facilisis, mi ac scelerisque interdum, ligula ex imperdiet felis, a posuere eros justo nec sem. Nullam laoreet accumsan metus, sit amet tincidunt orci egestas nec. Pellentesque ut aliquet ante, at tristique nunc. Donec non massa nibh. Ut posuere lacus non aliquam laoreet. Fusce pharetra ligula a felis porttitor, at mollis ipsum maximus. Donec quam tortor, vehicula a magna sit amet, tincidunt dictum enim. In hac habitasse platea dictumst. Mauris sit amet ornare ligula, blandit consequat risus. Duis malesuada pellentesque lectus, non feugiat turpis eleifend a. Nullam tempus ante et diam pretium, ac faucibus ligula interdum.
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+Paragraph with bold and italics
+
+> Block quote wasd asd aldwausoidlkj12l3kj12lk3j 123
+
+list title:
+
+* bullet list
+* bullet list 2
+* list 3
+
+1. number 1
+2. number 2
+3. number 3
+
+inline code
+
+```javascript
+import Dots from "@/components/ui/bg-patterns"
+import Projects from "@/app/(content-lists)/projects/ProjectsList"
+import { ContentListColumn } from "@/app/(content)/ContentWrapper"
+
+export default function ContentLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <div className="flex size-full">
+      <ContentListColumn title="Projects" list={<Projects />} />
+      <Dots className="flex-1">{children}</Dots>
+    </div>
+  )
+}
+```

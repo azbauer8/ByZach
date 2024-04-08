@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { siteConfig, siteLinks } from "@/config"
 import { Button } from "@nextui-org/button"
@@ -18,7 +17,6 @@ import {
   FaBrain,
   FaChevronLeft,
   FaFire,
-  FaGithub,
   FaHouse,
   FaLaptopCode,
   FaToolbox,
@@ -124,7 +122,7 @@ function SidebarLinks() {
   const pathname = usePathname()
   const [, setSidebarOpen] = useAtom(sidebarAtom)
   return (
-    <div className={cn("flex-1 space-y-1 overflow-y-auto p-3 pt-0 pt-3")}>
+    <div className={cn("flex-1 space-y-1 overflow-y-auto p-3 pt-3")}>
       <Listbox
         aria-label="Navigation Links"
         variant="faded"
@@ -140,6 +138,7 @@ function SidebarLinks() {
             <ListboxItem
               key={link.href}
               href={link.href}
+              textValue={link.name}
               onPress={() => setSidebarOpen(false)}
               className={cn(
                 active && "border-default bg-default-100 text-primary"
@@ -171,6 +170,7 @@ function SidebarLinks() {
             <ListboxItem
               key={link.href}
               href={link.href}
+              textValue={link.name}
               startContent={<div className="text-default-500">{link.icon}</div>}
             >
               <span className="flex gap-0.5">
@@ -198,6 +198,7 @@ function SidebarLinks() {
             <ListboxItem
               key={link.href}
               href={link.href}
+              textValue={link.name}
               startContent={<div className="text-default-500">{link.icon}</div>}
             >
               <span className="flex gap-0.5">

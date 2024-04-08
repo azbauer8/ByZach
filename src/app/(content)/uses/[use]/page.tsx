@@ -24,7 +24,7 @@ export default async function Use({ params }: { params: { use: string } }) {
       title={use.title}
       className="content-wrapper flex flex-col gap-5"
     >
-      <div className="space-y-0.5">
+      <div className="space-y-0.5 pb-5">
         <Chip variant="faded" size="sm">
           {use.category}
         </Chip>
@@ -39,9 +39,12 @@ export default async function Use({ params }: { params: { use: string } }) {
             <Typography affects="muted">{formatUrl(use.link)}</Typography>
           </Link>
         ) : null}
+        <Typography variant="p" affects="muted">
+          {use.descShort}
+        </Typography>
       </div>
-      <main className="prose">
-        <TinaMarkdown content={use.description} />
+      <main className="prose prose-neutral dark:prose-invert">
+        <TinaMarkdown content={use.descLong} />
       </main>
     </ContentWrapper>
   )

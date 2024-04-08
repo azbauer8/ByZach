@@ -31,7 +31,7 @@ export default async function Thought({
           {format(new Date(thought.createdAt ?? ""), "PPP")}
         </Typography>
       </div>
-      <main className="prose">
+      <main className="prose prose-neutral dark:prose-invert">
         <TinaMarkdown content={thought.body} />
       </main>
     </ContentWrapper>

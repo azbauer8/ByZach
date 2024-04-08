@@ -27,7 +27,7 @@ export default async function Project({
   const project = await getProject(params.project)
   return (
     <ContentWrapper title={project.title} className="content-wrapper">
-      <div className="space-y-0.5">
+      <div className="space-y-0.5 pb-5">
         <Chip variant="faded" size="sm">
           {project.category}
         </Chip>
@@ -42,9 +42,12 @@ export default async function Project({
             <Typography affects="muted">{formatUrl(project.link)}</Typography>
           </Link>
         ) : null}
+        <Typography variant="p" affects="muted">
+          {project.descShort}
+        </Typography>
       </div>
-      <main className="prose">
-        <TinaMarkdown content={project.description} />
+      <main className="prose prose-neutral dark:prose-invert">
+        <TinaMarkdown content={project.descLong} />
       </main>
     </ContentWrapper>
   )

@@ -3,6 +3,7 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { NextUIProvider } from "@nextui-org/system"
+import { Provider as JotaiProvider } from "jotai"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 
 import TailwindIndicator from "@/components/ui/tailwind-indicator"
@@ -21,7 +22,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         enableSystem
         disableTransitionOnChange
       >
-        {children}
+        <JotaiProvider> {children}</JotaiProvider>
         <TailwindIndicator />
       </NextThemesProvider>
     </NextUIProvider>

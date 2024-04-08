@@ -91,9 +91,14 @@ export default defineConfig({
             name: "link",
           },
           {
+            type: "string",
+            label: "Short Description",
+            name: "descShort",
+          },
+          {
             type: "rich-text",
-            label: "Description",
-            name: "description",
+            label: "Long Description",
+            name: "descLong",
             isBody: true,
           },
         ],
@@ -192,9 +197,14 @@ export default defineConfig({
             name: "link",
           },
           {
+            type: "string",
+            label: "Short Description",
+            name: "descShort",
+          },
+          {
             type: "rich-text",
-            label: "Description",
-            name: "description",
+            label: "Long Description",
+            name: "descLong",
             isBody: true,
           },
         ],

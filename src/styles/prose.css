@@ -1,105 +1,5 @@
-.prose {
-  @apply text-neutral-700 dark:text-neutral-400 max-w-none mt-0 !important;
-}
-
-.prose :where(.prose > ul > li > :first-child):not(:where([class~="not-prose"], [class~="not-prose"] *)){
-  @apply my-0 !important;
-}
-.prose blockquote {
-  @apply font-normal border-l-2 border-neutral-200 dark:border-neutral-800 dark:text-neutral-400;
-}
-
-.prose figure {
-  @apply md:-mx-6;
-}
-
-.prose img {
-  @apply w-full rounded-md;
-}
-
-.prose a {
-  @apply font-normal text-blue-600 no-underline break-words hover:underline dark:text-blue-500;
-}
-
-.prose a code {
-  @apply text-blue-600 dark:text-blue-500;
-}
-
-.prose table {
-  @apply my-2 border border-neutral-200 rounded-md text-neutral-100 dark:border-neutral-800 dark:text-neutral-50;
-}
-
-.prose thead {
-  @apply text-neutral-800 dark:text-neutral-200;
-}
-
-.prose thead th {
-  @apply p-2;
-  padding-left: 1rem !important;
-}
-
-.prose thead th,
-.prose tbody th,
-.prose tbody td {
-  @apply p-2 border-r border-neutral-200 dark:border-neutral-800;
-  padding-left: 1rem !important;
-}
-
-.prose tbody tr {
-  @apply border-b border-neutral-200 dark:border-neutral-800;
-}
-
-.prose thead tr {
-  @apply border-b-2 border-neutral-200 dark:border-neutral-800;
-}
-
-.prose tbody tr:nth-child(2n) {
-  @apply bg-neutral-50 dark:bg-neutral-900;
-}
-
-.prose b,
-.prose strong {
-  @apply font-bold text-neutral-900 dark:text-neutral-300;
-}
-
-.prose hr {
-  @apply border-neutral-200 dark:border-neutral-800;
-}
-
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
-  @apply font-sans font-bold text-neutral-900 dark:text-neutral-100;
-  scroll-margin-top: 4rem;
-}
-
-.prose h1 a,
-.prose h2 a,
-.prose h3 a,
-.prose h4 a,
-.prose h5 a,
-.prose h6 a {
-  @apply font-sans font-bold no-underline text-neutral-100 dark:text-neutral-100;
-}
-
-.prose h5 {
-  @apply mt-12 -mb-3 text-xl;
-}
-
 .prose pre {
-  @apply px-8 py-6 space-y-4 text-sm text-neutral-800 bg-neutral-400 border-neutral-300 rounded-md bg-opacity-5 dark:border-neutral-800 dark:text-neutral-200;
-}
-
-
-.prose p + p {
-  margin-top: 0;
-}
-
-.prose code {
-  @apply rounded-md border-neutral-100 bg-neutral-100 px-1 py-0.5 text-neutral-800 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200;
+  @apply p-4 space-y-4 text-foreground bg-default border-1 border-divider rounded-md bg-opacity-15;
 }
 
 .prose code,
@@ -108,18 +8,6 @@
   word-break: break-word;
 }
 
-.prose pre > code {
-  @apply text-neutral-200 bg-neutral-800;
-}
-
-.prose pre {
-  @apply text-neutral-100 bg-neutral-800;
-}
-
-.prose sup {
-  @apply text-sm text-blue-500 dark:text-neutral-400;
-  vertical-align: super;
-  top: 0px;
-  position: relative;
-  scroll-margin-top: 4rem;
+.prose a {
+  @apply text-focus underline-offset-2 no-underline hover:underline
 }
