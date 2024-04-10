@@ -61,14 +61,14 @@ const Sheet = React.forwardRef<
           enter: {
             x: 0,
             transition: {
-              duration: 0.5,
+              duration: 0.2,
               ease: [0.32, 0.72, 0, 1],
             },
           },
           exit: {
             x: side === "left" ? `-${sheetSize}` : sheetSize,
             transition: {
-              duration: 0.3,
+              duration: 0.15,
               ease: "linear",
             },
           },
