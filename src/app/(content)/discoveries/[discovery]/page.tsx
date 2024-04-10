@@ -26,6 +26,7 @@ export default async function Discovery({
   return (
     <ContentWrapper
       title={discovery.title}
+      type="discoveries"
       className="content-wrapper space-y-0.5"
     >
       <Chip variant="faded" size="sm">

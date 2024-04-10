@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config"
 import { Button } from "@nextui-org/button"
 import {
@@ -12,7 +12,7 @@ import {
 } from "@nextui-org/dropdown"
 import { atom, useAtom } from "jotai"
 import { useTheme } from "next-themes"
-import { FaChevronLeft, FaXmark } from "react-icons/fa6"
+import { FaXmark } from "react-icons/fa6"
 import {
   PiMonitorDuotone,
   PiMoonStarsDuotone,
@@ -131,28 +131,6 @@ export function MobileSidebarLink({
       </div>
       {link.name}
     </div>
-  )
-}
-
-export function GoBack() {
-  const router = useRouter()
-  const path = usePathname()
-  return (
-    <>
-      <Button
-        className="md:hidden"
-        isIconOnly
-        size="sm"
-        variant="light"
-        onClick={() =>
-          path ? router.push(path.substring(0, path.indexOf("/", 1))) : null
-        }
-        disableRipple
-      >
-        <FaChevronLeft />
-      </Button>
-      <div className="hidden md:block" />
-    </>
   )
 }
 

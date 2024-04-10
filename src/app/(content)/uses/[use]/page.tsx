@@ -22,6 +22,7 @@ export default async function Use({ params }: { params: { use: string } }) {
   return (
     <ContentWrapper
       title={use.title}
+      type="uses"
       className="content-wrapper flex flex-col gap-5"
     >
       <div className="space-y-0.5 pb-5">

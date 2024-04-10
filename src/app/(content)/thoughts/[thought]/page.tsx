@@ -23,6 +23,7 @@ export default async function Thought({
   return (
     <ContentWrapper
       title={thought.title}
+      type="thoughts"
       className="content-wrapper flex flex-col gap-5"
     >
       <div className="space-y-1.5">

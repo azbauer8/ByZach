@@ -26,7 +26,11 @@ export default async function Project({
 }) {
   const project = await getProject(params.project)
   return (
-    <ContentWrapper title={project.title} className="content-wrapper">
+    <ContentWrapper
+      title={project.title}
+      type="projects"
+      className="content-wrapper"
+    >
       <div className="space-y-0.5 pb-5">
         <Chip variant="faded" size="sm">
           {project.category}

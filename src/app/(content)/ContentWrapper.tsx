@@ -5,30 +5,43 @@ import { Typography } from "@/components/ui/typography"
 
 import "@/styles/prose.css"
 
-import { GoBack, SidebarToggle } from "@/components/Sidebar.client"
+import Link from "next/link"
+import { FaChevronLeft } from "react-icons/fa6"
+
+import { SidebarToggle } from "@/components/Sidebar.client"
 import StickyHeader from "@/components/StickyHeader"
 
 export function ContentWrapper({
   title,
+  type,
   children,
   className,
 }: {
   title: string
+  type: string
   children: React.ReactNode
   className?: string
 }) {
   return (
     <>
-      <ContentHeader title={title} />
+      <ContentHeader title={title} type={type} />
       <div className={cn("space-y-2 pb-8 pt-12", className)}>{children}</div>
     </>
   )
 }
 
-function ContentHeader({ title }: { title: string }) {
+function ContentHeader({ title, type }: { title: string; type: string }) {
   return (
     <StickyHeader className="bg-content1/10">
-      <GoBack />
+      <>
+        <Link
+          href={`/${type}`}
+          className="rounded-md p-1.5 hover:bg-default/40 md:hidden"
+        >
+          <FaChevronLeft />
+        </Link>
+        <div className="hidden md:block" />
+      </>
       <Typography affects="small">{title}</Typography>
       <div />
     </StickyHeader>
