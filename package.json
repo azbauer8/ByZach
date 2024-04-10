@@ -17,7 +17,6 @@
     "@nextui-org/chip": "^2.0.25",
     "@nextui-org/dropdown": "^2.1.17",
     "@nextui-org/link": "^2.0.26",
-    "@nextui-org/listbox": "^2.1.16",
     "@nextui-org/modal": "^2.0.29",
     "@nextui-org/skeleton": "^2.0.24",
     "@nextui-org/system": "^2.0.15",
@@ -26,7 +25,6 @@
     "clsx": "^2.1.0",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.0.25",
-    "intl-messageformat": "^10.5.11",
     "jotai": "^2.7.2",
     "mini-svg-data-uri": "^1.4.4",
     "next": "14.2.0-canary.61",
@@ -37,7 +35,6 @@
     "react-twc": "^1.4.1",
     "tailwind-merge": "^2.2.2",
     "tailwind-variants": "^0.2.1",
-    "tailwindcss-animate": "^1.0.7",
     "tinacms": "^1.6.1"
   },
   "devDependencies": {
