@@ -2,7 +2,7 @@ import React from "react"
 import { Metadata } from "next/types"
 
 import Dots from "@/components/ui/bg-patterns"
-import { SidebarToggle } from "@/components/Sidebar"
+import { SidebarToggle } from "@/components/Sidebar.client"
 import StickyHeader from "@/components/StickyHeader"
 import About from "@/app/(home)/About"
 import Activity from "@/app/(home)/Activity"

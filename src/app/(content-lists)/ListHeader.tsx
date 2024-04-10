@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
-import { SidebarToggle } from "@/components/Sidebar"
+import { SidebarToggle } from "@/components/Sidebar.client"
 import StickyHeader from "@/components/StickyHeader"
 
 export function ListColumnHeader({ title }: { title: string }) {

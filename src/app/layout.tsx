@@ -5,7 +5,7 @@ import "@/styles/global.css"
 import { Metadata } from "next"
 
 import { Providers } from "@/components/Providers"
-import { Sidebar } from "@/components/Sidebar"
+import Sidebar from "@/components/Sidebar"
 
 export const metadata: Metadata = {
   title: {
