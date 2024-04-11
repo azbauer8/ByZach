@@ -1,0 +1,6 @@
+{
+  "title": "Davstack Store",
+  "link": "https://www.davstack.com/store/overview",
+  "category": "State Management",
+  "description": "A library that makes Zustand feel like Jotai."
+}
