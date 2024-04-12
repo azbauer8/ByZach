@@ -9,10 +9,10 @@ export default function NavList({
 }: {
   type: "projects" | "discoveries" | "thoughts" | "uses"
   links: {
-    slug: string | undefined
-    title: string | undefined
-    category?: string | null | undefined
-    createdAt?: string | null | undefined
+    slug: string
+    title: string
+    category?: string | null
+    dateTime?: string | null
   }[]
 }) {
   return (
@@ -20,13 +20,16 @@ export default function NavList({
       {links.map((link) => {
         const fullLink = `/${type}/${link.slug}`
         return (
-          <Link key={link.slug ?? ""} href={`/${type}/${link.slug}` ?? ""}>
+          <Link key={link.slug} href={fullLink}>
             <NavLink link={fullLink}>
               <div className="flex flex-col gap-1">
                 <h1 className="font-medium">{link.title}</h1>
                 <h3 className="text-sm text-default-500">
-                  {link.category ??
-                    format(new Date(link.createdAt ?? ""), "PPP")}
+                  {link.category
+                    ? link.category
+                    : link.dateTime
+                      ? format(new Date(link.dateTime), "PPP")
+                      : null}
                 </h3>
               </div>
             </NavLink>

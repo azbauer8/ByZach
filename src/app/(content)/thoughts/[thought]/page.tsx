@@ -1,5 +1,5 @@
+import { DocumentRenderer } from "@keystatic/core/renderer"
 import { format } from "date-fns"
-import { TinaMarkdown } from "tinacms/dist/rich-text"
 
 import { getThought, getThoughts } from "@/lib/getContent"
 import { Typography } from "@/components/ui/typography"
@@ -20,6 +20,7 @@ export default async function Thought({
   params: { thought: string }
 }) {
   const thought = await getThought(params.thought)
+  if (!thought) return null
   return (
     <ContentWrapper
       title={thought.title}
@@ -29,11 +30,11 @@ export default async function Thought({
       <div className="space-y-1.5">
         <Typography variant="h2">{thought.title}</Typography>
         <Typography affects="muted">
-          {format(new Date(thought.createdAt ?? ""), "PPP")}
+          {format(new Date(thought.datetime ?? ""), "PPP")}
         </Typography>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
-        <TinaMarkdown content={thought.body} />
+        <DocumentRenderer document={await thought.body()} />
       </main>
     </ContentWrapper>
   )

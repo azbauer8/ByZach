@@ -1,7 +1,7 @@
+import { DocumentRenderer } from "@keystatic/core/renderer"
 import { Chip } from "@nextui-org/chip"
 import { Link } from "@nextui-org/link"
 import { FaLink } from "react-icons/fa6"
-import { TinaMarkdown } from "tinacms/dist/rich-text"
 
 import { getProject, getProjects } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
@@ -25,6 +25,7 @@ export default async function Project({
   params: { project: string }
 }) {
   const project = await getProject(params.project)
+  if (!project) return null
   return (
     <ContentWrapper
       title={project.title}
@@ -51,7 +52,7 @@ export default async function Project({
         </Typography>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
-        <TinaMarkdown content={project.descLong} />
+        <DocumentRenderer document={await project.content()} />
       </main>
     </ContentWrapper>
   )

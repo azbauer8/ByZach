@@ -49,7 +49,7 @@ export default async function RecentContent() {
                 affects="muted"
                 className="underline-offset-2 group-hover:underline group-active:underline"
               >
-                {format(new Date(thought.createdAt ?? ""), "PPP")}
+                {format(new Date(thought.dateTime ?? ""), "PPP")}
               </Typography>
             </Link>
           ))}

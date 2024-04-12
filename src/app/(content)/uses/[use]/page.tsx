@@ -1,7 +1,7 @@
+import { DocumentRenderer } from "@keystatic/core/renderer"
 import { Chip } from "@nextui-org/chip"
 import { Link } from "@nextui-org/link"
 import { FaLink } from "react-icons/fa6"
-import { TinaMarkdown } from "tinacms/dist/rich-text"
 
 import { getUse, getUses } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
@@ -19,6 +19,8 @@ export async function generateStaticParams() {
 }
 export default async function Use({ params }: { params: { use: string } }) {
   const use = await getUse(params.use)
+  if (!use) return null
+
   return (
     <ContentWrapper
       title={use.title}
@@ -41,11 +43,11 @@ export default async function Use({ params }: { params: { use: string } }) {
           </Link>
         ) : null}
         <Typography variant="p" affects="muted">
-          {use.descShort}
+          {use.shortDesc}
         </Typography>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
-        <TinaMarkdown content={use.descLong} />
+        <DocumentRenderer document={await use.content()} />
       </main>
     </ContentWrapper>
   )
