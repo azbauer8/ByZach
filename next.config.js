@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    // disable ppr in dev, causes weird client hydration issues
-    ppr: process.env.NODE_ENV !== "development",
-  },
+  // experimental: {
+  //   // disable ppr in dev, causes weird client hydration issues
+  //   ppr: process.env.NODE_ENV !== "development",
+  // },
   images: {
     remotePatterns: [
       {

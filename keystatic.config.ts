@@ -133,9 +133,6 @@ export default config({
         }),
         link: fields.url({ label: "Link" }),
         shortDesc: fields.text({ label: "Short Description" }),
-        // richText: fields.mdx({
-        //   label: "Long Description",
-        // }),
         content: fields.document({
           label: "Long Description",
           formatting: true,
