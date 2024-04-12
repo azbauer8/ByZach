@@ -22,6 +22,7 @@ export default async function Discovery({
   params: { discovery: string }
 }) {
   const discovery = await getDiscovery(params.discovery)
+  if (!discovery) return null
 
   return (
     <ContentWrapper
