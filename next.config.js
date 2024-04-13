@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
-export default {
+const nextConfig = {
   reactStrictMode: true,
 
-  // experimental: {
-  // //   // disable ppr in dev, causes weird client hydration issues
-  //   ppr: process.env.NODE_ENV !== "development",
-  // },
+  experimental: {
+    ppr: true
+  },
 
   images: {
     remotePatterns: [
@@ -20,3 +19,5 @@ export default {
     ],
   }
 }
+
+module.exports = nextConfig

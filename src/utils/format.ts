@@ -8,7 +8,6 @@ export function formatUrl(url: string | undefined | null) {
 
 export function formatDate(date: string | null) {
   return new Date(date ?? "").toLocaleDateString("en-us", {
-    weekday: "long",
     year: "numeric",
     month: "short",
     day: "numeric",
