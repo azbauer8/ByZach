@@ -1,20 +1,42 @@
+import { useEffect, useState } from "react"
+
 export default function TailwindIndicator() {
-  const env = process.env.NODE_ENV
-  if (env !== "development") {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+
+  useEffect(() => {
+    function updateDimensions() {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+
+    updateDimensions()
+    window.addEventListener("resize", updateDimensions)
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions)
+    }
+  }, [])
+
+  const { width, height } = dimensions
+
+  if (process.env.NODE_ENV !== "development") {
     return null
   }
+
   return (
-    <div className="fixed bottom-0 right-0 m-8 flex size-8 items-center justify-center rounded-full bg-gray-700">
-      <div className="block  sm:hidden md:hidden lg:hidden xl:hidden"></div>
-      <div className="hidden sm:block  md:hidden lg:hidden xl:hidden">SM</div>
-      <div className="hidden sm:hidden md:block  lg:hidden xl:hidden">MD</div>
-      <div className="hidden sm:hidden md:hidden lg:block  xl:hidden">LG</div>
-      <div className="hidden sm:hidden md:hidden lg:hidden xl:block 2xl:hidden">
-        XL
-      </div>
-      <div className="hidden sm:hidden md:hidden lg:hidden xl:hidden 2xl:block">
-        2XL
-      </div>
+    <div className="fixed bottom-5 left-5 z-50 flex items-center space-x-2 rounded-full bg-black py-1 px-2.5 font-mono text-xs font-medium text-white">
+      <span>
+        {width.toLocaleString()} x {height.toLocaleString()}
+      </span>
+      <div className="h-4 w-px bg-gray-800" />
+      <span className="sm:hidden">XS</span>
+      <span className="hidden sm:inline md:hidden">SM</span>
+      <span className="hidden md:inline lg:hidden">MD</span>
+      <span className="hidden lg:inline xl:hidden">LG</span>
+      <span className="hidden xl:inline 2xl:hidden">XL</span>
+      <span className="hidden 2xl:inline">2XL</span>
     </div>
   )
 }

@@ -1,17 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "./theme.css";
 
-@layer base {
-  * {
-    @apply border-divider;
-  }
-  body {
-    @apply bg-background font-sans text-foreground antialiased;
-    font-feature-settings:
-      "rlig" 1,
-      "calt" 1;
-  }
+* {
+  @apply border-divider;
 }
 
 /* https://www.joshwcomeau.com/css/full-bleed/ */
@@ -26,8 +16,4 @@
 .full-bleed {
   width: 100%;
   grid-column: 1 / 4;
-}
-
-.prose > pre {
-  @apply break-words;
 }

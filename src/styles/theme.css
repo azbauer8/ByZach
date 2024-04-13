@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #11181c;
+  --divider: rgba(17, 17, 17, 0.15);
+  --focus: #006fee;
+  --content1: #ffffff;
+  --content2: #f4f4f5;
+  --content3: #e4e4e7;
+  --content4: #d4d4d8;
+  --default: #d4d4d8;
+  --primary: #006fee;
+  --secondary: #7828c8;
+  --success: #17c964;
+  --warning: #f5a524;
+  --danger: #f31260;
+  --default-50: #fafafa;
+  --default-100: #f4f4f5;
+  --default-200: #e4e4e7;
+  --default-300: #d4d4d8;
+  --default-400: #a1a1aa;
+  --default-500: #71717a;
+  --default-600: #52525b;
+  --default-700: #3f3f46;
+  --default-800: #27272a;
+  --default-900: #18181b;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ecedee;
+  --divider: rgba(255, 255, 255, 0.15);
+  --focus: #006fee;
+  --content1: #18181b;
+  --content2: #27272a;
+  --content3: #3f3f46;
+  --content4: #52525b;
+  --default: #3f3f46;
+  --primary: #006fee;
+  --secondary: #9353d3;
+  --success: #17c964;
+  --warning: #f5a524;
+  --danger: #f31260;
+  --default-50: #18181b;
+  --default-100: #27272a;
+  --default-200: #3f3f46;
+  --default-300: #52525b;
+  --default-400: #71717a;
+  --default-500: #a1a1aa;
+  --default-600: #d4d4d8;
+  --default-700: #e4e4e7;
+  --default-800: #f4f4f5;
+  --default-900: #fafafa;
+}
+
+@theme {
+  --font-family-sans: "Asap", "sans-serif";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-divider: var(--divider);
+  --color-focus: var(--focus);
+  --color-content1: var(--content1);
+  --color-content2: var(--content2);
+  --color-content3: var(--content3);
+  --color-content4: var(--content4);
+  --color-default: var(--default);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-default-50: var(--default-50);
+  --color-default-100: var(--default-100);
+  --color-default-200: var(--default-200);
+  --color-default-300: var(--default-300);
+  --color-default-400: var(--default-400);
+  --color-default-500: var(--default-500);
+  --color-default-600: var(--default-600);
+  --color-default-700: var(--default-700);
+  --color-default-800: var(--default-800);
+  --color-default-900: var(--default-900);
+}

@@ -1,9 +1,8 @@
-import { Chip } from "@nextui-org/chip"
-import { Link } from "@nextui-org/link"
-import { FaLink } from "react-icons/fa6"
+import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
 
 import { getDiscoveries, getDiscovery } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
+import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
@@ -30,19 +29,18 @@ export default async function Discovery({
       type="discoveries"
       className="content-wrapper space-y-0.5"
     >
-      <Chip variant="faded" size="sm">
-        {discovery.category}
-      </Chip>
+      <Badge>{discovery.category}</Badge>
       <Typography variant="h2">{discovery.title}</Typography>
       {discovery.link ? (
-        <Link
+        <a
           href={discovery.link ?? ""}
-          isExternal
+          target="_blank"
+          rel="noreferrer"
           className="flex items-center gap-1.5"
         >
-          <FaLink width={16} height={16} />
+          <Icon icon="fa6-solid:link" width={16} height={16} />
           <Typography affects="muted">{formatUrl(discovery.link)}</Typography>
-        </Link>
+        </a>
       ) : null}
       <Typography variant="p" affects="muted">
         {discovery.description}

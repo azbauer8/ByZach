@@ -1,4 +1,3 @@
-import Dots from "@/components/ui/bg-patterns"
 import Uses from "@/app/(content-lists)/uses/UsesList"
 import { ContentListColumn } from "@/app/(content)/ContentWrapper"
 
@@ -10,7 +9,7 @@ export default function ContentLayout({
   return (
     <div className="flex size-full">
       <ContentListColumn title="Uses" list={<Uses />} />
-      <Dots className="flex-1">{children}</Dots>
+      <div className="flex-1">{children}</div>
     </div>
   )
 }

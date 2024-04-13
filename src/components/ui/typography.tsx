@@ -3,7 +3,6 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-// eslint-disable-next-line tailwindcss/no-custom-classname
 const typographyVariants = cva("", {
   variants: {
     variant: {
@@ -15,7 +14,7 @@ const typographyVariants = cva("", {
       p: "leading-7",
     },
     affects: {
-      lead: "text-muted text-lg",
+      lead: "text-default-500/95 text-lg",
       large: "text-lg font-semibold",
       small: "text-sm font-bold leading-none",
       muted: "text-default-500/95",

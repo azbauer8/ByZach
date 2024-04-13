@@ -1,10 +1,9 @@
+import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
 import { DocumentRenderer } from "@keystatic/core/renderer"
-import { Chip } from "@nextui-org/chip"
-import { Link } from "@nextui-org/link"
-import { FaLink } from "react-icons/fa6"
 
 import { getUse, getUses } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
+import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
@@ -28,19 +27,18 @@ export default async function Use({ params }: { params: { use: string } }) {
       className="content-wrapper flex flex-col gap-5"
     >
       <div className="space-y-0.5 pb-5">
-        <Chip variant="faded" size="sm">
-          {use.category}
-        </Chip>
+        <Badge>{use.category}</Badge>
         <Typography variant="h2">{use.title}</Typography>
         {use.link ? (
-          <Link
+          <a
             href={use.link ?? ""}
-            isExternal
+            target="_blank"
+            rel="noreferrer"
             className="flex items-center gap-1.5"
           >
-            <FaLink width={16} height={16} />
+            <Icon icon="fa6-solid:link" width={16} height={16} />
             <Typography affects="muted">{formatUrl(use.link)}</Typography>
-          </Link>
+          </a>
         ) : null}
         <Typography variant="p" affects="muted">
           {use.shortDesc}
