@@ -1,42 +1,40 @@
 import { formatDate } from "@/utils/format"
-import { getThought, getThoughts } from "@/utils/getContent"
-import { DocumentRenderer } from "@keystatic/core/renderer"
+import { getThoughts } from "@/utils/getContent"
 
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
 export const dynamicParams = false
-export const dynamic = "force-static"
 
 export async function generateStaticParams() {
-  const thoughts = await getThoughts()
-  return (
-    thoughts?.map((thought) => ({
-      thought: thought.slug,
-    })) ?? []
-  )
+  const thoughts = getThoughts()
+  return thoughts.map((thought) => ({
+    thought: thought.slug,
+  }))
 }
 export default async function Thought({
   params,
 }: {
   params: { thought: string }
 }) {
-  const thought = await getThought(params.thought)
+  const thought = getThoughts().find(
+    (thought) => thought.slug === params.thought
+  )
   if (!thought) return null
   return (
     <ContentWrapper
-      title={thought.title}
+      title={thought.metadata.title}
       type="thoughts"
       className="content-wrapper flex flex-col gap-5"
     >
       <div className="space-y-1.5">
-        <Typography variant="h2">{thought.title}</Typography>
+        <Typography variant="h2">{thought.metadata.title}</Typography>
         <Typography affects="muted">
-          {formatDate(thought.datetime ?? "")}
+          {formatDate(thought.metadata.dateTime)}
         </Typography>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
-        <DocumentRenderer document={await thought.body()} />
+        {thought.content}
       </main>
     </ContentWrapper>
   )

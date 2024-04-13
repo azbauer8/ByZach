@@ -1,8 +1,6 @@
 import { ListColumnHeader } from "@/app/(content-lists)/ListHeader"
 import ProjectsList from "@/app/(content-lists)/projects/ProjectsList"
 
-export const dynamic = "force-static"
-
 export default async function Projects() {
   return (
     <>

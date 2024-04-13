@@ -5,9 +5,10 @@ import { getDiscoveries, getProjects, getThoughts } from "@/utils/getContent"
 import { Typography } from "@/components/ui/typography"
 
 export default async function RecentContent() {
-  const projects = await getProjects(5)
-  const thoughts = await getThoughts(5)
-  const discoveries = await getDiscoveries(5)
+  const projects = getProjects(5)
+  const thoughts = getThoughts(5)
+  const discoveries = getDiscoveries(5)
+  console.log("🚀 ~ RecentContent ~ discoveries:", discoveries)
 
   return (
     <div className="space-y-8">
@@ -21,13 +22,13 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
             >
               <Typography className="break-words font-medium underline-offset-2 group-hover:text-focus group-hover:underline group-active:text-focus group-active:underline">
-                {project.title}
+                {project.metadata.title}
               </Typography>
               <Typography
                 affects="muted"
                 className="underline-offset-2 group-hover:underline group-active:underline"
               >
-                {project.category}
+                {project.metadata.category}
               </Typography>
             </Link>
           ))}
@@ -43,13 +44,13 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
             >
               <Typography className="break-words font-medium underline-offset-2 group-hover:text-focus group-hover:underline group-active:text-focus group-active:underline">
-                {thought.title}
+                {thought.metadata.title}
               </Typography>
               <Typography
                 affects="muted"
                 className="underline-offset-2 group-hover:underline group-active:underline"
               >
-                {formatDate(thought.dateTime)}
+                {formatDate(thought.metadata.dateTime)}
               </Typography>
             </Link>
           ))}
@@ -66,13 +67,13 @@ export default async function RecentContent() {
               className="group flex items-center  justify-between gap-5"
             >
               <Typography className="break-words font-medium underline-offset-2 group-hover:text-focus group-hover:underline group-active:text-focus group-active:underline">
-                {discovery.title}
+                {discovery.metadata?.title}
               </Typography>
               <Typography
                 affects="muted"
                 className="underline-offset-2 group-hover:underline group-active:underline"
               >
-                {discovery.category}
+                {discovery.metadata?.category}
               </Typography>
             </Link>
           ))}

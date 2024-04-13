@@ -1,8 +1,6 @@
 import Thoughts from "@/app/(content-lists)/thoughts/ThoughtsList"
 import { ContentListColumn } from "@/app/(content)/ContentWrapper"
 
-export const dynamic = "force-static"
-
 export default function ContentLayout({
   children,
 }: {

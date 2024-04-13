@@ -15,22 +15,8 @@ export default config({
         datetime: fields.datetime({
           label: "Created/Updated At",
         }),
-        body: fields.document({
+        body: fields.mdx({
           label: "Post Body",
-          formatting: true,
-          dividers: true,
-          links: true,
-          images: {
-            directory: "public/site/images",
-            publicPath: "/site/images",
-            schema: {
-              title: fields.text({
-                label: "Caption",
-                description:
-                  "The text to display under the image in a caption.",
-              }),
-            },
-          },
         }),
       },
     }),
@@ -55,22 +41,8 @@ export default config({
         }),
         link: fields.url({ label: "Link" }),
         descShort: fields.text({ label: "Short Description" }),
-        content: fields.document({
+        content: fields.mdx({
           label: "Long Description",
-          formatting: true,
-          dividers: true,
-          links: true,
-          images: {
-            directory: "public/site/images",
-            publicPath: "/site/images",
-            schema: {
-              title: fields.text({
-                label: "Caption",
-                description:
-                  "The text to display under the image in a caption.",
-              }),
-            },
-          },
         }),
       },
     }),
@@ -132,23 +104,9 @@ export default config({
           defaultValue: "Free",
         }),
         link: fields.url({ label: "Link" }),
-        shortDesc: fields.text({ label: "Short Description" }),
-        content: fields.document({
+        descShort: fields.text({ label: "Short Description" }),
+        content: fields.mdx({
           label: "Long Description",
-          formatting: true,
-          dividers: true,
-          links: true,
-          images: {
-            directory: "public/site/images",
-            publicPath: "/site/images",
-            schema: {
-              title: fields.text({
-                label: "Caption",
-                description:
-                  "The text to display under the image in a caption.",
-              }),
-            },
-          },
         }),
       },
     }),

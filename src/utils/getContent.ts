@@ -1,73 +1,118 @@
-import keystaticConfig from "@/../keystatic.config"
-import { createReader } from "@keystatic/core/reader"
+import fs from "fs"
+import path from "path"
 
-const reader = createReader(process.cwd(), keystaticConfig)
-
-export async function getProjects(limit?: number) {
-  const projects = await reader.collections.projects.all()
-
-  const mappedProjects = projects.map((project) => ({
-    slug: project.slug,
-    title: project.entry.title,
-    category: project.entry.category,
-    link: project.entry.link,
-    datetime: project.entry.datetime,
-  }))
-
-  return limit ? mappedProjects.slice(0, limit) : mappedProjects
+type Metadata = {
+  title: string
+  dateTime: string | null
 }
 
-export async function getProject(fileName: string) {
-  const project = await reader.collections.projects.read(fileName)
-  return project
+type ProjectMetadata = Metadata & {
+  category: string
+  link: string
+  descShort: string
 }
 
-export async function getThoughts(limit?: number) {
-  const thoughts = await reader.collections.thoughts.all()
-
-  const mappedThoughts = thoughts.map((thought) => ({
-    slug: thought.slug,
-    title: thought.entry.title,
-    dateTime: thought.entry.datetime,
-  }))
-
-  return limit ? mappedThoughts.slice(0, limit) : mappedThoughts
+type DiscoveryMetadata = Metadata & {
+  category: string
+  link: string
+  description: string
+}
+type UseMetadata = Metadata & {
+  category: string
+  link: string
+  platform: string
+  cost: string
+  descShort: string
 }
 
-export async function getThought(fileName: string) {
-  const thought = await reader.collections.thoughts.read(fileName)
-  return thought
+function parseFrontmatter(fileContent: string) {
+  const frontmatterRegex = /---\s*([\s\S]*?)\s*---/
+  const match = frontmatterRegex.exec(fileContent)
+  const frontMatterBlock = match?.[1]
+  const content = fileContent.replace(frontmatterRegex, "").trim()
+  const frontMatterLines = frontMatterBlock?.trim().split("\n")
+  const metadata: Partial<Metadata> = {}
+
+  frontMatterLines?.forEach((line) => {
+    const [key, ...valueArr] = line.split(": ")
+    const value = valueArr
+      .join(": ")
+      .trim()
+      .replace(/^['"](.*)['"]$/, "$1")
+    metadata[key.trim() as keyof Metadata] = value
+  })
+
+  return { metadata, content }
 }
 
-export async function getDiscoveries(limit?: number) {
-  const discoveries = await reader.collections.discoveries.all()
-  const mappedDiscoveries = discoveries.map((discovery) => ({
-    slug: discovery.slug,
-    title: discovery.entry.title,
-    link: discovery.entry.link,
-    category: discovery.entry.category,
-  }))
-
-  return limit ? mappedDiscoveries.slice(0, limit) : mappedDiscoveries
+function getMDXFiles(dir: fs.PathLike) {
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx")
 }
 
-export async function getDiscovery(fileName: string) {
-  const discovery = await reader.collections.discoveries.read(fileName)
-  return discovery
+function readMDXFile(filePath: fs.PathOrFileDescriptor) {
+  const rawContent = fs.readFileSync(filePath, "utf-8")
+  return parseFrontmatter(rawContent)
 }
 
-export async function getUses(limit?: number) {
-  const uses = await reader.collections.uses.all()
-  const mappedUses = uses.map((use) => ({
-    slug: use.slug,
-    title: use.entry.title,
-    category: use.entry.category,
-  }))
-
-  return limit ? mappedUses.slice(0, limit) : mappedUses
+function getJSONFiles(dir: fs.PathLike) {
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".json")
 }
 
-export async function getUse(fileName: string) {
-  const use = await reader.collections.uses.read(fileName)
-  return use
+function readJSONFiles(filePath: fs.PathOrFileDescriptor) {
+  return JSON.parse(fs.readFileSync(filePath, "utf-8"))
+}
+
+export function getProjects(limit?: number) {
+  const dir = path.join(process.cwd(), "content/projects")
+  const mdxFiles = getMDXFiles(dir).map((file) => {
+    const { metadata, content } = readMDXFile(path.join(dir, file))
+    const slug = path.basename(file, path.extname(file))
+    return {
+      metadata: metadata as ProjectMetadata,
+      slug,
+      content,
+    }
+  })
+  return limit ? mdxFiles.slice(0, limit) : mdxFiles
+}
+
+export function getThoughts(limit?: number) {
+  const dir = path.join(process.cwd(), "content/thoughts")
+  const mdxFiles = getMDXFiles(dir).map((file) => {
+    const { metadata, content } = readMDXFile(path.join(dir, file))
+    const slug = path.basename(file, path.extname(file))
+    return {
+      metadata: metadata as Metadata,
+      slug,
+      content,
+    }
+  })
+  return limit ? mdxFiles.slice(0, limit) : mdxFiles
+}
+
+export function getDiscoveries(limit?: number) {
+  const dir = path.join(process.cwd(), "content/discoveries")
+  const jsonFiles = getJSONFiles(dir).map((file) => {
+    const metadata = readJSONFiles(path.join(dir, file))
+    const slug = path.basename(file, path.extname(file))
+    return {
+      metadata: metadata as DiscoveryMetadata,
+      slug,
+    }
+  })
+  return limit ? jsonFiles.slice(0, limit) : jsonFiles
+}
+
+export function getUses(limit?: number) {
+  const dir = path.join(process.cwd(), "content/uses")
+  const mdxFiles = getMDXFiles(dir).map((file) => {
+    const { metadata, content } = readMDXFile(path.join(dir, file))
+    const slug = path.basename(file, path.extname(file))
+    return {
+      metadata: metadata as UseMetadata,
+      slug,
+      content,
+    }
+  })
+  return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }

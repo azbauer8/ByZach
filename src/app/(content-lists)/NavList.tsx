@@ -10,9 +10,11 @@ export default function NavList({
   type: "projects" | "discoveries" | "thoughts" | "uses"
   links: {
     slug: string
-    title: string
-    category?: string | null
-    dateTime?: string | null
+    metadata: {
+      title: string
+      category?: string | null
+      dateTime?: string | null
+    }
   }[]
 }) {
   return (
@@ -23,12 +25,12 @@ export default function NavList({
           <Link key={link.slug} href={fullLink}>
             <NavLink link={fullLink}>
               <div className="flex flex-col gap-1">
-                <h1 className="font-medium">{link.title}</h1>
+                <h1 className="font-medium">{link.metadata.title}</h1>
                 <h3 className="text-sm text-default-500">
-                  {link.category
-                    ? link.category
-                    : link.dateTime
-                      ? formatDate(link.dateTime)
+                  {link.metadata.category
+                    ? link.metadata.category
+                    : link.metadata.dateTime
+                      ? formatDate(link.metadata.dateTime)
                       : null}
                 </h3>
               </div>

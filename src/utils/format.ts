@@ -6,7 +6,7 @@ export function formatUrl(url: string | undefined | null) {
   return new URL(url ?? "").hostname.replace("www.", "")
 }
 
-export function formatDate(date: string | null) {
+export function formatDate(date: string | null | undefined) {
   return new Date(date ?? "").toLocaleDateString("en-us", {
     year: "numeric",
     month: "short",
