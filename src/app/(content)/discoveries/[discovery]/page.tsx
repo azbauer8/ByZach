@@ -7,6 +7,8 @@ import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
 export const dynamicParams = false
+export const dynamic = "force-static"
+
 export async function generateStaticParams() {
   const discoveries = await getDiscoveries()
   return (

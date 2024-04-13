@@ -1,6 +1,8 @@
 import Uses from "@/app/(content-lists)/uses/UsesList"
 import { ContentListColumn } from "@/app/(content)/ContentWrapper"
 
+export const dynamic = "force-static"
+
 export default function ContentLayout({
   children,
 }: {

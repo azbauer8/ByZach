@@ -1,6 +1,8 @@
 import Discoveries from "@/app/(content-lists)/discoveries/DiscoveriesList"
 import { ContentListColumn } from "@/app/(content)/ContentWrapper"
 
+export const dynamic = "force-static"
+
 export default function ContentLayout({
   children,
 }: {

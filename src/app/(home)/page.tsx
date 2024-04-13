@@ -11,12 +11,14 @@ export const metadata: Metadata = {
   title: "Home",
 }
 
+export const dynamic = "force-static"
+
 export default function Home() {
   return (
     <HomeLayout>
       <About />
       <RecentContent />
-      <Activity />
+      {/* <Activity /> */}
     </HomeLayout>
   )
 }
