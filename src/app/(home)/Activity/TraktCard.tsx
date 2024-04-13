@@ -1,6 +1,6 @@
 import { unstable_noStore } from "next/cache"
 import Image from "next/image"
-import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
+import { PiPopcornDuotone } from "react-icons/pi"
 
 import { TraktEntry } from "@/types/apiData"
 import { Typography } from "@/components/ui/typography"
@@ -82,7 +82,7 @@ export default async function TraktCard() {
 
       <div className="my-auto grow space-y-0.5">
         <div className="flex flex-row items-center space-x-1 text-red-400">
-          <Icon icon="ph:popcorn-duotone" className="size-5" />
+          <PiPopcornDuotone className="size-5" />
           <Typography affects="small">{data.traktData.playingWhen}</Typography>
         </div>
         <Typography variant="h5">{data.traktData.title}</Typography>

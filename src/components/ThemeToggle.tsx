@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Icon } from "@iconify-icon/react"
 import { useTheme } from "next-themes"
+import { PiMonitorDuotone, PiMoonDuotone, PiSunDuotone } from "react-icons/pi"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -10,7 +10,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown"
 
@@ -26,7 +25,7 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <Button>
-        <Icon icon="ph:monitor-duotone" size={18} />
+        <PiMonitorDuotone size={18} />
       </Button>
     )
   }
@@ -34,7 +33,13 @@ export default function ThemeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button>
-          <Icon icon="ph:monitor-duotone" size={18} />
+          {theme === "light" ? (
+            <PiSunDuotone size={18} />
+          ) : theme === "dark" ? (
+            <PiMoonDuotone size={18} />
+          ) : (
+            <PiMonitorDuotone size={18} />
+          )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
@@ -45,11 +50,7 @@ export default function ThemeToggle() {
           )}
           onClick={() => setTheme("light")}
         >
-          <Icon
-            icon="ph:sun-duotone"
-            size={16}
-            className="group-hover:text-foreground"
-          />
+          <PiSunDuotone size={16} className="group-hover:text-foreground" />
           <span>Light</span>
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -59,11 +60,7 @@ export default function ThemeToggle() {
           )}
           onClick={() => setTheme("dark")}
         >
-          <Icon
-            icon="ph:moon-duotone"
-            size={16}
-            className="group-hover:text-foreground"
-          />
+          <PiMoonDuotone size={16} className="group-hover:text-foreground" />
           <span>Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -73,11 +70,7 @@ export default function ThemeToggle() {
           )}
           onClick={() => setTheme("system")}
         >
-          <Icon
-            icon="ph:monitor-duotone"
-            size={16}
-            className="group-hover:text-foreground"
-          />
+          <PiMonitorDuotone size={16} className="group-hover:text-foreground" />
           <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>

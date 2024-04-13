@@ -1,4 +1,4 @@
-import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
+import { FaLink } from "react-icons/fa6"
 
 import { getDiscoveries, getDiscovery } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
@@ -38,7 +38,7 @@ export default async function Discovery({
           rel="noreferrer"
           className="flex items-center gap-1.5"
         >
-          <Icon icon="fa6-solid:link" width={16} height={16} />
+          <FaLink width={16} height={16} />
           <Typography affects="muted">{formatUrl(discovery.link)}</Typography>
         </a>
       ) : null}

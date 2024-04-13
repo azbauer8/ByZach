@@ -1,12 +1,12 @@
-/* .prose pre {
-  @apply text-foreground bg-default border-divider bg-opacity-15 space-y-4 rounded-md border-1 p-4;
-} */
+.prose pre {
+  @apply text-foreground bg-default/15 border-divider space-y-4 rounded-md border p-4;
+}
 
 .prose code,
 .prose pre {
   @apply whitespace-pre-wrap break-words font-medium;
 }
 
-/* .prose a {
+.prose a {
   @apply text-focus no-underline underline-offset-2 hover:underline;
-} */
+}

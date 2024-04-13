@@ -1,6 +1,20 @@
 import Link from "next/link"
 import { siteConfig } from "@/config"
-import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
+import {
+  FaAt,
+  FaBrain,
+  FaFilePdf,
+  FaFire,
+  FaGithubAlt,
+  FaHouse,
+  FaLaptopCode,
+  FaLastfm,
+  FaLinkedin,
+  FaSpotify,
+  FaToolbox,
+} from "react-icons/fa6"
+import { FiArrowUpRight } from "react-icons/fi"
+import { SiTrakt } from "react-icons/si"
 
 import { Typography } from "@/components/ui/typography"
 import {
@@ -16,27 +30,27 @@ const sidebarLinks = {
     {
       name: "Home",
       href: "/",
-      icon: <Icon icon="fa6-solid:house" size={16} />,
+      icon: <FaHouse size={16} />,
     },
     {
       name: "Projects",
       href: "/projects",
-      icon: <Icon icon="fa6-solid:laptop-code" size={16} />,
+      icon: <FaLaptopCode size={16} />,
     },
     {
       name: "Thoughts",
       href: "/thoughts",
-      icon: <Icon icon="fa6-solid:brain" size={16} />,
+      icon: <FaBrain size={16} />,
     },
     {
       name: "Discoveries",
       href: "/discoveries",
-      icon: <Icon icon="fa6-solid:fire" size={16} />,
+      icon: <FaFire size={16} />,
     },
     {
       name: "Uses",
       href: "/uses",
-      icon: <Icon icon="fa6-solid:toolbox" size={16} />,
+      icon: <FaToolbox size={16} />,
     },
   ],
 
@@ -44,39 +58,39 @@ const sidebarLinks = {
     {
       name: "GitHub",
       href: "https://github.com/azbauer8",
-      icon: <Icon icon="fa6-brands:github-alt" size={16} />,
+      icon: <FaGithubAlt size={16} />,
     },
     {
       name: "Spotify",
       href: "https://open.spotify.com/user/31krvuuup255gx2tkfuueknhctwy",
-      icon: <Icon icon="fa6-brands:spotify" size={16} />,
+      icon: <FaSpotify size={16} />,
     },
     {
       name: "Last.fm",
       href: "https://www.last.fm/user/zacharlatanz",
-      icon: <Icon icon="fa6-brands:lastfm" size={16} />,
+      icon: <FaLastfm size={16} />,
     },
     {
       name: "Trakt",
       href: "https://trakt.tv/users/zacharlatan",
-      icon: <Icon icon="simple-icons:trakt" size={16} />,
+      icon: <SiTrakt size={16} />,
     },
   ],
   work: [
     {
       name: "Email",
       href: "mailto:hi@byzach.dev",
-      icon: <Icon icon="fa6-solid:at" size={16} />,
+      icon: <FaAt size={16} />,
     },
     {
       name: "Resume",
       href: "/Resume.pdf",
-      icon: <Icon icon="fa6-solid:file-pdf" size={16} />,
+      icon: <FaFilePdf size={16} />,
     },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/zach-bauer8/",
-      icon: <Icon icon="fa6-brands:linkedin" size={16} />,
+      icon: <FaLinkedin size={16} />,
     },
   ],
 } as const
@@ -163,10 +177,9 @@ function ExternalSidebarLink({
   return (
     <div className="group hover:!border-default hover:bg-default-100  hover:text-primary flex size-full items-center gap-3  rounded-md border !border-transparent py-1.5 px-2">
       <div className="text-default-500">{link.icon}</div>
-      <div className="flex flex-1 items-start gap-0.5">
+      <div className="flex flex-1 items-start">
         {link.name}
-        <Icon
-          icon="jam:arrow-up-right"
+        <FiArrowUpRight
           size={13}
           className="opacity-0 group-hover:opacity-100 group-active:opacity-100"
         />

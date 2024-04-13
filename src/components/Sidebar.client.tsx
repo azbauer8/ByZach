@@ -2,8 +2,9 @@
 
 import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config"
-import { Icon } from "@iconify-icon/react"
 import { atom, useAtom } from "jotai"
+import { FaXmark } from "react-icons/fa6"
+import { PiSidebarSimple } from "react-icons/pi"
 import { Drawer } from "vaul"
 
 import { cn } from "@/lib/utils"
@@ -19,7 +20,7 @@ export function SidebarToggle() {
   return (
     <>
       <Button className="lg:hidden" onClick={() => setSidebarOpen(true)}>
-        <Icon icon="ph:sidebar-simple" size={22} />
+        <PiSidebarSimple size={22} />
       </Button>
       <div className="hidden lg:block" />
     </>
@@ -41,7 +42,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
           <StickyHeader className="bg-content1/10">
             <div className="flex items-center space-x-1.5">
               <Button onClick={() => setSidebarOpen(false)}>
-                <Icon icon="fa6-solid:xmark" size={14} />
+                <FaXmark size={14} />
               </Button>
               <Typography affects="small">{siteConfig.title}</Typography>
             </div>

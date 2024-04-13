@@ -6,7 +6,7 @@ import { Typography } from "@/components/ui/typography"
 import "@/styles/prose.css"
 
 import Link from "next/link"
-import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
+import { FaChevronLeft } from "react-icons/fa6"
 
 import { SidebarToggle } from "@/components/Sidebar.client"
 import StickyHeader from "@/components/StickyHeader"
@@ -38,7 +38,7 @@ function ContentHeader({ title, type }: { title: string; type: string }) {
           href={`/${type}`}
           className="hover:bg-default/40 rounded-md p-1.5 md:hidden"
         >
-          <Icon icon="fa6-solid:chevron-left" />
+          <FaChevronLeft />
         </Link>
         <div className="hidden md:block" />
       </>

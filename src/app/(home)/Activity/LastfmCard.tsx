@@ -1,6 +1,6 @@
 import { unstable_noStore } from "next/cache"
 import Image from "next/image"
-import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
+import { PiWaveformBold } from "react-icons/pi"
 
 import { LastFmData } from "@/types/apiData"
 import { Typography } from "@/components/ui/typography"
@@ -54,7 +54,7 @@ export default async function LastFmCard() {
           {playingWhen === "Now Playing" ? (
             <Image src="/bars.svg" alt="Now Playing" width={14} height={14} />
           ) : (
-            <Icon icon="ph:waveform-bold" className="size-5" />
+            <PiWaveformBold className="size-5" />
           )}
           <Typography affects="small">{playingWhen}</Typography>
         </div>
