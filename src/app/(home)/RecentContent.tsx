@@ -20,7 +20,7 @@ export default async function RecentContent() {
               href={`/projects/${project.slug}`}
               className="group flex items-center  justify-between gap-5"
             >
-              <Typography className="group-hover:text-focus group-active:text-focus break-words font-medium underline-offset-2 group-hover:underline group-active:underline">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-focus group-hover:underline group-active:text-focus group-active:underline">
                 {project.title}
               </Typography>
               <Typography
@@ -42,7 +42,7 @@ export default async function RecentContent() {
               href={`/thoughts/${thought.slug}`}
               className="group flex items-center  justify-between gap-5"
             >
-              <Typography className="group-hover:text-focus group-active:text-focus break-words font-medium underline-offset-2 group-hover:underline group-active:underline">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-focus group-hover:underline group-active:text-focus group-active:underline">
                 {thought.title}
               </Typography>
               <Typography
@@ -65,7 +65,7 @@ export default async function RecentContent() {
               href={`/discoveries/${discovery.slug}`}
               className="group flex items-center  justify-between gap-5"
             >
-              <Typography className="group-hover:text-focus group-active:text-focus break-words font-medium underline-offset-2 group-hover:underline group-active:underline">
+              <Typography className="break-words font-medium underline-offset-2 group-hover:text-focus group-hover:underline group-active:text-focus group-active:underline">
                 {discovery.title}
               </Typography>
               <Typography

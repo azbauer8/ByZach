@@ -46,7 +46,7 @@ export default function ThemeToggle() {
         <DropdownMenuItem
           className={cn(
             "group space-x-2",
-            theme === "light" && "bg-content2 text-primary !border-divider"
+            theme === "light" && "!border-divider bg-content2 text-primary"
           )}
           onClick={() => setTheme("light")}
         >
@@ -56,7 +56,7 @@ export default function ThemeToggle() {
         <DropdownMenuItem
           className={cn(
             "group space-x-2",
-            theme === "dark" && "bg-content2 text-primary !border-divider"
+            theme === "dark" && "!border-divider bg-content2 text-primary"
           )}
           onClick={() => setTheme("dark")}
         >
@@ -66,7 +66,7 @@ export default function ThemeToggle() {
         <DropdownMenuItem
           className={cn(
             "group space-x-2",
-            theme === "system" && "bg-content2 text-primary !border-divider"
+            theme === "system" && "!border-divider bg-content2 text-primary"
           )}
           onClick={() => setTheme("system")}
         >

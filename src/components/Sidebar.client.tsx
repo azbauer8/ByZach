@@ -38,7 +38,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
     >
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-50 bg-black/80" />
-        <Drawer.Content className="bg-content1 fixed left-0 z-50 flex h-[100dvh] w-80 flex-col border-r sm:w-72 md:w-64 lg:w-56">
+        <Drawer.Content className="fixed left-0 z-50 flex h-dvh w-80 flex-col border-r bg-content1 sm:w-72 md:w-64 lg:w-56">
           <StickyHeader className="bg-content1/10">
             <div className="flex items-center space-x-1.5">
               <Button onClick={() => setSidebarOpen(false)}>
@@ -71,7 +71,7 @@ export function SidebarLink({
   return (
     <div
       className={cn(
-        "hover:!border-default hover:bg-default-100 hover:text-primary  flex size-full items-center gap-3 rounded-md  border !border-transparent py-1.5 px-2",
+        "flex size-full items-center  gap-3 rounded-md border !border-transparent px-2  py-1.5 hover:!border-default hover:bg-default-100 hover:text-primary",
         active && "!border-default bg-default-100 text-primary"
       )}
     >
@@ -101,7 +101,7 @@ export function MobileSidebarLink({
     <div
       onClick={() => setSidebarOpen(false)}
       className={cn(
-        "hover:!border-default hover:bg-default-100 hover:text-primary  flex size-full items-center gap-3 rounded-md  border !border-transparent py-1.5 px-2",
+        "flex size-full items-center  gap-3 rounded-md border !border-transparent px-2  py-1.5 hover:!border-default hover:bg-default-100 hover:text-primary",
         active && "!border-default bg-default-100 text-primary"
       )}
     >

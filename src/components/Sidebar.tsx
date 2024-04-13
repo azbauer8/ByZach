@@ -98,7 +98,7 @@ const sidebarLinks = {
 export default function Sidebar() {
   return (
     <>
-      <nav className="bg-content1 absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 max-w-56 min-w-56 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] transition duration-200 ease-in-out lg:sticky lg:translate-x-0">
+      <nav className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 min-w-56 max-w-56 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] bg-content1 transition duration-200 ease-in-out lg:sticky lg:translate-x-0">
         <StickyHeader className="bg-content1/10 pl-3">
           <Typography affects="small">{siteConfig.title}</Typography>
           <ThemeToggle />
@@ -115,7 +115,7 @@ export default function Sidebar() {
 
 function SidebarLinks({ mobile }: { mobile?: boolean }) {
   return (
-    <div className="flex-1 space-y-5 p-3 pt-3 text-sm">
+    <div className="flex-1 space-y-5 p-3 text-sm">
       <div className="flex flex-col gap-0.5">
         {sidebarLinks.site.map((link) => (
           <Link href={link.href} key={link.name}>
@@ -175,7 +175,7 @@ function ExternalSidebarLink({
   }
 }) {
   return (
-    <div className="group hover:!border-default hover:bg-default-100  hover:text-primary flex size-full items-center gap-3  rounded-md border !border-transparent py-1.5 px-2">
+    <div className="group flex size-full  items-center gap-3 rounded-md border !border-transparent  px-2 py-1.5 hover:!border-default hover:bg-default-100 hover:text-primary">
       <div className="text-default-500">{link.icon}</div>
       <div className="flex flex-1 items-start">
         {link.name}

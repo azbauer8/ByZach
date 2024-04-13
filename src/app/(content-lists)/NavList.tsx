@@ -24,7 +24,7 @@ export default function NavList({
             <NavLink link={fullLink}>
               <div className="flex flex-col gap-1">
                 <h1 className="font-medium">{link.title}</h1>
-                <h3 className="text-default-500 text-sm">
+                <h3 className="text-sm text-default-500">
                   {link.category
                     ? link.category
                     : link.dateTime

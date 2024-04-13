@@ -1,5 +1,5 @@
 .prose pre {
-  @apply text-foreground bg-default/15 border-divider space-y-4 rounded-md border p-4;
+  @apply space-y-4 rounded-md border border-divider bg-default/15 p-4 text-foreground;
 }
 
 .prose code,

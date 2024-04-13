@@ -14,7 +14,7 @@ const typographyVariants = cva("", {
       p: "leading-7",
     },
     affects: {
-      lead: "text-default-500/95 text-lg",
+      lead: "text-lg text-default-500/95",
       large: "text-lg font-semibold",
       small: "text-sm font-bold leading-none",
       muted: "text-default-500/95",

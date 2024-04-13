@@ -31,7 +31,7 @@ function HomeLayout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </StickyHeader>
-      <div className="mx-auto max-w-2xl space-y-8 py-12 px-4 md:px-8">
+      <div className="mx-auto max-w-2xl space-y-8 px-4 py-12 md:px-8">
         {children}
       </div>
     </div>

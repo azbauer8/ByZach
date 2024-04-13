@@ -25,7 +25,7 @@ export function ContentWrapper({
   return (
     <>
       <ContentHeader title={title} type={type} />
-      <div className={cn("space-y-2 pt-12 pb-8", className)}>{children}</div>
+      <div className={cn("space-y-2 pb-8 pt-12", className)}>{children}</div>
     </>
   )
 }
@@ -36,7 +36,7 @@ function ContentHeader({ title, type }: { title: string; type: string }) {
       <>
         <Link
           href={`/${type}`}
-          className="hover:bg-default/40 rounded-md p-1.5 md:hidden"
+          className="rounded-md p-1.5 hover:bg-default/40 md:hidden"
         >
           <FaChevronLeft />
         </Link>
@@ -56,7 +56,7 @@ export function ContentListColumn({
   list: JSX.Element
 }) {
   return (
-    <div className="bg-content1 absolute top-0 max-h-dvh min-h-dvh w-80 -translate-x-full overflow-y-auto  border-r-[0.5px] transition duration-200 ease-in-out md:sticky md:translate-x-0">
+    <div className="absolute top-0 max-h-dvh min-h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px]  bg-content1 transition duration-200 ease-in-out md:sticky md:translate-x-0">
       <StickyHeader className=" bg-content1/10">
         <SidebarToggle />
         <Typography affects="small">{title}</Typography>

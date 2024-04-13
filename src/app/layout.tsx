@@ -29,7 +29,7 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "bg-background text-foreground flex font-sans antialiased",
+          "flex bg-background font-sans text-foreground antialiased",
           siteConfig.font.variable
         )}
       >

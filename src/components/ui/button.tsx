@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority"
 import { twc, TwcComponentProps } from "react-twc"
 
 const buttonVariants = cva(
-  "hover:bg-content2 p-1.5 rounded-md flex items-center justify-center hover:cursor-pointer",
+  "flex items-center justify-center rounded-md p-1.5 hover:cursor-pointer hover:bg-content2",
   {
     variants: {
       $variant: {
