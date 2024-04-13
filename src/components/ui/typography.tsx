@@ -1,7 +1,6 @@
-import React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn } from "@/lib/utils"
+import { cva, VariantProps } from "@/utils/tailwind/cva"
+import { twcn } from "@/utils/tailwind/twc"
+import { TwcComponentProps } from "react-twc"
 
 const typographyVariants = cva("", {
   variants: {
@@ -22,22 +21,11 @@ const typographyVariants = cva("", {
   },
 })
 
-interface TypographyProps
-  extends React.HTMLAttributes<HTMLHeadingElement>,
-    VariantProps<typeof typographyVariants> {}
+type TypographyProps = TwcComponentProps<"header"> &
+  VariantProps<typeof typographyVariants>
 
-const Typography = React.forwardRef<HTMLHeadingElement, TypographyProps>(
-  ({ className, variant, affects, ...props }, ref) => {
-    const Comp = variant || "p"
-    return (
-      <Comp
-        className={cn(typographyVariants({ variant, affects, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
+const Typography = twcn.header<TypographyProps>(({ variant, affects }) =>
+  typographyVariants({ variant, affects })
 )
-Typography.displayName = "Typography"
 
 export { Typography, typographyVariants }

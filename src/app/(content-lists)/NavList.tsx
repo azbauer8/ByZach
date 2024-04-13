@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { format } from "date-fns"
+import { formatDate } from "@/utils/format"
 
 import NavLink from "@/app/(content-lists)/NavList.client"
 
@@ -28,7 +28,7 @@ export default function NavList({
                   {link.category
                     ? link.category
                     : link.dateTime
-                      ? format(new Date(link.dateTime), "PPP")
+                      ? formatDate(link.dateTime)
                       : null}
                 </h3>
               </div>

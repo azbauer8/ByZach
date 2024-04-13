@@ -1,4 +1,5 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/tailwind/cn"
+
 import { Typography } from "@/components/ui/typography"
 import { SidebarToggle } from "@/components/Sidebar.client"
 import StickyHeader from "@/components/StickyHeader"

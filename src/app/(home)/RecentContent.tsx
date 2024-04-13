@@ -1,7 +1,7 @@
 import Link from "next/link"
-import { format } from "date-fns"
+import { formatDate } from "@/utils/format"
+import { getDiscoveries, getProjects, getThoughts } from "@/utils/getContent"
 
-import { getDiscoveries, getProjects, getThoughts } from "@/lib/getContent"
 import { Typography } from "@/components/ui/typography"
 
 export default async function RecentContent() {
@@ -49,7 +49,7 @@ export default async function RecentContent() {
                 affects="muted"
                 className="underline-offset-2 group-hover:underline group-active:underline"
               >
-                {format(new Date(thought.dateTime ?? ""), "PPP")}
+                {formatDate(thought.dateTime)}
               </Typography>
             </Link>
           ))}

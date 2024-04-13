@@ -1,7 +1,7 @@
+import { formatUrl } from "@/utils/format"
+import { getDiscoveries, getDiscovery } from "@/utils/getContent"
 import { FaLink } from "react-icons/fa6"
 
-import { getDiscoveries, getDiscovery } from "@/lib/getContent"
-import { formatUrl } from "@/lib/utils"
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"

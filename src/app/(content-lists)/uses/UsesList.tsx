@@ -1,4 +1,5 @@
-import { getUses } from "@/lib/getContent"
+import { getUses } from "@/utils/getContent"
+
 import NavList from "@/app/(content-lists)/NavList"
 
 export default async function UsesList() {

@@ -1,5 +1,5 @@
-import { twc } from "react-twc"
+import { twcn } from "@/utils/tailwind/twc"
 
-const Skeleton = twc.div`bg-muted animate-pulse rounded-md`
+const Skeleton = twcn.div`bg-muted animate-pulse rounded-md`
 
 export default Skeleton

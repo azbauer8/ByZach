@@ -3,8 +3,8 @@ import { siteConfig } from "@/config"
 import "@/styles/global.css"
 
 import { Metadata } from "next"
+import { cn } from "@/utils/tailwind/cn"
 
-import { cn } from "@/lib/utils"
 import { Providers } from "@/components/Providers"
 import Sidebar from "@/components/Sidebar"
 

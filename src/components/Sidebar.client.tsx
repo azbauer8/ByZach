@@ -2,12 +2,12 @@
 
 import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config"
+import { cn } from "@/utils/tailwind/cn"
 import { atom, useAtom } from "jotai"
 import { FaXmark } from "react-icons/fa6"
 import { PiSidebarSimple } from "react-icons/pi"
 import { Drawer } from "vaul"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
 import StickyHeader from "@/components/StickyHeader"

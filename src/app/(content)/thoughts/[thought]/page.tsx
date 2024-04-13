@@ -1,7 +1,7 @@
+import { formatDate } from "@/utils/format"
+import { getThought, getThoughts } from "@/utils/getContent"
 import { DocumentRenderer } from "@keystatic/core/renderer"
-import { format } from "date-fns"
 
-import { getThought, getThoughts } from "@/lib/getContent"
 import { Typography } from "@/components/ui/typography"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
@@ -30,7 +30,7 @@ export default async function Thought({
       <div className="space-y-1.5">
         <Typography variant="h2">{thought.title}</Typography>
         <Typography affects="muted">
-          {format(new Date(thought.datetime ?? ""), "PPP")}
+          {formatDate(thought.datetime ?? "")}
         </Typography>
       </div>
       <main className="prose prose-neutral dark:prose-invert">

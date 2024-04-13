@@ -1,4 +1,5 @@
-import { getDiscoveries } from "@/lib/getContent"
+import { getDiscoveries } from "@/utils/getContent"
+
 import NavList from "@/app/(content-lists)/NavList"
 
 export default async function DiscoveriesList() {

@@ -1,4 +1,5 @@
-import { getProjects } from "@/lib/getContent"
+import { getProjects } from "@/utils/getContent"
+
 import NavList from "@/app/(content-lists)/NavList"
 
 export default async function ProjectsList() {

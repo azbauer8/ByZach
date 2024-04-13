@@ -1,4 +1,5 @@
-import { getThoughts } from "@/lib/getContent"
+import { getThoughts } from "@/utils/getContent"
+
 import NavList from "@/app/(content-lists)/NavList"
 
 export default async function ThoughtsList() {
