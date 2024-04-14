@@ -7,9 +7,9 @@ import { cn } from "@/utils/tailwind/cn"
 import { atom, useAtom } from "jotai"
 import { FaXmark } from "react-icons/fa6"
 import { PiSidebarSimple } from "react-icons/pi"
-import { Drawer } from "vaul"
 
 import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent } from "@/components/ui/sheet"
 import { DynamicHeader } from "@/components/DynamicHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
@@ -60,32 +60,25 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
     scrollTop && setScroll(scrollTop)
   }
   return (
-    <Drawer.Root
-      open={sidebarOpen}
-      onOpenChange={setSidebarOpen}
-      direction="left"
-      shouldScaleBackground
-    >
-      <Drawer.Portal>
-        <Drawer.Overlay className="fixed inset-0 z-50 bg-black/80" />
-        <Drawer.Content
-          className="fixed left-0 top-0 z-50 flex h-dvh w-80 flex-col overflow-y-auto border-r bg-content1 sm:w-72 md:w-64 lg:w-56"
-          id="mobile-sidebar"
-          onScroll={onScroll}
+    <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
+      <SheetContent
+        className="flex w-80 flex-col overflow-y-auto border-r-[0.5px] sm:w-72 md:w-64 lg:w-56"
+        id="mobile-sidebar"
+        onScroll={onScroll}
+        side="left"
+      >
+        <DynamicHeader
+          title={siteConfig.title}
+          rightContent={<ThemeToggle />}
+          scrollPos={scroll}
         >
-          <DynamicHeader
-            title={siteConfig.title}
-            rightContent={<ThemeToggle />}
-            scrollPos={scroll}
-          >
-            <Button onClick={() => setSidebarOpen(false)}>
-              <FaXmark size={14} />
-            </Button>
-          </DynamicHeader>
-          {children}
-        </Drawer.Content>
-      </Drawer.Portal>
-    </Drawer.Root>
+          <Button onClick={() => setSidebarOpen(false)}>
+            <FaXmark size={14} />
+          </Button>
+        </DynamicHeader>
+        {children}
+      </SheetContent>
+    </Sheet>
   )
 }
 
@@ -105,11 +98,11 @@ export function SidebarLink({
   return (
     <div
       className={cn(
-        "flex size-full items-center  gap-3 rounded-md border !border-transparent px-2  py-1.5 hover:!border-default hover:bg-default-100 hover:text-primary",
-        active && "!border-default bg-default-100 text-primary"
+        "hover:!border-default1 hover:bg-default2 flex  size-full items-center gap-3 rounded-md border  !border-transparent px-2 py-1.5 hover:text-primary",
+        active && "!border-default1 bg-default2 text-primary"
       )}
     >
-      <div className={cn(active ? "text-primary" : "text-default-500")}>
+      <div className={cn(active ? "text-primary" : "text-default3")}>
         {link.icon}
       </div>
       {link.name}
@@ -135,11 +128,11 @@ export function MobileSidebarLink({
     <div
       onClick={() => setSidebarOpen(false)}
       className={cn(
-        "flex size-full items-center  gap-3 rounded-md border !border-transparent px-2  py-1.5 hover:!border-default hover:bg-default-100 hover:text-primary",
-        active && "!border-default bg-default-100 text-primary"
+        "hover:!border-default1 hover:bg-default2 flex  size-full items-center gap-3 rounded-md border  !border-transparent px-2 py-1.5 hover:text-primary",
+        active && "!border-default1 bg-default2 text-primary"
       )}
     >
-      <div className={cn(active ? "text-primary" : "text-default-500")}>
+      <div className={cn(active ? "text-primary" : "text-default3")}>
         {link.icon}
       </div>
       {link.name}

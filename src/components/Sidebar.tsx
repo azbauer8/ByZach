@@ -173,8 +173,8 @@ function ExternalSidebarLink({
   }
 }) {
   return (
-    <div className="group flex size-full  items-center gap-3 rounded-md border !border-transparent  px-2 py-1.5 hover:!border-default hover:bg-default-100 hover:text-primary">
-      <div className="text-default-500">{link.icon}</div>
+    <div className="hover:!border-default1 hover:bg-default2 group  flex size-full items-center gap-3 rounded-md  border !border-transparent px-2 py-1.5 hover:text-primary">
+      <div className="text-default3">{link.icon}</div>
       <div className="flex flex-1 items-start">
         {link.name}
         <FiArrowUpRight

@@ -30,7 +30,7 @@ export function ContentWrapper({
       >
         <Link
           href={`/${type}`}
-          className="absolute left-2 flex items-center rounded-md p-1.5 text-sm text-primary hover:bg-default/40 md:hidden"
+          className="hover:bg-default1/40 absolute left-2 flex items-center rounded-md p-1.5 text-sm text-primary md:hidden"
         >
           <FaChevronLeft size={15} className="translate-y-[-0.5px]" />
           Back

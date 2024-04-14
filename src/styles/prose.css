@@ -1,7 +1,7 @@
 @import "./syntax.css";
 
 .prose pre {
-  @apply space-y-4 rounded-md border border-divider bg-default/15 p-4 text-foreground;
+  @apply bg-default1/15 space-y-4 rounded-md border border-divider p-4 text-foreground;
 }
 
 .prose code,
