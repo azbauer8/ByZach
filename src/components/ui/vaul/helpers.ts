@@ -28,7 +28,7 @@ export function set(
   ignoreCache = false
 ) {
   if (!el || !(el instanceof HTMLElement) || !styles) return
-  let originalStyles: Style = {}
+  const originalStyles: Style = {}
 
   Object.entries(styles).forEach(([key, value]: [string, string]) => {
     if (key.startsWith("--")) {
@@ -37,7 +37,7 @@ export function set(
     }
 
     originalStyles[key] = (el.style as any)[key]
-    ;(el.style as any)[key] = value
+    (el.style as any)[key] = value
   })
 
   if (ignoreCache) return
@@ -47,17 +47,17 @@ export function set(
 
 export function reset(el: Element | HTMLElement | null, prop?: string) {
   if (!el || !(el instanceof HTMLElement)) return
-  let originalStyles = cache.get(el)
+  const originalStyles = cache.get(el)
 
   if (!originalStyles) {
     return
   }
 
   if (prop) {
-    ;(el.style as any)[prop] = originalStyles[prop]
+    (el.style as any)[prop] = originalStyles[prop]
   } else {
     Object.entries(originalStyles).forEach(([key, value]) => {
-      ;(el.style as any)[key] = value
+      (el.style as any)[key] = value
     })
   }
 }
