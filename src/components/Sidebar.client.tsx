@@ -38,7 +38,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
     >
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-50 bg-black/80" />
-        <Drawer.Content className="fixed left-0 z-50 flex h-dvh w-80 flex-col border-r bg-content1 sm:w-72 md:w-64 lg:w-56">
+        <Drawer.Content className="fixed left-0 top-0 z-50 flex h-dvh w-80 flex-col border-r bg-content1 sm:w-72 md:w-64 lg:w-56">
           <StickyHeader className="bg-content1/10">
             <div className="flex items-center space-x-1.5">
               <Button onClick={() => setSidebarOpen(false)}>
