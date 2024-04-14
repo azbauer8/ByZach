@@ -1,13 +1,16 @@
-import { PageHeader } from "@/components/StickyHeader"
-import ThoughtsList from "@/app/(content-lists)/thoughts/ThoughtsList"
+import { getThoughts } from "@/utils/getContent"
+
+import { PageHeader } from "@/components/Layouts"
+import NavList from "@/components/NavList"
 
 export default async function Thoughts() {
+  const thoughts = getThoughts()
+  if (!thoughts) return null
+
   return (
     <>
       <PageHeader title="Thoughts" />
-      <div className="flex flex-col gap-1 p-3">
-        <ThoughtsList />
-      </div>
+      <NavList type="thoughts" links={thoughts} />
     </>
   )
 }

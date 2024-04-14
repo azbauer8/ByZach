@@ -10,7 +10,7 @@ import { Drawer } from "vaul"
 
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
-import { StickyHeader } from "@/components/StickyHeader"
+import { StickyHeader } from "@/components/Layouts"
 import ThemeToggle from "@/components/ThemeToggle"
 
 const sidebarAtom = atom(false)
@@ -56,7 +56,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
     >
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-50 bg-black/80" />
-        <Drawer.Content className="fixed left-0 top-0 z-50 flex h-dvh w-80 flex-col border-r bg-content1 sm:w-72 md:w-64 lg:w-56">
+        <Drawer.Content className="fixed left-0 top-0 z-50 flex h-dvh w-80 flex-col overflow-y-auto border-r bg-content1 sm:w-72 md:w-64 lg:w-56">
           <SidebarHeader />
           {children}
         </Drawer.Content>

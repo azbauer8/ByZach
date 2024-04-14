@@ -4,8 +4,8 @@ import { FaLink } from "react-icons/fa6"
 
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
+import { ContentWrapper } from "@/components/Layouts"
 import { MDXContent } from "@/components/MdxContent"
-import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
 export const dynamicParams = false
 export async function generateStaticParams() {
@@ -22,9 +22,9 @@ export default async function Use({ params }: { params: { use: string } }) {
     <ContentWrapper
       title={use.metadata.title}
       type="uses"
-      className="flex flex-col gap-5"
+      className="space-y-5"
     >
-      <div className="space-y-0.5 pb-5">
+      <div className="space-y-0.5">
         <Badge>{use.metadata.category}</Badge>
         <Typography variant="h2">{use.metadata.title}</Typography>
         {use.metadata.link ? (

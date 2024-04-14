@@ -17,12 +17,12 @@ import { FiArrowUpRight } from "react-icons/fi"
 import { SiTrakt } from "react-icons/si"
 
 import { Typography } from "@/components/ui/typography"
+import { StickyHeader } from "@/components/Layouts"
 import {
   MobileSidebar,
   MobileSidebarLink,
   SidebarLink,
 } from "@/components/Sidebar.client"
-import { StickyHeader } from "@/components/StickyHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
 const sidebarLinks = {

@@ -1,13 +1,16 @@
-import { PageHeader } from "@/components/StickyHeader"
-import DiscoveriesList from "@/app/(content-lists)/discoveries/DiscoveriesList"
+import { getDiscoveries } from "@/utils/getContent"
+
+import { PageHeader } from "@/components/Layouts"
+import NavList from "@/components/NavList"
 
 export default async function Discoveries() {
+  const discoveries = getDiscoveries()
+  if (!discoveries) return null
+
   return (
     <>
       <PageHeader title="Discoveries" />
-      <div className="flex flex-col gap-1 p-3">
-        <DiscoveriesList />
-      </div>
+      <NavList type="discoveries" links={discoveries} />
     </>
   )
 }

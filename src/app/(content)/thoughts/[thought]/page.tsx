@@ -2,8 +2,8 @@ import { formatDate } from "@/utils/format"
 import { getThoughts } from "@/utils/getContent"
 
 import { Typography } from "@/components/ui/typography"
+import { ContentWrapper } from "@/components/Layouts"
 import { MDXContent } from "@/components/MdxContent"
-import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
 export const dynamicParams = false
 
@@ -26,7 +26,7 @@ export default async function Thought({
     <ContentWrapper
       title={thought.metadata.title}
       type="thoughts"
-      className="flex flex-col gap-5"
+      className="space-y-5"
     >
       <div className="space-y-1.5">
         <Typography variant="h2">{thought.metadata.title}</Typography>

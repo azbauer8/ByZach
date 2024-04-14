@@ -1,12 +1,12 @@
 import { unstable_noStore } from "next/cache"
 import Image from "next/image"
+import { getTimeDiff } from "@/utils/activityCalc"
 import { PiWaveformBold } from "react-icons/pi"
 
 import { LastFmData } from "@/types/apiData"
 import { Typography } from "@/components/ui/typography"
 
 import { LoadingLastFm } from "./ActivityLoading"
-import { getTimeDiff } from "./timeCalc"
 
 async function loader() {
   unstable_noStore()

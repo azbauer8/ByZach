@@ -1,13 +1,16 @@
-import { PageHeader } from "@/components/StickyHeader"
-import UsesList from "@/app/(content-lists)/uses/UsesList"
+import { getUses } from "@/utils/getContent"
+
+import { PageHeader } from "@/components/Layouts"
+import NavList from "@/components/NavList"
 
 export default async function Uses() {
+  const uses = getUses()
+  if (!uses) return null
+
   return (
     <>
       <PageHeader title="Uses" />
-      <div className="flex flex-col gap-1 p-3">
-        <UsesList />
-      </div>
+      <NavList type="uses" links={uses} />
     </>
   )
 }

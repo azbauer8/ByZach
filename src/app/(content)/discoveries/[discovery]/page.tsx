@@ -4,7 +4,7 @@ import { FaLink } from "react-icons/fa6"
 
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
-import { ContentWrapper } from "@/app/(content)/ContentWrapper"
+import { ContentWrapper } from "@/components/Layouts"
 
 export const dynamicParams = false
 

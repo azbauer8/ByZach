@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { formatDate } from "@/utils/format"
 
-import NavLink from "@/app/(content-lists)/NavList.client"
+import NavLink from "@/components/NavList.client"
 
 export default function NavList({
   type,
@@ -18,7 +18,7 @@ export default function NavList({
   }[]
 }) {
   return (
-    <div className="flex flex-col gap-0.5">
+    <div className="flex flex-col gap-0.5 p-3">
       {links.map((link) => {
         const fullLink = `/${type}/${link.slug}`
         return (
