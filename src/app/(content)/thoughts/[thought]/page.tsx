@@ -2,6 +2,7 @@ import { formatDate } from "@/utils/format"
 import { getThoughts } from "@/utils/getContent"
 
 import { Typography } from "@/components/ui/typography"
+import { MDXContent } from "@/components/MdxContent"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
 export const dynamicParams = false
@@ -34,7 +35,7 @@ export default async function Thought({
         </Typography>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
-        {thought.content}
+        <MDXContent source={thought.content} />
       </main>
     </ContentWrapper>
   )

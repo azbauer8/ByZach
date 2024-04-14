@@ -6,6 +6,8 @@ const nextConfig = {
     ppr: true
   },
 
+  transpilePackages: ['next-mdx-remote'],
+
   images: {
     remotePatterns: [
       {

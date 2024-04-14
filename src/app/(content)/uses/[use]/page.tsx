@@ -4,6 +4,7 @@ import { FaLink } from "react-icons/fa6"
 
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
+import { MDXContent } from "@/components/MdxContent"
 import { ContentWrapper } from "@/app/(content)/ContentWrapper"
 
 export const dynamicParams = false
@@ -44,7 +45,7 @@ export default async function Use({ params }: { params: { use: string } }) {
         </Typography>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
-        {use.content}
+        <MDXContent source={use.content} />
       </main>
     </ContentWrapper>
   )

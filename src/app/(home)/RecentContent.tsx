@@ -8,7 +8,6 @@ export default async function RecentContent() {
   const projects = getProjects(5)
   const thoughts = getThoughts(5)
   const discoveries = getDiscoveries(5)
-  console.log("🚀 ~ RecentContent ~ discoveries:", discoveries)
 
   return (
     <div className="space-y-8">
