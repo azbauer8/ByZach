@@ -17,7 +17,9 @@ export function DynamicHeader({
   rightContent?: React.ReactNode
   scrollPos?: number
 }) {
-  const [windowScroll, setWindowScroll] = useState(window?.scrollY ?? 0)
+  const [windowScroll, setWindowScroll] = useState(
+    typeof window !== "undefined" ? window?.scrollY : 0
+  )
   useScrollPosition(({ currPos }) => {
     setWindowScroll(Math.abs(currPos.y))
   }, [])
