@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from "react"
 
 import { TRANSITIONS, VELOCITY_THRESHOLD } from "./constants"

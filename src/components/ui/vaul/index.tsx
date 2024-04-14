@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-disable @typescript-eslint/no-empty-function */
 "use client"
 
 import React from "react"
@@ -175,7 +177,7 @@ function Root({
       )
     }
     // Ensure we maintain correct pointer capture even when going outside of the drawer
-    (event.target as HTMLElement).setPointerCapture(event.pointerId)
+    ;(event.target as HTMLElement).setPointerCapture(event.pointerId)
 
     pointerStart.current = isVertical(direction) ? event.clientY : event.clientX
   }
