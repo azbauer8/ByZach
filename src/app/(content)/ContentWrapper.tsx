@@ -56,7 +56,7 @@ export function ContentListColumn({
   list: JSX.Element
 }) {
   return (
-    <div className="absolute top-0 max-h-dvh min-h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px]  bg-content1 transition duration-200 ease-in-out md:sticky md:translate-x-0">
+    <div className="absolute top-0 max-h-dvh min-h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px] bg-content1 md:sticky md:translate-x-0">
       <StickyHeader className=" bg-content1/10">
         <SidebarToggle />
         <Typography affects="small">{title}</Typography>

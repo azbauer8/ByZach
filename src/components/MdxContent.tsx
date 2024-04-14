@@ -33,6 +33,7 @@ function Code({
 }
 
 function slugify(str: string) {
+  console.log("🚀 ~ slugify ~ str:", str)
   return str
     .toString()
     .toLowerCase()
@@ -44,20 +45,20 @@ function slugify(str: string) {
 }
 
 function createHeading(level: number) {
-  const heading = ({ children }: { children: string }) => {
-    const slug = slugify(children)
-    return React.createElement(
-      `h${level}`,
-      { id: slug },
-      [
-        React.createElement("a", {
+  const heading = ({ children }: { children: string | React.ReactNode }) => {
+    // @ts-expect-error it works I think
+    const slug = slugify(children?.props?.children || children)
+    return React.createElement(`h${level}`, { id: slug }, [
+      React.createElement(
+        "a",
+        {
           href: `#${slug}`,
           key: `link-${slug}`,
           className: "anchor",
-        }),
-      ],
-      children
-    )
+        },
+        children
+      ),
+    ])
   }
   return heading
 }

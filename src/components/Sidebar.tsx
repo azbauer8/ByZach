@@ -98,7 +98,7 @@ const sidebarLinks = {
 export default function Sidebar() {
   return (
     <>
-      <nav className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 min-w-56 max-w-56 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] bg-content1 transition duration-200 ease-in-out lg:sticky lg:translate-x-0">
+      <nav className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 min-w-56 max-w-56 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] bg-content1 lg:sticky lg:translate-x-0">
         <StickyHeader className="bg-content1/10 pl-3">
           <Typography affects="small">{siteConfig.title}</Typography>
           <ThemeToggle />
