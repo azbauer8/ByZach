@@ -175,9 +175,9 @@ function Root({
         () => (isAllowedToDrag.current = false),
         { once: true }
       )
-    }
+    } 
     // Ensure we maintain correct pointer capture even when going outside of the drawer
-    ;(event.target as HTMLElement).setPointerCapture(event.pointerId)
+    (event.target as HTMLElement).setPointerCapture(event.pointerId)
 
     pointerStart.current = isVertical(direction) ? event.clientY : event.clientX
   }
