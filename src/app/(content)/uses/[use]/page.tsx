@@ -22,7 +22,7 @@ export default async function Use({ params }: { params: { use: string } }) {
     <ContentWrapper
       title={use.metadata.title}
       type="uses"
-      className="content-wrapper flex flex-col gap-5"
+      className="flex flex-col gap-5"
     >
       <div className="space-y-0.5 pb-5">
         <Badge>{use.metadata.category}</Badge>

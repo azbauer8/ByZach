@@ -28,7 +28,7 @@ export default async function Discovery({
     <ContentWrapper
       title={discovery.metadata.title}
       type="discoveries"
-      className="content-wrapper space-y-0.5"
+      className="space-y-0.5"
     >
       <Badge>{discovery.metadata.category}</Badge>
       <Typography variant="h2">{discovery.metadata.title}</Typography>

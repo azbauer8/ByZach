@@ -22,7 +22,7 @@ import {
   MobileSidebarLink,
   SidebarLink,
 } from "@/components/Sidebar.client"
-import StickyHeader from "@/components/StickyHeader"
+import { StickyHeader } from "@/components/StickyHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
 const sidebarLinks = {

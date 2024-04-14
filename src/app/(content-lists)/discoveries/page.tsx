@@ -1,10 +1,10 @@
+import { PageHeader } from "@/components/StickyHeader"
 import DiscoveriesList from "@/app/(content-lists)/discoveries/DiscoveriesList"
-import { ListColumnHeader } from "@/app/(content-lists)/ListHeader"
 
 export default async function Discoveries() {
   return (
     <>
-      <ListColumnHeader title="Discoveries" />
+      <PageHeader title="Discoveries" />
       <div className="flex flex-col gap-1 p-3">
         <DiscoveriesList />
       </div>

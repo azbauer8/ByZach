@@ -10,7 +10,7 @@ import { Drawer } from "vaul"
 
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
-import StickyHeader from "@/components/StickyHeader"
+import { StickyHeader } from "@/components/StickyHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
 const sidebarAtom = atom(false)
@@ -19,11 +19,29 @@ export function SidebarToggle() {
   const [, setSidebarOpen] = useAtom(sidebarAtom)
   return (
     <>
-      <Button className="lg:hidden" onClick={() => setSidebarOpen(true)}>
+      <Button
+        className="absolute left-2 lg:hidden"
+        onClick={() => setSidebarOpen(true)}
+      >
         <PiSidebarSimple size={22} />
       </Button>
       <div className="hidden lg:block" />
     </>
+  )
+}
+
+export function SidebarHeader() {
+  const [, setSidebarOpen] = useAtom(sidebarAtom)
+  return (
+    <StickyHeader className="bg-content1/10">
+      <div className="flex items-center space-x-1.5">
+        <Button onClick={() => setSidebarOpen(false)}>
+          <FaXmark size={14} />
+        </Button>
+        <Typography affects="small">{siteConfig.title}</Typography>
+      </div>
+      <ThemeToggle />
+    </StickyHeader>
   )
 }
 
@@ -39,15 +57,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-50 bg-black/80" />
         <Drawer.Content className="fixed left-0 top-0 z-50 flex h-dvh w-80 flex-col border-r bg-content1 sm:w-72 md:w-64 lg:w-56">
-          <StickyHeader className="bg-content1/10">
-            <div className="flex items-center space-x-1.5">
-              <Button onClick={() => setSidebarOpen(false)}>
-                <FaXmark size={14} />
-              </Button>
-              <Typography affects="small">{siteConfig.title}</Typography>
-            </div>
-            <ThemeToggle />
-          </StickyHeader>
+          <SidebarHeader />
           {children}
         </Drawer.Content>
       </Drawer.Portal>

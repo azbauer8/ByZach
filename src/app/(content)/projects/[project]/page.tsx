@@ -27,11 +27,7 @@ export default async function Project({
 
   if (!project) return null
   return (
-    <ContentWrapper
-      title={project.metadata.title}
-      type="projects"
-      className="content-wrapper"
-    >
+    <ContentWrapper title={project.metadata.title} type="projects">
       <div className="space-y-0.5 pb-5">
         <Badge>{project.metadata.category}</Badge>
         <Typography variant="h2">{project.metadata.title}</Typography>

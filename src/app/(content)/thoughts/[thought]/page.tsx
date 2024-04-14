@@ -26,7 +26,7 @@ export default async function Thought({
     <ContentWrapper
       title={thought.metadata.title}
       type="thoughts"
-      className="content-wrapper flex flex-col gap-5"
+      className="flex flex-col gap-5"
     >
       <div className="space-y-1.5">
         <Typography variant="h2">{thought.metadata.title}</Typography>
