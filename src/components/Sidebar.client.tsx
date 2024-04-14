@@ -7,9 +7,9 @@ import { cn } from "@/utils/tailwind/cn"
 import { atom, useAtom } from "jotai"
 import { FaXmark } from "react-icons/fa6"
 import { PiSidebarSimple } from "react-icons/pi"
-import { Drawer } from "vaul"
 
 import { Button } from "@/components/ui/button"
+import { Drawer } from "@/components/ui/vaul"
 import { DynamicHeader } from "@/components/DynamicHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
@@ -65,6 +65,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
       onOpenChange={setSidebarOpen}
       direction="left"
       shouldScaleBackground
+      disablePreventScroll
     >
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-50 bg-black/80" />
