@@ -17,13 +17,12 @@ import { FiArrowUpRight } from "react-icons/fi"
 import { SiTrakt } from "react-icons/si"
 
 import { Typography } from "@/components/ui/typography"
-import { StickyHeader } from "@/components/Layouts"
 import {
   MobileSidebar,
   MobileSidebarLink,
   SidebarLink,
+  SidebarWrapper,
 } from "@/components/Sidebar.client"
-import ThemeToggle from "@/components/ThemeToggle"
 
 const sidebarLinks = {
   site: [
@@ -98,13 +97,9 @@ const sidebarLinks = {
 export default function Sidebar() {
   return (
     <>
-      <nav className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 min-w-56 max-w-56 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] bg-content1 lg:sticky lg:translate-x-0">
-        <StickyHeader className="bg-content1/10 pl-3">
-          <Typography affects="small">{siteConfig.title}</Typography>
-          <ThemeToggle />
-        </StickyHeader>
+      <SidebarWrapper>
         <SidebarLinks />
-      </nav>
+      </SidebarWrapper>
 
       <MobileSidebar>
         <SidebarLinks mobile />
@@ -115,50 +110,53 @@ export default function Sidebar() {
 
 function SidebarLinks({ mobile }: { mobile?: boolean }) {
   return (
-    <div className="flex-1 space-y-5 p-3 text-sm">
-      <div className="flex flex-col gap-0.5">
-        {sidebarLinks.site.map((link) => (
-          <Link href={link.href} key={link.name}>
-            {mobile ? (
-              <MobileSidebarLink link={link} />
-            ) : (
-              <SidebarLink link={link} />
-            )}
-          </Link>
-        ))}
-      </div>
-      <div className="flex flex-col gap-2.5">
-        <Typography affects="small" className="pl-2">
-          Social
-        </Typography>
+    <div className="flex-1 space-y-2 p-3 pt-0 text-sm">
+      <Typography variant="h3">{siteConfig.title}</Typography>
+      <div className="space-y-5">
         <div className="flex flex-col gap-0.5">
-          {sidebarLinks.social.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <ExternalSidebarLink link={link} />
-            </a>
+          {sidebarLinks.site.map((link) => (
+            <Link href={link.href} key={link.name}>
+              {mobile ? (
+                <MobileSidebarLink link={link} />
+              ) : (
+                <SidebarLink link={link} />
+              )}
+            </Link>
           ))}
         </div>
-      </div>
-      <div className="flex flex-col gap-2.5">
-        <Typography affects="small" className="pl-2">
-          Work
-        </Typography>
-        <div className="flex flex-col gap-0.5">
-          {sidebarLinks.work.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <ExternalSidebarLink link={link} />
-            </a>
-          ))}
+        <div className="flex flex-col gap-2.5">
+          <Typography affects="small" className="pl-2">
+            Social
+          </Typography>
+          <div className="flex flex-col gap-0.5">
+            {sidebarLinks.social.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ExternalSidebarLink link={link} />
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2.5">
+          <Typography affects="small" className="pl-2">
+            Work
+          </Typography>
+          <div className="flex flex-col gap-0.5">
+            {sidebarLinks.work.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ExternalSidebarLink link={link} />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,4 @@
-import { ContentListColumn } from "@/components/Layouts"
-import Thoughts from "@/app/(content-lists)/thoughts/page"
+import Thoughts from "@/app/(content-lists)/thoughts/Thoughts"
 
 export default function ContentLayout({
   children,
@@ -8,9 +7,7 @@ export default function ContentLayout({
 }) {
   return (
     <div className="flex size-full">
-      <ContentListColumn>
-        <Thoughts />
-      </ContentListColumn>
+      <Thoughts isContentPage />
       <div className="flex-1">{children}</div>
     </div>
   )

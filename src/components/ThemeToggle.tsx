@@ -13,7 +13,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown"
 
-export default function ThemeToggle() {
+export default function ThemeToggle({
+  className,
+  align,
+}: {
+  className?: string
+  align?: "center" | "end" | "start" | undefined
+}) {
   const [mounted, setMounted] = useState(false)
 
   const { theme, setTheme } = useTheme()
@@ -32,7 +38,7 @@ export default function ThemeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button>
+        <Button className={className}>
           {theme === "light" ? (
             <PiSunDuotone size={18} />
           ) : theme === "dark" ? (
@@ -42,7 +48,7 @@ export default function ThemeToggle() {
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent align={align}>
         <DropdownMenuItem
           className={cn(
             "group space-x-2",

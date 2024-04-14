@@ -1,6 +1,7 @@
 import Link from "next/link"
-import { formatDate } from "@/utils/format"
+import { capitalize, formatDate } from "@/utils/format"
 
+import { Typography } from "@/components/ui/typography"
 import NavLink from "@/components/NavList.client"
 
 export default function NavList({
@@ -18,7 +19,10 @@ export default function NavList({
   }[]
 }) {
   return (
-    <div className="flex flex-col gap-0.5 p-3">
+    <div className="flex flex-col gap-0.5 p-3 pt-0">
+      <Typography variant="h3" className="pb-2">
+        {capitalize(type)}
+      </Typography>
       {links.map((link) => {
         const fullLink = `/${type}/${link.slug}`
         return (

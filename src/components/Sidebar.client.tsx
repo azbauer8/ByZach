@@ -1,5 +1,6 @@
 "use client"
 
+import React, { useState } from "react"
 import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config"
 import { cn } from "@/utils/tailwind/cn"
@@ -9,8 +10,7 @@ import { PiSidebarSimple } from "react-icons/pi"
 import { Drawer } from "vaul"
 
 import { Button } from "@/components/ui/button"
-import { Typography } from "@/components/ui/typography"
-import { StickyHeader } from "@/components/Layouts"
+import { DynamicHeader } from "@/components/DynamicHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
 const sidebarAtom = atom(false)
@@ -30,23 +30,35 @@ export function SidebarToggle() {
   )
 }
 
-export function SidebarHeader() {
-  const [, setSidebarOpen] = useAtom(sidebarAtom)
+export function SidebarWrapper({ children }: { children: React.ReactNode }) {
+  const [scroll, setScroll] = useState(0)
+  const onScroll = () => {
+    const scrollTop = document.getElementById("sidebar")?.scrollTop
+    scrollTop && setScroll(scrollTop)
+  }
   return (
-    <StickyHeader className="bg-content1/10">
-      <div className="flex items-center space-x-1.5">
-        <Button onClick={() => setSidebarOpen(false)}>
-          <FaXmark size={14} />
-        </Button>
-        <Typography affects="small">{siteConfig.title}</Typography>
-      </div>
-      <ThemeToggle />
-    </StickyHeader>
+    <nav
+      className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 min-w-56 max-w-56 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] bg-content1 lg:sticky lg:translate-x-0"
+      id="sidebar"
+      onScroll={onScroll}
+    >
+      <DynamicHeader
+        title={siteConfig.title}
+        rightContent={<ThemeToggle />}
+        scrollPos={scroll}
+      />
+      {children}
+    </nav>
   )
 }
 
 export function MobileSidebar({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useAtom(sidebarAtom)
+  const [scroll, setScroll] = useState(0)
+  const onScroll = () => {
+    const scrollTop = document.getElementById("mobile-sidebar")?.scrollTop
+    scrollTop && setScroll(scrollTop)
+  }
   return (
     <Drawer.Root
       open={sidebarOpen}
@@ -56,8 +68,20 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
     >
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 z-50 bg-black/80" />
-        <Drawer.Content className="fixed left-0 top-0 z-50 flex h-dvh w-80 flex-col overflow-y-auto border-r bg-content1 sm:w-72 md:w-64 lg:w-56">
-          <SidebarHeader />
+        <Drawer.Content
+          className="fixed left-0 top-0 z-50 flex h-dvh w-80 flex-col overflow-y-auto border-r bg-content1 sm:w-72 md:w-64 lg:w-56"
+          id="mobile-sidebar"
+          onScroll={onScroll}
+        >
+          <DynamicHeader
+            title={siteConfig.title}
+            rightContent={<ThemeToggle />}
+            scrollPos={scroll}
+          >
+            <Button onClick={() => setSidebarOpen(false)}>
+              <FaXmark size={14} />
+            </Button>
+          </DynamicHeader>
           {children}
         </Drawer.Content>
       </Drawer.Portal>
