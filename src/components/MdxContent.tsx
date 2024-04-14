@@ -33,7 +33,6 @@ function Code({
 }
 
 function slugify(str: string) {
-  console.log("🚀 ~ slugify ~ str:", str)
   return str
     .toString()
     .toLowerCase()
