@@ -1,7 +1,11 @@
 @import "./syntax.css";
 
+.prose {
+  @apply max-w-none;
+}
+
 .prose pre {
-  @apply bg-default1/15 space-y-4 rounded-md border border-divider p-4 text-foreground;
+  @apply space-y-4 rounded-md border border-divider bg-default1/15 p-4 text-foreground;
 }
 
 .prose code,
@@ -12,5 +16,5 @@
 }
 
 .anchor {
-  @apply no-underline hover:underline hover:underline-offset-4;
+  @apply no-underline hover:underline hover:underline-offset-4 active:underline active:underline-offset-4;
 }

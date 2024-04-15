@@ -32,7 +32,7 @@ export default function ContentListWrapper({
       id={id}
       onScroll={onScroll}
     >
-      <DynamicHeader title={type} scrollPos={scroll}>
+      <DynamicHeader title={type} scrollPos={scroll} isListHeader>
         <SidebarToggle />
       </DynamicHeader>
       {children}

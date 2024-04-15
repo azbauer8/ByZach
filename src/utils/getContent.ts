@@ -17,6 +17,11 @@ type DiscoveryMetadata = Metadata & {
   link: string
   description: string
 }
+
+type SnippetMetadata = Metadata & {
+  category: string
+  description: string
+}
 type UseMetadata = Metadata & {
   category: string
   link: string
@@ -101,6 +106,19 @@ export function getDiscoveries(limit?: number) {
     }
   })
   return limit ? jsonFiles.slice(0, limit) : jsonFiles
+}
+export function getSnippets(limit?: number) {
+  const dir = path.join(process.cwd(), "content/snippets")
+  const mdxFiles = getMDXFiles(dir).map((file) => {
+    const { metadata, content } = readMDXFile(path.join(dir, file))
+    const slug = path.basename(file, path.extname(file))
+    return {
+      metadata: metadata as SnippetMetadata,
+      slug,
+      content,
+    }
+  })
+  return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }
 
 export function getUses(limit?: number) {

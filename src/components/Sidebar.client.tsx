@@ -46,6 +46,7 @@ export function SidebarWrapper({ children }: { children: React.ReactNode }) {
         title={siteConfig.title}
         rightContent={<ThemeToggle />}
         scrollPos={scroll}
+        isListHeader
       />
       {children}
     </nav>
@@ -71,6 +72,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
           title={siteConfig.title}
           rightContent={<ThemeToggle />}
           scrollPos={scroll}
+          isListHeader
         >
           <Button onClick={() => setSidebarOpen(false)}>
             <FaXmark size={14} />
@@ -98,8 +100,8 @@ export function SidebarLink({
   return (
     <div
       className={cn(
-        "hover:!border-default1 hover:bg-default2 flex  size-full items-center gap-3 rounded-md border  !border-transparent px-2 py-1.5 hover:text-primary",
-        active && "!border-default1 bg-default2 text-primary"
+        "flex size-full items-center  gap-3 rounded-md border !border-transparent px-2  py-1.5 hover:!border-default1 hover:bg-content2 active:!border-default1 active:bg-content2",
+        active && "!border-default1 bg-content2 text-primary"
       )}
     >
       <div className={cn(active ? "text-primary" : "text-default3")}>
@@ -128,8 +130,8 @@ export function MobileSidebarLink({
     <div
       onClick={() => setSidebarOpen(false)}
       className={cn(
-        "hover:!border-default1 hover:bg-default2 flex  size-full items-center gap-3 rounded-md border  !border-transparent px-2 py-1.5 hover:text-primary",
-        active && "!border-default1 bg-default2 text-primary"
+        "flex size-full items-center gap-3 rounded-md border !border-transparent px-2 py-1.5 hover:!border-default1 hover:bg-content2 active:!border-default1 active:bg-content2",
+        active && "!border-default1 bg-content2 text-primary"
       )}
     >
       <div className={cn(active ? "text-primary" : "text-default3")}>

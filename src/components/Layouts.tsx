@@ -9,7 +9,7 @@ import { FaChevronLeft } from "react-icons/fa6"
 import { DynamicHeader } from "@/components/DynamicHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
-export const PageLayout = twcn.div`mx-auto max-w-2xl px-4 py-12 md:px-8`
+export const PageLayout = twcn.div`mx-auto max-w-2xl px-4 pt-0 pb-12 md:px-8`
 
 export function ContentWrapper({
   title,
@@ -26,13 +26,13 @@ export function ContentWrapper({
     <>
       <DynamicHeader
         title={title}
-        rightContent={<ThemeToggle className="md:hidden" align="end" />}
+        rightContent={<ThemeToggle className="md:hidden" />}
       >
         <Link
           href={`/${type}`}
-          className="hover:bg-default1/40 absolute left-2 flex items-center rounded-md p-1.5 text-sm text-primary md:hidden"
+          className="absolute left-2 flex items-center gap-0.5 rounded-md p-1.5 text-primary hover:bg-default1/40 active:bg-default1/40 md:hidden"
         >
-          <FaChevronLeft size={15} className="translate-y-[-0.5px]" />
+          <FaChevronLeft size={18} />
           Back
         </Link>
       </DynamicHeader>

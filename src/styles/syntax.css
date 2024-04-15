@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --sh-class: #4a6bac;
   --sh-identifier: #a17c3f;
   --sh-sign: #807256;
@@ -20,4 +20,25 @@
   --sh-jsxliterals: #fac863;
   --sh-property: #947fb8;
   --sh-entity: #7aa89f;
+} */
+
+:root {
+  --sh-identifier: #354150;
+  --sh-class: #2d5e9d;
+  --sh-sign: rgba(160, 160, 160);
+  --sh-string: #007f7a;
+  --sh-keyword: rgba(30.396, 116.69, 79.083);
+  --sh-comment: #a19595;
+  --sh-jsxliterals: #6266d1;
+  --sh-property: rgba(175.59, 124.89, 72.653);
+  --sh-entity: rgba(175.59, 124.89, 72.653);
+}
+
+.dark {
+  --sh-identifier: white;
+  --sh-class: #4c97f8;
+  --sh-keyword: rgba(160, 160, 160);
+  --sh-string: rgba(153.23, 254.54, 227.94);
+  --sh-property: rgba(254.72, 198.81, 152.61);
+  --sh-entity: rgba(254.72, 198.81, 152.61);
 }

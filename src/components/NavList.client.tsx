@@ -15,8 +15,8 @@ export default function NavLink({
   return (
     <div
       className={cn(
-        "hover:!border-default1 hover:bg-default2 flex  size-full items-center gap-3 rounded-md border  !border-transparent px-2 py-1.5 hover:text-primary",
-        active && "!border-default1 bg-default2 text-primary"
+        "flex size-full items-center  gap-3 rounded-md border !border-transparent px-2  py-1.5 hover:!border-default1 hover:bg-content2 active:!border-default1 active:bg-content2",
+        active && "!border-default1 bg-content2 text-primary"
       )}
     >
       {children}

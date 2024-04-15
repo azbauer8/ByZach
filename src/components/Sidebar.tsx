@@ -3,6 +3,7 @@ import { siteConfig } from "@/config"
 import {
   FaAt,
   FaBrain,
+  FaCode,
   FaFilePdf,
   FaFire,
   FaGithubAlt,
@@ -40,6 +41,11 @@ const sidebarLinks = {
       name: "Thoughts",
       href: "/thoughts",
       icon: <FaBrain size={16} />,
+    },
+    {
+      name: "Snippets",
+      href: "/snippets",
+      icon: <FaCode size={16} />,
     },
     {
       name: "Discoveries",
@@ -173,13 +179,13 @@ function ExternalSidebarLink({
   }
 }) {
   return (
-    <div className="hover:!border-default1 hover:bg-default2 group  flex size-full items-center gap-3 rounded-md  border !border-transparent px-2 py-1.5 hover:text-primary">
+    <div className="group flex size-full  items-center gap-3 rounded-md border !border-transparent px-2 py-1.5 hover:!border-default1 hover:bg-content2 active:!border-default1 active:bg-content2">
       <div className="text-default3">{link.icon}</div>
       <div className="flex flex-1 items-start">
         {link.name}
         <FiArrowUpRight
           size={13}
-          className="opacity-0 group-hover:opacity-100 group-active:opacity-100"
+          className="rotate-12 opacity-0 group-hover:opacity-100 group-active:opacity-100"
         />
       </div>
     </div>

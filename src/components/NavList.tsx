@@ -8,7 +8,7 @@ export default function NavList({
   type,
   links,
 }: {
-  type: "projects" | "discoveries" | "thoughts" | "uses"
+  type: "projects" | "discoveries" | "thoughts" | "uses" | "snippets"
   links: {
     slug: string
     metadata: {
@@ -30,7 +30,7 @@ export default function NavList({
             <NavLink link={fullLink}>
               <div className="flex flex-col gap-1">
                 <h1 className="font-medium">{link.metadata.title}</h1>
-                <h3 className="text-default3 text-sm">
+                <h3 className="text-sm text-default3">
                   {link.metadata.category
                     ? link.metadata.category
                     : link.metadata.dateTime

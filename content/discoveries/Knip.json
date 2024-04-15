@@ -1,6 +1,6 @@
 {
   "title": "Knip",
-  "datetime": "2024-04-11T22:08",
+  "dateTime": "2024-04-11T22:08",
   "category": "Dev Tools",
   "link": "https://knip.dev/",
   "description": "Find unused files, dependencies and exports in JavaScript and TypeScript projects."

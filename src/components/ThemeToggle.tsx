@@ -13,13 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown"
 
-export default function ThemeToggle({
-  className,
-  align,
-}: {
-  className?: string
-  align?: "center" | "end" | "start" | undefined
-}) {
+export default function ThemeToggle({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false)
 
   const { theme, setTheme } = useTheme()
@@ -48,35 +42,35 @@ export default function ThemeToggle({
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align={align}>
+      <DropdownMenuContent align="end">
         <DropdownMenuItem
           className={cn(
-            "group space-x-2",
+            "space-x-2",
             theme === "light" && "!border-divider bg-content2 text-primary"
           )}
           onClick={() => setTheme("light")}
         >
-          <PiSunDuotone size={16} className="group-hover:text-foreground" />
+          <PiSunDuotone size={16} />
           <span>Light</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           className={cn(
-            "group space-x-2",
+            "space-x-2",
             theme === "dark" && "!border-divider bg-content2 text-primary"
           )}
           onClick={() => setTheme("dark")}
         >
-          <PiMoonDuotone size={16} className="group-hover:text-foreground" />
+          <PiMoonDuotone size={16} />
           <span>Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           className={cn(
-            "group space-x-2",
+            "space-x-2",
             theme === "system" && "!border-divider bg-content2 text-primary"
           )}
           onClick={() => setTheme("system")}
         >
-          <PiMonitorDuotone size={16} className="group-hover:text-foreground" />
+          <PiMonitorDuotone size={16} />
           <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
