@@ -3,6 +3,46 @@ title: Eslint & Prettier Config for Next.js and TailwindCSS
 dateTime: 2024-04-15T17:38:00.000Z
 category: Configs
 ---
+Add to `package.json` scripts:
+
+```
+"format": "prettier --write ./src",
+```
+
+**Eslint:**
+
+```
+npm i -D --save-dev eslint eslint-config-next eslint-config-prettier eslint-plugin-tailwindcss @typescript-eslint/eslint-plugin @typescript-eslint/parser
+```
+
+`.eslintrc`
+
+```
+{
+  "extends": [
+    "next/core-web-vitals", 
+    "prettier",  
+    "plugin:tailwindcss/recommended",     
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+    "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      }
+    }
+  ],
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": "off"
+  }
+}
+```
+
+
+
 **Prettier:**
 
 ```bash
@@ -46,43 +86,3 @@ npm i -D --save-dev prettier prettier-plugin-tailwindcss @ianvs/prettier-plugin-
 }
 ```
 
-**Eslint:**
-
-* Assumes using React, NextJS, and TailwindCSS
-
-```bash
-npm i -D --save-dev eslint eslint-config-next eslint-config-prettier eslint-plugin-tailwindcss @typescript-eslint/eslint-plugin @typescript-eslint/parser
-```
-
-`.eslintrc`
-
-```
-{
-  "extends": [
-    "next/core-web-vitals", 
-    "prettier",  
-    "plugin:tailwindcss/recommended",     
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-    "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "project": "./tsconfig.json"
-      }
-    }
-  ],
-  "rules": {
-    "@typescript-eslint/ban-ts-comment": "off"
-  }
-}
-```
-
-Add to `package.json` scripts:
-
-```
-"lint": "next lint",
-"format": "prettier --write ./src",
-```
