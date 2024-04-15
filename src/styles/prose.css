@@ -5,7 +5,7 @@
 }
 
 .prose pre {
-  @apply space-y-4 rounded-md border border-divider bg-default1/15 p-4 text-foreground;
+  @apply relative space-y-4 rounded-md border border-divider bg-default1/15 p-4 text-foreground;
 }
 
 .prose code,

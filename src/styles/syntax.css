@@ -29,7 +29,7 @@
   --sh-string: #007f7a;
   --sh-keyword: rgba(30.396, 116.69, 79.083);
   --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
+  --sh-jsxliterals: rgba(160, 160, 160);
   --sh-property: rgba(175.59, 124.89, 72.653);
   --sh-entity: rgba(175.59, 124.89, 72.653);
 }
