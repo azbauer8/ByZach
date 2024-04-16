@@ -8,10 +8,10 @@ import { formatDate } from "@/lib/utils"
 import RecentContentList from "@/app/(home)/RecentContent.list"
 
 export default async function RecentContent() {
-  const projects = getProjects(5)
-  const thoughts = getThoughts(5)
-  const discoveries = getDiscoveries(5)
-  const snippets = getSnippets(5)
+  const projects = getProjects(6)
+  const thoughts = getThoughts(6)
+  const discoveries = getDiscoveries(6)
+  const snippets = getSnippets(6)
 
   return (
     <div className="space-y-6">
