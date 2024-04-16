@@ -1,6 +1,5 @@
-import { formatDate } from "@/utils/format"
-import { getThoughts } from "@/utils/getContent"
-
+import { getThoughts } from "@/lib/getContent"
+import { formatDate } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
 import { ContentLayout } from "@/components/Layouts"
 import { MDXContent } from "@/components/MdxContent"

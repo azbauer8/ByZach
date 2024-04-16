@@ -1,5 +1,4 @@
-import { getThoughts } from "@/utils/getContent"
-
+import { getThoughts } from "@/lib/getContent"
 import ContentListLayout from "@/components/Layouts.client"
 import NavList from "@/components/NavList"
 

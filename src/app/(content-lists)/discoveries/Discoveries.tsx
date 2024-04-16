@@ -1,5 +1,4 @@
-import { getDiscoveries } from "@/utils/getContent"
-
+import { getDiscoveries } from "@/lib/getContent"
 import ContentListLayout from "@/components/Layouts.client"
 import NavList from "@/components/NavList"
 

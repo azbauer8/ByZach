@@ -1,6 +1,7 @@
-import { cva, VariantProps } from "@/utils/tailwind/cva"
-import { twcn } from "@/utils/tailwind/twc"
+import { cva, VariantProps } from "class-variance-authority"
 import { TwcComponentProps } from "react-twc"
+
+import { twcn } from "@/lib/utils"
 
 const typographyVariants = cva("", {
   variants: {

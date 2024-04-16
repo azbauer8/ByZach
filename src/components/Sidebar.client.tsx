@@ -3,7 +3,6 @@
 import React, { useState } from "react"
 import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config"
-import { cn } from "@/utils/tailwind/cn"
 import { atom, useAtom } from "jotai"
 import {
   PiArrowUpRightBold,
@@ -11,6 +10,7 @@ import {
   PiXBold,
 } from "react-icons/pi"
 
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 import { DynamicHeader } from "@/components/DynamicHeader"

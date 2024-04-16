@@ -1,4 +1,4 @@
-import { twcn } from "@/utils/tailwind/twc"
+import { twcn } from "@/lib/utils"
 
 const Skeleton = twcn.div`bg-content1 animate-pulse rounded-md`
 

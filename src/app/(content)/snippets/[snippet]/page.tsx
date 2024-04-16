@@ -1,5 +1,4 @@
-import { getSnippets } from "@/utils/getContent"
-
+import { getSnippets } from "@/lib/getContent"
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
 import { ContentLayout } from "@/components/Layouts"

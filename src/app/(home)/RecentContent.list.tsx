@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { cn } from "@/utils/tailwind/cn"
 
+import { cn } from "@/lib/utils"
 import { Typography, typographyVariants } from "@/components/ui/typography"
 
 export default function RecentContentList({
@@ -43,12 +43,10 @@ export default function RecentContentList({
             href={`/${route}/${item.slug}`}
             className="group flex flex-col gap-0.5 rounded-md p-2 hover:bg-content1 active:bg-content1"
           >
-            <Typography className="truncate font-medium leading-tight underline-offset-2 group-hover:text-primary group-hover:underline group-active:text-primary group-active:underline">
+            <Typography className="truncate leading-tight underline-offset-2 group-hover:text-primary group-hover:underline group-active:text-primary group-active:underline">
               {item.title}
             </Typography>
-            <Typography affects="muted" className="text-sm">
-              {item.subtitle}
-            </Typography>
+            <Typography affects="muted">{item.subtitle}</Typography>
           </Link>
         ))}
       </div>

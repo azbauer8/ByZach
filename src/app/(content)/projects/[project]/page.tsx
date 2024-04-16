@@ -1,7 +1,7 @@
-import { formatUrl } from "@/utils/format"
-import { getProjects } from "@/utils/getContent"
 import { FaLink } from "react-icons/fa6"
 
+import { getProjects } from "@/lib/getContent"
+import { formatUrl } from "@/lib/utils"
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
 import { ContentLayout } from "@/components/Layouts"

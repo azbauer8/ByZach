@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { capitalize, formatDate } from "@/utils/format"
 
+import { capitalize, formatDate } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
 import NavLink from "@/components/NavList.client"
 
@@ -29,14 +29,16 @@ export default function NavList({
           <Link key={link.slug} href={fullLink}>
             <NavLink link={fullLink}>
               <div className="flex flex-col gap-1">
-                <h1 className="font-medium">{link.metadata.title}</h1>
-                <h3 className="text-sm text-default3">
+                <Typography className="text-sm font-medium">
+                  {link.metadata.title}
+                </Typography>
+                <Typography className="text-sm text-default3">
                   {link.metadata.category
                     ? link.metadata.category
                     : link.metadata.dateTime
                       ? formatDate(link.metadata.dateTime)
                       : null}
-                </h3>
+                </Typography>
               </div>
             </NavLink>
           </Link>

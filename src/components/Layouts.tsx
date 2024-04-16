@@ -1,13 +1,12 @@
 import React from "react"
-import { twcn } from "@/utils/tailwind/twc"
 
+import "@/lib/utils"
 import "@/styles/prose.css"
 
 import Link from "next/link"
-import { capitalize } from "@/utils/format"
-import { cn } from "@/utils/tailwind/cn"
 import { PiCaretLeftBold } from "react-icons/pi"
 
+import { capitalize, cn, twcn } from "@/lib/utils"
 import { DynamicHeader } from "@/components/DynamicHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 

@@ -1,11 +1,10 @@
-import { formatDate } from "@/utils/format"
 import {
   getDiscoveries,
   getProjects,
   getSnippets,
   getThoughts,
-} from "@/utils/getContent"
-
+} from "@/lib/getContent"
+import { formatDate } from "@/lib/utils"
 import RecentContentList from "@/app/(home)/RecentContent.list"
 
 export default async function RecentContent() {

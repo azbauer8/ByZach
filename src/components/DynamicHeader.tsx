@@ -1,9 +1,9 @@
 "use client"
 
 import React from "react"
-import { cn } from "@/utils/tailwind/cn"
-import useScrollPosition from "@/utils/useScroll"
 
+import useScrollPosition from "@/lib/useScroll"
+import { cn } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
 
 export function DynamicHeader({

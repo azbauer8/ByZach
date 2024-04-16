@@ -5,19 +5,19 @@ category: Configs
 ---
 Add to `package.json` scripts:
 
-```
+```json
 "format": "prettier --write ./src",
 ```
 
 **Eslint:**
 
-```
+```bash
 npm i -D --save-dev eslint eslint-config-next eslint-config-prettier eslint-plugin-tailwindcss @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
 `.eslintrc`
 
-```
+```json
 {
   "extends": [
     "next/core-web-vitals", 

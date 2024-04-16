@@ -18,3 +18,21 @@
 .anchor {
   @apply no-underline hover:underline hover:underline-offset-4 active:underline active:underline-offset-4;
 }
+
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark {
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+}
+
+figcaption[data-rehype-pretty-code-title] {
+  @apply ml-2.5 w-fit rounded-md rounded-b-none border border-b-0 border-divider bg-default1/15 px-1.5 py-1 font-mono tracking-tight text-foreground;
+}

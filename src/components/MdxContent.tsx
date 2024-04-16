@@ -1,11 +1,15 @@
 import React from "react"
 import Image, { ImageProps } from "next/image"
 import Link, { LinkProps } from "next/link"
-import { cn } from "@/utils/tailwind/cn"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc"
-import { highlight } from "sugar-high"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypePrettyCode, { Options } from "rehype-pretty-code"
+import rehypeSlug from "rehype-slug"
+import remarkGfm from "remark-gfm"
+import { Transformer } from "remark-rehype/node_modules/unified/index"
 
+import { cn } from "@/lib/utils"
 import Anchor from "@/components/ui/anchor"
 
 function CustomLink(
@@ -15,8 +19,14 @@ function CustomLink(
   }
 ) {
   const href = props.href
-  href.startsWith("/") && <Link {...props}>{props.children}</Link>
-  href.startsWith("#") && <a {...props} />
+  if (href.startsWith("/")) return <Link {...props}>{props.children}</Link>
+  if (href.startsWith("#"))
+    return (
+      <a
+        className="no-underline underline-offset-2 hover:underline"
+        {...props}
+      />
+    )
   return <Anchor target="_blank" rel="noopener noreferrer" {...props} />
 }
 
@@ -24,60 +34,40 @@ function RoundedImage({ alt, className, ...props }: ImageProps) {
   return <Image {...props} alt={alt} className={cn("rounded-lg", className)} />
 }
 
-function Code({
-  children,
-  ...props
-}: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-  children: string
-}) {
-  const codeHTML = highlight(children)
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
-}
-
-function slugify(str: string) {
-  return str
-    .toString()
-    .toLowerCase()
-    .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
-    .replace(/\-\-+/g, "-") // Replace multiple - with single -
-}
-
-function createHeading(level: number) {
-  const heading = ({ children }: { children: string | React.ReactNode }) => {
-    // @ts-expect-error it works I think
-    const slug = slugify(children?.props?.children || children)
-    return React.createElement(`h${level}`, { id: slug }, [
-      React.createElement(
-        "a",
-        {
-          href: `#${slug}`,
-          key: `link-${slug}`,
-          className: "anchor",
-        },
-        children
-      ),
-    ])
-  }
-  return heading
-}
-
 const components = {
-  h1: createHeading(1),
-  h2: createHeading(2),
-  h3: createHeading(3),
-  h4: createHeading(4),
-  h5: createHeading(5),
-  h6: createHeading(6),
   Image: RoundedImage,
   a: CustomLink,
-  code: Code,
 } as React.ComponentProps<typeof MDXProvider>["components"]
+
+const codeOptions: Options = {
+  theme: {
+    dark: "vesper",
+    light: "catppuccin-latte",
+  },
+  keepBackground: false,
+}
+
+const prettyCode = rehypePrettyCode as (
+  options?: Options
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+) => void | Transformer<any, any>
 
 export function MDXContent(props: MDXRemoteProps) {
   return (
-    <MDXRemote {...props} components={{ ...components, ...props.components }} />
+    <MDXRemote
+      {...props}
+      components={{ ...components, ...props.components }}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [],
+          rehypePlugins: [
+            [prettyCode, codeOptions],
+            [rehypeSlug],
+            [rehypeAutolinkHeadings, { behavior: "wrap" }],
+            [remarkGfm],
+          ],
+        },
+      }}
+    />
   )
 }

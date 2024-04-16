@@ -3,8 +3,8 @@ import { siteConfig } from "@/config"
 import "@/styles/global.css"
 
 import { Metadata } from "next"
-import { cn } from "@/utils/tailwind/cn"
 
+import { cn } from "@/lib/utils"
 import { Providers } from "@/components/Providers"
 import Sidebar from "@/components/Sidebar"
 
@@ -30,7 +30,8 @@ export default function RootLayout({
       <body
         className={cn(
           "flex bg-background font-sans text-foreground antialiased",
-          siteConfig.font.variable
+          siteConfig.font.variable,
+          siteConfig.monoFont.variable
         )}
       >
         <Providers>

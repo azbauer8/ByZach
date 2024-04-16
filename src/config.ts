@@ -1,14 +1,16 @@
 import { Asap } from "next/font/google"
+import { GeistMono } from "geist/font/mono"
 
 export type SiteConfig = typeof siteConfig
 
-const inter = Asap({ subsets: ["latin"], variable: "--font-sans" })
+const asap = Asap({ subsets: ["latin"], variable: "--font-sans" })
 
 export const siteConfig = {
   title: "ByZach",
   description: `Zach Bauer's Personal Website`,
   favicon: "/favicon.png",
-  font: inter,
+  font: asap,
+  monoFont: GeistMono,
 } as const
 
 export const siteLinks = {

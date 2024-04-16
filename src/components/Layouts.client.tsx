@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { cn } from "@/utils/tailwind/cn"
 
+import { cn } from "@/lib/utils"
 import { DynamicHeader } from "@/components/DynamicHeader"
 import { SidebarToggle } from "@/components/Sidebar.client"
 

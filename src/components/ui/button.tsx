@@ -1,6 +1,7 @@
-import { cva, VariantProps } from "@/utils/tailwind/cva"
-import { twcn } from "@/utils/tailwind/twc"
+import { cva, VariantProps } from "class-variance-authority"
 import { TwcComponentProps } from "react-twc"
+
+import { twcn } from "@/lib/utils"
 
 const buttonVariants = cva(
   "flex items-center justify-center rounded-md p-1.5 hover:bg-content2 active:bg-content2",

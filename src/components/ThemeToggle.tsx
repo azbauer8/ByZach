@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { cn } from "@/utils/tailwind/cn"
 import { useTheme } from "next-themes"
 import { PiMonitorBold, PiMoonBold, PiSunBold } from "react-icons/pi"
 
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
