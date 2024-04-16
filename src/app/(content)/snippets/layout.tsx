@@ -1,4 +1,4 @@
-import { Snippets } from "@/app/(content-lists)/snippets/page"
+import Snippets from "@/app/(content-lists)/snippets/Snippets"
 
 export default function ContentLayout({
   children,
@@ -6,7 +6,7 @@ export default function ContentLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex size-full">
+    <div className="flex">
       <Snippets isContentPage />
       <div className="flex-1">{children}</div>
     </div>

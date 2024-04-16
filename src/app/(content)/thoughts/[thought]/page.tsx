@@ -2,7 +2,7 @@ import { formatDate } from "@/utils/format"
 import { getThoughts } from "@/utils/getContent"
 
 import { Typography } from "@/components/ui/typography"
-import { ContentWrapper } from "@/components/Layouts"
+import { ContentLayout } from "@/components/Layouts"
 import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
@@ -23,7 +23,7 @@ export default async function Thought({
   )
   if (!thought) return null
   return (
-    <ContentWrapper title={thought.metadata.title} type="thoughts">
+    <ContentLayout title={thought.metadata.title} type="thoughts">
       <div className="space-y-1.5">
         <Typography variant="h2">{thought.metadata.title}</Typography>
         <Typography affects="muted">
@@ -33,6 +33,6 @@ export default async function Thought({
       <main className="prose prose-neutral dark:prose-invert">
         <MDXContent source={thought.content} />
       </main>
-    </ContentWrapper>
+    </ContentLayout>
   )
 }

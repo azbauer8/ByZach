@@ -1,10 +1,10 @@
 import { unstable_noStore } from "next/cache"
 import Image from "next/image"
-import { getTimeDiff } from "@/utils/activityCalc"
 import { PiWaveformBold } from "react-icons/pi"
 
 import { LastFmData } from "@/types/apiData"
 import { Typography } from "@/components/ui/typography"
+import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
 
 import { LoadingLastFm } from "./Activity.loading"
 

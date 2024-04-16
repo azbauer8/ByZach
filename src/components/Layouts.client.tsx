@@ -6,7 +6,7 @@ import { cn } from "@/utils/tailwind/cn"
 import { DynamicHeader } from "@/components/DynamicHeader"
 import { SidebarToggle } from "@/components/Sidebar.client"
 
-export default function ContentListWrapper({
+export default function ContentListLayout({
   id,
   type,
   children,

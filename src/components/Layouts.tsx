@@ -13,7 +13,7 @@ import ThemeToggle from "@/components/ThemeToggle"
 
 export const PageLayout = twcn.div`mx-auto max-w-2xl px-4 pt-0 pb-12 md:px-8`
 
-export function ContentWrapper({
+export function ContentLayout({
   title,
   type,
   children,

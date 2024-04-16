@@ -1,4 +1,4 @@
-import { Projects } from "@/app/(content-lists)/projects/page"
+import Projects from "@/app/(content-lists)/projects/Projects"
 
 export default function ContentLayout({
   children,
@@ -6,7 +6,7 @@ export default function ContentLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex size-full">
+    <div className="flex">
       <Projects isContentPage />
       <div className="flex-1">{children}</div>
     </div>

@@ -4,7 +4,7 @@ import { FaLink } from "react-icons/fa6"
 
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
-import { ContentWrapper } from "@/components/Layouts"
+import { ContentLayout } from "@/components/Layouts"
 import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
@@ -27,7 +27,7 @@ export default async function Project({
 
   if (!project) return null
   return (
-    <ContentWrapper title={project.metadata.title} type="projects">
+    <ContentLayout title={project.metadata.title} type="projects">
       <div className="space-y-0.5">
         <Badge>{project.metadata.category}</Badge>
         <Typography variant="h2">{project.metadata.title}</Typography>
@@ -51,6 +51,6 @@ export default async function Project({
       <main className="prose prose-neutral dark:prose-invert">
         <MDXContent source={project.content} />
       </main>
-    </ContentWrapper>
+    </ContentLayout>
   )
 }

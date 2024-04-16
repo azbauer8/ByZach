@@ -1,10 +1,10 @@
 import { unstable_noStore } from "next/cache"
 import Image from "next/image"
-import { getTimeDiff } from "@/utils/activityCalc"
 import { PiPopcornBold } from "react-icons/pi"
 
 import { TraktEntry } from "@/types/apiData"
 import { Typography } from "@/components/ui/typography"
+import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
 
 import { LoadingTrakt } from "./Activity.loading"
 

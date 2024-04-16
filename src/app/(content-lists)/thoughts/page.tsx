@@ -1,23 +1,5 @@
-import { getThoughts } from "@/utils/getContent"
-
-import ContentListWrapper from "@/components/ContentListWrapper"
-import NavList from "@/components/NavList"
+import Thoughts from "@/app/(content-lists)/thoughts/Thoughts"
 
 export default async function ThoughtsPage() {
   return <Thoughts />
-}
-
-export async function Thoughts({ isContentPage }: { isContentPage?: boolean }) {
-  const thoughts = getThoughts()
-  if (!thoughts) return null
-
-  return (
-    <ContentListWrapper
-      id="thoughts"
-      type="Thoughts"
-      isContentPage={isContentPage}
-    >
-      <NavList type="thoughts" links={thoughts} />
-    </ContentListWrapper>
-  )
 }

@@ -1,4 +1,4 @@
-import { Uses } from "@/app/(content-lists)/uses/page"
+import Uses from "@/app/(content-lists)/uses/Uses"
 
 export default function ContentLayout({
   children,

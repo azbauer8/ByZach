@@ -4,7 +4,7 @@ import { FaLink } from "react-icons/fa6"
 
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
-import { ContentWrapper } from "@/components/Layouts"
+import { ContentLayout } from "@/components/Layouts"
 import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
@@ -19,7 +19,7 @@ export default async function Use({ params }: { params: { use: string } }) {
   if (!use) return null
 
   return (
-    <ContentWrapper title={use.metadata.title} type="uses">
+    <ContentLayout title={use.metadata.title} type="uses">
       <div className="space-y-0.5">
         <Badge>{use.metadata.category}</Badge>
         <Typography variant="h2">{use.metadata.title}</Typography>
@@ -43,6 +43,6 @@ export default async function Use({ params }: { params: { use: string } }) {
       <main className="prose prose-neutral dark:prose-invert">
         <MDXContent source={use.content} />
       </main>
-    </ContentWrapper>
+    </ContentLayout>
   )
 }

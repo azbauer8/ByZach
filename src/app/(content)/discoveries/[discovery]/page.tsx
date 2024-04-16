@@ -4,7 +4,7 @@ import { FaLink } from "react-icons/fa6"
 
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
-import { ContentWrapper } from "@/components/Layouts"
+import { ContentLayout } from "@/components/Layouts"
 
 export const dynamicParams = false
 
@@ -25,7 +25,7 @@ export default async function Discovery({
   if (!discovery) return null
 
   return (
-    <ContentWrapper title={discovery.metadata.title} type="discoveries">
+    <ContentLayout title={discovery.metadata.title} type="discoveries">
       <div className="space-y-0.5">
         <Badge>{discovery.metadata.category}</Badge>
         <Typography variant="h2">{discovery.metadata.title}</Typography>
@@ -46,6 +46,6 @@ export default async function Discovery({
           {discovery.metadata.description}
         </Typography>
       </div>
-    </ContentWrapper>
+    </ContentLayout>
   )
 }
