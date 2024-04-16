@@ -1,4 +1,4 @@
-import Projects from "@/app/(content-lists)/projects/Projects"
+import { Projects } from "@/app/(content-lists)/projects/page"
 
 export default function ContentLayout({
   children,

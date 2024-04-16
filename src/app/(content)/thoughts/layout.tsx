@@ -1,4 +1,4 @@
-import Thoughts from "@/app/(content-lists)/thoughts/Thoughts"
+import { Thoughts } from "@/app/(content-lists)/thoughts/page"
 
 export default function ContentLayout({
   children,

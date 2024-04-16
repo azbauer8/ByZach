@@ -6,21 +6,19 @@ import {
   FaCode,
   FaFilePdf,
   FaFire,
-  FaGithubAlt,
-  FaHouse,
+  FaGithub,
+  FaHouseChimney,
   FaLaptopCode,
-  FaLastfm,
   FaLinkedin,
   FaSpotify,
+  FaSquareLastfm,
   FaToolbox,
 } from "react-icons/fa6"
-import { FiArrowUpRight } from "react-icons/fi"
 import { SiTrakt } from "react-icons/si"
 
 import { Typography } from "@/components/ui/typography"
 import {
   MobileSidebar,
-  MobileSidebarLink,
   SidebarLink,
   SidebarWrapper,
 } from "@/components/Sidebar.client"
@@ -30,7 +28,7 @@ const sidebarLinks = {
     {
       name: "Home",
       href: "/",
-      icon: <FaHouse size={16} />,
+      icon: <FaHouseChimney size={16} />,
     },
     {
       name: "Projects",
@@ -63,7 +61,7 @@ const sidebarLinks = {
     {
       name: "GitHub",
       href: "https://github.com/azbauer8",
-      icon: <FaGithubAlt size={16} />,
+      icon: <FaGithub size={16} />,
     },
     {
       name: "Spotify",
@@ -73,7 +71,7 @@ const sidebarLinks = {
     {
       name: "Last.fm",
       href: "https://www.last.fm/user/zacharlatanz",
-      icon: <FaLastfm size={16} />,
+      icon: <FaSquareLastfm size={16} />,
     },
     {
       name: "Trakt",
@@ -117,16 +115,14 @@ export default function Sidebar() {
 function SidebarLinks({ mobile }: { mobile?: boolean }) {
   return (
     <div className="flex-1 space-y-2 p-3 pt-0 text-sm">
-      <Typography variant="h3">{siteConfig.title}</Typography>
+      <Typography variant="h3" className="pl-1">
+        {siteConfig.title}
+      </Typography>
       <div className="space-y-5">
         <div className="flex flex-col gap-0.5">
           {sidebarLinks.site.map((link) => (
             <Link href={link.href} key={link.name}>
-              {mobile ? (
-                <MobileSidebarLink link={link} />
-              ) : (
-                <SidebarLink link={link} />
-              )}
+              <SidebarLink link={link} isMobile={mobile} />
             </Link>
           ))}
         </div>
@@ -142,7 +138,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
                 target="_blank"
                 rel="noreferrer"
               >
-                <ExternalSidebarLink link={link} />
+                <SidebarLink link={link} isExternal />
               </a>
             ))}
           </div>
@@ -159,34 +155,11 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
                 target="_blank"
                 rel="noreferrer"
               >
-                <ExternalSidebarLink link={link} />
+                <SidebarLink link={link} isExternal />
               </a>
             ))}
           </div>
         </div>
-      </div>
-    </div>
-  )
-}
-
-function ExternalSidebarLink({
-  link,
-}: {
-  link: {
-    name: string
-    href: string
-    icon: JSX.Element
-  }
-}) {
-  return (
-    <div className="group flex size-full  items-center gap-3 rounded-md border !border-transparent px-2 py-1.5 hover:!border-default1 hover:bg-content2 active:!border-default1 active:bg-content2">
-      <div className="text-default3">{link.icon}</div>
-      <div className="flex flex-1 items-start">
-        {link.name}
-        <FiArrowUpRight
-          size={13}
-          className="rotate-12 opacity-0 group-hover:opacity-100 group-active:opacity-100"
-        />
       </div>
     </div>
   )

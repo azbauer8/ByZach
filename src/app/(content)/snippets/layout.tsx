@@ -1,4 +1,4 @@
-import Snippets from "@/app/(content-lists)/snippets/Snippets"
+import { Snippets } from "@/app/(content-lists)/snippets/page"
 
 export default function ContentLayout({
   children,

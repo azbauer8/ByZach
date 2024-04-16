@@ -6,7 +6,7 @@ import { PiWaveformBold } from "react-icons/pi"
 import { LastFmData } from "@/types/apiData"
 import { Typography } from "@/components/ui/typography"
 
-import { LoadingLastFm } from "./ActivityLoading"
+import { LoadingLastFm } from "./Activity.loading"
 
 async function loader() {
   unstable_noStore()

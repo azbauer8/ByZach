@@ -6,6 +6,8 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc"
 import { highlight } from "sugar-high"
 
+import Anchor from "@/components/ui/anchor"
+
 function CustomLink(
   props: LinkProps & {
     children: React.ReactNode
@@ -15,7 +17,7 @@ function CustomLink(
   const href = props.href
   href.startsWith("/") && <Link {...props}>{props.children}</Link>
   href.startsWith("#") && <a {...props} />
-  return <a target="_blank" rel="noopener noreferrer" {...props} />
+  return <Anchor target="_blank" rel="noopener noreferrer" {...props} />
 }
 
 function RoundedImage({ alt, className, ...props }: ImageProps) {

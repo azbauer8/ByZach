@@ -20,7 +20,7 @@ export default function NavList({
 }) {
   return (
     <div className="flex flex-col gap-0.5 p-3 pt-0">
-      <Typography variant="h3" className="pb-2">
+      <Typography variant="h3" className="pb-2 pl-1">
         {capitalize(type)}
       </Typography>
       {links.map((link) => {

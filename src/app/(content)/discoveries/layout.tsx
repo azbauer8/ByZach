@@ -1,4 +1,4 @@
-import Discoveries from "@/app/(content-lists)/discoveries/Discoveries"
+import { Discoveries } from "@/app/(content-lists)/discoveries/page"
 
 export default function ContentLayout({
   children,

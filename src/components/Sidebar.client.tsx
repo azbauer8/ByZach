@@ -5,8 +5,11 @@ import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config"
 import { cn } from "@/utils/tailwind/cn"
 import { atom, useAtom } from "jotai"
-import { FaXmark } from "react-icons/fa6"
-import { PiSidebarSimple } from "react-icons/pi"
+import {
+  PiArrowUpRightBold,
+  PiSidebarSimpleDuotone,
+  PiXBold,
+} from "react-icons/pi"
 
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
@@ -23,7 +26,7 @@ export function SidebarToggle() {
         className="absolute left-2 lg:hidden"
         onClick={() => setSidebarOpen(true)}
       >
-        <PiSidebarSimple size={22} />
+        <PiSidebarSimpleDuotone size={18} />
       </Button>
       <div className="hidden lg:block" />
     </>
@@ -75,7 +78,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
           isListHeader
         >
           <Button onClick={() => setSidebarOpen(false)}>
-            <FaXmark size={14} />
+            <PiXBold size={14} />
           </Button>
         </DynamicHeader>
         {children}
@@ -86,40 +89,16 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
 
 export function SidebarLink({
   link,
+  isMobile,
+  isExternal,
 }: {
   link: {
     name: string
     href: string
     icon: JSX.Element
   }
-}) {
-  const pathname = usePathname()
-  const active =
-    link.href === "/" ? pathname === link.href : pathname?.startsWith(link.href)
-
-  return (
-    <div
-      className={cn(
-        "flex size-full items-center  gap-3 rounded-md border !border-transparent px-2  py-1.5 hover:!border-default1 hover:bg-content2 active:!border-default1 active:bg-content2",
-        active && "!border-default1 bg-content2 text-primary"
-      )}
-    >
-      <div className={cn(active ? "text-primary" : "text-default3")}>
-        {link.icon}
-      </div>
-      {link.name}
-    </div>
-  )
-}
-
-export function MobileSidebarLink({
-  link,
-}: {
-  link: {
-    name: string
-    href: string
-    icon: JSX.Element
-  }
+  isMobile?: boolean
+  isExternal?: boolean
 }) {
   const pathname = usePathname()
   const [, setSidebarOpen] = useAtom(sidebarAtom)
@@ -128,16 +107,25 @@ export function MobileSidebarLink({
 
   return (
     <div
-      onClick={() => setSidebarOpen(false)}
+      onClick={() => isMobile && setSidebarOpen(false)}
       className={cn(
-        "flex size-full items-center gap-3 rounded-md border !border-transparent px-2 py-1.5 hover:!border-default1 hover:bg-content2 active:!border-default1 active:bg-content2",
-        active && "!border-default1 bg-content2 text-primary"
+        "group flex size-full items-center gap-3 rounded-md px-2 py-1.5 hover:bg-content2 active:bg-content2",
+        active && "bg-content2"
       )}
     >
       <div className={cn(active ? "text-primary" : "text-default3")}>
         {link.icon}
       </div>
-      {link.name}
+      <div className="flex flex-1 items-center justify-between">
+        {link.name}
+        {isExternal && (
+          <PiArrowUpRightBold
+            size={14}
+            strokeWidth={8}
+            className="text-default3 opacity-0 group-hover:opacity-100 group-active:opacity-100"
+          />
+        )}
+      </div>
     </div>
   )
 }

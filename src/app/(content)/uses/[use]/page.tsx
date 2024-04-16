@@ -19,11 +19,7 @@ export default async function Use({ params }: { params: { use: string } }) {
   if (!use) return null
 
   return (
-    <ContentWrapper
-      title={use.metadata.title}
-      type="uses"
-      className="space-y-5"
-    >
+    <ContentWrapper title={use.metadata.title} type="uses">
       <div className="space-y-0.5">
         <Badge>{use.metadata.category}</Badge>
         <Typography variant="h2">{use.metadata.title}</Typography>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { cn } from "@/utils/tailwind/cn"
 import { useTheme } from "next-themes"
-import { PiMonitorDuotone, PiMoonDuotone, PiSunDuotone } from "react-icons/pi"
+import { PiMonitorBold, PiMoonBold, PiSunBold } from "react-icons/pi"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -25,52 +25,52 @@ export default function ThemeToggle({ className }: { className?: string }) {
   if (!mounted) {
     return (
       <Button>
-        <PiMonitorDuotone size={18} />
+        <PiMonitorBold size={18} />
       </Button>
     )
   }
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className={className}>
+        <Button className={cn("text-default3", className)}>
           {theme === "light" ? (
-            <PiSunDuotone size={18} />
+            <PiSunBold size={18} />
           ) : theme === "dark" ? (
-            <PiMoonDuotone size={18} />
+            <PiMoonBold size={18} />
           ) : (
-            <PiMonitorDuotone size={18} />
+            <PiMonitorBold size={18} />
           )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem
-          className={cn(
-            "space-x-2",
-            theme === "light" && "!border-divider bg-content2 text-primary"
-          )}
+          className={cn("space-x-2", theme === "light" && "bg-content2")}
           onClick={() => setTheme("light")}
         >
-          <PiSunDuotone size={16} />
+          <PiSunBold
+            size={16}
+            className={cn(theme === "light" && "text-primary")}
+          />
           <span>Light</span>
         </DropdownMenuItem>
         <DropdownMenuItem
-          className={cn(
-            "space-x-2",
-            theme === "dark" && "!border-divider bg-content2 text-primary"
-          )}
+          className={cn("space-x-2", theme === "dark" && "bg-content2")}
           onClick={() => setTheme("dark")}
         >
-          <PiMoonDuotone size={16} />
+          <PiMoonBold
+            size={16}
+            className={cn(theme === "dark" && "text-primary")}
+          />
           <span>Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem
-          className={cn(
-            "space-x-2",
-            theme === "system" && "!border-divider bg-content2 text-primary"
-          )}
+          className={cn("space-x-2", theme === "system" && "bg-content2")}
           onClick={() => setTheme("system")}
         >
-          <PiMonitorDuotone size={16} />
+          <PiMonitorBold
+            size={16}
+            className={cn(theme === "system" && "text-primary")}
+          />
           <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>

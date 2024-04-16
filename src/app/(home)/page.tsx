@@ -18,7 +18,7 @@ export default function Home() {
       <DynamicHeader title="Zach Bauer">
         <SidebarToggle />
       </DynamicHeader>
-      <PageLayout className="space-y-8">
+      <PageLayout className="space-y-6">
         <About />
         <RecentContent />
         <Activity />

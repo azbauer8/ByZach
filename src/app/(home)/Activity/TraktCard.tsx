@@ -1,12 +1,12 @@
 import { unstable_noStore } from "next/cache"
 import Image from "next/image"
 import { getTimeDiff } from "@/utils/activityCalc"
-import { PiPopcornDuotone } from "react-icons/pi"
+import { PiPopcornBold } from "react-icons/pi"
 
 import { TraktEntry } from "@/types/apiData"
 import { Typography } from "@/components/ui/typography"
 
-import { LoadingTrakt } from "./ActivityLoading"
+import { LoadingTrakt } from "./Activity.loading"
 
 async function loader() {
   unstable_noStore()
@@ -82,7 +82,7 @@ export default async function TraktCard() {
 
       <div className="my-auto grow space-y-0.5">
         <div className="flex flex-row items-center space-x-1 text-red-400">
-          <PiPopcornDuotone className="size-5" />
+          <PiPopcornBold className="size-5" />
           <Typography affects="small">{data.traktData.playingWhen}</Typography>
         </div>
         <Typography variant="h5">{data.traktData.title}</Typography>

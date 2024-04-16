@@ -1,34 +1,30 @@
 import fs from "fs"
 import path from "path"
+import keystaticConfig from "@/../keystatic.config"
+import { Entry } from "@keystatic/core/reader"
 
 type Metadata = {
   title: string
   dateTime: string | null
 }
 
-type ProjectMetadata = Metadata & {
-  category: string
-  link: string
-  descShort: string
-}
+type ThoughtMetadata = Entry<
+  (typeof keystaticConfig)["collections"]["thoughts"]
+>
 
-type DiscoveryMetadata = Metadata & {
-  category: string
-  link: string
-  description: string
-}
+type ProjectMetadata = Entry<
+  (typeof keystaticConfig)["collections"]["projects"]
+>
 
-type SnippetMetadata = Metadata & {
-  category: string
-  description: string
-}
-type UseMetadata = Metadata & {
-  category: string
-  link: string
-  platform: string
-  cost: string
-  descShort: string
-}
+type DiscoveryMetadata = Entry<
+  (typeof keystaticConfig)["collections"]["discoveries"]
+>
+
+type SnippetMetadata = Entry<
+  (typeof keystaticConfig)["collections"]["snippets"]
+>
+
+type UseMetadata = Entry<(typeof keystaticConfig)["collections"]["uses"]>
 
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/
@@ -87,7 +83,7 @@ export function getThoughts(limit?: number) {
     const { metadata, content } = readMDXFile(path.join(dir, file))
     const slug = path.basename(file, path.extname(file))
     return {
-      metadata: metadata as Metadata,
+      metadata: metadata as ThoughtMetadata,
       slug,
       content,
     }

@@ -1,4 +1,4 @@
-import Uses from "@/app/(content-lists)/uses/Uses"
+import { Uses } from "@/app/(content-lists)/uses/page"
 
 export default function ContentLayout({
   children,
@@ -6,7 +6,7 @@ export default function ContentLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex size-full">
+    <div className="flex">
       <Uses isContentPage />
       <div className="flex-1">{children}</div>
     </div>

@@ -1,5 +1,6 @@
 import { siteLinks } from "@/config"
 
+import Anchor from "@/components/ui/anchor"
 import { Typography } from "@/components/ui/typography"
 
 export default function About() {
@@ -12,9 +13,9 @@ export default function About() {
       <Typography variant="p" affects="muted">
         {`Hey there! I'm Zach. I'm currently living in Philly
        and working at `}
-        <a href={siteLinks.sig}>SIG</a>
+        <Anchor href={siteLinks.sig}>SIG</Anchor>
         {` developing internal monitoring and operations tools for support teams. In 2021, I graduated from `}
-        <a href={siteLinks.pitt}>Pitt</a>
+        <Anchor href={siteLinks.pitt}>Pitt</Anchor>
         {` with a bachelor's in information science.`}
       </Typography>
     </>

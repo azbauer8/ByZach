@@ -23,11 +23,7 @@ export default async function Thought({
   )
   if (!thought) return null
   return (
-    <ContentWrapper
-      title={thought.metadata.title}
-      type="thoughts"
-      className="space-y-5"
-    >
+    <ContentWrapper title={thought.metadata.title} type="thoughts">
       <div className="space-y-1.5">
         <Typography variant="h2">{thought.metadata.title}</Typography>
         <Typography affects="muted">

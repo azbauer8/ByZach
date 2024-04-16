@@ -23,11 +23,7 @@ export default async function Snippet({
   if (!snippet) return null
 
   return (
-    <ContentWrapper
-      title={snippet.metadata.title}
-      type="snippets"
-      className="space-y-5"
-    >
+    <ContentWrapper title={snippet.metadata.title} type="snippets">
       <div className="space-y-0.5">
         <Badge>{snippet.metadata.category}</Badge>
         <Typography variant="h2">{snippet.metadata.title}</Typography>
