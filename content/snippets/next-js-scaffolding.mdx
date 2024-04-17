@@ -21,37 +21,27 @@ Would you like to customize the default import alias (@/*)?  No
 
 ## Install packages:
 
-Eslint:
-
-```bash
+```bash title="Eslint"
 pnpm i -D --save-dev eslint eslint-config-next eslint-config-prettier eslint-plugin-tailwindcss @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
-Prettier:
-
-```bash
+```bash title="Prettier"
 pnpm i -D --save-dev prettier prettier-plugin-tailwindcss @ianvs/prettier-plugin-sort-imports
 ```
 
-Dev Tools:
-
-```bash
+```bash title="Dev Tools"
 pnpm i -D knip 
 ```
 
-## Create configs:
+## Create/Update configs:
 
-Add to `package.json` scripts:
-
-```json
+```json title="package.json"
 "dev": "next dev --turbo",
 "format": "prettier --write ./src",
 "knip": "knip"
 ```
 
-Update `next.config.js`
-
-```js
+```js title="next.config.js"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -62,9 +52,7 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
-Create `.eslintrc`
-
-```json
+```json title=".eslintrc"
 {
   "extends": [
     "next/core-web-vitals", 
@@ -88,9 +76,7 @@ Create `.eslintrc`
 }
 ```
 
-Create `.prettierrc`
-
-```json
+```json title=".prettierrc"
 {
   "endOfLine": "lf",
   "semi": false,
@@ -125,12 +111,12 @@ Create `.prettierrc`
 }
 ```
 
-Create `knip.json`
-
-```json
+```json title="knip.json"
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "entry": ["index.{js,ts}", "src/index.{js,ts}"],
   "project": ["src/**/*.{js,ts}"]
 }
 ```
+import { config } from "process"
+
