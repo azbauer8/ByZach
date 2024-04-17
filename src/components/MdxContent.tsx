@@ -7,7 +7,6 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode, { Options } from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
-import { Transformer } from "remark-rehype/node_modules/unified/index"
 
 import { cn } from "@/lib/utils"
 import Anchor from "@/components/ui/anchor"
@@ -61,6 +60,7 @@ export function MDXContent(props: MDXRemoteProps) {
         mdxOptions: {
           remarkPlugins: [],
           rehypePlugins: [
+            // @ts-expect-error
             [prettyCode, codeOptions],
             [rehypeSlug],
             [rehypeAutolinkHeadings, { behavior: "wrap" }],
