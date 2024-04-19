@@ -27,13 +27,13 @@ export function ContentLayout({
     <>
       <DynamicHeader
         title={title}
-        rightContent={<ThemeToggle className="md:hidden" />}
+        rightContent={<ThemeToggle className="md:hidden" iconSize={24} />}
       >
         <Link
           href={`/${type}`}
-          className="absolute left-2 flex items-center rounded-md p-1.5 text-sm text-primary hover:bg-default1/40 active:bg-default1/40 md:hidden"
+          className="absolute left-2 flex items-center rounded-md p-1.5  text-primary hover:bg-default1/40 active:bg-default1/40 md:hidden"
         >
-          <PiCaretLeftBold size={18} />
+          <PiCaretLeftBold size={24} />
           {capitalize(type)}
         </Link>
       </DynamicHeader>

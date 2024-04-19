@@ -1,3 +1,5 @@
+import { siteLinks } from "@/config"
+
 import { getThoughts } from "@/lib/getContent"
 import { formatDate } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
@@ -19,6 +21,15 @@ export async function generateMetadata({
 
   return {
     title,
+    openGraph: {
+      title,
+      type: "article",
+      url: `${siteLinks.here}/thoughts/${thought.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+    },
   }
 }
 

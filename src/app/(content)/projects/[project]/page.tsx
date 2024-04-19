@@ -1,3 +1,4 @@
+import { siteLinks } from "@/config"
 import { FaLink } from "react-icons/fa6"
 
 import { getProjects } from "@/lib/getContent"
@@ -24,6 +25,17 @@ export async function generateMetadata({
   return {
     title,
     description: descShort,
+    openGraph: {
+      title,
+      description: descShort,
+      type: "article",
+      url: `${siteLinks.here}/projects/${project.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: descShort,
+    },
   }
 }
 

@@ -26,7 +26,7 @@ export function SidebarToggle() {
         className="absolute left-2 lg:hidden"
         onClick={() => setSidebarOpen(true)}
       >
-        <PiSidebarSimpleDuotone size={18} />
+        <PiSidebarSimpleDuotone size={24} />
       </Button>
       <div className="hidden lg:block" />
     </>
@@ -47,7 +47,7 @@ export function SidebarWrapper({ children }: { children: React.ReactNode }) {
     >
       <DynamicHeader
         title={siteConfig.title}
-        rightContent={<ThemeToggle />}
+        rightContent={<ThemeToggle iconSize={20} />}
         scrollPos={scroll}
         isListHeader
       />
@@ -73,7 +73,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
       >
         <DynamicHeader
           title={siteConfig.title}
-          rightContent={<ThemeToggle />}
+          rightContent={<ThemeToggle iconSize={20} />}
           scrollPos={scroll}
           isListHeader
         >

@@ -13,7 +13,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown"
 
-export default function ThemeToggle({ className }: { className?: string }) {
+export default function ThemeToggle({
+  iconSize,
+  className,
+}: {
+  iconSize: number
+  className?: string
+}) {
   const [mounted, setMounted] = useState(false)
 
   const { theme, setTheme } = useTheme()
@@ -25,7 +31,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
   if (!mounted) {
     return (
       <Button aria-label="Theme Toggle">
-        <PiMonitorBold size={18} />
+        <PiMonitorBold size={iconSize} />
       </Button>
     )
   }
@@ -34,11 +40,11 @@ export default function ThemeToggle({ className }: { className?: string }) {
       <DropdownMenuTrigger asChild>
         <Button className={cn("text-default3", className)}>
           {theme === "light" ? (
-            <PiSunBold size={18} />
+            <PiSunBold size={iconSize} />
           ) : theme === "dark" ? (
-            <PiMoonBold size={18} />
+            <PiMoonBold size={iconSize} />
           ) : (
-            <PiMonitorBold size={18} />
+            <PiMonitorBold size={iconSize} />
           )}
         </Button>
       </DropdownMenuTrigger>
