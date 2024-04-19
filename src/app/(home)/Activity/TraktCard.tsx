@@ -41,32 +41,44 @@ async function getTrakt() {
       episode: latest.episode?.title ?? undefined,
       season: latest.episode?.season ?? undefined,
       episodeNum: latest.episode?.number ?? undefined,
-      imdbId:
+      tmdbId:
         latest?.type === "episode"
-          ? latest.show?.ids.imdb
-          : latest.movie?.ids.imdb,
+          ? latest.show?.ids.tmdb
+          : latest.movie?.ids.tmdb,
     }
   } catch (e) {
     return
   }
 }
 
-async function getTraktPoster(imdbId: string | undefined) {
+async function getTraktPoster(tmdbId: number | undefined) {
   unstable_noStore()
-
+  const baseUrl = "https://api.themoviedb.org/3/configuration"
+  const imageUrl = `https://api.themoviedb.org/3/tv/${tmdbId}/images`
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_API}`,
+    },
+  }
   try {
-    const imdbData = await fetch(
-      `http://omdbapi.com/?apikey=${process.env.OMDB_API}&i=${imdbId}`,
-      { signal: AbortSignal.timeout(1000) }
-    )
-    return await imdbData.json()
+    const baseData = await fetch(baseUrl, options)
+      .then((res) => res.json())
+      .catch((err) => console.error("error:" + err))
+
+    const posterData = await fetch(imageUrl, options)
+      .then((res) => res.json())
+      .catch((err) => console.error("error:" + err))
+
+    return `${baseData.images.base_url}w500/${posterData.posters[0].file_path}`
   } catch (e) {}
 }
 
 export default async function TraktCard() {
   const data = await getTrakt()
   if (!data) return <LoadingTrakt />
-  const poster = await getTraktPoster(data?.imdbId)
+  const poster = await getTraktPoster(data?.tmdbId)
 
   return (
     <a
