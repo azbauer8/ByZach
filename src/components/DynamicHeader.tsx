@@ -19,10 +19,10 @@ export function DynamicHeader({
   scrollPos?: number
   isListHeader?: boolean
 }) {
-  const breakpoint = 20
+  const breakpoint = 6
   const windowScroll = useScrollPosition()
 
-  const scroll = scrollPos !== undefined ? scrollPos : windowScroll
+  const scroll = scrollPos ?? windowScroll
 
   const bg = isListHeader ? "bg-content1/10" : "bg-background/10"
 
@@ -37,8 +37,10 @@ export function DynamicHeader({
       <Typography
         affects="small"
         className={cn(
-          "absolute left-1/2 -translate-x-1/2 transition-opacity duration-200 ease-in-out",
-          scroll >= breakpoint ? "opacity-100" : "opacity-0"
+          "absolute left-1/2 -translate-x-1/2 transition-all duration-200 ease-in-out",
+          scroll >= breakpoint
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-[10px] opacity-0"
         )}
       >
         {title}

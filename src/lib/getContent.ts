@@ -65,68 +65,98 @@ function readJSONFiles(filePath: fs.PathOrFileDescriptor) {
 
 export function getProjects(limit?: number) {
   const dir = path.join(process.cwd(), "content/projects")
-  const mdxFiles = getMDXFiles(dir).map((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file))
-    const slug = path.basename(file, path.extname(file))
-    return {
-      metadata: metadata as ProjectMetadata,
-      slug,
-      content,
-    }
-  })
+  const mdxFiles = getMDXFiles(dir)
+    .map((file) => {
+      const { metadata, content } = readMDXFile(path.join(dir, file))
+      const slug = path.basename(file, path.extname(file))
+      return {
+        metadata: metadata as ProjectMetadata,
+        slug,
+        content,
+      }
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.dateTime ?? "").getTime() -
+        new Date(a.metadata.dateTime ?? "").getTime()
+    )
   return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }
 
 export function getThoughts(limit?: number) {
   const dir = path.join(process.cwd(), "content/thoughts")
-  const mdxFiles = getMDXFiles(dir).map((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file))
-    const slug = path.basename(file, path.extname(file))
-    return {
-      metadata: metadata as ThoughtMetadata,
-      slug,
-      content,
-    }
-  })
+  const mdxFiles = getMDXFiles(dir)
+    .map((file) => {
+      const { metadata, content } = readMDXFile(path.join(dir, file))
+      const slug = path.basename(file, path.extname(file))
+      return {
+        metadata: metadata as ThoughtMetadata,
+        slug,
+        content,
+      }
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.dateTime ?? "").getTime() -
+        new Date(a.metadata.dateTime ?? "").getTime()
+    )
   return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }
 
 export function getDiscoveries(limit?: number) {
   const dir = path.join(process.cwd(), "content/discoveries")
-  const jsonFiles = getJSONFiles(dir).map((file) => {
-    const metadata = readJSONFiles(path.join(dir, file))
-    const slug = path.basename(file, path.extname(file))
-    return {
-      metadata: metadata as DiscoveryMetadata,
-      slug,
-    }
-  })
+  const jsonFiles = getJSONFiles(dir)
+    .map((file) => {
+      const metadata = readJSONFiles(path.join(dir, file))
+      const slug = path.basename(file, path.extname(file))
+      return {
+        metadata: metadata as DiscoveryMetadata,
+        slug,
+      }
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.dateTime ?? "").getTime() -
+        new Date(a.metadata.dateTime ?? "").getTime()
+    )
   return limit ? jsonFiles.slice(0, limit) : jsonFiles
 }
 export function getSnippets(limit?: number) {
   const dir = path.join(process.cwd(), "content/snippets")
-  const mdxFiles = getMDXFiles(dir).map((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file))
-    const slug = path.basename(file, path.extname(file))
-    return {
-      metadata: metadata as SnippetMetadata,
-      slug,
-      content,
-    }
-  })
+  const mdxFiles = getMDXFiles(dir)
+    .map((file) => {
+      const { metadata, content } = readMDXFile(path.join(dir, file))
+      const slug = path.basename(file, path.extname(file))
+      return {
+        metadata: metadata as SnippetMetadata,
+        slug,
+        content,
+      }
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.dateTime ?? "").getTime() -
+        new Date(a.metadata.dateTime ?? "").getTime()
+    )
   return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }
 
 export function getUses(limit?: number) {
   const dir = path.join(process.cwd(), "content/uses")
-  const mdxFiles = getMDXFiles(dir).map((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file))
-    const slug = path.basename(file, path.extname(file))
-    return {
-      metadata: metadata as UseMetadata,
-      slug,
-      content,
-    }
-  })
+  const mdxFiles = getMDXFiles(dir)
+    .map((file) => {
+      const { metadata, content } = readMDXFile(path.join(dir, file))
+      const slug = path.basename(file, path.extname(file))
+      return {
+        metadata: metadata as UseMetadata,
+        slug,
+        content,
+      }
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.dateTime ?? "").getTime() -
+        new Date(a.metadata.dateTime ?? "").getTime()
+    )
   return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }

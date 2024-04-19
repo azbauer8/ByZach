@@ -1,6 +1,7 @@
 {
   "title": "Next.js View Transitions",
   "category": "React Library",
+  "dateTime": "2024-04-18T08:34",
   "link": "https://next-view-transitions.vercel.app/",
   "description": "A basic and experimental implementation of the View Transitions API in Next.js App Router."
 }

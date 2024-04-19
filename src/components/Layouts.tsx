@@ -27,7 +27,9 @@ export function ContentLayout({
     <>
       <DynamicHeader
         title={title}
-        rightContent={<ThemeToggle className="md:hidden" iconSize={24} />}
+        rightContent={
+          <ThemeToggle className="text-foreground md:hidden" iconSize={22} />
+        }
       >
         <Link
           href={`/${type}`}
