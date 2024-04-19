@@ -18,7 +18,6 @@ export async function generateMetadata({
   )
   if (!thought) return null
   const { dateTime, title } = thought.metadata
-  const ogImage = `${siteLinks.here}/og?title=${encodeURIComponent(title)}`
 
   return {
     title,
@@ -27,16 +26,10 @@ export async function generateMetadata({
       type: "article",
       dateTime,
       url: `${siteLinks.here}/thoughts/${thought.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
-      images: [ogImage],
     },
   }
 }

@@ -18,7 +18,6 @@ export async function generateMetadata({
   const use = getUses().find((use) => use.slug === params.use)
   if (!use) return null
   const { dateTime, descShort, title } = use.metadata
-  const ogImage = `${siteLinks.here}/og?title=${encodeURIComponent(title)}`
 
   return {
     title,
@@ -29,17 +28,11 @@ export async function generateMetadata({
       type: "article",
       dateTime,
       url: `${siteLinks.here}/uses/${use.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: descShort,
-      images: [ogImage],
     },
   }
 }

@@ -19,7 +19,6 @@ export async function generateMetadata({
   if (!snippet) return null
 
   const { dateTime, description, title } = snippet.metadata
-  const ogImage = `${siteLinks.here}/og?title=${encodeURIComponent(title)}`
 
   return {
     title,
@@ -30,17 +29,11 @@ export async function generateMetadata({
       type: "article",
       dateTime,
       url: `${siteLinks.here}/snippets/${snippet.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
     },
   }
 }
