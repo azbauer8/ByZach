@@ -1,3 +1,5 @@
+import { siteLinks } from "@/config"
+
 import { getSnippets } from "@/lib/getContent"
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
@@ -15,8 +17,31 @@ export async function generateMetadata({
     (snippet) => snippet.slug === params.snippet
   )
   if (!snippet) return null
+
+  const { dateTime, description, title } = snippet.metadata
+  const ogImage = `${siteLinks.here}/og?title=${encodeURIComponent(title)}`
+
   return {
-    title: snippet.metadata.title,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      dateTime,
+      url: `${siteLinks.here}/snippets/${snippet.slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
   }
 }
 

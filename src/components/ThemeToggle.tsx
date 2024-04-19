@@ -24,7 +24,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
 
   if (!mounted) {
     return (
-      <Button>
+      <Button aria-label="Theme Toggle">
         <PiMonitorBold size={18} />
       </Button>
     )
@@ -32,7 +32,10 @@ export default function ThemeToggle({ className }: { className?: string }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className={cn("text-default3", className)}>
+        <Button
+          className={cn("text-default3", className)}
+          aria-label="Theme Toggle"
+        >
           {theme === "light" ? (
             <PiSunBold size={18} />
           ) : theme === "dark" ? (

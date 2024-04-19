@@ -1,3 +1,4 @@
+import { siteLinks } from "@/config"
 import { FaLink } from "react-icons/fa6"
 
 import { getUses } from "@/lib/getContent"
@@ -16,8 +17,30 @@ export async function generateMetadata({
 }) {
   const use = getUses().find((use) => use.slug === params.use)
   if (!use) return null
+  const { dateTime, descShort, title } = use.metadata
+  const ogImage = `${siteLinks.here}/og?title=${encodeURIComponent(title)}`
+
   return {
-    title: use.metadata.title,
+    title,
+    description: descShort,
+    openGraph: {
+      title,
+      description: descShort,
+      type: "article",
+      dateTime,
+      url: `${siteLinks.here}/uses/${use.slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: descShort,
+      images: [ogImage],
+    },
   }
 }
 

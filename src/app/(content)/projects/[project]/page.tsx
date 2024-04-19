@@ -1,3 +1,4 @@
+import { siteLinks } from "@/config"
 import { FaLink } from "react-icons/fa6"
 
 import { getProjects } from "@/lib/getContent"
@@ -18,8 +19,31 @@ export async function generateMetadata({
     (project) => project.slug === params.project
   )
   if (!project) return null
+
+  const { dateTime, descShort, title } = project.metadata
+  const ogImage = `${siteLinks.here}/og?title=${encodeURIComponent(title)}`
+
   return {
-    title: project.metadata.title,
+    title,
+    description: descShort,
+    openGraph: {
+      title,
+      description: descShort,
+      type: "article",
+      dateTime,
+      url: `${siteLinks.here}/projects/${project.slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: descShort,
+      images: [ogImage],
+    },
   }
 }
 

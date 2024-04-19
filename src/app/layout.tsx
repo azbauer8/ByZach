@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config"
+import { siteConfig, siteLinks } from "@/config"
 
 import "@/styles/global.css"
 
@@ -18,6 +18,26 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   icons: {
     icon: siteConfig.favicon,
+  },
+  metadataBase: new URL(siteLinks.here),
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteLinks.here,
+    siteName: siteConfig.title,
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 }
 
