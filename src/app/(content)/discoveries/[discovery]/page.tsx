@@ -8,6 +8,20 @@ import { ContentLayout } from "@/components/Layouts"
 
 export const dynamicParams = false
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { discovery: string }
+}) {
+  const discovery = getDiscoveries().find(
+    (discovery) => discovery.slug === params.discovery
+  )
+  if (!discovery) return null
+  return {
+    title: discovery.metadata.title,
+  }
+}
+
 export async function generateStaticParams() {
   const discoveries = getDiscoveries()
   return discoveries.map((discovery) => ({

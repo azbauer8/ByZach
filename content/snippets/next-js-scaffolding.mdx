@@ -1,8 +1,9 @@
 ---
 title: Next.js Scaffolding
 dateTime: 2024-04-16T21:06:00.000Z
-category: Configs
+category: Config
 ---
+
 ## Create Next.js app:
 
 ```bash
@@ -30,7 +31,7 @@ pnpm i -D --save-dev prettier prettier-plugin-tailwindcss @ianvs/prettier-plugin
 ```
 
 ```bash title="Dev Tools"
-pnpm i -D knip 
+pnpm i -D knip
 ```
 
 ## Create/Update configs:
@@ -45,7 +46,7 @@ pnpm i -D knip
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    ppr: true
+    ppr: true,
   },
 }
 
@@ -55,13 +56,13 @@ module.exports = nextConfig
 ```json title=".eslintrc"
 {
   "extends": [
-    "next/core-web-vitals", 
-    "prettier",  
-    "plugin:tailwindcss/recommended",     
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:tailwindcss/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-    "overrides": [
+  "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
       "parser": "@typescript-eslint/parser",
@@ -118,5 +119,5 @@ module.exports = nextConfig
   "project": ["src/**/*.{js,ts}"]
 }
 ```
-import { config } from "process"
 
+import { config } from "process"

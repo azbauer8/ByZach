@@ -8,12 +8,26 @@ import { ContentLayout } from "@/components/Layouts"
 import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { use: string }
+}) {
+  const use = getUses().find((use) => use.slug === params.use)
+  if (!use) return null
+  return {
+    title: use.metadata.title,
+  }
+}
+
 export async function generateStaticParams() {
   const uses = getUses()
   return uses.map((use) => ({
     use: use.slug,
   }))
 }
+
 export default async function Use({ params }: { params: { use: string } }) {
   const use = getUses().find((use) => use.slug === params.use)
   if (!use) return null

@@ -5,12 +5,28 @@ import { ContentLayout } from "@/components/Layouts"
 import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { snippet: string }
+}) {
+  const snippet = getSnippets().find(
+    (snippet) => snippet.slug === params.snippet
+  )
+  if (!snippet) return null
+  return {
+    title: snippet.metadata.title,
+  }
+}
+
 export async function generateStaticParams() {
   const snippets = getSnippets()
   return snippets.map((snippet) => ({
     snippet: snippet.slug,
   }))
 }
+
 export default async function Snippet({
   params,
 }: {

@@ -6,12 +6,27 @@ import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { thought: string }
+}) {
+  const thought = getThoughts().find(
+    (thought) => thought.slug === params.thought
+  )
+  if (!thought) return null
+  return {
+    title: thought.metadata.title,
+  }
+}
+
 export async function generateStaticParams() {
   const thoughts = getThoughts()
   return thoughts.map((thought) => ({
     thought: thought.slug,
   }))
 }
+
 export default async function Thought({
   params,
 }: {

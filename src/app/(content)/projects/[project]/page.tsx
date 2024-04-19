@@ -9,6 +9,20 @@ import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { project: string }
+}) {
+  const project = getProjects().find(
+    (project) => project.slug === params.project
+  )
+  if (!project) return null
+  return {
+    title: project.metadata.title,
+  }
+}
+
 export async function generateStaticParams() {
   const projects = getProjects()
   return projects.map((project) => ({

@@ -62,15 +62,15 @@ export default config({
         category: fields.select({
           label: "Category",
           options: [
-            { label: "Dev Tools", value: "Dev Tools" },
-            { label: "Resources", value: "Resources" },
+            { label: "Dev Tool", value: "Dev Tool" },
+            { label: "Resource", value: "Resource" },
             { label: "UI Design", value: "UI Design" },
-            { label: "UI Libraries", value: "UI Libraries" },
-            { label: "React Libraries", value: "React Libraries" },
-            { label: "Portfolios", value: "Portfolios" },
-            { label: "Articles", value: "Articles" },
+            { label: "UI Library", value: "UI Library" },
+            { label: "React Library", value: "React Library" },
+            { label: "Portfolio", value: "Portfolio" },
+            { label: "Article", value: "Article" },
           ],
-          defaultValue: "React Libraries",
+          defaultValue: "React Library",
         }),
         link: fields.url({ label: "Link" }),
         description: fields.text({ label: "Description" }),
@@ -86,8 +86,14 @@ export default config({
         dateTime: fields.datetime({
           label: "Created/Updated At",
         }),
-        category: fields.text({
+        category: fields.select({
           label: "Category",
+          options: [
+            { label: "Config", value: "Config" },
+            { label: "React Hook", value: "React Hook" },
+            { label: "Component", value: "Component" },
+          ],
+          defaultValue: "Component",
         }),
         description: fields.text({ label: "Description" }),
         content: fields.mdx({
