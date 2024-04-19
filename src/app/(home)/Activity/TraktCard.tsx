@@ -81,7 +81,7 @@ export default async function TraktCard() {
       />
 
       <div className="my-auto grow space-y-0.5">
-        <div className="flex flex-row items-center space-x-1 text-red-400">
+        <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
           <PiPopcornBold className="size-5" />
           <Typography affects="small">{data.traktData.playingWhen}</Typography>
         </div>

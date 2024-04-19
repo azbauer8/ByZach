@@ -50,7 +50,7 @@ export default async function LastFmCard() {
       />
 
       <div className="my-auto grow space-y-0.5">
-        <div className="flex flex-row items-center space-x-1 text-emerald-500">
+        <div className="flex flex-row items-center space-x-1 text-emerald-600/95 dark:text-emerald-500">
           {playingWhen === "Now Playing" ? (
             <Image src="/bars.svg" alt="Now Playing" width={14} height={14} />
           ) : (

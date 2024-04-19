@@ -1,5 +1,5 @@
 import { twcn } from "@/lib/utils"
 
-const Anchor = twcn.a`underline-offset-2 hover:underline text-primary active:underline`
+const Anchor = twcn.a`underline-offset-2 underline text-primary`
 
 export default Anchor
