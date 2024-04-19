@@ -8,7 +8,7 @@ import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
 
 import { LoadingTrakt } from "./Activity.loading"
 
-async function loader() {
+async function getTrakt() {
   unstable_noStore()
   try {
     const response = await fetch(
@@ -23,7 +23,7 @@ async function loader() {
     )
     const traktData: TraktEntry[] = await response.json()
     const latest = traktData[0]
-    const latestData = {
+    return {
       type: latest.type,
       title: latest.show
         ? latest.show.title
@@ -41,36 +41,41 @@ async function loader() {
       episode: latest.episode?.title ?? undefined,
       season: latest.episode?.season ?? undefined,
       episodeNum: latest.episode?.number ?? undefined,
+      imdbId:
+        latest?.type === "episode"
+          ? latest.show?.ids.imdb
+          : latest.movie?.ids.imdb,
     }
-
-    const imdbId =
-      latest.type === "episode" ? latest.show?.ids.imdb : latest.movie?.ids.imdb
-
-    const imdbData = await fetch(
-      `http://omdbapi.com/?apikey=${process.env.OMDB_API}&i=${imdbId}`
-    )
-
-    const { Poster }: { Poster: string } = await imdbData.json()
-
-    return { traktData: latestData, poster: Poster }
   } catch (e) {
     return
   }
 }
 
-export default async function TraktCard() {
-  const data = await loader()
+async function getTraktPoster(imdbId: string | undefined) {
+  unstable_noStore()
 
+  try {
+    const imdbData = await fetch(
+      `http://omdbapi.com/?apikey=${process.env.OMDB_API}&i=${imdbId}`,
+      { signal: AbortSignal.timeout(1000) }
+    )
+    return await imdbData.json()
+  } catch (e) {}
+}
+
+export default async function TraktCard() {
+  const data = await getTrakt()
   if (!data) return <LoadingTrakt />
+  const poster = await getTraktPoster(data?.imdbId)
 
   return (
     <a
       className="flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 active:opacity-60"
-      href={data.traktData.url}
+      href={data.url}
     >
       <Image
-        src={data.poster}
-        alt={data.traktData.title}
+        src={poster ?? "/trakt_placeholder.svg"}
+        alt={data.title}
         width={144}
         height={216}
         priority
@@ -83,17 +88,17 @@ export default async function TraktCard() {
       <div className="my-auto grow space-y-0.5">
         <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
           <PiPopcornBold className="size-5" />
-          <Typography affects="small">{data.traktData.playingWhen}</Typography>
+          <Typography affects="small">{data.playingWhen}</Typography>
         </div>
-        <Typography variant="h5">{data.traktData.title}</Typography>
-        {data.traktData.episode ? (
+        <Typography variant="h5">{data.title}</Typography>
+        {data.episode ? (
           <>
-            <Typography affects="muted">{`S${data.traktData.season}E${data.traktData.episodeNum}: ${data.traktData.episode}`}</Typography>
+            <Typography affects="muted">{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Typography>
           </>
         ) : (
           <>
             <Typography affects="muted" className="italic">
-              {data.traktData.tagline}
+              {data.tagline}
             </Typography>
           </>
         )}
