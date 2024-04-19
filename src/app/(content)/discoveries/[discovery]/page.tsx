@@ -1,4 +1,3 @@
-import { siteLinks } from "@/config"
 import { FaLink } from "react-icons/fa6"
 
 import { getDiscoveries } from "@/lib/getContent"
@@ -17,25 +16,13 @@ export async function generateMetadata({
   const discovery = getDiscoveries().find(
     (discovery) => discovery.slug === params.discovery
   )
-  if (!discovery) return null
+  if (!discovery) return {}
 
-  const { dateTime, description, title } = discovery.metadata
+  const { description, title } = discovery.metadata
 
   return {
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      dateTime,
-      url: `${siteLinks.here}/discoveries/${discovery.slug}`,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-    },
   }
 }
 

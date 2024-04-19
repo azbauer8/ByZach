@@ -1,4 +1,3 @@
-import { siteLinks } from "@/config"
 import { FaLink } from "react-icons/fa6"
 
 import { getProjects } from "@/lib/getContent"
@@ -18,25 +17,13 @@ export async function generateMetadata({
   const project = getProjects().find(
     (project) => project.slug === params.project
   )
-  if (!project) return null
+  if (!project) return {}
 
-  const { dateTime, descShort, title } = project.metadata
+  const { descShort, title } = project.metadata
 
   return {
     title,
     description: descShort,
-    openGraph: {
-      title,
-      description: descShort,
-      type: "article",
-      dateTime,
-      url: `${siteLinks.here}/projects/${project.slug}`,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: descShort,
-    },
   }
 }
 

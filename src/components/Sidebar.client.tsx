@@ -25,7 +25,6 @@ export function SidebarToggle() {
       <Button
         className="absolute left-2 lg:hidden"
         onClick={() => setSidebarOpen(true)}
-        aria-label="Sidebar Toggle"
       >
         <PiSidebarSimpleDuotone size={18} />
       </Button>

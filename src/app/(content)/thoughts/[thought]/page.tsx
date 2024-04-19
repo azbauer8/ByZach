@@ -1,5 +1,3 @@
-import { siteLinks } from "@/config"
-
 import { getThoughts } from "@/lib/getContent"
 import { formatDate } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
@@ -16,21 +14,11 @@ export async function generateMetadata({
   const thought = getThoughts().find(
     (thought) => thought.slug === params.thought
   )
-  if (!thought) return null
-  const { dateTime, title } = thought.metadata
+  if (!thought) return {}
+  const { title } = thought.metadata
 
   return {
     title,
-    openGraph: {
-      title,
-      type: "article",
-      dateTime,
-      url: `${siteLinks.here}/thoughts/${thought.slug}`,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-    },
   }
 }
 

@@ -1,5 +1,3 @@
-import { siteLinks } from "@/config"
-
 import { getSnippets } from "@/lib/getContent"
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
@@ -16,25 +14,13 @@ export async function generateMetadata({
   const snippet = getSnippets().find(
     (snippet) => snippet.slug === params.snippet
   )
-  if (!snippet) return null
+  if (!snippet) return {}
 
-  const { dateTime, description, title } = snippet.metadata
+  const { description, title } = snippet.metadata
 
   return {
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      dateTime,
-      url: `${siteLinks.here}/snippets/${snippet.slug}`,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-    },
   }
 }
 
