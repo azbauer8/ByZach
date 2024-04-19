@@ -51,10 +51,13 @@ async function getTrakt() {
   }
 }
 
-async function getTraktPoster(tmdbId: number | undefined) {
+async function getTraktPoster(
+  tmdbId: number | undefined,
+  type: "movie" | "episode"
+) {
   unstable_noStore()
   const baseUrl = "https://api.themoviedb.org/3/configuration"
-  const imageUrl = `https://api.themoviedb.org/3/tv/${tmdbId}/images`
+  const imageUrl = `https://api.themoviedb.org/3/${type === "episode" ? "tv" : "movie"}/${tmdbId}/images`
   const options = {
     method: "GET",
     headers: {
@@ -78,7 +81,7 @@ async function getTraktPoster(tmdbId: number | undefined) {
 export default async function TraktCard() {
   const data = await getTrakt()
   if (!data) return <LoadingTrakt />
-  const poster = await getTraktPoster(data?.tmdbId)
+  const poster = await getTraktPoster(data?.tmdbId, data.type)
 
   return (
     <a
