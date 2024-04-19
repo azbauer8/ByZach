@@ -20,30 +20,30 @@ export const metadata: Metadata = {
     icon: siteConfig.favicon,
   },
   metadataBase: new URL(siteLinks.here),
-  openGraph: {
-    title: siteConfig.title,
-    description: siteConfig.description,
-    url: siteLinks.here,
-    siteName: siteConfig.title,
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.description,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  // openGraph: {
+  //   title: siteConfig.title,
+  //   description: siteConfig.description,
+  //   url: siteLinks.here,
+  //   siteName: siteConfig.title,
+  //   locale: "en_US",
+  //   type: "website",
+  // },
+  // twitter: {
+  //   card: "summary_large_image",
+  //   title: siteConfig.title,
+  //   description: siteConfig.description,
+  // },
+  // robots: {
+  //   index: true,
+  //   follow: true,
+  //   googleBot: {
+  //     index: true,
+  //     follow: true,
+  //     "max-video-preview": -1,
+  //     "max-image-preview": "large",
+  //     "max-snippet": -1,
+  //   },
+  // },
 }
 
 export default function RootLayout({
