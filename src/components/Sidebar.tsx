@@ -57,7 +57,7 @@ const sidebarLinks = {
     },
   ],
 
-  social: [
+  personal: [
     {
       name: "GitHub",
       href: "https://github.com/azbauer8",
@@ -79,7 +79,7 @@ const sidebarLinks = {
       icon: <SiTrakt size={16} />,
     },
   ],
-  work: [
+  professional: [
     {
       name: "Email",
       href: "mailto:hi@byzach.dev",
@@ -128,10 +128,10 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
         </div>
         <div className="flex flex-col gap-2.5">
           <Typography affects="small" className="pl-2">
-            Social
+            Personal
           </Typography>
           <div className="flex flex-col gap-0.5">
-            {sidebarLinks.social.map((link) => (
+            {sidebarLinks.personal.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
@@ -145,10 +145,10 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
         </div>
         <div className="flex flex-col gap-2.5">
           <Typography affects="small" className="pl-2">
-            Work
+            Professional
           </Typography>
           <div className="flex flex-col gap-0.5">
-            {sidebarLinks.work.map((link) => (
+            {sidebarLinks.professional.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
