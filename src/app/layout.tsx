@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: siteConfig.favicon,
+        url: `${siteLinks.here}/og?title=${encodeURIComponent(siteConfig.title)}`,
       },
     ],
   },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: siteConfig.favicon,
+        url: `${siteLinks.here}/og?title=${encodeURIComponent(siteConfig.title)}`,
       },
     ],
   },

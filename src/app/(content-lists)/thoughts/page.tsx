@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     url: `${siteLinks.here}/uses`,
     images: [
       {
-        url: siteConfig.favicon,
+        url: `${siteLinks.here}/og?title=${encodeURIComponent(siteConfig.title)}`,
       },
     ],
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "Poorly conveyed ideas about technology, design, and the web.",
     images: [
       {
-        url: siteConfig.favicon,
+        url: `${siteLinks.here}/og?title=${encodeURIComponent(siteConfig.title)}`,
       },
     ],
   },
