@@ -1,0 +1,15 @@
+{
+  "title": "Discoveries",
+  "discoveries": [
+    {
+      "title": {
+        "name": "Conform",
+        "slug": "conform"
+      },
+      "dateTime": "2024-04-18T10:06",
+      "category": "React Libraries",
+      "link": "https://conform.guide/",
+      "description": "A type-safe form validation library for forms with full support for server frameworks."
+    }
+  ]
+}
