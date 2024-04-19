@@ -4,7 +4,7 @@ import { getDiscoveries } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
-import { ContentLayout } from "@/components/Layouts"
+import { ContentLayout } from "@/app/(content)/ContentLayout"
 
 export const dynamicParams = false
 

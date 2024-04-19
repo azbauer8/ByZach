@@ -3,8 +3,8 @@ import { siteLinks } from "@/config"
 import { getSnippets } from "@/lib/getContent"
 import Badge from "@/components/ui/badge"
 import { Typography } from "@/components/ui/typography"
-import { ContentLayout } from "@/components/Layouts"
-import { MDXContent } from "@/components/MdxContent"
+import { ContentLayout } from "@/app/(content)/ContentLayout"
+import { MDXContent } from "@/app/(content)/MdxContent"
 
 export const dynamicParams = false
 

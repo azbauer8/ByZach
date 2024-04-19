@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import { capitalize, formatDate } from "@/lib/utils"
 import { Typography } from "@/components/ui/typography"
-import NavLink from "@/components/NavList.client"
+import NavLink from "@/app/(content-lists)/NavList.client"
 
 export default function NavList({
   type,

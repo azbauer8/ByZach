@@ -1,6 +1,6 @@
 import { getUses } from "@/lib/getContent"
-import ContentListLayout from "@/components/Layouts.client"
-import NavList from "@/components/NavList"
+import ContentListLayout from "@/app/(content-lists)/ContentListLayout"
+import NavList from "@/app/(content-lists)/NavList"
 
 export default async function Uses({
   isContentPage,

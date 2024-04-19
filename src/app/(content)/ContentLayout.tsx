@@ -6,11 +6,10 @@ import "@/styles/prose.css"
 import Link from "next/link"
 import { PiCaretLeftBold } from "react-icons/pi"
 
-import { capitalize, cn, twcn } from "@/lib/utils"
+import { capitalize, cn } from "@/lib/utils"
 import { DynamicHeader } from "@/components/DynamicHeader"
 import ThemeToggle from "@/components/ThemeToggle"
-
-export const PageLayout = twcn.div`mx-auto max-w-2xl px-4 pt-0 pb-12 md:px-8`
+import { PageLayout } from "@/app/PageLayout"
 
 export function ContentLayout({
   title,

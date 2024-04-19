@@ -2,11 +2,11 @@ import React from "react"
 import { Metadata } from "next/types"
 
 import { DynamicHeader } from "@/components/DynamicHeader"
-import { PageLayout } from "@/components/Layouts"
 import { SidebarToggle } from "@/components/Sidebar.client"
 import About from "@/app/(home)/About"
 import Activity from "@/app/(home)/Activity/Activity"
 import RecentContent from "@/app/(home)/RecentContent"
+import { PageLayout } from "@/app/PageLayout"
 
 export const metadata: Metadata = {
   title: "Home",
