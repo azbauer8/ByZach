@@ -27,21 +27,11 @@ export const metadata: Metadata = {
     siteName: siteConfig.title,
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: `${siteLinks.here}/og?title=${encodeURIComponent(siteConfig.title)}`,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [
-      {
-        url: `${siteLinks.here}/og?title=${encodeURIComponent(siteConfig.title)}`,
-      },
-    ],
   },
   robots: {
     index: true,
