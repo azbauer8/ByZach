@@ -3,8 +3,6 @@ import { siteLinks } from "@/config"
 
 import Projects from "@/app/(content-lists)/projects/Projects"
 
-export default Projects
-
 export const metadata: Metadata = {
   title: "Projects",
   description: "My latest work and experiments.",
@@ -18,4 +16,8 @@ export const metadata: Metadata = {
     title: "Projects",
     description: "My latest work and experiments.",
   },
+}
+
+export default function ProjectsPage() {
+  return <Projects />
 }
