@@ -25,6 +25,7 @@ export function SidebarToggle() {
       <Button
         className="absolute left-2 lg:hidden"
         onClick={() => setSidebarOpen(true)}
+        aria-label="Open sidebar"
       >
         <PiSidebarSimpleDuotone size={24} />
       </Button>
@@ -75,7 +76,10 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
           rightContent={<ThemeToggle iconSize={20} />}
           scrollPos={scroll}
         >
-          <Button onClick={() => setSidebarOpen(false)}>
+          <Button
+            onClick={() => setSidebarOpen(false)}
+            aria-label="Close sidebar"
+          >
             <PiXBold size={14} />
           </Button>
         </DynamicHeader>
