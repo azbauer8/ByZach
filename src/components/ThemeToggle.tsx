@@ -38,7 +38,10 @@ export default function ThemeToggle({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className={cn("text-default3", className)}>
+        <Button
+          className={cn("text-default3", className)}
+          aria-label="Theme Toggle"
+        >
           {theme === "light" ? (
             <PiSunBold size={iconSize} />
           ) : theme === "dark" ? (
