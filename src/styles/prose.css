@@ -1,5 +1,3 @@
-@import "./syntax.css";
-
 .prose {
   @apply max-w-none;
 }
