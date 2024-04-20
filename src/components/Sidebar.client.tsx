@@ -49,7 +49,6 @@ export function SidebarWrapper({ children }: { children: React.ReactNode }) {
         title={siteConfig.title}
         rightContent={<ThemeToggle iconSize={20} />}
         scrollPos={scroll}
-        isListHeader
       />
       {children}
     </nav>
@@ -75,7 +74,6 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
           title={siteConfig.title}
           rightContent={<ThemeToggle iconSize={20} />}
           scrollPos={scroll}
-          isListHeader
         >
           <Button onClick={() => setSidebarOpen(false)}>
             <PiXBold size={14} />

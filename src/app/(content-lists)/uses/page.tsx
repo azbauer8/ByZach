@@ -3,6 +3,8 @@ import { siteLinks } from "@/config"
 
 import Uses from "@/app/(content-lists)/uses/Uses"
 
+export default Uses
+
 export const metadata: Metadata = {
   title: "Uses",
   description: "Devices, tools, and technologies I use on a daily basis.",
@@ -16,8 +18,4 @@ export const metadata: Metadata = {
     title: "Uses",
     description: "Devices, tools, and technologies I use on a daily basis.",
   },
-}
-
-export default async function UsesPage() {
-  return <Uses />
 }

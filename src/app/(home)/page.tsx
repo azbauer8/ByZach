@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <DynamicHeader title="Zach Bauer">
+      <DynamicHeader title="Zach Bauer" isContentHeader>
         <SidebarToggle />
       </DynamicHeader>
       <PageLayout className="space-y-6">

@@ -3,6 +3,8 @@ import { siteLinks } from "@/config"
 
 import Thoughts from "@/app/(content-lists)/thoughts/Thoughts"
 
+export default Thoughts
+
 export const metadata: Metadata = {
   title: "Thoughts",
   description: "Poorly conveyed ideas about technology, design, and the web.",
@@ -16,8 +18,4 @@ export const metadata: Metadata = {
     title: "Thoughts",
     description: "Poorly conveyed ideas about technology, design, and the web.",
   },
-}
-
-export default async function ThoughtsPage() {
-  return <Thoughts />
 }

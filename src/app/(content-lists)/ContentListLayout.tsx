@@ -32,7 +32,7 @@ export default function ContentListLayout({
       id={id}
       onScroll={onScroll}
     >
-      <DynamicHeader title={type} scrollPos={scroll} isListHeader>
+      <DynamicHeader title={type} scrollPos={scroll}>
         <SidebarToggle />
       </DynamicHeader>
       {children}

@@ -11,20 +11,20 @@ export function DynamicHeader({
   children,
   rightContent,
   scrollPos,
-  isListHeader,
+  isContentHeader,
 }: {
   title: string
   children?: React.ReactNode
   rightContent?: React.ReactNode
   scrollPos?: number
-  isListHeader?: boolean
+  isContentHeader?: boolean
 }) {
   const breakpoint = 6
   const windowScroll = useScrollPosition()
 
   const scroll = scrollPos ?? windowScroll
 
-  const bg = isListHeader ? "bg-content1/10" : "bg-background/10"
+  const bg = isContentHeader ? "bg-background/10" : "bg-content1/10"
 
   return (
     <div

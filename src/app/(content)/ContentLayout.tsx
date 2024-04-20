@@ -29,6 +29,7 @@ export function ContentLayout({
         rightContent={
           <ThemeToggle className="text-foreground md:hidden" iconSize={22} />
         }
+        isContentHeader
       >
         <Link
           href={`/${type}`}
