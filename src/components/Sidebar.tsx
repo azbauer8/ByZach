@@ -119,7 +119,7 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
         {siteConfig.title}
       </Typography>
       <div className="space-y-5">
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-1">
           {sidebarLinks.site.map((link) => (
             <Link href={link.href} key={link.name}>
               <SidebarLink link={link} isMobile={mobile} />

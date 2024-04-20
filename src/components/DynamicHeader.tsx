@@ -12,14 +12,15 @@ export function DynamicHeader({
   rightContent,
   scrollPos,
   isContentHeader,
+  breakpoint = 6,
 }: {
   title: string
   children?: React.ReactNode
   rightContent?: React.ReactNode
   scrollPos?: number
   isContentHeader?: boolean
+  breakpoint?: number
 }) {
-  const breakpoint = 6
   const windowScroll = useScrollPosition()
 
   const scroll = scrollPos ?? windowScroll

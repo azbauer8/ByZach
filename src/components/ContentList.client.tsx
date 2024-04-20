@@ -16,7 +16,7 @@ export default function ListLink({
   return (
     <div
       className={cn(
-        "flex size-full items-center  gap-3 rounded-md px-2  py-1.5  hover:bg-content2 active:bg-content2",
+        "flex size-full items-center  gap-3 rounded-lg px-2  py-1.5  hover:bg-content2 active:bg-content2",
         active && "bg-content2 text-primary"
       )}
     >

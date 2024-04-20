@@ -1,3 +1,5 @@
+import Image from "next/image"
+import ogs from "open-graph-scraper"
 import { FaLink } from "react-icons/fa6"
 
 import { getDiscoveries } from "@/lib/getContent"
@@ -42,6 +44,14 @@ export default async function Discovery({
   )
   if (!discovery) return null
 
+  let ogImgUrl: string | undefined = undefined
+
+  if (discovery.metadata.link) {
+    const options = { url: discovery.metadata.link }
+    const ogImg = await ogs(options)
+    ogImgUrl = ogImg?.result?.ogImage?.[0].url
+  }
+
   return (
     <ContentLayout title={discovery.metadata.title} type="discoveries">
       <div className="space-y-0.5">
@@ -60,6 +70,13 @@ export default async function Discovery({
             </Typography>
           </a>
         ) : null}
+        <Image
+          src={ogImgUrl ?? ""}
+          alt={discovery.metadata.title}
+          width={1200}
+          height={630}
+          className="rounded-lg"
+        />
         <Typography variant="p" affects="muted">
           {discovery.metadata.description}
         </Typography>

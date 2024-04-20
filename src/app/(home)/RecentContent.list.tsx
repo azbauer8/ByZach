@@ -41,7 +41,7 @@ export default function RecentContentList({
           <Link
             key={item.slug}
             href={`/${route}/${item.slug}`}
-            className="group flex flex-col gap-0.5 rounded-md p-2 hover:bg-content1 active:bg-content1"
+            className="group flex flex-col gap-0.5 rounded-lg p-2 hover:bg-content1 active:bg-content1"
           >
             <Typography className="truncate leading-tight underline-offset-2 group-hover:text-primary group-hover:underline group-active:text-primary group-active:underline">
               {item.title}

@@ -60,7 +60,7 @@ export default function RootLayout({
       <body
         className={cn(
           "flex bg-background font-sans text-foreground antialiased",
-          siteConfig.font.variable,
+          siteConfig.font.className,
           siteConfig.monoFont.variable
         )}
       >

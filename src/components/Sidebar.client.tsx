@@ -42,13 +42,13 @@ export function SidebarWrapper({ children }: { children: React.ReactNode }) {
   }
   return (
     <nav
-      className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 min-w-56 max-w-56 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] bg-content1 lg:sticky lg:translate-x-0"
+      className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-60 min-w-60 max-w-60 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] bg-content1 lg:sticky lg:translate-x-0"
       id="sidebar"
       onScroll={onScroll}
     >
       <DynamicHeader
         title={siteConfig.title}
-        rightContent={<ThemeToggle iconSize={20} />}
+        rightContent={<ThemeToggle iconSize={18} />}
         scrollPos={scroll}
       />
       {children}
@@ -73,7 +73,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
       >
         <DynamicHeader
           title={siteConfig.title}
-          rightContent={<ThemeToggle iconSize={20} />}
+          rightContent={<ThemeToggle iconSize={18} />}
           scrollPos={scroll}
         >
           <Button
@@ -111,7 +111,7 @@ export function SidebarLink({
     <div
       onClick={() => isMobile && setSidebarOpen(false)}
       className={cn(
-        "group flex size-full items-center gap-3 rounded-md px-2 py-1.5 hover:bg-content2 active:bg-content2",
+        "flex size-full items-center gap-3 rounded-lg px-2 py-1.5 font-medium hover:bg-content2 active:bg-content2",
         active && "bg-content2"
       )}
     >
@@ -124,7 +124,7 @@ export function SidebarLink({
           <PiArrowUpRightBold
             size={14}
             strokeWidth={8}
-            className="text-default3 opacity-0 group-hover:opacity-100 group-active:opacity-100"
+            className="text-default3"
           />
         )}
       </div>
