@@ -31,11 +31,6 @@ const sidebarLinks = {
       icon: <FaHouseChimney size={16} />,
     },
     {
-      name: "Projects",
-      href: "/projects",
-      icon: <FaLaptopCode size={16} />,
-    },
-    {
       name: "Thoughts",
       href: "/thoughts",
       icon: <FaBrain size={16} />,

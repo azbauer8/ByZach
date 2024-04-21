@@ -3,3 +3,18 @@
 * {
   @apply border-divider;
 }
+
+.divide-y > :not([hidden]) ~ :not([hidden]) {
+  position: relative;
+  --tw-divide-y-reverse: 0;
+  border-top-width: 0px;
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+.divide-y > :not([hidden]) ~ :not([hidden]):after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  top: 0px;
+  width: 90%;
+  @apply border-t border-divider;
+}

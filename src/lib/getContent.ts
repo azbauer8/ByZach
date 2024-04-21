@@ -65,14 +65,13 @@ function readJSONFiles(filePath: fs.PathOrFileDescriptor) {
 
 export function getProjects(limit?: number) {
   const dir = path.join(process.cwd(), "content/projects")
-  const mdxFiles = getMDXFiles(dir)
+  const jsonFiles = getJSONFiles(dir)
     .map((file) => {
-      const { metadata, content } = readMDXFile(path.join(dir, file))
+      const metadata = readJSONFiles(path.join(dir, file))
       const slug = path.basename(file, path.extname(file))
       return {
         metadata: metadata as ProjectMetadata,
         slug,
-        content,
       }
     })
     .sort(
@@ -80,7 +79,7 @@ export function getProjects(limit?: number) {
         new Date(b.metadata.dateTime ?? "").getTime() -
         new Date(a.metadata.dateTime ?? "").getTime()
     )
-  return limit ? mdxFiles.slice(0, limit) : mdxFiles
+  return limit ? jsonFiles.slice(0, limit) : jsonFiles
 }
 
 export function getThoughts(limit?: number) {
@@ -143,14 +142,13 @@ export function getSnippets(limit?: number) {
 
 export function getUses(limit?: number) {
   const dir = path.join(process.cwd(), "content/uses")
-  const mdxFiles = getMDXFiles(dir)
+  const jsonFiles = getJSONFiles(dir)
     .map((file) => {
-      const { metadata, content } = readMDXFile(path.join(dir, file))
+      const metadata = readJSONFiles(path.join(dir, file))
       const slug = path.basename(file, path.extname(file))
       return {
         metadata: metadata as UseMetadata,
         slug,
-        content,
       }
     })
     .sort(
@@ -158,5 +156,5 @@ export function getUses(limit?: number) {
         new Date(b.metadata.dateTime ?? "").getTime() -
         new Date(a.metadata.dateTime ?? "").getTime()
     )
-  return limit ? mdxFiles.slice(0, limit) : mdxFiles
+  return limit ? jsonFiles.slice(0, limit) : jsonFiles
 }
