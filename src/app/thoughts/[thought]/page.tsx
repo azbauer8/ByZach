@@ -3,7 +3,7 @@ import { siteLinks } from "@/config"
 import { getThoughts } from "@/lib/getContent"
 import { formatDate } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
-import { ContentLayout } from "@/components/ContentLayout"
+import { ContentLayout } from "@/components/Layouts/ContentLayout"
 import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false

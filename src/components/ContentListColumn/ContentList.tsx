@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import { capitalize, formatDate } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
-import ListLink from "@/components/ContentList.client"
+import ListItemIndicator from "@/components/ContentListColumn/ListItemIndicator"
 
 export default function ContentList({
   type,
@@ -13,6 +13,7 @@ export default function ContentList({
     slug: string
     metadata: {
       title: string
+      subtitle?: string
       category?: string | null
       dateTime?: string | null
     }
@@ -27,20 +28,18 @@ export default function ContentList({
         const fullLink = `/${type}/${link.slug}`
         return (
           <Link key={link.slug} href={fullLink}>
-            <ListLink link={fullLink}>
-              <div className="flex flex-col gap-1">
-                <Text className="text-sm font-medium">
-                  {link.metadata.title}
-                </Text>
-                <Text className="text-sm text-default3">
-                  {link.metadata.category
+            <ListItemIndicator link={fullLink}>
+              <Text className="font-medium">{link.metadata.title}</Text>
+              <Text className="text-default3">
+                {link.metadata.subtitle
+                  ? link.metadata.subtitle
+                  : link.metadata.category
                     ? link.metadata.category
                     : link.metadata.dateTime
                       ? formatDate(link.metadata.dateTime)
                       : null}
-                </Text>
-              </div>
-            </ListLink>
+              </Text>
+            </ListItemIndicator>
           </Link>
         )
       })}

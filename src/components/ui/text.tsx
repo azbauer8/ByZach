@@ -16,7 +16,7 @@ const textVariants = cva("", {
     affects: {
       lead: "text-lg text-default3/95",
       large: "text-lg font-semibold",
-      small: "text-sm font-bold leading-none",
+      small: "text-sm font-semibold leading-none",
       muted: "text-default3/95",
     },
   },

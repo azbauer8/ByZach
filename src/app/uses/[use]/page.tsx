@@ -5,7 +5,7 @@ import { getUses } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
 import Badge from "@/components/ui/badge"
 import { Text } from "@/components/ui/text"
-import { ContentLayout } from "@/components/ContentLayout"
+import { ContentLayout } from "@/components/Layouts/ContentLayout"
 
 export const dynamicParams = false
 

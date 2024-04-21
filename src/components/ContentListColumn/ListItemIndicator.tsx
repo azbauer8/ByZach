@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 
-export default function ListLink({
+export default function ListItemIndicator({
   link,
   children,
 }: {
@@ -16,7 +16,7 @@ export default function ListLink({
   return (
     <div
       className={cn(
-        "flex size-full items-center  gap-3 rounded-lg px-2  py-1.5  hover:bg-content2 active:bg-content2",
+        "size-full rounded-lg px-2  py-1.5  hover:bg-content2 active:bg-content2",
         active && "bg-content2 text-primary"
       )}
     >

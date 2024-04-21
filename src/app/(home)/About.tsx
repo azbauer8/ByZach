@@ -1,6 +1,6 @@
 import { siteLinks } from "@/config"
 
-import Anchor from "@/components/ui/anchor"
+import Link from "@/components/ui/link"
 import { Text } from "@/components/ui/text"
 
 export default function About() {
@@ -13,9 +13,13 @@ export default function About() {
       <Text variant="p" affects="muted">
         {`Hey there! I'm Zach. I'm currently living in Philly
        and working at `}
-        <Anchor href={siteLinks.sig}>SIG</Anchor>
+        <Link href={siteLinks.sig} isExternal>
+          SIG
+        </Link>
         {` developing internal monitoring and operations tools for support teams. In 2021, I graduated from `}
-        <Anchor href={siteLinks.pitt}>Pitt</Anchor>
+        <Link href={siteLinks.pitt} isExternal>
+          Pitt
+        </Link>
         {` with a bachelor's in information science.`}
       </Text>
     </>

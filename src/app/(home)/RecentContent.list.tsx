@@ -1,53 +1,71 @@
-import Link from "next/link"
+import NextLink from "next/link"
+import { PiArrowUpRightBold } from "react-icons/pi"
 
-import { cn } from "@/lib/utils"
-import { Text, textVariants } from "@/components/ui/text"
+import { formatDate } from "@/lib/utils"
+import Link from "@/components/ui/link"
+import { Text } from "@/components/ui/text"
 
 export default function RecentContentList({
   title,
   subtitle,
   route,
   list,
+  isExternal,
 }: {
   title: string
   subtitle: string
-  route: string
+  route?: string
   list: {
     slug: string
-    title: string
-    subtitle: string
+    metadata: {
+      title: string
+      description?: string
+      dateTime?: string | null
+      category?: string
+    }
   }[]
+  isExternal?: boolean
 }) {
   return (
     <div className="space-y-2">
       <div className="space-y-0.5">
-        <Link
-          href={`/${route}`}
-          className={cn(
-            textVariants({ variant: "h3" }),
-            "underline-offset-2 hover:text-primary hover:underline active:text-primary  active:underline"
-          )}
+        <Text
+          variant="h3"
+          className={
+            route
+              ? "underline-offset-2 hover:underline active:underline"
+              : undefined
+          }
         >
-          {title}
-        </Link>
-        {subtitle && (
-          <Text variant="p" affects="muted">
-            {subtitle}
-          </Text>
-        )}
+          {route ? <Link href={route}>{title}</Link> : title}
+        </Text>
+        <Text variant="p" affects="muted">
+          {subtitle}
+        </Text>
       </div>
-      <div className="grid w-[102%] -translate-x-2 grid-cols-2 gap-0.5 sm:grid-cols-3">
-        {list?.map((item) => (
-          <Link
+      <div className="flex flex-col">
+        {list.map((item) => (
+          <NextLink
             key={item.slug}
-            href={`/${route}/${item.slug}`}
-            className="group flex flex-col gap-0.5 rounded-lg p-2 hover:bg-content1 active:bg-content1"
+            href={`/thoughts/${item.slug}`}
+            className="group py-2"
           >
-            <Text className="truncate leading-tight underline-offset-2 group-hover:text-primary group-hover:underline group-active:text-primary group-active:underline">
-              {item.title}
+            <div className="flex items-center gap-0.5">
+              <Text className="underline decoration-default3/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">
+                {item.metadata.title}
+              </Text>
+              {isExternal && (
+                <span className="translate-y-[-0.5px] text-[0.9em] text-default3 transition-colors group-hover:text-foreground group-active:text-foreground">
+                  <PiArrowUpRightBold />
+                </span>
+              )}
+            </div>
+            <Text affects="muted">
+              {item.metadata.description ??
+                item.metadata.category ??
+                formatDate(item.metadata.dateTime)}
             </Text>
-            <Text affects="muted">{item.subtitle}</Text>
-          </Link>
+          </NextLink>
         ))}
       </div>
     </div>

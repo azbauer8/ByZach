@@ -6,13 +6,12 @@ import useScrollPosition from "@/lib/useScroll"
 import { cn } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
 
-export function DynamicHeader({
+export function StickyHeader({
   title,
   children,
   rightContent,
   scrollPos,
   isContentHeader,
-  breakpoint = 6,
   className,
 }: {
   title: string
@@ -20,7 +19,6 @@ export function DynamicHeader({
   rightContent?: React.ReactNode
   scrollPos?: number
   isContentHeader?: boolean
-  breakpoint?: number
   className?: string
 }) {
   const windowScroll = useScrollPosition()
@@ -29,10 +27,13 @@ export function DynamicHeader({
 
   const bg = isContentHeader ? "bg-background/10" : "bg-content1/10"
 
+  const breakpoint = isContentHeader ? 50 : 6
+
   return (
     <div
       className={cn(
         "sticky top-0 z-10 flex max-h-12 min-h-12 items-center justify-between  px-3 py-2",
+        isContentHeader && "md:hidden",
         scroll >= breakpoint && `border-b-[0.5px] ${bg} backdrop-blur-lg`,
         className
       )}

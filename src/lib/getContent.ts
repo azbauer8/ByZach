@@ -2,6 +2,9 @@ import fs from "fs"
 import path from "path"
 import keystaticConfig from "@/../keystatic.config"
 import { Entry } from "@keystatic/core/reader"
+import slugify from "slugify"
+
+import { unslugify } from "@/lib/utils"
 
 type Metadata = {
   title: string
@@ -102,7 +105,31 @@ export function getThoughts(limit?: number) {
   return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }
 
-export function getDiscoveries(limit?: number) {
+export function getDiscoveriesInCategory(slug: string) {
+  const dir = path.join(process.cwd(), "content/discoveries")
+  const jsonFiles = getJSONFiles(dir)
+    .map((file) => {
+      const metadata = readJSONFiles(path.join(dir, file))
+      const slug = path.basename(file, path.extname(file))
+      return {
+        metadata: metadata as DiscoveryMetadata,
+        slug,
+      }
+    })
+    .filter(
+      (discovery) =>
+        discovery.metadata.category.toLowerCase() ===
+        unslugify(slug).toLowerCase()
+    )
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.dateTime ?? "").getTime() -
+        new Date(a.metadata.dateTime ?? "").getTime()
+    )
+  return jsonFiles
+}
+
+export function getDiscoveryCategories() {
   const dir = path.join(process.cwd(), "content/discoveries")
   const jsonFiles = getJSONFiles(dir)
     .map((file) => {
@@ -118,8 +145,27 @@ export function getDiscoveries(limit?: number) {
         new Date(b.metadata.dateTime ?? "").getTime() -
         new Date(a.metadata.dateTime ?? "").getTime()
     )
-  return limit ? jsonFiles.slice(0, limit) : jsonFiles
+
+  const groupedDiscoveries = Object.entries(
+    jsonFiles.reduce(
+      (x, y) => {
+        // eslint-disable-next-line @typescript-eslint/no-extra-semi
+        ;(x[y.metadata.category] = x[y.metadata.category] || []).push(y)
+        return x
+      },
+      {} as { [key: string]: { metadata: DiscoveryMetadata }[] }
+    )
+  ).map(([key, value]) => ({
+    slug: slugify(key.toLowerCase()),
+    metadata: {
+      title: key,
+      subtitle: `${value.length} discoveries`,
+    },
+  }))
+
+  return groupedDiscoveries
 }
+
 export function getSnippets(limit?: number) {
   const dir = path.join(process.cwd(), "content/snippets")
   const mdxFiles = getMDXFiles(dir)

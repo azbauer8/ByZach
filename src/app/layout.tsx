@@ -6,7 +6,7 @@ import { Metadata } from "next"
 
 import { cn } from "@/lib/utils"
 import { Providers } from "@/components/Providers"
-import Sidebar from "@/components/Sidebar"
+import Sidebar from "@/components/Sidebar/Sidebar"
 
 export const metadata: Metadata = {
   title: {

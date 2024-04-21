@@ -1,6 +1,6 @@
-import { getDiscoveries } from "@/lib/getContent"
-import ContentList from "@/components/ContentList"
-import ContentListLayout from "@/components/ContentListLayout"
+import { getDiscoveryCategories } from "@/lib/getContent"
+import ContentList from "@/components/ContentListColumn/ContentList"
+import ContentListLayout from "@/components/ContentListColumn/ContentListLayout"
 
 export default function ContentLayout({
   children,
@@ -16,7 +16,7 @@ export default function ContentLayout({
 }
 
 function Discoveries() {
-  const discoveries = getDiscoveries()
+  const discoveries = getDiscoveryCategories()
   if (!discoveries) return null
 
   return (

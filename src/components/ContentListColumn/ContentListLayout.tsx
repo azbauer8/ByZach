@@ -4,8 +4,8 @@ import { useState } from "react"
 import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
-import { DynamicHeader } from "@/components/DynamicHeader"
-import { SidebarToggle } from "@/components/Sidebar.client"
+import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebarToggle"
+import { StickyHeader } from "@/components/StickyHeader"
 
 export default function ContentListLayout({
   id,
@@ -33,9 +33,9 @@ export default function ContentListLayout({
       id={id}
       onScroll={onScroll}
     >
-      <DynamicHeader title={type} scrollPos={scroll}>
-        <SidebarToggle />
-      </DynamicHeader>
+      <StickyHeader title={type} scrollPos={scroll}>
+        <MobileSidebarToggle />
+      </StickyHeader>
       {children}
     </div>
   )

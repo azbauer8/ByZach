@@ -1,6 +1,6 @@
 import React from "react"
 import Image, { ImageProps } from "next/image"
-import Link, { LinkProps } from "next/link"
+import NextLink, { LinkProps } from "next/link"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
@@ -9,7 +9,7 @@ import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
 import { cn } from "@/lib/utils"
-import Anchor from "@/components/ui/anchor"
+import Link from "@/components/ui/link"
 
 function CustomLink(
   props: LinkProps & {
@@ -18,7 +18,8 @@ function CustomLink(
   }
 ) {
   const href = props.href
-  if (href.startsWith("/")) return <Link {...props}>{props.children}</Link>
+  if (href.startsWith("/"))
+    return <NextLink {...props}>{props.children}</NextLink>
   if (href.startsWith("#"))
     return (
       <a
@@ -26,7 +27,9 @@ function CustomLink(
         {...props}
       />
     )
-  return <Anchor target="_blank" rel="noopener noreferrer" {...props} />
+  return (
+    <Link target="_blank" rel="noopener noreferrer" isExternal {...props} />
+  )
 }
 
 function RoundedImage({ alt, className, ...props }: ImageProps) {

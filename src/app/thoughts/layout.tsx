@@ -1,6 +1,6 @@
 import { getThoughts } from "@/lib/getContent"
-import ContentList from "@/components/ContentList"
-import ContentListLayout from "@/components/ContentListLayout"
+import ContentList from "@/components/ContentListColumn/ContentList"
+import ContentListLayout from "@/components/ContentListColumn/ContentListLayout"
 
 export default function ContentLayout({
   children,

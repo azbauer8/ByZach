@@ -1,7 +1,7 @@
 import { siteLinks } from "@/config"
 
 import {
-  getDiscoveries,
+  getDiscoveryCategories,
   getProjects,
   getSnippets,
   getThoughts,
@@ -19,7 +19,7 @@ export default async function sitemap() {
     lastModified: use.metadata.dateTime,
   }))
 
-  const discoveries = getDiscoveries().map((discovery) => ({
+  const discoveries = getDiscoveryCategories().map((discovery) => ({
     url: `${siteLinks.here}/discoveries/${discovery.slug}`,
     lastModified: discovery.metadata.dateTime,
   }))

@@ -3,7 +3,7 @@ import { siteLinks } from "@/config"
 import { getSnippets } from "@/lib/getContent"
 import Badge from "@/components/ui/badge"
 import { Text } from "@/components/ui/text"
-import { ContentLayout } from "@/components/ContentLayout"
+import { ContentLayout } from "@/components/Layouts/ContentLayout"
 import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
