@@ -11,13 +11,13 @@ export function MobileSidebarToggle() {
   return (
     <>
       <Button
-        className="absolute left-2 lg:hidden"
+        className="absolute left-2 xl:hidden"
         onClick={() => setSidebarOpen(true)}
         aria-label="Open sidebar"
       >
         <PiSidebarSimpleDuotone size={24} />
       </Button>
-      <div className="hidden lg:block" />
+      <div className="hidden xl:block" />
     </>
   )
 }

@@ -1,9 +1,9 @@
 import NextLink from "next/link"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
-import { formatDate } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import Link from "@/components/ui/link"
-import { Text } from "@/components/ui/text"
+import { Text, textVariants } from "@/components/ui/text"
 
 export default function RecentContentList({
   title,
@@ -29,16 +29,26 @@ export default function RecentContentList({
   return (
     <div className="space-y-2">
       <div className="space-y-0.5">
-        <Text
-          variant="h3"
-          className={
-            route
-              ? "underline-offset-2 hover:underline active:underline"
-              : undefined
-          }
-        >
-          {route ? <Link href={route}>{title}</Link> : title}
-        </Text>
+        {route ? (
+          <Link
+            href={route}
+            className={cn(textVariants({ variant: "h3" }), "w-full")}
+          >
+            {title}
+          </Link>
+        ) : (
+          <Text
+            variant="h3"
+            className={
+              route
+                ? "underline-offset-2 hover:underline active:underline"
+                : undefined
+            }
+          >
+            {title}
+          </Text>
+        )}
+
         <Text variant="p" affects="muted">
           {subtitle}
         </Text>
@@ -47,7 +57,7 @@ export default function RecentContentList({
         {list.map((item) => (
           <NextLink
             key={item.slug}
-            href={`/thoughts/${item.slug}`}
+            href={`${route}/${item.slug}`}
             className="group py-2"
           >
             <div className="flex items-center gap-0.5">

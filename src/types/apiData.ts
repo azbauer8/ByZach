@@ -43,6 +43,7 @@ export type TraktEntry = {
   movie?: {
     title: string
     tagline: string
+    overview: string
     year: number
     ids: {
       trakt: number

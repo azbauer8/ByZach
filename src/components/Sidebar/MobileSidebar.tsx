@@ -25,7 +25,7 @@ export default function MobileSidebar({
   return (
     <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
       <SheetContent
-        className="flex w-80 flex-col overflow-y-auto border-r-[0.5px] sm:w-72 md:w-64 lg:w-56"
+        className="flex w-80 flex-col overflow-y-auto border-r-[0.5px] sm:w-60"
         id="mobile-sidebar"
         onScroll={onScroll}
         side="left"

@@ -11,23 +11,23 @@ type Metadata = {
   dateTime: string | null
 }
 
-type ThoughtMetadata = Entry<
+export type ThoughtMetadata = Entry<
   (typeof keystaticConfig)["collections"]["thoughts"]
 >
 
-type ProjectMetadata = Entry<
+export type ProjectMetadata = Entry<
   (typeof keystaticConfig)["collections"]["projects"]
 >
 
-type DiscoveryMetadata = Entry<
+export type DiscoveryMetadata = Entry<
   (typeof keystaticConfig)["collections"]["discoveries"]
 >
 
-type SnippetMetadata = Entry<
+export type SnippetMetadata = Entry<
   (typeof keystaticConfig)["collections"]["snippets"]
 >
 
-type UseMetadata = Entry<(typeof keystaticConfig)["collections"]["uses"]>
+export type UseMetadata = Entry<(typeof keystaticConfig)["collections"]["uses"]>
 
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/

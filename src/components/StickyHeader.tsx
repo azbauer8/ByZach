@@ -33,7 +33,7 @@ export function StickyHeader({
     <div
       className={cn(
         "sticky top-0 z-10 flex max-h-12 min-h-12 items-center justify-between  px-3 py-2",
-        isContentHeader && "md:hidden",
+        isContentHeader && "xl:hidden",
         scroll >= breakpoint && `border-b-[0.5px] ${bg} backdrop-blur-lg`,
         className
       )}

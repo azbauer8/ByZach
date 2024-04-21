@@ -42,7 +42,7 @@ export function ContentLayout({
             )}
           >
             <PiCaretLeftBold size={20} />
-            {capitalize(type)}
+            <span className="hidden sm:block">{capitalize(type)}</span>
           </Link>
         ) : (
           <MobileSidebarToggle />
