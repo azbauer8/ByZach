@@ -3,7 +3,7 @@ import Image from "next/image"
 import { PiPopcornBold } from "react-icons/pi"
 
 import { TraktEntry } from "@/types/apiData"
-import { Typography } from "@/components/ui/typography"
+import { Text } from "@/components/ui/text"
 import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
 
 import { LoadingTrakt } from "./Activity.loading"
@@ -103,18 +103,18 @@ export default async function TraktCard() {
       <div className="my-auto grow space-y-0.5">
         <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
           <PiPopcornBold className="size-5" />
-          <Typography affects="small">{data.playingWhen}</Typography>
+          <Text affects="small">{data.playingWhen}</Text>
         </div>
-        <Typography variant="h5">{data.title}</Typography>
+        <Text variant="h5">{data.title}</Text>
         {data.episode ? (
           <>
-            <Typography affects="muted">{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Typography>
+            <Text affects="muted">{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Text>
           </>
         ) : (
           <>
-            <Typography affects="muted" className="italic">
+            <Text affects="muted" className="italic">
               {data.tagline}
-            </Typography>
+            </Text>
           </>
         )}
       </div>

@@ -41,7 +41,7 @@ const components = {
 const codeOptions: Options = {
   theme: {
     dark: "vesper",
-    light: "catppuccin-latte",
+    light: "github-light-default",
   },
   keepBackground: false,
 }

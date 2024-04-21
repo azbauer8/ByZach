@@ -31,6 +31,7 @@ export function ContentLayout({
         }
         isContentHeader
         breakpoint={50}
+        className="md:hidden"
       >
         <Link
           href={`/${type}`}

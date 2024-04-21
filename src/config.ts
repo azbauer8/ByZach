@@ -1,5 +1,10 @@
+import { Assistant } from "next/font/google"
 import { GeistMono } from "geist/font/mono"
-import { GeistSans } from "geist/font/sans"
+
+const outfit = Assistant({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export type SiteConfig = typeof siteConfig
 
@@ -7,7 +12,7 @@ export const siteConfig = {
   title: "ByZach",
   description: `Zach Bauer's Personal Website`,
   favicon: "/favicon.png",
-  font: GeistSans,
+  font: outfit,
   monoFont: GeistMono,
 } as const
 

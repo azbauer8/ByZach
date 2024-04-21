@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa6"
 import { SiTrakt } from "react-icons/si"
 
-import { Typography } from "@/components/ui/typography"
+import { Text } from "@/components/ui/text"
 import {
   MobileSidebar,
   SidebarLink,
@@ -110,9 +110,9 @@ export default function Sidebar() {
 function SidebarLinks({ mobile }: { mobile?: boolean }) {
   return (
     <div className="flex-1 space-y-2 p-3 pt-0 text-sm">
-      <Typography variant="h3" className="pl-1">
+      <Text variant="h3" className="pl-1">
         {siteConfig.title}
-      </Typography>
+      </Text>
       <div className="space-y-5">
         <div className="flex flex-col gap-1">
           {sidebarLinks.site.map((link) => (
@@ -122,9 +122,9 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           ))}
         </div>
         <div className="flex flex-col gap-2.5">
-          <Typography affects="small" className="pl-2">
+          <Text affects="small" className="pl-2">
             Personal
-          </Typography>
+          </Text>
           <div className="flex flex-col gap-0.5">
             {sidebarLinks.personal.map((link) => (
               <a
@@ -139,9 +139,9 @@ function SidebarLinks({ mobile }: { mobile?: boolean }) {
           </div>
         </div>
         <div className="flex flex-col gap-2.5">
-          <Typography affects="small" className="pl-2">
+          <Text affects="small" className="pl-2">
             Professional
-          </Typography>
+          </Text>
           <div className="flex flex-col gap-0.5">
             {sidebarLinks.professional.map((link) => (
               <a

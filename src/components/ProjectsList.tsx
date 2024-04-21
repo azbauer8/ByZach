@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import { getProjects } from "@/lib/getContent"
 import { cn } from "@/lib/utils"
-import { Typography, typographyVariants } from "@/components/ui/typography"
+import { Text, textVariants } from "@/components/ui/text"
 
 export default function Projects({ limit }: { limit?: number }) {
   const projects = getProjects(limit)
@@ -14,15 +14,15 @@ export default function Projects({ limit }: { limit?: number }) {
         <Link
           href="/projects"
           className={cn(
-            typographyVariants({ variant: "h3" }),
+            textVariants({ variant: "h3" }),
             "underline-offset-2 hover:text-primary hover:underline active:text-primary  active:underline"
           )}
         >
           Projects
         </Link>
-        <Typography variant="p" affects="muted">
+        <Text variant="p" affects="muted">
           My latest work and experiments.
-        </Typography>
+        </Text>
       </div>
       <div className="flex flex-col">
         {projects.map((project) => (
@@ -34,16 +34,14 @@ export default function Projects({ limit }: { limit?: number }) {
             className="group py-2"
           >
             <div className="flex items-center gap-0.5">
-              <Typography className="underline decoration-default3/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75">
+              <Text className="underline decoration-default3/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75">
                 {project.metadata.title}
-              </Typography>
+              </Text>
               <span className="translate-y-[-0.5px] text-[0.9em] text-default3 transition-colors group-hover:text-foreground">
                 ↗
               </span>
             </div>
-            <Typography affects="muted">
-              {project.metadata.description}
-            </Typography>
+            <Text affects="muted">{project.metadata.description}</Text>
           </a>
         ))}
       </div>

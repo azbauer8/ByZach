@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
-import { Typography, typographyVariants } from "@/components/ui/typography"
+import { Text, textVariants } from "@/components/ui/text"
 
 export default function RecentContentList({
   title,
@@ -24,16 +24,16 @@ export default function RecentContentList({
         <Link
           href={`/${route}`}
           className={cn(
-            typographyVariants({ variant: "h3" }),
+            textVariants({ variant: "h3" }),
             "underline-offset-2 hover:text-primary hover:underline active:text-primary  active:underline"
           )}
         >
           {title}
         </Link>
         {subtitle && (
-          <Typography variant="p" affects="muted">
+          <Text variant="p" affects="muted">
             {subtitle}
-          </Typography>
+          </Text>
         )}
       </div>
       <div className="grid w-[102%] -translate-x-2 grid-cols-2 gap-0.5 sm:grid-cols-3">
@@ -43,10 +43,10 @@ export default function RecentContentList({
             href={`/${route}/${item.slug}`}
             className="group flex flex-col gap-0.5 rounded-lg p-2 hover:bg-content1 active:bg-content1"
           >
-            <Typography className="truncate leading-tight underline-offset-2 group-hover:text-primary group-hover:underline group-active:text-primary group-active:underline">
+            <Text className="truncate leading-tight underline-offset-2 group-hover:text-primary group-hover:underline group-active:text-primary group-active:underline">
               {item.title}
-            </Typography>
-            <Typography affects="muted">{item.subtitle}</Typography>
+            </Text>
+            <Text affects="muted">{item.subtitle}</Text>
           </Link>
         ))}
       </div>

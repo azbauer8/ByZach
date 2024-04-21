@@ -3,7 +3,7 @@ import Image from "next/image"
 import { PiWaveformBold } from "react-icons/pi"
 
 import { LastFmData } from "@/types/apiData"
-import { Typography } from "@/components/ui/typography"
+import { Text } from "@/components/ui/text"
 import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
 
 import { LoadingLastFm } from "./Activity.loading"
@@ -56,10 +56,10 @@ export default async function LastFmCard() {
           ) : (
             <PiWaveformBold className="size-5" />
           )}
-          <Typography affects="small">{playingWhen}</Typography>
+          <Text affects="small">{playingWhen}</Text>
         </div>
-        <Typography variant="h5">{latestTrack.name}</Typography>
-        <Typography affects="muted">{latestTrack.artist["#text"]}</Typography>
+        <Text variant="h5">{latestTrack.name}</Text>
+        <Text affects="muted">{latestTrack.artist["#text"]}</Text>
       </div>
     </a>
   )

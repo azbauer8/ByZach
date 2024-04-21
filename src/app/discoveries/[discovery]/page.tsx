@@ -5,7 +5,7 @@ import { FaLink } from "react-icons/fa6"
 import { getDiscoveries } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
 import Badge from "@/components/ui/badge"
-import { Typography } from "@/components/ui/typography"
+import { Text } from "@/components/ui/text"
 import { ContentLayout } from "@/components/ContentLayout"
 
 export const dynamicParams = false
@@ -56,7 +56,7 @@ export default async function Discovery({
     <ContentLayout title={discovery.metadata.title} type="discoveries">
       <div className="space-y-0.5">
         <Badge>{discovery.metadata.category}</Badge>
-        <Typography variant="h2">{discovery.metadata.title}</Typography>
+        <Text variant="h2">{discovery.metadata.title}</Text>
         {discovery.metadata.link ? (
           <a
             href={discovery.metadata.link}
@@ -65,9 +65,7 @@ export default async function Discovery({
             className="flex items-center gap-1.5"
           >
             <FaLink width={16} height={16} />
-            <Typography affects="muted">
-              {formatUrl(discovery.metadata.link)}
-            </Typography>
+            <Text affects="muted">{formatUrl(discovery.metadata.link)}</Text>
           </a>
         ) : null}
         <Image
@@ -77,9 +75,9 @@ export default async function Discovery({
           height={630}
           className="rounded-lg"
         />
-        <Typography variant="p" affects="muted">
+        <Text variant="p" affects="muted">
           {discovery.metadata.description}
-        </Typography>
+        </Text>
       </div>
     </ContentLayout>
   )

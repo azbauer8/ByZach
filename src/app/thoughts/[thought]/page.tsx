@@ -2,7 +2,7 @@ import { siteLinks } from "@/config"
 
 import { getThoughts } from "@/lib/getContent"
 import { formatDate } from "@/lib/utils"
-import { Typography } from "@/components/ui/typography"
+import { Text } from "@/components/ui/text"
 import { ContentLayout } from "@/components/ContentLayout"
 import { MDXContent } from "@/components/MdxContent"
 
@@ -52,10 +52,8 @@ export default async function Thought({
   return (
     <ContentLayout title={thought.metadata.title} type="thoughts">
       <div className="space-y-1.5">
-        <Typography variant="h2">{thought.metadata.title}</Typography>
-        <Typography affects="muted">
-          {formatDate(thought.metadata.dateTime)}
-        </Typography>
+        <Text variant="h2">{thought.metadata.title}</Text>
+        <Text affects="muted">{formatDate(thought.metadata.dateTime)}</Text>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
         <MDXContent source={thought.content} />

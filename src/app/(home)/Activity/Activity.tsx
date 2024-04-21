@@ -1,6 +1,6 @@
 import { Suspense } from "react"
 
-import { Typography } from "@/components/ui/typography"
+import { Text } from "@/components/ui/text"
 
 import { LoadingLastFm, LoadingTrakt } from "./Activity.loading"
 import LastFmCard from "./LastfmCard"
@@ -10,10 +10,10 @@ export default function Activity() {
   return (
     <div className="space-y-5">
       <div className="space-y-0.5">
-        <Typography variant="h3">Activity</Typography>
-        <Typography variant="p" affects="muted">
+        <Text variant="h3">Activity</Text>
+        <Text variant="p" affects="muted">
           I enjoy consuming media, sometimes.
-        </Typography>
+        </Text>
       </div>
       <Suspense fallback={<LoadingLastFm />}>
         <LastFmCard />

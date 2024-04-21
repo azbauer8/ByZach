@@ -34,3 +34,7 @@ code[data-theme*=" "] span {
 figcaption[data-rehype-pretty-code-title] {
   @apply ml-2.5 w-fit rounded-lg rounded-b-none border border-b-0 border-divider bg-default1/15 px-1.5 py-1 font-mono tracking-tight text-foreground;
 }
+
+.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply no-underline;
+}

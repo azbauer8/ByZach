@@ -4,9 +4,8 @@ import { FaLink } from "react-icons/fa6"
 import { getUses } from "@/lib/getContent"
 import { formatUrl } from "@/lib/utils"
 import Badge from "@/components/ui/badge"
-import { Typography } from "@/components/ui/typography"
+import { Text } from "@/components/ui/text"
 import { ContentLayout } from "@/components/ContentLayout"
-import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
 
@@ -17,21 +16,21 @@ export async function generateMetadata({
 }) {
   const use = getUses().find((use) => use.slug === params.use)
   if (!use) return {}
-  const { descShort, title } = use.metadata
+  const { description, title } = use.metadata
 
   return {
     title,
-    description: descShort,
+    description,
     openGraph: {
       title,
-      description: descShort,
+      description,
       type: "article",
       url: `${siteLinks.here}/uses/${use.slug}`,
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: descShort,
+      description,
     },
   }
 }
@@ -50,8 +49,8 @@ export default async function Use({ params }: { params: { use: string } }) {
   return (
     <ContentLayout title={use.metadata.title} type="uses">
       <div className="space-y-0.5">
-        <Badge>{use.metadata.category}</Badge>
-        <Typography variant="h2">{use.metadata.title}</Typography>
+        <Badge>{use.metadata.type}</Badge>
+        <Text variant="h2">{use.metadata.title}</Text>
         {use.metadata.link ? (
           <a
             href={use.metadata.link}
@@ -60,18 +59,13 @@ export default async function Use({ params }: { params: { use: string } }) {
             className="flex items-center gap-1.5"
           >
             <FaLink width={16} height={16} />
-            <Typography affects="muted">
-              {formatUrl(use.metadata.link)}
-            </Typography>
+            <Text affects="muted">{formatUrl(use.metadata.link)}</Text>
           </a>
         ) : null}
-        <Typography variant="p" affects="muted">
-          {use.metadata.descShort}
-        </Typography>
+        <Text variant="p" affects="muted">
+          {use.metadata.description}
+        </Text>
       </div>
-      <main className="prose prose-neutral dark:prose-invert">
-        <MDXContent source={use.content} />
-      </main>
     </ContentLayout>
   )
 }

@@ -2,7 +2,7 @@ import { siteLinks } from "@/config"
 
 import { getSnippets } from "@/lib/getContent"
 import Badge from "@/components/ui/badge"
-import { Typography } from "@/components/ui/typography"
+import { Text } from "@/components/ui/text"
 import { ContentLayout } from "@/components/ContentLayout"
 import { MDXContent } from "@/components/MdxContent"
 
@@ -58,10 +58,10 @@ export default async function Snippet({
     <ContentLayout title={snippet.metadata.title} type="snippets">
       <div className="space-y-0.5">
         <Badge>{snippet.metadata.category}</Badge>
-        <Typography variant="h2">{snippet.metadata.title}</Typography>
-        <Typography variant="p" affects="muted">
+        <Text variant="h2">{snippet.metadata.title}</Text>
+        <Text variant="p" affects="muted">
           {snippet.metadata.description}
-        </Typography>
+        </Text>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
         <MDXContent source={snippet.content} />

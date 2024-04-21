@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils"
 
 function Anchor({
   className,
-  href,
   target,
   rel,
   ...props
@@ -17,8 +16,8 @@ function Anchor({
         "group inline-flex items-center gap-0.5 text-foreground",
         className
       )}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={target ?? "_blank"}
+      rel={rel ?? "noopener noreferrer"}
       {...props}
     >
       <span className="underline decoration-default3/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75">

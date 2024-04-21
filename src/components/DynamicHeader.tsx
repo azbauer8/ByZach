@@ -4,7 +4,7 @@ import React from "react"
 
 import useScrollPosition from "@/lib/useScroll"
 import { cn } from "@/lib/utils"
-import { Typography } from "@/components/ui/typography"
+import { Text } from "@/components/ui/text"
 
 export function DynamicHeader({
   title,
@@ -13,6 +13,7 @@ export function DynamicHeader({
   scrollPos,
   isContentHeader,
   breakpoint = 6,
+  className,
 }: {
   title: string
   children?: React.ReactNode
@@ -20,6 +21,7 @@ export function DynamicHeader({
   scrollPos?: number
   isContentHeader?: boolean
   breakpoint?: number
+  className?: string
 }) {
   const windowScroll = useScrollPosition()
 
@@ -31,11 +33,12 @@ export function DynamicHeader({
     <div
       className={cn(
         "sticky top-0 z-10 flex max-h-12 min-h-12 items-center justify-between  px-3 py-2",
-        scroll >= breakpoint && `border-b-[0.5px] ${bg} backdrop-blur-lg`
+        scroll >= breakpoint && `border-b-[0.5px] ${bg} backdrop-blur-lg`,
+        className
       )}
     >
       {children}
-      <Typography
+      <Text
         affects="small"
         className={cn(
           "absolute left-1/2 -translate-x-1/2 transition-all duration-200 ease-in-out",
@@ -45,7 +48,7 @@ export function DynamicHeader({
         )}
       >
         {title}
-      </Typography>
+      </Text>
       <div className="absolute right-3">{rightContent}</div>
     </div>
   )
