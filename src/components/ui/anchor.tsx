@@ -2,8 +2,15 @@ import { cn } from "@/lib/utils"
 
 function Anchor({
   className,
+  href,
+  target,
+  rel,
   ...props
-}: React.HTMLAttributes<HTMLAnchorElement>) {
+}: React.HTMLAttributes<HTMLAnchorElement> & {
+  href: string
+  target?: string
+  rel?: string
+}) {
   return (
     <a
       className={cn(
