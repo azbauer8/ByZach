@@ -21,7 +21,6 @@ export default async function sitemap() {
 
   const discoveries = getDiscoveryCategories().map((discovery) => ({
     url: `${siteLinks.here}/discoveries/${discovery.slug}`,
-    lastModified: discovery.metadata.dateTime,
   }))
 
   const thoughts = getThoughts().map((thought) => ({
