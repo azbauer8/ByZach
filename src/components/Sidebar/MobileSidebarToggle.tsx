@@ -3,8 +3,8 @@
 import { useAtom } from "jotai"
 import { PiSidebarSimpleDuotone } from "react-icons/pi"
 
-import { Button } from "@/components/ui/button"
-import { sidebarAtom } from "@/components/Sidebar/SidebarClientWrapper"
+import Button from "@/components/ui/button"
+import { sidebarAtom } from "@/components/Sidebar/Sidebar"
 
 export function MobileSidebarToggle() {
   const [, setSidebarOpen] = useAtom(sidebarAtom)

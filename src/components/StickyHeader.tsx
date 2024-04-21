@@ -1,7 +1,5 @@
 "use client"
 
-import React from "react"
-
 import useScrollPosition from "@/lib/useScroll"
 import { cn } from "@/lib/utils"
 import { Text } from "@/components/ui/text"

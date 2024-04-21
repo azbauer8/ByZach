@@ -5,9 +5,9 @@ import { siteConfig } from "@/config"
 import { useAtom } from "jotai"
 import { PiXBold } from "react-icons/pi"
 
-import { Button } from "@/components/ui/button"
+import Button from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
-import { sidebarAtom } from "@/components/Sidebar/SidebarClientWrapper"
+import { sidebarAtom } from "@/components/Sidebar/Sidebar"
 import { StickyHeader } from "@/components/StickyHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 

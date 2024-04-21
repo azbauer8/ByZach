@@ -7,7 +7,7 @@
     --background: 254 254 254;
     --foreground: 46 46 46;
     --divider: 17 17 17 / 0.15;
-    --content1: 250, 250, 250;
+    --content1: 244 244 245;
     --content2: 230 230 234;
     --default1: 212 212 216;
     --default2: 244 244 245;
@@ -17,6 +17,13 @@
     --success: 23 201 100;
     --warning: 245 165 36;
     --danger: 243 18 96;
+
+    --card-shadow: 0 0 0 0.5px #e2e8f0, 0 0 0 1px rgba(226, 232, 240, 0.5),
+      0 0 0 3px #f8fafc, 0 0 0 3.5px #f1f5f9,
+      0 10px 15px -3px rgb(59 130 246 / 5%), 0 4px 6px -4px rgb(59 130 246 / 5%);
+    --card-shadow-hover: 0 0 0 0.5px #ebecf0, 0 0 0 1px rgba(226, 232, 240, 0.5),
+      0 0 0 3px rgba(226, 232, 240, 0.5), 0 0 0 3.5px rgba(226, 232, 240, 0.5),
+      0 10px 15px -3px rgb(59 130 246 / 5%), 0 4px 6px -4px rgb(59 130 246 / 5%);
 
     --radius: 0.5rem;
   }
@@ -35,5 +42,10 @@
     --success: 23 201 100;
     --warning: 245 165 36;
     --danger: 243 18 96;
+
+    --card-shadow: 0 0 0 0.5px #1a1a1a, 0 0 0 1px rgba(26, 26, 26, 0.5),
+      0 0 0 3px #0d0d0d, 0 0 0 3.5px #121212;
+    --card-shadow-hover: 0 0 0 0.5px #1a1a1a, 0 0 0 1px rgb(40, 40, 43),
+      0 0 0 3px rgb(40, 40, 43), 0 0 0 3.5px rgb(40, 40, 43);
   }
 }

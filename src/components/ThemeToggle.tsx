@@ -2,15 +2,10 @@
 
 import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
-import {
-  PiMoonBold,
-  PiSpinnerBold,
-  PiSunBold,
-  PiSunHorizonBold,
-} from "react-icons/pi"
+import { PiMoonBold, PiSpinnerBold, PiSunBold } from "react-icons/pi"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import Button from "@/components/ui/button"
 
 export default function ThemeToggle({
   iconSize,

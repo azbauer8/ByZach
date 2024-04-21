@@ -1,75 +1,32 @@
-import Link from "next/link"
+"use client"
+
+import React, { useState } from "react"
 import { siteConfig } from "@/config"
+import { atom } from "jotai"
 
-import { Text } from "@/components/ui/text"
-import MobileSidebar from "@/components/Sidebar/MobileSidebar"
-import SidebarClientWrapper from "@/components/Sidebar/SidebarClientWrapper"
-import SidebarLink from "@/components/Sidebar/SidebarLink"
-import sidebarLinks from "@/components/Sidebar/sidebarLinks"
+import { StickyHeader } from "@/components/StickyHeader"
+import ThemeToggle from "@/components/ThemeToggle"
 
-export default function Sidebar() {
+export const sidebarAtom = atom(false)
+
+export default function Sidebar({ children }: { children: React.ReactNode }) {
+  const [scroll, setScroll] = useState(0)
+  const onScroll = () => {
+    const scrollTop = document.getElementById("sidebar")?.scrollTop
+    scrollTop && setScroll(scrollTop)
+  }
   return (
-    <>
-      <SidebarClientWrapper>
-        <SidebarLinks />
-      </SidebarClientWrapper>
-
-      <MobileSidebar>
-        <SidebarLinks mobile />
-      </MobileSidebar>
-    </>
-  )
-}
-
-function SidebarLinks({ mobile }: { mobile?: boolean }) {
-  return (
-    <div className="flex-1 space-y-2 p-3 pt-0 text-sm">
-      <Text variant="h3" className="pl-1">
-        {siteConfig.title}
-      </Text>
-      <div className="space-y-5">
-        <div className="flex flex-col gap-1">
-          {sidebarLinks.site.map((link) => (
-            <Link href={link.href} key={link.name}>
-              <SidebarLink link={link} isMobile={mobile} />
-            </Link>
-          ))}
-        </div>
-        <div className="flex flex-col gap-2.5">
-          <Text affects="small" className="pl-2">
-            Personal
-          </Text>
-          <div className="flex flex-col gap-0.5">
-            {sidebarLinks.personal.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <SidebarLink link={link} isExternal />
-              </a>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col gap-2.5">
-          <Text affects="small" className="pl-2">
-            Professional
-          </Text>
-          <div className="flex flex-col gap-0.5">
-            {sidebarLinks.professional.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <SidebarLink link={link} isExternal />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+    <nav
+      className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-60 min-w-60 max-w-60 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] bg-content1 xl:sticky xl:translate-x-0"
+      id="sidebar"
+      onScroll={onScroll}
+    >
+      <StickyHeader
+        title={siteConfig.title}
+        rightContent={<ThemeToggle iconSize={18} />}
+        scrollPos={scroll}
+      />
+      {children}
+    </nav>
   )
 }

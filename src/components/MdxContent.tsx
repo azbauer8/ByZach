@@ -1,4 +1,3 @@
-import React from "react"
 import Image, { ImageProps } from "next/image"
 import NextLink, { LinkProps } from "next/link"
 import { MDXProvider } from "@mdx-js/react"

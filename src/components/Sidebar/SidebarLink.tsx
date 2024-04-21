@@ -5,7 +5,7 @@ import { useAtom } from "jotai"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
 import { cn } from "@/lib/utils"
-import { sidebarAtom } from "@/components/Sidebar/SidebarClientWrapper"
+import { sidebarAtom } from "@/components/Sidebar/Sidebar"
 
 export default function SidebarLink({
   link,
@@ -23,7 +23,7 @@ export default function SidebarLink({
   const pathname = usePathname()
   const [, setSidebarOpen] = useAtom(sidebarAtom)
   const active =
-    link.href === "/" ? pathname === link.href : pathname?.startsWith(link.href)
+    link.href === "/" ? pathname === link.href : pathname.startsWith(link.href)
 
   return (
     <div

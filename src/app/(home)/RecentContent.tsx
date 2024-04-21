@@ -7,7 +7,7 @@ export default async function RecentContent() {
   const snippets = getSnippets(5)
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <RecentContentList
         title="Projects"
         subtitle="My latest work and experiments."

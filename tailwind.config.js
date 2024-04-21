@@ -55,6 +55,10 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      boxShadow: {
+        'card': 'var(--card-shadow)',
+        'card-hover': 'var(--card-shadow-hover)',
+      }
     },
   },
   plugins: [require('@tailwindcss/typography'), require("tailwindcss-animate")]

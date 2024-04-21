@@ -1,6 +1,26 @@
-import { getUses } from "@/lib/getContent"
-import ContentList from "@/components/ContentListColumn/ContentList"
-import ContentListLayout from "@/components/ContentListColumn/ContentListLayout"
+import { Metadata } from "next/types"
+import { siteLinks } from "@/config"
+
+import { Text } from "@/components/ui/text"
+import { PageLayout } from "@/components/Layouts/PageLayout"
+import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebarToggle"
+import { StickyHeader } from "@/components/StickyHeader"
+import Tabs from "@/app/uses/Tabs"
+
+export const metadata: Metadata = {
+  title: "Uses",
+  description: "Devices, tools, and technologies I use on a daily basis.",
+  openGraph: {
+    title: "Uses",
+    description: "Devices, tools, and technologies I use on a daily basis.",
+    url: `${siteLinks.here}/uses`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Uses",
+    description: "Devices, tools, and technologies I use on a daily basis.",
+  },
+}
 
 export default function UsesLayout({
   children,
@@ -8,20 +28,15 @@ export default function UsesLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex">
-      <Uses />
-      <div className="flex-1">{children}</div>
-    </div>
-  )
-}
-
-function Uses() {
-  const uses = getUses()
-  if (!uses) return null
-
-  return (
-    <ContentListLayout id="uses" type="Uses">
-      <ContentList type="uses" links={uses} />
-    </ContentListLayout>
+    <>
+      <StickyHeader title="Uses" isContentHeader>
+        <MobileSidebarToggle />
+      </StickyHeader>
+      <PageLayout className="space-y-5">
+        <Text variant="h2">Uses</Text>
+        <Tabs />
+        {children}
+      </PageLayout>
+    </>
   )
 }

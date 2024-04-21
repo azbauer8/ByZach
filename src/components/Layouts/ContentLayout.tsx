@@ -1,5 +1,3 @@
-import React from "react"
-
 import "@/lib/utils"
 import "@/styles/prose.css"
 

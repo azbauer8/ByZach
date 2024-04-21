@@ -1,4 +1,3 @@
-import React from "react"
 import { Metadata } from "next/types"
 
 import { PageLayout } from "@/components/Layouts/PageLayout"
@@ -18,7 +17,7 @@ export default function Home() {
       <StickyHeader title="Zach Bauer" isContentHeader>
         <MobileSidebarToggle />
       </StickyHeader>
-      <PageLayout className="space-y-6">
+      <PageLayout className="space-y-5">
         <About />
         <RecentContent />
         <Activity />
