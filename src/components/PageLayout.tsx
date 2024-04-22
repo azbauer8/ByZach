@@ -32,7 +32,7 @@ export function PageLayout({
               href={`/${type}`}
               className={cn(
                 textVariants({ affects: "small" }),
-                "hover:bg-neutral/40 active:bg-neutral/40 absolute left-2 flex items-center  rounded-lg p-1.5 text-primary"
+                "hover:bg-neutral/40 active:bg-neutral/40 absolute left-2 flex items-center  rounded-lg p-1.5"
               )}
               prefetch={true}
             >
@@ -43,7 +43,9 @@ export function PageLayout({
             <MobileSidebarToggle />
           )
         }
-        rightContent={<ThemeToggle className="text-foreground" iconSize={20} />}
+        rightContent={
+          hasList && <ThemeToggle className="text-foreground" iconSize={20} />
+        }
       />
       <div className="mx-auto max-w-3xl space-y-5 px-4 py-12 md:px-8">
         {children}

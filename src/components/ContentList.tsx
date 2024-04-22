@@ -62,8 +62,8 @@ export default function ContentList({
               key={link.slug}
               href={fullLink}
               className={cn(
-                "hover:bg-accent-secondary active:bg-accent-secondary size-full  rounded-lg  px-2 py-1.5",
-                active && "bg-accent-secondary text-primary"
+                "hover:bg-accent-secondary/55 active:bg-accent-secondary/55 size-full  rounded-lg  px-2 py-1.5",
+                active && "bg-accent-secondary"
               )}
               prefetch={true}
             >
