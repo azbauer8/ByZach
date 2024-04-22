@@ -23,7 +23,6 @@ async function getTrakt() {
     )
     const traktData: TraktEntry[] = await response.json()
     const latest = traktData[0]
-    console.log("🚀 ~ getTrakt ~ latest:", latest)
     return {
       type: latest.type,
       title: latest.show
