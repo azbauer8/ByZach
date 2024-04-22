@@ -25,20 +25,20 @@ export default function SidebarLinks({ mobile }: { mobile?: boolean }) {
         </div>
         <div className="flex flex-col gap-2.5">
           <Text affects="small" className="pl-2">
-            Personal
+            Professional
           </Text>
           <div className="flex flex-col gap-0.5">
-            {sidebarLinks.personal.map((link) => (
+            {sidebarLinks.professional.map((link) => (
               <SidebarLink key={link.name} link={link} isExternal />
             ))}
           </div>
         </div>
         <div className="flex flex-col gap-2.5">
           <Text affects="small" className="pl-2">
-            Professional
+            Personal
           </Text>
           <div className="flex flex-col gap-0.5">
-            {sidebarLinks.professional.map((link) => (
+            {sidebarLinks.personal.map((link) => (
               <SidebarLink key={link.name} link={link} isExternal />
             ))}
           </div>
