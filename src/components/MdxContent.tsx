@@ -36,7 +36,15 @@ function CustomLink(
 }
 
 function RoundedImage({ alt, className, ...props }: ImageProps) {
-  return <Image {...props} alt={alt} className={cn("rounded-lg", className)} />
+  return (
+    <Image
+      {...props}
+      alt={alt}
+      className={cn("animate-reveal rounded-lg", className)}
+      loading="eager"
+      priority
+    />
+  )
 }
 
 const components = {
