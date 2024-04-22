@@ -1,6 +1,6 @@
 import { siteLinks } from "@/config"
 
-import Anchor from "@/components/ui/Anchor"
+import Anchor from "@/components/ui/anchor"
 import { Text } from "@/components/ui/text"
 
 export default function About() {

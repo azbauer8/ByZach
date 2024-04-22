@@ -8,7 +8,7 @@ import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
 import { cn } from "@/lib/utils"
-import Anchor from "@/components/ui/Anchor"
+import Anchor from "@/components/ui/anchor"
 
 function CustomLink(
   props: LinkProps & {
