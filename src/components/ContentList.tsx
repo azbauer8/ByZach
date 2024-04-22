@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 
 import { capitalize, cn, formatDate } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
-import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebarToggle"
+import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebar"
 import { StickyHeader } from "@/components/StickyHeader"
 
 export default function ContentList({
@@ -39,15 +39,17 @@ export default function ContentList({
     <div
       className={cn(
         isContentPage
-          ? "absolute top-0 max-h-dvh min-h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px] bg-content1 xl:sticky xl:translate-x-0"
-          : "max-h-dvh min-h-dvh w-full overflow-y-auto xl:w-80 xl:border-r-[0.5px] xl:bg-content1"
+          ? "bg-accent absolute top-0 max-h-dvh min-h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px] xl:sticky xl:translate-x-0"
+          : "xl:bg-accent max-h-dvh min-h-dvh w-full overflow-y-auto xl:w-80 xl:border-r-[0.5px]"
       )}
       id={id}
       onScroll={onScroll}
     >
-      <StickyHeader title={title} scrollPos={scroll}>
-        <MobileSidebarToggle />
-      </StickyHeader>
+      <StickyHeader
+        title={title}
+        scrollPos={scroll}
+        leftContent={<MobileSidebarToggle />}
+      />
       <div className="flex flex-col gap-0.5 p-3 pt-0">
         <Text variant="h3" className="pb-2 pl-1">
           {title}
@@ -60,12 +62,13 @@ export default function ContentList({
               key={link.slug}
               href={fullLink}
               className={cn(
-                "size-full rounded-lg px-2  py-1.5  hover:bg-content2 active:bg-content2",
-                active && "bg-content2 text-primary"
+                "hover:bg-accent-secondary active:bg-accent-secondary size-full  rounded-lg  px-2 py-1.5",
+                active && "bg-accent-secondary text-primary"
               )}
+              prefetch={true}
             >
               <Text className="font-medium">{link.metadata.title}</Text>
-              <Text className="text-default3">
+              <Text className="text-foreground-muted">
                 {link.metadata.subtitle
                   ? link.metadata.subtitle
                   : link.metadata.category

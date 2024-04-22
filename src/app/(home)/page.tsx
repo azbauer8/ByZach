@@ -1,8 +1,6 @@
 import { Metadata } from "next/types"
 
-import { PageLayout } from "@/components/Layouts/PageLayout"
-import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebarToggle"
-import { StickyHeader } from "@/components/StickyHeader"
+import { PageLayout } from "@/components/PageLayout"
 import About from "@/app/(home)/About"
 import Activity from "@/app/(home)/Activity/Activity"
 import RecentContent from "@/app/(home)/RecentContent"
@@ -13,15 +11,10 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
-      <StickyHeader title="Zach Bauer" isContentHeader>
-        <MobileSidebarToggle />
-      </StickyHeader>
-      <PageLayout className="space-y-5">
-        <About />
-        <RecentContent />
-        <Activity />
-      </PageLayout>
-    </>
+    <PageLayout title="Zach Bauer" hasList={false}>
+      <About />
+      <RecentContent />
+      <Activity />
+    </PageLayout>
   )
 }

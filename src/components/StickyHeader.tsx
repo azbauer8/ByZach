@@ -6,14 +6,14 @@ import { Text } from "@/components/ui/text"
 
 export function StickyHeader({
   title,
-  children,
+  leftContent,
   rightContent,
   scrollPos,
   isContentHeader,
   className,
 }: {
   title: string
-  children?: React.ReactNode
+  leftContent?: React.ReactNode
   rightContent?: React.ReactNode
   scrollPos?: number
   isContentHeader?: boolean
@@ -23,7 +23,7 @@ export function StickyHeader({
 
   const scroll = scrollPos ?? windowScroll
 
-  const bg = isContentHeader ? "bg-background/10" : "bg-content1/10"
+  const bg = isContentHeader ? "bg-background/10" : "bg-accent/10"
 
   const breakpoint = isContentHeader ? 50 : 6
 
@@ -36,7 +36,7 @@ export function StickyHeader({
         className
       )}
     >
-      {children}
+      {leftContent}
       <Text
         affects="small"
         className={cn(

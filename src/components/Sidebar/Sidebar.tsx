@@ -2,14 +2,12 @@
 
 import React, { useState } from "react"
 import { siteConfig } from "@/config"
-import { atom } from "jotai"
 
+import SidebarLinks from "@/components/Sidebar/SidebarLinks"
 import { StickyHeader } from "@/components/StickyHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
-export const sidebarAtom = atom(false)
-
-export default function Sidebar({ children }: { children: React.ReactNode }) {
+export default function Sidebar() {
   const [scroll, setScroll] = useState(0)
   const onScroll = () => {
     const scrollTop = document.getElementById("sidebar")?.scrollTop
@@ -17,7 +15,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
   }
   return (
     <nav
-      className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-60 min-w-60 max-w-60 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] bg-content1 xl:sticky xl:translate-x-0"
+      className="bg-accent absolute top-0 z-30 flex max-h-dvh min-h-dvh w-60 min-w-60 max-w-60 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] xl:sticky xl:translate-x-0"
       id="sidebar"
       onScroll={onScroll}
     >
@@ -26,7 +24,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         rightContent={<ThemeToggle iconSize={18} />}
         scrollPos={scroll}
       />
-      {children}
+      <SidebarLinks />
     </nav>
   )
 }

@@ -1,91 +1,15 @@
+"use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config"
-import {
-  FaAt,
-  FaBrain,
-  FaCode,
-  FaFilePdf,
-  FaFire,
-  FaGithub,
-  FaHouseChimney,
-  FaLinkedin,
-  FaSpotify,
-  FaSquareLastfm,
-  FaToolbox,
-} from "react-icons/fa6"
-import { SiTrakt } from "react-icons/si"
+import { useAtom } from "jotai"
+import { PiArrowUpRightBold } from "react-icons/pi"
 
+import { cn } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
-import SidebarLink from "@/components/Sidebar/SidebarLink"
-
-const sidebarLinks = {
-  site: [
-    {
-      name: "Home",
-      href: "/",
-      icon: <FaHouseChimney size={16} />,
-    },
-    {
-      name: "Thoughts",
-      href: "/thoughts",
-      icon: <FaBrain size={16} />,
-    },
-    {
-      name: "Snippets",
-      href: "/snippets",
-      icon: <FaCode size={16} />,
-    },
-    {
-      name: "Discoveries",
-      href: "/discoveries",
-      icon: <FaFire size={16} />,
-    },
-    {
-      name: "Uses",
-      href: "/uses",
-      icon: <FaToolbox size={16} />,
-    },
-  ],
-  personal: [
-    {
-      name: "GitHub",
-      href: "https://github.com/azbauer8",
-      icon: <FaGithub size={16} />,
-    },
-    {
-      name: "Spotify",
-      href: "https://open.spotify.com/user/31krvuuup255gx2tkfuueknhctwy",
-      icon: <FaSpotify size={16} />,
-    },
-    {
-      name: "Last.fm",
-      href: "https://www.last.fm/user/zacharlatanz",
-      icon: <FaSquareLastfm size={16} />,
-    },
-    {
-      name: "Trakt",
-      href: "https://trakt.tv/users/zacharlatan",
-      icon: <SiTrakt size={16} />,
-    },
-  ],
-  professional: [
-    {
-      name: "Email",
-      href: "mailto:hi@byzach.dev",
-      icon: <FaAt size={16} />,
-    },
-    {
-      name: "Resume",
-      href: "/Resume.pdf",
-      icon: <FaFilePdf size={16} />,
-    },
-    {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/zach-bauer8/",
-      icon: <FaLinkedin size={16} />,
-    },
-  ],
-} as const
+import sidebarLinks from "@/components/Sidebar/links"
+import { mobileSidebarState } from "@/components/Sidebar/MobileSidebar"
 
 export default function SidebarLinks({ mobile }: { mobile?: boolean }) {
   return (
@@ -96,9 +20,7 @@ export default function SidebarLinks({ mobile }: { mobile?: boolean }) {
       <div className="space-y-5">
         <div className="flex flex-col gap-1">
           {sidebarLinks.site.map((link) => (
-            <Link href={link.href} key={link.name}>
-              <SidebarLink link={link} isMobile={mobile} />
-            </Link>
+            <SidebarLink key={link.name} link={link} isMobile={mobile} />
           ))}
         </div>
         <div className="flex flex-col gap-2.5">
@@ -107,14 +29,7 @@ export default function SidebarLinks({ mobile }: { mobile?: boolean }) {
           </Text>
           <div className="flex flex-col gap-0.5">
             {sidebarLinks.personal.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <SidebarLink link={link} isExternal />
-              </a>
+              <SidebarLink key={link.name} link={link} isExternal />
             ))}
           </div>
         </div>
@@ -124,18 +39,58 @@ export default function SidebarLinks({ mobile }: { mobile?: boolean }) {
           </Text>
           <div className="flex flex-col gap-0.5">
             {sidebarLinks.professional.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <SidebarLink link={link} isExternal />
-              </a>
+              <SidebarLink key={link.name} link={link} isExternal />
             ))}
           </div>
         </div>
       </div>
     </div>
+  )
+}
+
+function SidebarLink({
+  link,
+  isMobile,
+  isExternal,
+}: {
+  link: {
+    name: string
+    href: string
+    icon: JSX.Element
+  }
+  isMobile?: boolean
+  isExternal?: boolean
+}) {
+  const pathname = usePathname()
+  const [, setMobileSidebarOpen] = useAtom(mobileSidebarState)
+  const active =
+    link.href === "/" ? pathname === link.href : pathname.startsWith(link.href)
+
+  return (
+    <Link
+      href={link.href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer" : undefined}
+      onClick={() => isMobile && setMobileSidebarOpen(false)}
+      className={cn(
+        "hover:bg-accent-secondary active:bg-accent-secondary flex size-full items-center gap-3 rounded-lg px-2 py-1.5 font-medium",
+        active && "bg-accent-secondary"
+      )}
+      prefetch={isExternal ? false : true}
+    >
+      <div className={cn(active ? "text-primary" : "text-foreground-muted")}>
+        {link.icon}
+      </div>
+      <div className="flex flex-1 items-center justify-between">
+        {link.name}
+        {isExternal && (
+          <PiArrowUpRightBold
+            size={14}
+            strokeWidth={8}
+            className="text-foreground-muted"
+          />
+        )}
+      </div>
+    </Link>
   )
 }

@@ -3,8 +3,8 @@ import { siteLinks } from "@/config"
 import { getSnippets } from "@/lib/getContent"
 import Badge from "@/components/ui/badge"
 import { Text } from "@/components/ui/text"
-import { ContentLayout } from "@/components/Layouts/ContentLayout"
 import { MDXContent } from "@/components/MdxContent"
+import { PageLayout } from "@/components/PageLayout"
 
 export const dynamicParams = false
 
@@ -55,7 +55,7 @@ export default async function Snippet({
   if (!snippet) return null
 
   return (
-    <ContentLayout title={snippet.metadata.title} type="snippets">
+    <PageLayout title={snippet.metadata.title} type="snippets" hasList>
       <div className="space-y-0.5">
         <Badge>{snippet.metadata.category}</Badge>
         <Text variant="h2">{snippet.metadata.title}</Text>
@@ -66,6 +66,6 @@ export default async function Snippet({
       <main className="prose prose-neutral dark:prose-invert">
         <MDXContent source={snippet.content} />
       </main>
-    </ContentLayout>
+    </PageLayout>
   )
 }

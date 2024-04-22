@@ -3,7 +3,7 @@ import {
   getDiscoveryCategories,
 } from "@/lib/getContent"
 import { Text } from "@/components/ui/text"
-import { ContentLayout } from "@/components/Layouts/ContentLayout"
+import { PageLayout } from "@/components/PageLayout"
 import ProductCard from "@/components/ProductCard"
 
 export const dynamicParams = false
@@ -43,7 +43,7 @@ export default async function DiscoveryCategory({
   const category = discoveries[0].metadata.category
 
   return (
-    <ContentLayout title={category} type="discoveries">
+    <PageLayout title={category} type="discoveries" hasList>
       <Text variant="h2">{category}</Text>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {discoveries.map((discovery) => (
@@ -55,6 +55,6 @@ export default async function DiscoveryCategory({
           />
         ))}
       </div>
-    </ContentLayout>
+    </PageLayout>
   )
 }

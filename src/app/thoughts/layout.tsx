@@ -1,8 +1,7 @@
 import { getThoughts } from "@/lib/getContent"
-import ContentList from "@/components/ContentListColumn/ContentList"
-import ContentListLayout from "@/components/ContentListColumn/ContentListLayout"
+import ContentList from "@/components/ContentList"
 
-export default function ContentLayout({
+export default function ThoughtsLayout({
   children,
 }: {
   children: React.ReactNode
@@ -19,9 +18,5 @@ function Thoughts() {
   const thoughts = getThoughts()
   if (!thoughts) return null
 
-  return (
-    <ContentListLayout id="thoughts" type="Thoughts">
-      <ContentList type="thoughts" links={thoughts} />
-    </ContentListLayout>
-  )
+  return <ContentList id="thoughts" type="thoughts" links={thoughts} />
 }

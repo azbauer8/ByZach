@@ -1,5 +1,5 @@
 import { twcn } from "@/lib/utils"
 
-const Skeleton = twcn.div`bg-content1 animate-pulse rounded-lg`
+const Skeleton = twcn.div`bg-accent animate-pulse rounded-lg`
 
 export default Skeleton

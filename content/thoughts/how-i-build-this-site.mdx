@@ -9,13 +9,13 @@ At a high level, this site is 99% static content with a small bit content dynami
 
 ## Design
 
-I was inspired to make this site look the way it does after stumbling upon [Brian Lovin's personal site](https://brianlovin.com/). I love the way it integrates Apple's mobile design into a website format, and I felt compelled to take a stab at it myself. 
+I was inspired to make this site look the way it does after stumbling upon [Brian Lovin's personal site](https://brianlovin.com/). I love the way it integrates Apple's mobile design into a website format, and I felt compelled to take a stab at it myself.
 
 Beyond Brian's website, I used a couple iPad apps as reference material, namely [Mela](https://apps.apple.com/us/app/mela-recipe-manager/id1548466041) and [Interactful](https://apps.apple.com/us/app/interactful/id1528095640). While Interactful is primarily targeted towards Swift developers, it proved to be an invaluable resource for this use case. It details nearly every aspect of the UI system including color palettes, component variants, and specific layouts that can be hard to find out in the wild.
 
 ## Layout
 
-This site heavily utilizes route groups and layouts to achieve an app-like feel in Next.js's app router. 
+This site heavily utilizes route groups and layouts to achieve an app-like feel in Next.js's app router.
 
 At the global scope, every page is wrapped with a sidebar that hides at a certain breakpoint. It is up to each page to decide how/if to display the mobile sidebar.
 
@@ -24,9 +24,10 @@ Content list routes (ie. `/projects`, `/thoughts`, etc.) and content routes (ie.
 Let's look at a single content type, to make things easier to explain.
 
 The file structure of its pages would look something like this:
+
 ```
 - (content-lists)
-  - thoughts  
+  - thoughts
     - page.tsx
     - Thoughts.tsx
 - (content)
@@ -36,7 +37,7 @@ The file structure of its pages would look something like this:
     - layout.tsx
 ```
 
-`(content-lists)/thoughts/page.tsx` simply exports some metadata and the `Thoughts.tsx` component, which is what actually fetches and renders the content list. 
+`(content-lists)/thoughts/page.tsx` simply exports some metadata and the `Thoughts.tsx` component, which is what actually fetches and renders the content list.
 
 ```tsx title="(content-lists)/thoughts/Thoughts.tsx"
 export default async function Thoughts({
@@ -48,17 +49,14 @@ export default async function Thoughts({
   if (!thoughts) return null
 
   return (
-    <ContentListLayout
-      type="Thoughts"
-      isContentPage={isContentPage}
-    >
+    <ContentListLayout type="Thoughts" isContentPage={isContentPage}>
       <NavList type="thoughts" links={thoughts} />
     </ContentListLayout>
   )
 }
 ```
 
-The benefit of breaking this content list out into a reusable component is that we can use it both as a standalone page and as a sidebar for the content pages. The `ContentListLayout` component that wraps the list takes a boolean which determines whether the list should do some fancy dynamic resizing or just be a sidebar. 
+The benefit of breaking this content list out into a reusable component is that we can use it both as a standalone page and as a sidebar for the content pages. The `ContentListLayout` component that wraps the list takes a boolean which determines whether the list should do some fancy dynamic resizing or just be a sidebar.
 
 `(content)/thoughts/layout.tsx` wraps every content page with the content list as a sidebar so that the layout persists between pages.
 
@@ -118,7 +116,7 @@ export function SidebarWrapper({ children }: { children: React.ReactNode }) {
   }
   return (
     <nav
-      className="absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 min-w-56 max-w-56 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] bg-content1 lg:sticky lg:translate-x-0"
+      className="bg-accent absolute top-0 z-30 flex max-h-dvh min-h-dvh w-56 min-w-56 max-w-56 -translate-x-full flex-col overflow-y-auto border-r-[0.5px] lg:sticky lg:translate-x-0"
       id="sidebar"
       onScroll={onScroll}
     >
@@ -135,13 +133,13 @@ export function SidebarWrapper({ children }: { children: React.ReactNode }) {
 
 ## Content Management
 
-One of my top priorities when researching content mangement solutions was being able to easily add content both locally and in production. For longer form content like blog posts, I want to be able to write them in my editor of choice and preview the results in real-time. But for other stuff like tools or code snippets I find on Twitter, I want to be able to quickly save them from my phone. 
+One of my top priorities when researching content mangement solutions was being able to easily add content both locally and in production. For longer form content like blog posts, I want to be able to write them in my editor of choice and preview the results in real-time. But for other stuff like tools or code snippets I find on Twitter, I want to be able to quickly save them from my phone.
 
 [Keystatic](https://keystatic.com/) is the closest thing I've found that strikes that balance. Once you've set up all the scaffolding, you get access to a dashboard on your site both locally and in production to draft content you've defined in your config. All content is saved to a local directory, and changes made in the production dashboard automatically push a commit to rebuild the site.
 
 ## Content rendering
 
-While Keystatic is great at managing content, I did not find it to be quite as great at fetching content. The reader api was showing strange behaviors with content blipping in and out of existence. 
+While Keystatic is great at managing content, I did not find it to be quite as great at fetching content. The reader api was showing strange behaviors with content blipping in and out of existence.
 
 Maybe it was a skill issue, but I ended up just using Node's native `fs` api instead. Here's how I'm fetching the content, fully ripped from [leerob's blog guide](https://leerob.io/blog/2023):
 
@@ -214,6 +212,6 @@ export function getThoughts(limit?: number) {
 
 ## Conclusion
 
-If you're curious about any details I didn't cover here, the site is fully [open source](https://github.com/azbauer8/ByZach), so feel free to take a look around. I'm sure I will tweak things here and there, but for now I am very happy with how this site looks and functions. 
+If you're curious about any details I didn't cover here, the site is fully [open source](https://github.com/azbauer8/ByZach), so feel free to take a look around. I'm sure I will tweak things here and there, but for now I am very happy with how this site looks and functions.
 
 Now I just have to actually add content 🙃

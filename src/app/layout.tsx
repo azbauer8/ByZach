@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils"
 import { Providers } from "@/components/Providers"
 import MobileSidebar from "@/components/Sidebar/MobileSidebar"
 import Sidebar from "@/components/Sidebar/Sidebar"
-import SidebarLinks from "@/components/Sidebar/SidebarLinks"
 
 export const metadata: Metadata = {
   title: {
@@ -67,14 +66,8 @@ export default function RootLayout({
         )}
       >
         <Providers>
-          <Sidebar>
-            <SidebarLinks />
-          </Sidebar>
-
-          <MobileSidebar>
-            <SidebarLinks mobile />
-          </MobileSidebar>
-
+          <Sidebar />
+          <MobileSidebar />
           <div className="flex-1">{children}</div>
         </Providers>
       </body>

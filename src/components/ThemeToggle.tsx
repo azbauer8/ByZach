@@ -24,7 +24,7 @@ export default function ThemeToggle({
   if (!mounted) {
     return (
       <Button
-        className={cn("text-default3", className)}
+        className={cn("text-foreground-muted", className)}
         aria-label="Theme Toggle"
       >
         <PiSpinnerBold size={iconSize} />
@@ -33,7 +33,7 @@ export default function ThemeToggle({
   }
   return (
     <Button
-      className={cn("text-default3", className)}
+      className={cn("text-foreground-muted", className)}
       aria-label="Theme Toggle"
       onClick={
         theme === "light" ? () => setTheme("dark") : () => setTheme("light")

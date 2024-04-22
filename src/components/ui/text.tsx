@@ -14,10 +14,10 @@ const textVariants = cva("", {
       p: "leading-7",
     },
     affects: {
-      lead: "text-lg text-default3/95",
+      lead: "text-lg text-foreground-muted/95",
       large: "text-lg font-semibold",
       small: "text-sm font-semibold leading-none",
-      muted: "text-default3/95",
+      muted: "text-foreground-muted/95",
     },
   },
 })

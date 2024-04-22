@@ -2,10 +2,8 @@ import { Metadata } from "next/types"
 import { siteLinks } from "@/config"
 
 import { Text } from "@/components/ui/text"
-import { PageLayout } from "@/components/Layouts/PageLayout"
-import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebarToggle"
-import { StickyHeader } from "@/components/StickyHeader"
-import Tabs from "@/app/uses/Tabs"
+import { PageLayout } from "@/components/PageLayout"
+import Tabs from "@/app/uses/UsesTabs"
 
 export const metadata: Metadata = {
   title: "Uses",
@@ -28,15 +26,10 @@ export default function UsesLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <StickyHeader title="Uses" isContentHeader>
-        <MobileSidebarToggle />
-      </StickyHeader>
-      <PageLayout className="space-y-5">
-        <Text variant="h2">Uses</Text>
-        <Tabs />
-        {children}
-      </PageLayout>
-    </>
+    <PageLayout title="Uses" hasList={false}>
+      <Text variant="h2">Uses</Text>
+      <Tabs />
+      {children}
+    </PageLayout>
   )
 }

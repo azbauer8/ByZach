@@ -1,5 +1,5 @@
 import Image, { ImageProps } from "next/image"
-import NextLink, { LinkProps } from "next/link"
+import Link, { LinkProps } from "next/link"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
@@ -8,7 +8,7 @@ import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
 import { cn } from "@/lib/utils"
-import Link from "@/components/ui/link"
+import Anchor from "@/components/ui/Anchor"
 
 function CustomLink(
   props: LinkProps & {
@@ -18,7 +18,11 @@ function CustomLink(
 ) {
   const href = props.href
   if (href.startsWith("/"))
-    return <NextLink {...props}>{props.children}</NextLink>
+    return (
+      <Link {...props} prefetch={true}>
+        {props.children}
+      </Link>
+    )
   if (href.startsWith("#"))
     return (
       <a
@@ -27,7 +31,7 @@ function CustomLink(
       />
     )
   return (
-    <Link target="_blank" rel="noopener noreferrer" isExternal {...props} />
+    <Anchor target="_blank" rel="noopener noreferrer" isExternal {...props} />
   )
 }
 

@@ -1,6 +1,5 @@
 import { getSnippets } from "@/lib/getContent"
-import ContentList from "@/components/ContentListColumn/ContentList"
-import ContentListLayout from "@/components/ContentListColumn/ContentListLayout"
+import ContentList from "@/components/ContentList"
 
 export default function ContentLayout({
   children,
@@ -19,9 +18,5 @@ function Snippets() {
   const snippets = getSnippets()
   if (!snippets) return null
 
-  return (
-    <ContentListLayout id="snippets" type="Snippets">
-      <ContentList type="snippets" links={snippets} />
-    </ContentListLayout>
-  )
+  return <ContentList id="snippets" type="snippets" links={snippets} />
 }

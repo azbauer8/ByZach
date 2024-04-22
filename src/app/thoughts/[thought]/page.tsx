@@ -3,8 +3,8 @@ import { siteLinks } from "@/config"
 import { getThoughts } from "@/lib/getContent"
 import { formatDate } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
-import { ContentLayout } from "@/components/Layouts/ContentLayout"
 import { MDXContent } from "@/components/MdxContent"
+import { PageLayout } from "@/components/PageLayout"
 
 export const dynamicParams = false
 
@@ -50,7 +50,7 @@ export default async function Thought({
   )
   if (!thought) return null
   return (
-    <ContentLayout title={thought.metadata.title} type="thoughts">
+    <PageLayout title={thought.metadata.title} type="thoughts" hasList>
       <div className="space-y-1.5">
         <Text variant="h2">{thought.metadata.title}</Text>
         <Text affects="muted">{formatDate(thought.metadata.dateTime)}</Text>
@@ -58,6 +58,6 @@ export default async function Thought({
       <main className="prose prose-neutral dark:prose-invert">
         <MDXContent source={thought.content} />
       </main>
-    </ContentLayout>
+    </PageLayout>
   )
 }

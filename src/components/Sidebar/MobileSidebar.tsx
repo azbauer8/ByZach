@@ -2,28 +2,26 @@
 
 import React, { useState } from "react"
 import { siteConfig } from "@/config"
-import { useAtom } from "jotai"
-import { PiXBold } from "react-icons/pi"
+import { atom, useAtom } from "jotai"
+import { PiSidebarSimpleDuotone, PiXBold } from "react-icons/pi"
 
 import Button from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
-import { sidebarAtom } from "@/components/Sidebar/Sidebar"
+import SidebarLinks from "@/components/Sidebar/SidebarLinks"
 import { StickyHeader } from "@/components/StickyHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
-export default function MobileSidebar({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const [sidebarOpen, setSidebarOpen] = useAtom(sidebarAtom)
+export const mobileSidebarState = atom(false)
+
+export default function MobileSidebar() {
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useAtom(mobileSidebarState)
   const [scroll, setScroll] = useState(0)
   const onScroll = () => {
     const scrollTop = document.getElementById("mobile-sidebar")?.scrollTop
     scrollTop && setScroll(scrollTop)
   }
   return (
-    <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
+    <Sheet open={mobileSidebarOpen} onOpenChange={setMobileSidebarOpen}>
       <SheetContent
         className="flex w-80 flex-col overflow-y-auto border-r-[0.5px] sm:w-60"
         id="mobile-sidebar"
@@ -32,18 +30,36 @@ export default function MobileSidebar({
       >
         <StickyHeader
           title={siteConfig.title}
-          rightContent={<ThemeToggle iconSize={18} />}
           scrollPos={scroll}
-        >
-          <Button
-            onClick={() => setSidebarOpen(false)}
-            aria-label="Close sidebar"
-          >
-            <PiXBold size={14} />
-          </Button>
-        </StickyHeader>
-        {children}
+          leftContent={
+            <Button
+              onClick={() => setMobileSidebarOpen(false)}
+              aria-label="Close sidebar"
+            >
+              <PiXBold size={14} />
+            </Button>
+          }
+          rightContent={<ThemeToggle iconSize={18} />}
+        />
+
+        <SidebarLinks mobile />
       </SheetContent>
     </Sheet>
+  )
+}
+
+export function MobileSidebarToggle() {
+  const [, setMobileSidebarOpen] = useAtom(mobileSidebarState)
+  return (
+    <>
+      <Button
+        className="absolute left-2 xl:hidden"
+        onClick={() => setMobileSidebarOpen(true)}
+        aria-label="Open sidebar"
+      >
+        <PiSidebarSimpleDuotone size={24} />
+      </Button>
+      <div className="hidden xl:block" />
+    </>
   )
 }

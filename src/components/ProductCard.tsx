@@ -44,7 +44,7 @@ export default async function ProductCard({
           <FaLink size={16} />
           {formatUrl(link)}
         </Text>
-        <Text>{description}</Text>
+        <Text className="leading-snug">{description}</Text>
       </div>
     </a>
   )
