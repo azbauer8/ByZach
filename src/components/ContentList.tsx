@@ -15,13 +15,12 @@ export default function ContentList({
   links,
 }: {
   id: string
-  type: "projects" | "discoveries" | "thoughts" | "uses" | "snippets"
+  type: "discoveries" | "thoughts" | "snippets"
   links: {
     slug: string
     metadata: {
       title: string
       subtitle?: string
-      category?: string | null
       dateTime?: string | null
     }
   }[]
@@ -39,8 +38,8 @@ export default function ContentList({
     <div
       className={cn(
         isContentPage
-          ? "bg-accent absolute top-0 max-h-dvh min-h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px] xl:sticky xl:translate-x-0"
-          : "xl:bg-accent max-h-dvh min-h-dvh w-full overflow-y-auto xl:w-80 xl:border-r-[0.5px]"
+          ? "absolute top-0 max-h-dvh min-h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px] bg-accent xl:sticky xl:translate-x-0"
+          : "max-h-dvh min-h-dvh w-full overflow-y-auto xl:w-80 xl:border-r-[0.5px] xl:bg-accent"
       )}
       id={id}
       onScroll={onScroll}
@@ -62,7 +61,7 @@ export default function ContentList({
               key={link.slug}
               href={fullLink}
               className={cn(
-                "hover:bg-accent-secondary/55 active:bg-accent-secondary/55 size-full  rounded-lg  px-2 py-1.5",
+                "size-full rounded-lg px-2  py-1.5  hover:bg-accent-secondary/55 active:bg-accent-secondary/55",
                 active && "bg-accent-secondary"
               )}
               prefetch={true}
@@ -71,11 +70,9 @@ export default function ContentList({
               <Text className="text-foreground-muted">
                 {link.metadata.subtitle
                   ? link.metadata.subtitle
-                  : link.metadata.category
-                    ? link.metadata.category
-                    : link.metadata.dateTime
-                      ? formatDate(link.metadata.dateTime)
-                      : undefined}
+                  : link.metadata.dateTime
+                    ? formatDate(link.metadata.dateTime)
+                    : undefined}
               </Text>
             </Link>
           )

@@ -18,18 +18,21 @@ export default function RecentContent() {
         subtitle="My latest work and experiments."
         list={projects}
         isExternal
+        itemSubtitle="description"
       />
       <RecentContentList
         title="Thoughts"
         subtitle="Poorly conveyed ideas about technology, design, and the web."
         route="/thoughts"
         list={thoughts}
+        itemSubtitle="dateTime"
       />
       <RecentContentList
         title="Snippets"
         subtitle="Bits of code I often refer back to."
         route="/snippets"
         list={snippets}
+        itemSubtitle="dateTime"
       />
     </div>
   )
@@ -41,6 +44,7 @@ function RecentContentList({
   route,
   list,
   isExternal,
+  itemSubtitle,
 }: {
   title: string
   subtitle: string
@@ -51,9 +55,10 @@ function RecentContentList({
       title: string
       description?: string
       dateTime?: string | null
-      category?: string
+      link?: string | null
     }
   }[]
+  itemSubtitle: "description" | "dateTime"
   isExternal?: boolean
 }) {
   return (
@@ -87,9 +92,11 @@ function RecentContentList({
         {list.map((item) => (
           <Link
             key={item.slug}
-            href={`${route}/${item.slug}`}
+            href={item.metadata.link ?? `${route}/${item.slug}`}
             className="group py-2"
-            prefetch={true}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noreferrer" : undefined}
+            prefetch={isExternal ? false : true}
           >
             <div className="flex items-center gap-0.5">
               <Text className="underline decoration-foreground-muted/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">
@@ -102,9 +109,9 @@ function RecentContentList({
               )}
             </div>
             <Text affects="muted">
-              {item.metadata.description ??
-                item.metadata.category ??
-                formatDate(item.metadata.dateTime)}
+              {itemSubtitle === "description"
+                ? item.metadata.description
+                : formatDate(item.metadata.dateTime)}
             </Text>
           </Link>
         ))}

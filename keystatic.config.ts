@@ -76,16 +76,6 @@ export default config({
         dateTime: fields.datetime({
           label: "Created/Updated At",
         }),
-        category: fields.select({
-          label: "Category",
-          options: [
-            { label: "VS Code", value: "VS Code" },
-            { label: "Configs", value: "Configs" },
-            { label: "React Hooks", value: "React Hooks" },
-            { label: "React Components", value: "React Components" },
-          ],
-          defaultValue: "React Components",
-        }),
         description: fields.text({ label: "Description" }),
         content: fields.mdx({
           label: "Snippet Content",

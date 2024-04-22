@@ -1,7 +1,6 @@
 import { siteLinks } from "@/config"
 
 import { getSnippets } from "@/lib/getContent"
-import Badge from "@/components/ui/badge"
 import { Text } from "@/components/ui/text"
 import { MDXContent } from "@/components/MdxContent"
 import { PageLayout } from "@/components/PageLayout"
@@ -49,7 +48,6 @@ export default function Snippet({ params }: { params: { snippet: string } }) {
   return (
     <PageLayout title={snippet.metadata.title} type="snippets" hasList>
       <div className="space-y-0.5">
-        <Badge>{snippet.metadata.category}</Badge>
         <Text variant="h2">{snippet.metadata.title}</Text>
         <Text variant="p" affects="muted">
           {snippet.metadata.description}
