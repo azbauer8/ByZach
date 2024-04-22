@@ -8,11 +8,7 @@ import { PageLayout } from "@/components/PageLayout"
 
 export const dynamicParams = false
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { thought: string }
-}) {
+export function generateMetadata({ params }: { params: { thought: string } }) {
   const thought = getThoughts().find(
     (thought) => thought.slug === params.thought
   )
@@ -33,18 +29,14 @@ export async function generateMetadata({
   }
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const thoughts = getThoughts()
   return thoughts.map((thought) => ({
     thought: thought.slug,
   }))
 }
 
-export default async function Thought({
-  params,
-}: {
-  params: { thought: string }
-}) {
+export default function Thought({ params }: { params: { thought: string } }) {
   const thought = getThoughts().find(
     (thought) => thought.slug === params.thought
   )

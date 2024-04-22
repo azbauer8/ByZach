@@ -8,11 +8,7 @@ import { PageLayout } from "@/components/PageLayout"
 
 export const dynamicParams = false
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { snippet: string }
-}) {
+export function generateMetadata({ params }: { params: { snippet: string } }) {
   const snippet = getSnippets().find(
     (snippet) => snippet.slug === params.snippet
   )
@@ -37,18 +33,14 @@ export async function generateMetadata({
   }
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const snippets = getSnippets()
   return snippets.map((snippet) => ({
     snippet: snippet.slug,
   }))
 }
 
-export default async function Snippet({
-  params,
-}: {
-  params: { snippet: string }
-}) {
+export default function Snippet({ params }: { params: { snippet: string } }) {
   const snippet = getSnippets().find(
     (snippet) => snippet.slug === params.snippet
   )

@@ -6,7 +6,7 @@ import { cn, formatDate } from "@/lib/utils"
 import Anchor from "@/components/ui/Anchor"
 import { Text, textVariants } from "@/components/ui/text"
 
-export default async function RecentContent() {
+export default function RecentContent() {
   const projects = getProjects()
   const thoughts = getThoughts(5)
   const snippets = getSnippets(5)
@@ -92,11 +92,11 @@ function RecentContentList({
             prefetch={true}
           >
             <div className="flex items-center gap-0.5">
-              <Text className="decoration-foreground-muted/35 underline decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">
+              <Text className="underline decoration-foreground-muted/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">
                 {item.metadata.title}
               </Text>
               {isExternal && (
-                <span className="text-foreground-muted translate-y-[-0.5px] text-[0.9em] transition-colors group-hover:text-foreground group-active:text-foreground">
+                <span className="translate-y-[-0.5px] text-[0.9em] text-foreground-muted transition-colors group-hover:text-foreground group-active:text-foreground">
                   <PiArrowUpRightBold />
                 </span>
               )}

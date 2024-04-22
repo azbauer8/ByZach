@@ -1,3 +1,5 @@
+import { Suspense } from "react"
+
 import {
   getDiscoveriesInCategory,
   getDiscoveryCategories,
@@ -8,11 +10,7 @@ import ProductCard from "@/components/ProductCard"
 
 export const dynamicParams = false
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { category: string }
-}) {
+export function generateMetadata({ params }: { params: { category: string } }) {
   const category = getDiscoveryCategories().find(
     (category) => category.slug === params.category
   )
@@ -26,13 +24,14 @@ export async function generateMetadata({
   }
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const categories = getDiscoveryCategories()
   return categories.map((category) => ({
     category: category.slug,
   }))
 }
-export default async function DiscoveryCategory({
+
+export default function DiscoveryCategory({
   params,
 }: {
   params: { category: string }
@@ -47,12 +46,14 @@ export default async function DiscoveryCategory({
       <Text variant="h2">{category}</Text>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {discoveries.map((discovery) => (
-          <ProductCard
-            key={discovery.slug}
-            title={discovery.metadata.title}
-            description={discovery.metadata.description ?? ""}
-            link={discovery.metadata.link ?? ""}
-          />
+          <Suspense key={discovery.slug} fallback={<div />}>
+            <ProductCard
+              key={discovery.slug}
+              title={discovery.metadata.title}
+              description={discovery.metadata.description ?? ""}
+              link={discovery.metadata.link ?? ""}
+            />
+          </Suspense>
         ))}
       </div>
     </PageLayout>
