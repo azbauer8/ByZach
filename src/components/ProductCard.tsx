@@ -35,7 +35,9 @@ export default async function ProductCard({
           alt={title}
           width={1200}
           height={630}
-          className="aspect-[1200/630] rounded-lg border bg-cover bg-center bg-no-repeat object-cover"
+          className="animate-reveal aspect-[1200/630] rounded-lg border bg-cover bg-center bg-no-repeat object-cover"
+          loading="eager"
+          priority
         />
       </span>
       <div className="space-y-0.5">

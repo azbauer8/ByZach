@@ -45,7 +45,7 @@ export function PageLayout({
         }
         rightContent={<ThemeToggle className="text-foreground" iconSize={20} />}
       />
-      <div className="mx-auto max-w-2xl space-y-5 px-4 py-12 md:px-8">
+      <div className="mx-auto max-w-3xl space-y-5 px-4 py-12 md:px-8">
         {children}
       </div>
     </>

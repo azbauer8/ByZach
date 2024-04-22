@@ -10,20 +10,18 @@ export function StickyHeader({
   rightContent,
   scrollPos,
   isContentHeader,
-  className,
 }: {
   title: string
   leftContent?: React.ReactNode
   rightContent?: React.ReactNode
   scrollPos?: number
   isContentHeader?: boolean
-  className?: string
 }) {
   const windowScroll = useScrollPosition()
 
   const scroll = scrollPos ?? windowScroll
 
-  const bg = isContentHeader ? "bg-background/10" : "bg-accent/10"
+  const bg = isContentHeader ? "bg-background" : "bg-accent"
 
   const breakpoint = isContentHeader ? 50 : 6
 
@@ -32,8 +30,7 @@ export function StickyHeader({
       className={cn(
         "sticky top-0 z-10 flex max-h-12 min-h-12 items-center justify-between  px-3 py-2",
         isContentHeader && "xl:hidden",
-        scroll >= breakpoint && `border-b-[0.5px] ${bg} backdrop-blur-lg`,
-        className
+        scroll >= breakpoint && `border-b-[0.5px] ${bg}`
       )}
     >
       {leftContent}
