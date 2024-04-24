@@ -3,6 +3,8 @@ import { siteConfig, siteLinks } from "@/config"
 import "@/styles/global.css"
 
 import { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { cn } from "@/lib/utils"
 import { Providers } from "@/components/Providers"
@@ -70,6 +72,8 @@ export default function RootLayout({
           <MobileSidebar />
           <div className="flex-1">{children}</div>
         </Providers>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
