@@ -1,8 +1,11 @@
 import { siteConfig, siteLinks } from "@/config"
 
 import "@/styles/global.css"
+import { Asap } from "next/font/google"
+import { GeistMono } from "geist/font/mono"
 
-import { Metadata } from "next"
+
+import { Metadata, Viewport } from "next"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -10,6 +13,19 @@ import { cn } from "@/lib/utils"
 import { Providers } from "@/components/Providers"
 import MobileSidebar from "@/components/Sidebar/MobileSidebar"
 import Sidebar from "@/components/Sidebar/Sidebar"
+
+
+const asap = Asap({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'rgba(254, 254, 254)' },
+    { media: '(prefers-color-scheme: dark)', color: 'rgba(8, 8, 8)' },
+  ],
+}
 
 export const metadata: Metadata = {
   title: {
@@ -63,8 +79,8 @@ export default function RootLayout({
       <body
         className={cn(
           "flex bg-background font-sans text-foreground antialiased",
-          siteConfig.font.variable,
-          siteConfig.monoFont.variable
+          asap.variable,
+          GeistMono.variable
         )}
       >
         <Providers>
