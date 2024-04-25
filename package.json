@@ -11,7 +11,7 @@
 		"knip": "knip",
 		"unused": "next-unused",
 		"buster": "rm -rf .next"
-		},
+	},
 	"engines": {
 		"node": "18.x"
 	},
@@ -49,7 +49,7 @@
 		"tailwindcss-animate": "^1.0.7"
 	},
 	"devDependencies": {
-    "lefthook": "^1.6.10",
+		"lefthook": "^1.6.10",
 		"@biomejs/biome": "1.7.1",
 		"@ianvs/prettier-plugin-sort-imports": "^4.2.1",
 		"@types/node": "^20.12.7",
