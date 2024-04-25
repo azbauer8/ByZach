@@ -17,12 +17,7 @@ function CustomLink(
   }
 ) {
   const href = props.href
-  if (href.startsWith("/"))
-    return (
-      <Link {...props} prefetch={true}>
-        {props.children}
-      </Link>
-    )
+  if (href.startsWith("/")) return <Link {...props}>{props.children}</Link>
   if (href.startsWith("#"))
     return (
       <a

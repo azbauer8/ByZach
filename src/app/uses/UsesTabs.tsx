@@ -23,7 +23,6 @@ function Tab({ title, link }: { title: string; link: string }) {
         path === link && "bg-background text-foreground"
       )}
       href={link}
-      prefetch={true}
     >
       {title}
     </Link>

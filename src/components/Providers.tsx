@@ -2,20 +2,21 @@
 
 import type * as React from "react"
 import { Provider as JotaiProvider } from "jotai"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
+import { ThemeProvider } from "next-themes"
 
+import ThemeInit from "@/components/Theme"
 import TailwindIndicator from "@/components/TwIndicator"
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <NextThemesProvider
+    <ThemeProvider
       attribute="class"
       defaultTheme="system"
-      enableSystem
       disableTransitionOnChange
     >
+      <ThemeInit />
       <JotaiProvider>{children}</JotaiProvider>
       <TailwindIndicator />
-    </NextThemesProvider>
+    </ThemeProvider>
   )
 }

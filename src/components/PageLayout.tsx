@@ -6,8 +6,8 @@ import { PiCaretLeftBold } from "react-icons/pi"
 
 import { capitalize, cn } from "@/lib/utils"
 import { textVariants } from "@/components/ui/text"
+import ContentHeader from "@/components/ContentHeader"
 import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebar"
-import StickyHeader from "@/components/StickyHeader"
 
 export function PageLayout({
   title,
@@ -22,7 +22,7 @@ export function PageLayout({
 }) {
   return (
     <>
-      <StickyHeader
+      <ContentHeader
         title={title}
         isContentHeader
         leftContent={
@@ -31,9 +31,8 @@ export function PageLayout({
               href={`/${type}`}
               className={cn(
                 textVariants({ affects: "small" }),
-                "absolute left-2 flex items-center rounded-lg p-1.5  hover:bg-neutral/40 active:bg-neutral/40"
+                "flex items-center rounded-lg p-1.5  hover:bg-neutral/40 active:bg-neutral/40"
               )}
-              prefetch={true}
             >
               <PiCaretLeftBold size={20} />
               <span className="hidden sm:block">{capitalize(type)}</span>

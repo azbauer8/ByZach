@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { siteConfig } from "@/config"
 import { useAtom } from "jotai"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
@@ -13,10 +12,7 @@ import { mobileSidebarState } from "@/components/Sidebar/MobileSidebar"
 
 export default function SidebarLinks({ mobile }: { mobile?: boolean }) {
   return (
-    <div className="flex-1 space-y-2 p-3 pt-0 text-sm">
-      <Text variant="h3" className="pl-1">
-        {siteConfig.title}
-      </Text>
+    <div className="flex-1 space-y-2 p-3 text-sm">
       <div className="space-y-5">
         <div className="flex flex-col gap-1">
           {sidebarLinks.site.map((link) => (
@@ -27,7 +23,7 @@ export default function SidebarLinks({ mobile }: { mobile?: boolean }) {
           <Text affects="small" className="pl-2">
             Professional
           </Text>
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col gap-1">
             {sidebarLinks.professional.map((link) => (
               <SidebarLink key={link.name} link={link} isExternal />
             ))}
@@ -37,7 +33,7 @@ export default function SidebarLinks({ mobile }: { mobile?: boolean }) {
           <Text affects="small" className="pl-2">
             Personal
           </Text>
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col gap-1">
             {sidebarLinks.personal.map((link) => (
               <SidebarLink key={link.name} link={link} isExternal />
             ))}

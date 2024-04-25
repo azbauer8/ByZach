@@ -2,6 +2,7 @@ import { fontFamily } from "tailwindcss/defaultTheme"
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   future: {
     hoverOnlyWhenSupported: true,
@@ -30,8 +31,8 @@ module.exports = {
         danger: 'rgb(var(--danger))',
       },
       borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
@@ -60,7 +61,7 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       boxShadow: {
-        'card': 'var(--card-shadow)',
+        card: 'var(--card-shadow)',
         'card-hover': 'var(--card-shadow-hover)',
       }
     },
