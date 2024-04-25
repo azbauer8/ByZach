@@ -71,8 +71,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  consesasd.colg(*123)
+  consesasd.colg(*123) 
+
+
   
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
