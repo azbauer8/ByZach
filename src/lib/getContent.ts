@@ -151,6 +151,7 @@ export function getDiscoveryCategories() {
   const groupedDiscoveries = Object.entries(
     jsonFiles.reduce(
       (x, y) => {
+        x[y.metadata.category] = x[y.metadata.category] || []
         x[y.metadata.category].push(y)
         return x
       },
