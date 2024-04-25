@@ -42,11 +42,12 @@ export default async function LastFmCard() {
         alt={latestTrack.album["#text"]}
         width={144}
         height={144}
+        loading="eager"
         priority
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
         sizes="100vw"
-        className="w-1/4 flex-none items-center justify-center self-center rounded-lg"
+        className="w-1/4 flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
 
       <div className="my-auto grow space-y-0.5">

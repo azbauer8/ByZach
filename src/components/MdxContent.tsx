@@ -43,6 +43,8 @@ function RoundedImage({ alt, className, ...props }: ImageProps) {
       className={cn("animate-reveal rounded-lg", className)}
       loading="eager"
       priority
+      placeholder="blur"
+      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
     />
   )
 }
