@@ -27,10 +27,10 @@ function Anchor({
         rel={rel ?? "noopener noreferrer"}
         {...props}
       >
-        <span className="decoration-foreground-muted/35 underline decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">
+        <span className="underline decoration-foreground-muted/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">
           {children}
         </span>
-        <span className="text-foreground-muted -translate-y-0.5 text-[0.9em] transition-colors group-hover:text-foreground group-active:text-foreground">
+        <span className="-translate-y-0.5 text-[0.9em] text-foreground-muted transition-colors group-hover:text-foreground group-active:text-foreground">
           <PiArrowUpRightBold />
         </span>
       </a>
@@ -44,7 +44,7 @@ function Anchor({
       )}
       {...props}
     >
-      <span className="decoration-foreground-muted/35 underline decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">
+      <span className="underline decoration-foreground-muted/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">
         {children}
       </span>
     </NextLink>

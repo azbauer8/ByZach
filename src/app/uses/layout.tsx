@@ -1,9 +1,9 @@
-import { siteLinks } from "@/config"
 import type { Metadata } from "next/types"
+import { siteLinks } from "@/config"
 
-import Tabs from "@/app/uses/UsesTabs"
-import { PageLayout } from "@/components/PageLayout"
 import { Text } from "@/components/ui/text"
+import { PageLayout } from "@/components/PageLayout"
+import Tabs from "@/app/uses/UsesTabs"
 
 export const metadata: Metadata = {
   title: "Uses",
