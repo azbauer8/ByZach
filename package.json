@@ -6,7 +6,7 @@
 		"dev": "next dev --turbo",
 		"build": "next build",
 		"start": "next start",
-		"lint": "bunx biome check --no-errors-on-unmatched --files-ignore-unknown=true ./src",
+		"lint": "biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true ./src",
 		"format": "prettier --write ./src",
 		"knip": "knip",
 		"unused": "next-unused",

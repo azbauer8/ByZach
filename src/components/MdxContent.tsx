@@ -1,9 +1,9 @@
-import Image, { ImageProps } from "next/image"
-import Link, { LinkProps } from "next/link"
-import { MDXProvider } from "@mdx-js/react"
-import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc"
+import Image, { type ImageProps } from "next/image"
+import Link, { type LinkProps } from "next/link"
+import type { MDXProvider } from "@mdx-js/react"
+import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import rehypePrettyCode, { Options } from "rehype-pretty-code"
+import rehypePrettyCode, { type Options } from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
@@ -62,11 +62,6 @@ const codeOptions: Options = {
   keepBackground: false,
 }
 
-const prettyCode = rehypePrettyCode as (
-  options?: Options
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-) => void | Transformer<any, any>
-
 export function MDXContent(props: MDXRemoteProps) {
   return (
     <MDXRemote
@@ -77,7 +72,7 @@ export function MDXContent(props: MDXRemoteProps) {
           remarkPlugins: [],
           rehypePlugins: [
             // @ts-expect-error
-            [prettyCode, codeOptions],
+            [rehypePrettyCode, codeOptions],
             [rehypeSlug],
             [rehypeAutolinkHeadings, { behavior: "wrap" }],
             [remarkGfm],

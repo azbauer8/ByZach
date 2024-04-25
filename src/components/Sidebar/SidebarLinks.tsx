@@ -73,10 +73,10 @@ function SidebarLink({
       rel={isExternal ? "noreferrer" : undefined}
       onClick={() => isMobile && setMobileSidebarOpen(false)}
       className={cn(
-        "hover:bg-accent-secondary/55 active:bg-accent-secondary/55 flex size-full items-center gap-3 rounded-lg px-2 py-1.5 font-medium",
+        "flex size-full items-center gap-3 rounded-lg px-2 py-1.5 font-medium hover:bg-accent-secondary/55 active:bg-accent-secondary/55",
         active && "bg-accent-secondary"
       )}
-      prefetch={isExternal ? false : true}
+      prefetch={!isExternal}
     >
       <div className="text-foreground-muted">{link.icon}</div>
       <div className="flex flex-1 items-center justify-between">

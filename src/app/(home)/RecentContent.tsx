@@ -96,7 +96,7 @@ function RecentContentList({
             className="group py-2"
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noreferrer" : undefined}
-            prefetch={isExternal ? false : true}
+            prefetch={!isExternal}
           >
             <div className="flex items-center gap-0.5">
               <Text className="underline decoration-foreground-muted/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">

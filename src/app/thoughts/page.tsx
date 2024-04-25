@@ -1,4 +1,4 @@
-import { Metadata } from "next/types"
+import type { Metadata } from "next/types"
 import { siteLinks } from "@/config"
 
 export const metadata: Metadata = {

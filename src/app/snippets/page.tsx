@@ -1,5 +1,5 @@
-import { Metadata } from "next/types"
-import { siteLinks } from "@/config"
+import type { Metadata } from "next/types"
+import * as config from "@/config"
 
 export const metadata: Metadata = {
   title: "Snippets",
@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Snippets",
     description: "Bits of code I often refer back to.",
-    url: `${siteLinks.here}/uses`,
+    url: `${config.siteLinks.here}/uses`,
   },
   twitter: {
     card: "summary_large_image",

@@ -1,5 +1,5 @@
-import { cva, VariantProps } from "class-variance-authority"
-import { TwcComponentProps } from "react-twc"
+import { cva, type VariantProps } from "class-variance-authority"
+import type { TwcComponentProps } from "react-twc"
 
 import { twcn } from "@/lib/utils"
 

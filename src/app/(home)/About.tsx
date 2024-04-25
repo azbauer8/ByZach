@@ -16,7 +16,9 @@ export default function About() {
         <Anchor href={siteLinks.sig} isExternal>
           SIG
         </Anchor>
-        {` developing internal monitoring and operations tools for support teams. In 2021, I graduated from `}
+        {
+          " developing internal monitoring and operations tools for support teams. In 2021, I graduated from "
+        }
         <Anchor href={siteLinks.pitt} isExternal>
           Pitt
         </Anchor>

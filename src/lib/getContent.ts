@@ -1,7 +1,7 @@
-import fs from "fs"
-import path from "path"
-import keystaticConfig from "@/../keystatic.config"
-import { Entry } from "@keystatic/core/reader"
+import fs from "node:fs"
+import path from "node:path"
+import type keystaticConfig from "@/../keystatic.config"
+import type { Entry } from "@keystatic/core/reader"
 import slugify from "slugify"
 
 import { unslugify } from "@/lib/utils"
@@ -37,14 +37,16 @@ function parseFrontmatter(fileContent: string) {
   const frontMatterLines = frontMatterBlock?.trim().split("\n")
   const metadata: Partial<Metadata> = {}
 
-  frontMatterLines?.forEach((line) => {
-    const [key, ...valueArr] = line.split(": ")
-    const value = valueArr
-      .join(": ")
-      .trim()
-      .replace(/^['"](.*)['"]$/, "$1")
-    metadata[key.trim() as keyof Metadata] = value
-  })
+  if (frontMatterLines) {
+    for (const line of frontMatterLines) {
+      const [key, ...valueArr] = line.split(": ")
+      const value = valueArr
+        .join(": ")
+        .trim()
+        .replace(/^['"](.*)['"]$/, "$1")
+      metadata[key.trim() as keyof Metadata] = value
+    }
+  }
 
   return { metadata, content }
 }
@@ -149,8 +151,7 @@ export function getDiscoveryCategories() {
   const groupedDiscoveries = Object.entries(
     jsonFiles.reduce(
       (x, y) => {
-        // eslint-disable-next-line @typescript-eslint/no-extra-semi
-        ;(x[y.metadata.category] = x[y.metadata.category] || []).push(y)
+        x[y.metadata.category].push(y)
         return x
       },
       {} as { [key: string]: { metadata: DiscoveryMetadata }[] }

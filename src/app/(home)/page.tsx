@@ -1,4 +1,4 @@
-import { Metadata } from "next/types"
+import type { Metadata } from "next/types"
 
 import { PageLayout } from "@/components/PageLayout"
 import About from "@/app/(home)/About"

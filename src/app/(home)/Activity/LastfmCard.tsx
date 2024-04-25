@@ -2,7 +2,7 @@ import { unstable_noStore } from "next/cache"
 import Image from "next/image"
 import { PiWaveformBold } from "react-icons/pi"
 
-import { LastFmData } from "@/types/apiData"
+import type { LastFmData } from "@/types/apiData"
 import { Text } from "@/components/ui/text"
 import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
 

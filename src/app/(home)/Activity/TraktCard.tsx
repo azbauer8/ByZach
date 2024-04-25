@@ -2,7 +2,7 @@ import { unstable_noStore } from "next/cache"
 import Image from "next/image"
 import { PiPopcornBold } from "react-icons/pi"
 
-import { TraktEntry } from "@/types/apiData"
+import type { TraktEntry } from "@/types/apiData"
 import { Text } from "@/components/ui/text"
 import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
 
@@ -68,11 +68,11 @@ async function getTraktPoster(
   try {
     const baseData = await fetch(baseUrl, options)
       .then((res) => res.json())
-      .catch((err) => console.error("error:" + err))
+      .catch((err) => console.error(`error:${err}`))
 
     const posterData = await fetch(imageUrl, options)
       .then((res) => res.json())
-      .catch((err) => console.error("error:" + err))
+      .catch((err) => console.error(`error:${err}`))
 
     return `${baseData.images.base_url}w500/${posterData.posters[0].file_path}`
   } catch (e) {}
