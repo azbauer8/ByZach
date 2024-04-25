@@ -1,4 +1,3 @@
-import { unstable_noStore } from "next/cache"
 import Image from "next/image"
 import { PiPopcornBold } from "react-icons/pi"
 
@@ -9,7 +8,6 @@ import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
 import { LoadingTrakt } from "./Activity.loading"
 
 async function getTrakt() {
-  unstable_noStore()
   try {
     const response = await fetch(
       "https://api.trakt.tv/users/zacharlatan/history?extended=full",
@@ -19,6 +17,7 @@ async function getTrakt() {
           "trakt-api-key": `${process.env.TRAKT_API}`,
           "trakt-api-version": "2",
         },
+        next: { revalidate: 10 },
       }
     )
     const traktData: TraktEntry[] = await response.json()
@@ -55,7 +54,6 @@ async function getTraktPoster(
   tmdbId: number | undefined,
   type: "movie" | "episode"
 ) {
-  unstable_noStore()
   const baseUrl = "https://api.themoviedb.org/3/configuration"
   const imageUrl = `https://api.themoviedb.org/3/${type === "episode" ? "tv" : "movie"}/${tmdbId}/images`
   const options = {
@@ -64,6 +62,7 @@ async function getTraktPoster(
       accept: "application/json",
       Authorization: `Bearer ${process.env.TMDB_API}`,
     },
+    next: { revalidate: 10 },
   }
   try {
     const baseData = await fetch(baseUrl, options)
