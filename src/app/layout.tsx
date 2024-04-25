@@ -2,16 +2,16 @@ import { siteConfig, siteLinks } from "@/config"
 
 import "@/styles/global.css"
 
-import { Metadata, Viewport } from "next"
-import { Asap } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GeistMono } from "geist/font/mono"
+import  type { Metadata, Viewport } from "next"
+import { Asap } from "next/font/google"
 
-import { cn } from "@/lib/utils"
 import Providers from "@/components/Providers"
 import MobileSidebar from "@/components/Sidebar/MobileSidebar"
 import Sidebar from "@/components/Sidebar/Sidebar"
+import { cn } from "@/lib/utils"
 
 const asap = Asap({
   subsets: ["latin"],
@@ -71,8 +71,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  consolewa.log("hello world")
-
+  consesasd.colg(*123)
+  
   return (
     <html lang="en" suppressHydrationWarning>
       <head />

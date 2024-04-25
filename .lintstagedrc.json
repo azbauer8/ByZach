@@ -1,5 +1,0 @@
-{
-  "*.ts": ["prettier --write ./src", "eslint --ext .tsx,.ts ./src"],
-  "*.tsx": ["prettier --write ./src", "eslint --ext .tsx,.ts ./src"],
-  "*.html": ["eslint --ext .tsx,.ts ./src", "prettier --write ./src"]
-}
