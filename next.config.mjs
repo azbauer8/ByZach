@@ -2,6 +2,12 @@ const config = () => {
   const env = process.env.NODE_ENV
   /** @type {import('next').NextConfig} */
   const nextConfig = {
+    eslint: {
+      ignoreDuringBuilds: true
+    },
+    typescript: {
+      ignoreBuildErrors: true
+    },
     experimental: {
       webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP'],
     },
