@@ -7,10 +7,8 @@ import { PiCaretLeftBold } from "react-icons/pi"
 import { capitalize, cn } from "@/lib/utils"
 import { textVariants } from "@/components/ui/text"
 import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebar"
-import dynamic from "next/dynamic"
-const StickyHeader = dynamic(() => import("@/components/StickyHeader"))
-const ThemeToggle = dynamic(() => import("@/components/ThemeToggle"))
-
+import StickyHeader from "@/components/StickyHeader"
+import ThemeToggle from "@/components/ThemeToggle"
 
 export function PageLayout({
   title,
@@ -34,7 +32,7 @@ export function PageLayout({
               href={`/${type}`}
               className={cn(
                 textVariants({ affects: "small" }),
-                "hover:bg-neutral/40 active:bg-neutral/40 absolute left-2 flex items-center  rounded-lg p-1.5"
+                "absolute left-2 flex items-center rounded-lg p-1.5  hover:bg-neutral/40 active:bg-neutral/40"
               )}
               prefetch={true}
             >

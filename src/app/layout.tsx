@@ -1,25 +1,22 @@
 import { siteConfig, siteLinks } from "@/config"
 
 import "@/styles/global.css"
-import { Asap } from "next/font/google"
-import { GeistMono } from "geist/font/mono"
-
 
 import { Metadata } from "next"
+import { Asap } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { GeistMono } from "geist/font/mono"
 
 import { cn } from "@/lib/utils"
-import dynamic from "next/dynamic"
-const Providers = dynamic(() => import("@/components/Providers"))
-const Sidebar = dynamic(() => import("@/components/Sidebar/Sidebar"))
-const MobileSidebar = dynamic(() => import("@/components/Sidebar/MobileSidebar"))
+import Providers from "@/components/Providers"
+import MobileSidebar from "@/components/Sidebar/MobileSidebar"
+import Sidebar from "@/components/Sidebar/Sidebar"
 
 const asap = Asap({
   subsets: ["latin"],
   variable: "--font-sans",
 })
-
 
 export const metadata: Metadata = {
   title: {
@@ -70,7 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-      <meta name="theme-color" id="themeColor" content="#FEFEFE"/>
+        <meta name="theme-color" id="themeColor" content="#FEFEFE" />
       </head>
       <body
         className={cn(
