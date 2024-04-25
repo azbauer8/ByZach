@@ -8,8 +8,7 @@ import { PiSidebarSimpleDuotone, PiXBold } from "react-icons/pi"
 import Button from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 import SidebarLinks from "@/components/Sidebar/SidebarLinks"
-import StickyHeader  from "@/components/StickyHeader"
-import ThemeToggle from "@/components/ThemeToggle"
+import StickyHeader from "@/components/StickyHeader"
 
 export const mobileSidebarState = atom(false)
 
@@ -39,7 +38,6 @@ export default function MobileSidebar() {
               <PiXBold size={14} />
             </Button>
           }
-          rightContent={<ThemeToggle iconSize={18} />}
         />
 
         <SidebarLinks mobile />

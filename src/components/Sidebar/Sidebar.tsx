@@ -4,8 +4,7 @@ import React, { useState } from "react"
 import { siteConfig } from "@/config"
 
 import SidebarLinks from "@/components/Sidebar/SidebarLinks"
-import StickyHeader  from "@/components/StickyHeader"
-import ThemeToggle from "@/components/ThemeToggle"
+import StickyHeader from "@/components/StickyHeader"
 
 export default function Sidebar() {
   const [scroll, setScroll] = useState(0)
@@ -19,11 +18,7 @@ export default function Sidebar() {
       id="sidebar"
       onScroll={onScroll}
     >
-      <StickyHeader
-        title={siteConfig.title}
-        rightContent={<ThemeToggle iconSize={18} />}
-        scrollPos={scroll}
-      />
+      <StickyHeader title={siteConfig.title} scrollPos={scroll} />
       <SidebarLinks />
     </nav>
   )

@@ -2,7 +2,7 @@ import { siteConfig, siteLinks } from "@/config"
 
 import "@/styles/global.css"
 
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
 import { Asap } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -17,6 +17,13 @@ const asap = Asap({
   subsets: ["latin"],
   variable: "--font-sans",
 })
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#080808" },
+    { media: "(prefers-color-scheme: dark)", color: "#FEFEFE" },
+  ],
+}
 
 export const metadata: Metadata = {
   title: {
@@ -66,9 +73,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="theme-color" id="themeColor" content="#FEFEFE" />
-      </head>
+      <head />
       <body
         className={cn(
           "flex bg-background font-sans text-foreground antialiased",

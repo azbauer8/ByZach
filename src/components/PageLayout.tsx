@@ -8,7 +8,6 @@ import { capitalize, cn } from "@/lib/utils"
 import { textVariants } from "@/components/ui/text"
 import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebar"
 import StickyHeader from "@/components/StickyHeader"
-import ThemeToggle from "@/components/ThemeToggle"
 
 export function PageLayout({
   title,
@@ -42,9 +41,6 @@ export function PageLayout({
           ) : (
             <MobileSidebarToggle />
           )
-        }
-        rightContent={
-          hasList && <ThemeToggle className="text-foreground" iconSize={20} />
         }
       />
       <div className="mx-auto max-w-3xl space-y-5 px-4 py-12 md:px-8">
