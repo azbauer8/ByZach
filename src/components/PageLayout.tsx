@@ -7,8 +7,10 @@ import { PiCaretLeftBold } from "react-icons/pi"
 import { capitalize, cn } from "@/lib/utils"
 import { textVariants } from "@/components/ui/text"
 import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebar"
-import { StickyHeader } from "@/components/StickyHeader"
-import ThemeToggle from "@/components/ThemeToggle"
+import dynamic from "next/dynamic"
+const StickyHeader = dynamic(() => import("@/components/StickyHeader"))
+const ThemeToggle = dynamic(() => import("@/components/ThemeToggle"))
+
 
 export function PageLayout({
   title,

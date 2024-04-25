@@ -5,27 +5,21 @@ import { Asap } from "next/font/google"
 import { GeistMono } from "geist/font/mono"
 
 
-import { Metadata, Viewport } from "next"
+import { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { cn } from "@/lib/utils"
-import { Providers } from "@/components/Providers"
-import MobileSidebar from "@/components/Sidebar/MobileSidebar"
-import Sidebar from "@/components/Sidebar/Sidebar"
-
+import dynamic from "next/dynamic"
+const Providers = dynamic(() => import("@/components/Providers"))
+const Sidebar = dynamic(() => import("@/components/Sidebar/Sidebar"))
+const MobileSidebar = dynamic(() => import("@/components/Sidebar/MobileSidebar"))
 
 const asap = Asap({
   subsets: ["latin"],
   variable: "--font-sans",
 })
 
-export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'rgba(254, 254, 254)' },
-    { media: '(prefers-color-scheme: dark)', color: 'rgba(8, 8, 8)' },
-  ],
-}
 
 export const metadata: Metadata = {
   title: {
@@ -75,7 +69,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+      <meta name="theme-color" id="themeColor" content="#FEFEFE"/>
+      </head>
       <body
         className={cn(
           "flex bg-background font-sans text-foreground antialiased",

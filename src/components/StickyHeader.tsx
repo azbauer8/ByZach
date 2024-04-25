@@ -4,7 +4,7 @@ import useScrollPosition from "@/lib/useScroll"
 import { cn } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
 
-export function StickyHeader({
+export default function StickyHeader({
   title,
   leftContent,
   rightContent,

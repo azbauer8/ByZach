@@ -3,7 +3,8 @@ import { siteLinks } from "@/config"
 
 import { Text } from "@/components/ui/text"
 import { PageLayout } from "@/components/PageLayout"
-import Tabs from "@/app/uses/UsesTabs"
+import dynamic from "next/dynamic"
+const Tabs = dynamic(() => import("@/app/uses/UsesTabs"))
 
 export const metadata: Metadata = {
   title: "Uses",

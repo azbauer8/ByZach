@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { siteConfig } from "@/config"
 
 import SidebarLinks from "@/components/Sidebar/SidebarLinks"
-import { StickyHeader } from "@/components/StickyHeader"
+import StickyHeader  from "@/components/StickyHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
 export default function Sidebar() {

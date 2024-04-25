@@ -8,7 +8,7 @@ import { PiSidebarSimpleDuotone, PiXBold } from "react-icons/pi"
 import Button from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 import SidebarLinks from "@/components/Sidebar/SidebarLinks"
-import { StickyHeader } from "@/components/StickyHeader"
+import StickyHeader  from "@/components/StickyHeader"
 import ThemeToggle from "@/components/ThemeToggle"
 
 export const mobileSidebarState = atom(false)

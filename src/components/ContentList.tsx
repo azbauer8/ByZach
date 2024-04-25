@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation"
 import { capitalize, cn, formatDate } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
 import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebar"
-import { StickyHeader } from "@/components/StickyHeader"
+import dynamic from "next/dynamic"
+const StickyHeader = dynamic(() => import("@/components/StickyHeader"))
 
 export default function ContentList({
   id,

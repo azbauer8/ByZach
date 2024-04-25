@@ -1,5 +1,6 @@
 import { getThoughts } from "@/lib/getContent"
-import ContentList from "@/components/ContentList"
+import dynamic from "next/dynamic"
+const ContentList = dynamic(() => import("@/components/ContentList"))
 
 export default function ThoughtsLayout({
   children,

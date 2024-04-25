@@ -6,7 +6,7 @@ import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
 
 import TailwindIndicator from "@/components/TwIndicator"
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({ children }: { children: React.ReactNode }) {
   const { theme, systemTheme, setTheme } = useTheme()
 
   React.useEffect(() => {

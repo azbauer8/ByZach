@@ -19,7 +19,10 @@ export default function ThemeToggle({
 
   useEffect(() => {
     setMounted(true)
-  }, [])
+    const themeColor = document.getElementById('themeColor');
+     theme === "dark" ?  themeColor?.setAttribute('content', '#080808') : themeColor?.setAttribute('content', '#FEFEFE');
+    
+  }, [theme])
 
   if (!mounted) {
     return (
