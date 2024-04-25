@@ -71,6 +71,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  consolewa.log("hello world")
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
