@@ -20,8 +20,8 @@ const asap = Asap({
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#080808" },
-    { media: "(prefers-color-scheme: dark)", color: "#FEFEFE" },
+    { media: "(prefers-color-scheme: light)", color: "#FEFEFE" },
+    { media: "(prefers-color-scheme: dark)", color: "#080808" },
   ],
 }
 
