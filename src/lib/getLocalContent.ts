@@ -1,68 +1,106 @@
-import { cache } from "react"
+import fs from "node:fs"
+import path from "node:path"
+import type keystaticConfig from "@/../keystatic.config"
 import type { Entry } from "@keystatic/core/reader"
-import { createReader } from "@keystatic/core/reader"
-import keystaticConfig from "~/keystatic.config"
 import projects from "~content/projects"
-
-import "server-only"
-
 import slugify from "slugify"
 
-export type Thought = {
-  slug: string
-  entry: Entry<(typeof keystaticConfig)["collections"]["thoughts"]>
+type Metadata = {
+  title: string
+  dateTime: string | null
 }
 
-export type Snippet = {
-  slug: string
-  entry: Entry<(typeof keystaticConfig)["collections"]["snippets"]>
+export type ThoughtMetadata = Entry<
+  (typeof keystaticConfig)["collections"]["thoughts"]
+>
+
+export type SnippetMetadata = Entry<
+  (typeof keystaticConfig)["collections"]["snippets"]
+>
+
+function parseFrontmatter(fileContent: string) {
+  const frontmatterRegex = /---\s*([\s\S]*?)\s*---/
+  const match = frontmatterRegex.exec(fileContent)
+  const frontMatterBlock = match?.[1]
+  const content = fileContent.replace(frontmatterRegex, "").trim()
+  const frontMatterLines = frontMatterBlock?.trim().split("\n")
+  const metadata: Partial<Metadata> = {}
+
+  if (frontMatterLines) {
+    for (const line of frontMatterLines) {
+      const [key, ...valueArr] = line.split(": ")
+      const value = valueArr
+        .join(": ")
+        .trim()
+        .replace(/^['"](.*)['"]$/, "$1")
+      metadata[key.trim() as keyof Metadata] = value
+    }
+  }
+
+  return { metadata, content }
 }
 
-const reader = createReader(process.cwd(), keystaticConfig)
+function getMDXFiles(dir: fs.PathLike) {
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx")
+}
 
-export const getThoughts = cache(async (limit?: number) => {
-  const thoughts = await reader.collections.thoughts.all().then((thoughts) =>
-    thoughts.map((thought) => {
-      const { content, ...entry } = thought.entry
+function readMDXFile(filePath: fs.PathOrFileDescriptor) {
+  const rawContent = fs.readFileSync(filePath, "utf-8")
+  return parseFrontmatter(rawContent)
+}
+
+export function getThoughts(limit?: number) {
+  const dir = path.join(process.cwd(), "content/thoughts")
+  const mdxFiles = getMDXFiles(dir)
+    .map((file) => {
+      const { metadata, content } = readMDXFile(path.join(dir, file))
+      const slug = path.basename(file, path.extname(file))
       return {
-        ...thought,
-        entry: {
-          ...entry,
-        },
+        metadata: metadata as ThoughtMetadata,
+        slug,
+        content,
       }
     })
-  )
-  return limit ? thoughts.slice(0, limit) : thoughts
-})
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.dateTime ?? "").getTime() -
+        new Date(a.metadata.dateTime ?? "").getTime()
+    )
+  return limit ? mdxFiles.slice(0, limit) : mdxFiles
+}
 
-export const getThought = cache(async (slug: string) => {
-  const thought = await reader.collections.thoughts.read(slug)
-  return thought
-})
+export function getThought(slug: string) {
+  return getThoughts().filter((t) => t.slug === slug)?.[0] ?? undefined
+}
 
-export const getSnippets = cache(async (limit?: number) => {
-  const snippets = await reader.collections.snippets.all().then((snippets) =>
-    snippets.map((snippet) => {
-      const { content, ...entry } = snippet.entry
+export function getSnippets(limit?: number) {
+  const dir = path.join(process.cwd(), "content/snippets")
+  const mdxFiles = getMDXFiles(dir)
+    .map((file) => {
+      const { metadata, content } = readMDXFile(path.join(dir, file))
+      const slug = path.basename(file, path.extname(file))
       return {
-        ...snippet,
-        entry: {
-          ...entry,
-        },
+        metadata: metadata as SnippetMetadata,
+        slug,
+        content,
       }
     })
-  )
-  return limit ? snippets.slice(0, limit) : snippets
-})
-export const getSnippet = cache(async (slug: string) => {
-  const snippet = await reader.collections.snippets.read(slug)
-  return snippet
-})
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.dateTime ?? "").getTime() -
+        new Date(a.metadata.dateTime ?? "").getTime()
+    )
+  return limit ? mdxFiles.slice(0, limit) : mdxFiles
+}
+
+export function getSnippet(slug: string) {
+  return getSnippets().filter((t) => t.slug === slug)?.[0] ?? undefined
+}
 
 export function getProjects(limit?: number) {
   const projectsList = projects.map((project) => ({
     slug: slugify(project.title),
-    entry: {
+    metadata: {
       title: project.title,
       description: project.description,
       link: project.link,

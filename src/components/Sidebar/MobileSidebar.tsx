@@ -21,8 +21,13 @@ export default function MobileSidebar() {
         className="flex w-80 flex-col overflow-y-auto border-r-[0.5px] sm:w-60"
         side="left"
       >
-        <StickyHeader className="justify-between bg-accent">
-          <Text affects="small">{siteConfig.title}</Text>
+        <StickyHeader className="justify-end bg-accent">
+          <Text
+            affects="small"
+            className="absolute left-1/2 max-w-[50vw] -translate-x-1/2 truncate"
+          >
+            {siteConfig.title}
+          </Text>
           <Button
             onClick={() => setMobileSidebarOpen(false)}
             aria-label="Close sidebar"

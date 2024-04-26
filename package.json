@@ -12,9 +12,6 @@
     "unused": "next-unused",
     "buster": "rm -rf .next"
   },
-  "engines": {
-    "node": "18.x"
-  },
   "dependencies": {
     "@keystatic/core": "^0.5.11",
     "@keystatic/next": "^5.0.0",

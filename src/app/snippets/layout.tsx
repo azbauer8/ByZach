@@ -15,12 +15,13 @@ export default function ContentLayout({
 }
 
 async function Snippets() {
-  const snippets = await getSnippets().then((snippets) =>
-    snippets.map((snippet) => ({
-      slug: snippet.slug,
-      entry: { title: snippet.entry.title, dateTime: snippet.entry.dateTime },
-    }))
-  )
+  const snippets = getSnippets().map((snippet) => ({
+    slug: snippet.slug,
+    entry: {
+      title: snippet.metadata.title,
+      dateTime: snippet.metadata.dateTime,
+    },
+  }))
 
   return <ContentList type="snippets" links={snippets} />
 }

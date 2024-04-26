@@ -34,34 +34,44 @@ export default function ContentList({
           : "max-h-dvh min-h-dvh w-full overflow-y-auto xl:w-80 xl:border-r-[0.5px] xl:bg-accent"
       )}
     >
-      <StickyHeader className="gap-2 bg-background xl:bg-accent">
+      <StickyHeader className="gap-2 bg-background xl:hidden xl:bg-accent">
         <MobileSidebarToggle />
-        <Text affects="large">{title}</Text>
+        <Text
+          affects="small"
+          className="absolute left-1/2 max-w-[50vw] -translate-x-1/2 truncate"
+        >
+          {title}
+        </Text>
       </StickyHeader>
-      <div className={"flex flex-col divide-y xl:gap-1 xl:divide-y-0 xl:p-3"}>
-        {links.map((link) => {
-          const fullLink = `/${type}/${link.slug}`
-          const active = path === fullLink
-          return (
-            <Link
-              key={link.slug}
-              href={fullLink}
-              className={cn(
-                "size-full px-3 py-2 hover:bg-accent-secondary/55 active:bg-accent-secondary/55  xl:rounded-lg  xl:px-2 xl:py-1.5",
-                active && "bg-accent-secondary"
-              )}
-            >
-              <Text className="font-medium">{link.entry.title}</Text>
-              <Text className="text-foreground-muted">
-                {link.entry.subtitle
-                  ? link.entry.subtitle
-                  : link.entry.dateTime
-                    ? formatDate(link.entry.dateTime)
-                    : undefined}
-              </Text>
-            </Link>
-          )
-        })}
+      <div className="p-3 xl:space-y-2">
+        <Text variant="h3" className="hidden pl-1 xl:block">
+          {title}
+        </Text>
+        <div className={"flex flex-col gap-1"}>
+          {links.map((link) => {
+            const fullLink = `/${type}/${link.slug}`
+            const active = path === fullLink
+            return (
+              <Link
+                key={link.slug}
+                href={fullLink}
+                className={cn(
+                  "size-full rounded-lg px-2  py-1.5 hover:bg-accent-secondary/55 active:bg-accent-secondary/55",
+                  active && "bg-accent-secondary"
+                )}
+              >
+                <Text className="font-medium">{link.entry.title}</Text>
+                <Text className="text-sm text-foreground-muted">
+                  {link.entry.subtitle
+                    ? link.entry.subtitle
+                    : link.entry.dateTime
+                      ? formatDate(link.entry.dateTime)
+                      : undefined}
+                </Text>
+              </Link>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

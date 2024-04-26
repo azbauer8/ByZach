@@ -6,10 +6,10 @@ import { cn, formatDate } from "@/lib/utils"
 import { Anchor } from "@/components/ui/anchor"
 import { Text, textVariants } from "@/components/ui/text"
 
-export default async function RecentContent() {
+export default function RecentContent() {
   const projects = getProjects(5)
-  const thoughts = await getThoughts(5)
-  const snippets = await getSnippets(5)
+  const thoughts = getThoughts(5)
+  const snippets = getSnippets(5)
 
   return (
     <div className="space-y-5">
@@ -52,7 +52,7 @@ function RecentContentList({
   route?: string
   list: {
     slug: string
-    entry: {
+    metadata: {
       title: string
       link?: string
       dateTime?: string | null
@@ -93,7 +93,7 @@ function RecentContentList({
         {list.map((item) => (
           <Link
             key={item.slug}
-            href={item.entry.link ?? `${route}/${item.slug}`}
+            href={item.metadata.link ?? `${route}/${item.slug}`}
             className="group py-2"
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noreferrer" : undefined}
@@ -101,7 +101,7 @@ function RecentContentList({
           >
             <div className="flex items-center gap-0.5">
               <Text className="underline decoration-foreground-muted/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">
-                {item.entry.title}
+                {item.metadata.title}
               </Text>
               {isExternal && (
                 <span className="translate-y-[-0.5px] text-[0.9em] text-foreground-muted transition-colors group-hover:text-foreground group-active:text-foreground">
@@ -109,10 +109,10 @@ function RecentContentList({
                 </span>
               )}
             </div>
-            <Text affects="muted">
+            <Text affects="muted" className="text-sm">
               {itemSubtitle === "description"
-                ? item.entry.description
-                : formatDate(item.entry.dateTime)}
+                ? item.metadata.description
+                : formatDate(item.metadata.dateTime)}
             </Text>
           </Link>
         ))}

@@ -14,13 +14,14 @@ export default function ThoughtsLayout({
   )
 }
 
-async function Thoughts() {
-  const thoughts = await getThoughts().then((thoughts) =>
-    thoughts.map((thought) => ({
-      slug: thought.slug,
-      entry: { title: thought.entry.title, dateTime: thought.entry.dateTime },
-    }))
-  )
+function Thoughts() {
+  const thoughts = getThoughts().map((thought) => ({
+    slug: thought.slug,
+    entry: {
+      title: thought.metadata.title,
+      dateTime: thought.metadata.dateTime,
+    },
+  }))
 
   return <ContentList type="thoughts" links={thoughts} />
 }

@@ -8,16 +8,11 @@ import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { thought: string }
-}) {
-  const thought = await getThoughts().then((thoughts) =>
-    thoughts.find((thought) => thought.slug === params.thought)
-  )
+export function generateMetadata({ params }: { params: { thought: string } }) {
+  const thought = getThought(params.thought)
+
   if (!thought) return {}
-  const { title } = thought.entry
+  const { title } = thought.metadata
 
   return {
     title,
@@ -33,31 +28,25 @@ export async function generateMetadata({
   }
 }
 
-export async function generateStaticParams() {
-  const thoughts = await getThoughts()
+export function generateStaticParams() {
+  const thoughts = getThoughts()
   return thoughts.map((thought) => ({
     thought: thought.slug,
   }))
 }
 
-export default async function Thought({
-  params,
-}: {
-  params: { thought: string }
-}) {
-  const thought = await getThought(params.thought)
+export default function Thought({ params }: { params: { thought: string } }) {
+  const thought = getThought(params.thought)
   if (!thought) return null
 
-  const content = await thought.content()
-
   return (
-    <ContentLayout title={thought.title} type="thoughts" hasList>
+    <ContentLayout title={thought.metadata.title} type="thoughts" hasList>
       <div className="space-y-1.5">
-        <Text variant="h2">{thought.title}</Text>
-        <Text affects="muted">{formatDate(thought.dateTime)}</Text>
+        <Text variant="h2">{thought.metadata.title}</Text>
+        <Text affects="muted">{formatDate(thought.metadata.dateTime)}</Text>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
-        <MDXContent source={content} />
+        <MDXContent source={thought.content} />
       </main>
     </ContentLayout>
   )

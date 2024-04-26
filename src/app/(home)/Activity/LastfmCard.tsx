@@ -58,7 +58,9 @@ export default async function LastFmCard() {
           <Text affects="small">{playingWhen}</Text>
         </div>
         <Text variant="h5">{latestTrack.name}</Text>
-        <Text affects="muted">{latestTrack.artist["#text"]}</Text>
+        <Text affects="muted" className="text-sm">
+          {latestTrack.artist["#text"]}
+        </Text>
       </div>
     </a>
   )

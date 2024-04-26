@@ -107,11 +107,14 @@ export default async function TraktCard() {
         <Text variant="h5">{data.title}</Text>
         {data.episode ? (
           <>
-            <Text affects="muted">{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Text>
+            <Text
+              affects="muted"
+              className="text-sm"
+            >{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Text>
           </>
         ) : (
           <>
-            <Text affects="muted" className="italic">
+            <Text affects="muted" className="text-sm italic">
               {data.tagline}
             </Text>
           </>

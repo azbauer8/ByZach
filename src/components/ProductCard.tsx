@@ -3,7 +3,7 @@ import { FaLink } from "react-icons/fa6"
 
 import { Text } from "@/components/ui/text"
 
-export default async function ProductCard({
+export default function ProductCard({
   title,
   description,
   link,

@@ -7,17 +7,11 @@ import { MDXContent } from "@/components/MdxContent"
 
 export const dynamicParams = false
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { snippet: string }
-}) {
-  const snippet = await getSnippets().then((snippets) =>
-    snippets.find((snippet) => snippet.slug === params.snippet)
-  )
+export function generateMetadata({ params }: { params: { snippet: string } }) {
+  const snippet = getSnippet(params.snippet)
   if (!snippet) return {}
 
-  const { description, title } = snippet.entry
+  const { description, title } = snippet.metadata
 
   return {
     title,
@@ -36,33 +30,27 @@ export async function generateMetadata({
   }
 }
 
-export async function generateStaticParams() {
-  const snippets = await getSnippets()
+export function generateStaticParams() {
+  const snippets = getSnippets()
   return snippets.map((snippet) => ({
     snippet: snippet.slug,
   }))
 }
 
-export default async function Snippet({
-  params,
-}: {
-  params: { snippet: string }
-}) {
-  const snippet = await getSnippet(params.snippet)
+export default function Snippet({ params }: { params: { snippet: string } }) {
+  const snippet = getSnippet(params.snippet)
   if (!snippet) return null
 
-  const content = await snippet.content()
-
   return (
-    <ContentLayout title={snippet.title} type="snippets" hasList>
+    <ContentLayout title={snippet.metadata.title} type="snippets" hasList>
       <div className="space-y-0.5">
-        <Text variant="h2">{snippet.title}</Text>
+        <Text variant="h2">{snippet.metadata.title}</Text>
         <Text variant="p" affects="muted">
-          {snippet.description}
+          {snippet.metadata.description}
         </Text>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
-        <MDXContent source={content} />
+        <MDXContent source={snippet.content} />
       </main>
     </ContentLayout>
   )
