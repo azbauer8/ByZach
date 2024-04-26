@@ -1,12 +1,7 @@
 import { siteLinks } from "@/config"
 
-import {
-  getDiscoveryCategories,
-  getProjects,
-  getSnippets,
-  getThoughts,
-  getUses,
-} from "@/lib/getContent"
+import { getProjects, getSnippets, getThoughts } from "@/lib/getContent"
+import { getDiscoveryCategories, getSoftwareUses } from "@/lib/raindrop"
 
 export default async function sitemap() {
   const projects = getProjects().map((project) => ({
@@ -14,14 +9,21 @@ export default async function sitemap() {
     lastModified: project.metadata.dateTime,
   }))
 
-  const uses = getUses().map((use) => ({
-    url: `${siteLinks.here}/uses/${use.slug}`,
-    lastModified: use.metadata.dateTime,
-  }))
+  const uses = await getSoftwareUses().then((uses) =>
+    uses?.map((use) => ({
+      url: `${siteLinks.here}/uses/${use._id}`,
+      lastModified: use.lastUpdate,
+    }))
+  )
+  const usesArray = uses || []
 
-  const discoveries = getDiscoveryCategories().map((discovery) => ({
-    url: `${siteLinks.here}/discoveries/${discovery.slug}`,
-  }))
+  const discoveries = await getDiscoveryCategories().then((discoveries) =>
+    discoveries?.map((discovery) => ({
+      url: `${siteLinks.here}/discoveries/${discovery.slug}`,
+    }))
+  )
+
+  const discArray = discoveries || []
 
   const thoughts = getThoughts().map((thought) => ({
     url: `${siteLinks.here}/thoughts/${thought.slug}`,
@@ -48,9 +50,9 @@ export default async function sitemap() {
   return [
     ...routes,
     ...projects,
-    ...uses,
+    ...usesArray,
     ...thoughts,
     ...snippets,
-    ...discoveries,
+    ...discArray,
   ]
 }
