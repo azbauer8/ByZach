@@ -14,6 +14,7 @@ const options = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${process.env.RAINDROP_ACCESS_TOKEN}`,
   },
+  next: { revalidate: 60 },
 }
 
 const url = "https://api.raindrop.io/rest/v1"
