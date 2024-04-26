@@ -30,7 +30,7 @@ export default function ContentHeader({
       className={cn(
         "sticky top-0 z-10 flex max-h-12 min-h-12 items-center justify-between  px-3 py-2",
         isContentHeader && "xl:hidden",
-        scroll >= breakpoint && `border-b-[0.5px] ${bg}`
+        scroll >= breakpoint && `border-b ${bg}`
       )}
     >
       {leftContent}
