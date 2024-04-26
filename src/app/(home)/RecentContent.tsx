@@ -7,9 +7,9 @@ import Anchor from "@/components/ui/anchor"
 import { Text, textVariants } from "@/components/ui/text"
 
 export default function RecentContent() {
-  const projects = getProjects()
   const thoughts = getThoughts(5)
   const snippets = getSnippets(5)
+  const projects = getProjects(5)
 
   return (
     <div className="space-y-5">

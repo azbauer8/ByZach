@@ -1,7 +1,9 @@
 import fs from "node:fs"
 import path from "node:path"
 import type keystaticConfig from "@/../keystatic.config"
+import projects from "@/projects"
 import type { Entry } from "@keystatic/core/reader"
+import slugify from "slugify"
 
 type Metadata = {
   title: string
@@ -10,10 +12,6 @@ type Metadata = {
 
 export type ThoughtMetadata = Entry<
   (typeof keystaticConfig)["collections"]["thoughts"]
->
-
-export type ProjectMetadata = Entry<
-  (typeof keystaticConfig)["collections"]["projects"]
 >
 
 export type SnippetMetadata = Entry<
@@ -50,34 +48,6 @@ function readMDXFile(filePath: fs.PathOrFileDescriptor) {
   const rawContent = fs.readFileSync(filePath, "utf-8")
   return parseFrontmatter(rawContent)
 }
-
-function getJSONFiles(dir: fs.PathLike) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".json")
-}
-
-function readJSONFiles(filePath: fs.PathOrFileDescriptor) {
-  return JSON.parse(fs.readFileSync(filePath, "utf-8"))
-}
-
-export function getProjects(limit?: number) {
-  const dir = path.join(process.cwd(), "content/projects")
-  const jsonFiles = getJSONFiles(dir)
-    .map((file) => {
-      const metadata = readJSONFiles(path.join(dir, file))
-      const slug = path.basename(file, path.extname(file))
-      return {
-        metadata: metadata as ProjectMetadata,
-        slug,
-      }
-    })
-    .sort(
-      (a, b) =>
-        new Date(b.metadata.dateTime ?? "").getTime() -
-        new Date(a.metadata.dateTime ?? "").getTime()
-    )
-  return limit ? jsonFiles.slice(0, limit) : jsonFiles
-}
-
 export function getThoughts(limit?: number) {
   const dir = path.join(process.cwd(), "content/thoughts")
   const mdxFiles = getMDXFiles(dir)
@@ -115,4 +85,16 @@ export function getSnippets(limit?: number) {
         new Date(a.metadata.dateTime ?? "").getTime()
     )
   return limit ? mdxFiles.slice(0, limit) : mdxFiles
+}
+
+export function getProjects(limit?: number) {
+  const projectsList = projects.map((project) => ({
+    slug: slugify(project.title),
+    metadata: {
+      title: project.title,
+      description: project.description,
+      link: project.link,
+    },
+  }))
+  return limit ? projectsList.slice(0, limit) : projectsList
 }

@@ -6,7 +6,6 @@ import { getDiscoveryCategories, getSoftwareUses } from "@/lib/raindrop"
 export default async function sitemap() {
   const projects = getProjects().map((project) => ({
     url: `${siteLinks.here}/projects/${project.slug}`,
-    lastModified: project.metadata.dateTime,
   }))
 
   const uses = await getSoftwareUses().then((uses) =>
