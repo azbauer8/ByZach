@@ -9,7 +9,7 @@ import { textVariants } from "@/components/ui/text"
 import ContentHeader from "@/components/ContentHeader"
 import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebar"
 
-export function PageLayout({
+export function ContentLayout({
   title,
   type,
   children,

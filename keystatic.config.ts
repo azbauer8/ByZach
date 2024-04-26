@@ -12,14 +12,14 @@ export default config({
       label: "Thoughts",
       slugField: "title",
       path: "content/thoughts/*",
-      format: { contentField: "body" },
+      format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         dateTime: fields.datetime({
           label: "Created/Updated At",
         }),
-        body: fields.mdx({
-          label: "Post Body",
+        content: fields.mdx({
+          label: "Post Content",
         }),
       },
     }),

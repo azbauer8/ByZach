@@ -15,7 +15,7 @@ export default function ContentList({
   type: "discoveries" | "thoughts" | "snippets"
   links: {
     slug: string
-    metadata: {
+    entry: {
       title: string
       subtitle?: string
       dateTime?: string | null
@@ -51,12 +51,12 @@ export default function ContentList({
                 active && "bg-accent-secondary"
               )}
             >
-              <Text className="font-medium">{link.metadata.title}</Text>
+              <Text className="font-medium">{link.entry.title}</Text>
               <Text className="text-foreground-muted">
-                {link.metadata.subtitle
-                  ? link.metadata.subtitle
-                  : link.metadata.dateTime
-                    ? formatDate(link.metadata.dateTime)
+                {link.entry.subtitle
+                  ? link.entry.subtitle
+                  : link.entry.dateTime
+                    ? formatDate(link.entry.dateTime)
                     : undefined}
               </Text>
             </Link>

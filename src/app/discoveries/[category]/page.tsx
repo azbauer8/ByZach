@@ -3,9 +3,9 @@ import slugify from "slugify"
 import {
   getDiscoveriesInCategory,
   getDiscoveryCategories,
-} from "@/lib/raindrop"
+} from "@/lib/getRaindrop"
 import { Text } from "@/components/ui/text"
-import { PageLayout } from "@/components/PageLayout"
+import { ContentLayout } from "@/components/ContentLayout"
 import ProductCard from "@/components/ProductCard"
 
 export const dynamicParams = false
@@ -20,7 +20,7 @@ export async function generateMetadata({
   )
   if (!category) return {}
 
-  const { title, subtitle } = category.metadata
+  const { title, subtitle } = category.entry
 
   return {
     title,
@@ -46,7 +46,7 @@ export default async function DiscoveryCategory({
   const category = discoveries[0].tags[0]
 
   return (
-    <PageLayout title={category} type="discoveries" hasList>
+    <ContentLayout title={category} type="discoveries" hasList>
       <Text variant="h2">{category}</Text>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {discoveries.map((discovery) => (
@@ -60,6 +60,6 @@ export default async function DiscoveryCategory({
           />
         ))}
       </div>
-    </PageLayout>
+    </ContentLayout>
   )
 }

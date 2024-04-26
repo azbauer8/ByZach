@@ -1,4 +1,4 @@
-import { getThoughts } from "@/lib/getContent"
+import { getThoughts } from "@/lib/getLocalContent"
 import ContentList from "@/components/ContentList"
 
 export default function ThoughtsLayout({
@@ -14,9 +14,13 @@ export default function ThoughtsLayout({
   )
 }
 
-function Thoughts() {
-  const thoughts = getThoughts()
-  if (!thoughts) return null
+async function Thoughts() {
+  const thoughts = await getThoughts().then((thoughts) =>
+    thoughts.map((thought) => ({
+      slug: thought.slug,
+      entry: { title: thought.entry.title, dateTime: thought.entry.dateTime },
+    }))
+  )
 
   return <ContentList type="thoughts" links={thoughts} />
 }

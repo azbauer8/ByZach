@@ -1,16 +1,16 @@
 import { siteConfig, siteLinks } from "@/config"
 
-import { getThoughts } from "@/lib/getContent"
+import { getThoughts } from "@/lib/getLocalContent"
 
-export function GET() {
-  const thoughts = getThoughts()
+export async function GET() {
+  const thoughts = await getThoughts()
 
   const itemsXml = thoughts
     .sort((a, b) => {
       if (
-        a.metadata.dateTime &&
-        b.metadata.dateTime &&
-        new Date(a.metadata.dateTime) > new Date(b.metadata.dateTime)
+        a.entry.dateTime &&
+        b.entry.dateTime &&
+        new Date(a.entry.dateTime) > new Date(b.entry.dateTime)
       ) {
         return -1
       }
@@ -19,11 +19,11 @@ export function GET() {
     .map(
       (post) =>
         `<item>
-          <title>${post.metadata.title}</title>
+          <title>${post.entry.title}</title>
           <link>${siteLinks.here}/thoughts/${post.slug}</link>
           <pubDate>${
-            post.metadata.dateTime
-              ? new Date(post.metadata.dateTime).toUTCString()
+            post.entry.dateTime
+              ? new Date(post.entry.dateTime).toUTCString()
               : ""
           }</pubDate>
         </item>`

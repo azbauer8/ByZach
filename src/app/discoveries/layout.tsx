@@ -1,4 +1,4 @@
-import { getDiscoveryCategories } from "@/lib/raindrop"
+import { getDiscoveryCategories } from "@/lib/getRaindrop"
 import ContentList from "@/components/ContentList"
 
 export default function ContentLayout({

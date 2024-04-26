@@ -1,19 +1,23 @@
 import { siteLinks } from "@/config"
 
-import { getThoughts } from "@/lib/getContent"
+import { getThought, getThoughts } from "@/lib/getLocalContent"
 import { formatDate } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
+import { ContentLayout } from "@/components/ContentLayout"
 import { MDXContent } from "@/components/MdxContent"
-import { PageLayout } from "@/components/PageLayout"
 
 export const dynamicParams = false
 
-export function generateMetadata({ params }: { params: { thought: string } }) {
-  const thought = getThoughts().find(
-    (thought) => thought.slug === params.thought
+export async function generateMetadata({
+  params,
+}: {
+  params: { thought: string }
+}) {
+  const thought = await getThoughts().then((thoughts) =>
+    thoughts.find((thought) => thought.slug === params.thought)
   )
   if (!thought) return {}
-  const { title } = thought.metadata
+  const { title } = thought.entry
 
   return {
     title,
@@ -29,27 +33,32 @@ export function generateMetadata({ params }: { params: { thought: string } }) {
   }
 }
 
-export function generateStaticParams() {
-  const thoughts = getThoughts()
+export async function generateStaticParams() {
+  const thoughts = await getThoughts()
   return thoughts.map((thought) => ({
     thought: thought.slug,
   }))
 }
 
-export default function Thought({ params }: { params: { thought: string } }) {
-  const thought = getThoughts().find(
-    (thought) => thought.slug === params.thought
-  )
+export default async function Thought({
+  params,
+}: {
+  params: { thought: string }
+}) {
+  const thought = await getThought(params.thought)
   if (!thought) return null
+
+  const content = await thought.content()
+
   return (
-    <PageLayout title={thought.metadata.title} type="thoughts" hasList>
+    <ContentLayout title={thought.title} type="thoughts" hasList>
       <div className="space-y-1.5">
-        <Text variant="h2">{thought.metadata.title}</Text>
-        <Text affects="muted">{formatDate(thought.metadata.dateTime)}</Text>
+        <Text variant="h2">{thought.title}</Text>
+        <Text affects="muted">{formatDate(thought.dateTime)}</Text>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
-        <MDXContent source={thought.content} />
+        <MDXContent source={content} />
       </main>
-    </PageLayout>
+    </ContentLayout>
   )
 }

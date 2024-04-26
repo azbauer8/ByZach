@@ -2,7 +2,7 @@ import type { Metadata } from "next/types"
 import { siteLinks } from "@/config"
 
 import { Text } from "@/components/ui/text"
-import { PageLayout } from "@/components/PageLayout"
+import { ContentLayout } from "@/components/ContentLayout"
 import Tabs from "@/app/uses/UsesTabs"
 
 export const metadata: Metadata = {
@@ -26,10 +26,10 @@ export default function UsesLayout({
   children: React.ReactNode
 }) {
   return (
-    <PageLayout title="Uses" hasList={false}>
+    <ContentLayout title="Uses" hasList={false}>
       <Text variant="h2">Uses</Text>
       <Tabs />
       {children}
-    </PageLayout>
+    </ContentLayout>
   )
 }

@@ -1,7 +1,7 @@
 import { siteLinks } from "@/config"
 
-import { getProjects, getSnippets, getThoughts } from "@/lib/getContent"
-import { getDiscoveryCategories, getSoftwareUses } from "@/lib/raindrop"
+import { getProjects, getSnippets, getThoughts } from "@/lib/getLocalContent"
+import { getDiscoveryCategories, getSoftwareUses } from "@/lib/getRaindrop"
 
 export default async function sitemap() {
   const projects = getProjects().map((project) => ({
@@ -24,15 +24,19 @@ export default async function sitemap() {
 
   const discArray = discoveries || []
 
-  const thoughts = getThoughts().map((thought) => ({
-    url: `${siteLinks.here}/thoughts/${thought.slug}`,
-    lastModified: thought.metadata.dateTime,
-  }))
+  const thoughts = await getThoughts().then((thought) =>
+    thought.map((thought) => ({
+      url: `${siteLinks.here}/thoughts/${thought.slug}`,
+      lastModified: thought.entry.dateTime,
+    }))
+  )
 
-  const snippets = getSnippets().map((snippet) => ({
-    url: `${siteLinks.here}/snippets/${snippet.slug}`,
-    lastModified: snippet.metadata.dateTime,
-  }))
+  const snippets = await getSnippets().then((snippet) =>
+    snippet.map((snippet) => ({
+      url: `${siteLinks.here}/snippets/${snippet.slug}`,
+      lastModified: snippet.entry.dateTime,
+    }))
+  )
 
   const routes = [
     "",

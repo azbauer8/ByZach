@@ -1,4 +1,4 @@
-import { getSnippets } from "@/lib/getContent"
+import { getSnippets } from "@/lib/getLocalContent"
 import ContentList from "@/components/ContentList"
 
 export default function ContentLayout({
@@ -14,9 +14,13 @@ export default function ContentLayout({
   )
 }
 
-function Snippets() {
-  const snippets = getSnippets()
-  if (!snippets) return null
+async function Snippets() {
+  const snippets = await getSnippets().then((snippets) =>
+    snippets.map((snippet) => ({
+      slug: snippet.slug,
+      entry: { title: snippet.entry.title, dateTime: snippet.entry.dateTime },
+    }))
+  )
 
   return <ContentList type="snippets" links={snippets} />
 }

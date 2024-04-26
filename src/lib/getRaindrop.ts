@@ -28,7 +28,7 @@ export const getDiscoveryCategories = cache(async () => {
     const categories: RaindropTags = await response.json()
     return categories.items.map((category) => ({
       slug: slugify(category._id),
-      metadata: {
+      entry: {
         title: category._id,
         subtitle: `${category.count} discoveries`,
       },

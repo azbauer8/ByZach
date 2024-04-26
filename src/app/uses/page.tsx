@@ -1,4 +1,4 @@
-import { getSoftwareUses } from "@/lib/raindrop"
+import { getSoftwareUses } from "@/lib/getRaindrop"
 import ProductCard from "@/components/ProductCard"
 
 export default async function SoftwareUses() {

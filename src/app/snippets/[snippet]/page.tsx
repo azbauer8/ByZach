@@ -1,19 +1,23 @@
 import { siteLinks } from "@/config"
 
-import { getSnippets } from "@/lib/getContent"
+import { getSnippet, getSnippets } from "@/lib/getLocalContent"
 import { Text } from "@/components/ui/text"
+import { ContentLayout } from "@/components/ContentLayout"
 import { MDXContent } from "@/components/MdxContent"
-import { PageLayout } from "@/components/PageLayout"
 
 export const dynamicParams = false
 
-export function generateMetadata({ params }: { params: { snippet: string } }) {
-  const snippet = getSnippets().find(
-    (snippet) => snippet.slug === params.snippet
+export async function generateMetadata({
+  params,
+}: {
+  params: { snippet: string }
+}) {
+  const snippet = await getSnippets().then((snippets) =>
+    snippets.find((snippet) => snippet.slug === params.snippet)
   )
   if (!snippet) return {}
 
-  const { description, title } = snippet.metadata
+  const { description, title } = snippet.entry
 
   return {
     title,
@@ -32,30 +36,34 @@ export function generateMetadata({ params }: { params: { snippet: string } }) {
   }
 }
 
-export function generateStaticParams() {
-  const snippets = getSnippets()
+export async function generateStaticParams() {
+  const snippets = await getSnippets()
   return snippets.map((snippet) => ({
     snippet: snippet.slug,
   }))
 }
 
-export default function Snippet({ params }: { params: { snippet: string } }) {
-  const snippet = getSnippets().find(
-    (snippet) => snippet.slug === params.snippet
-  )
+export default async function Snippet({
+  params,
+}: {
+  params: { snippet: string }
+}) {
+  const snippet = await getSnippet(params.snippet)
   if (!snippet) return null
 
+  const content = await snippet.content()
+
   return (
-    <PageLayout title={snippet.metadata.title} type="snippets" hasList>
+    <ContentLayout title={snippet.title} type="snippets" hasList>
       <div className="space-y-0.5">
-        <Text variant="h2">{snippet.metadata.title}</Text>
+        <Text variant="h2">{snippet.title}</Text>
         <Text variant="p" affects="muted">
-          {snippet.metadata.description}
+          {snippet.description}
         </Text>
       </div>
       <main className="prose prose-neutral dark:prose-invert">
-        <MDXContent source={snippet.content} />
+        <MDXContent source={content} />
       </main>
-    </PageLayout>
+    </ContentLayout>
   )
 }
