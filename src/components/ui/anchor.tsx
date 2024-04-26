@@ -51,4 +51,29 @@ function Anchor({
   )
 }
 
-export default Anchor
+function InlineAnchor({
+  className,
+  target,
+  rel,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLAnchorElement> & {
+  href: string
+  target?: string
+  rel?: string
+}) {
+  return (
+    <a
+      className={cn("text-foreground", className)}
+      target={target ?? "_blank"}
+      rel={rel ?? "noopener noreferrer"}
+      {...props}
+    >
+      <span className="underline decoration-foreground-muted/35 decoration-2 underline-offset-2 transition-colors hover:decoration-foreground/75 active:decoration-foreground/75">
+        {children}
+      </span>
+    </a>
+  )
+}
+
+export { Anchor, InlineAnchor }

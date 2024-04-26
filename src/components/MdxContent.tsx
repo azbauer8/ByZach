@@ -8,7 +8,7 @@ import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
 import { cn } from "@/lib/utils"
-import Anchor from "@/components/ui/anchor"
+import { InlineAnchor } from "@/components/ui/anchor"
 
 function CustomLink(
   props: LinkProps & {
@@ -25,9 +25,7 @@ function CustomLink(
         {...props}
       />
     )
-  return (
-    <Anchor target="_blank" rel="noopener noreferrer" isExternal {...props} />
-  )
+  return <InlineAnchor target="_blank" rel="noopener noreferrer" {...props} />
 }
 
 function RoundedImage({ alt, className, ...props }: ImageProps) {

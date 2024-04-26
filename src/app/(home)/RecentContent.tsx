@@ -3,7 +3,7 @@ import { PiArrowUpRightBold } from "react-icons/pi"
 
 import { getProjects, getSnippets, getThoughts } from "@/lib/getContent"
 import { cn, formatDate } from "@/lib/utils"
-import Anchor from "@/components/ui/anchor"
+import { Anchor } from "@/components/ui/anchor"
 import { Text, textVariants } from "@/components/ui/text"
 
 export default function RecentContent() {
