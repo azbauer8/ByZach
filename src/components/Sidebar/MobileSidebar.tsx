@@ -22,7 +22,7 @@ export default function MobileSidebar() {
         side="left"
       >
         <StickyHeader className="justify-between bg-accent">
-          <Text affects="large">{siteConfig.title}</Text>
+          <Text affects="small">{siteConfig.title}</Text>
           <Button
             onClick={() => setMobileSidebarOpen(false)}
             aria-label="Close sidebar"

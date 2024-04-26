@@ -21,7 +21,17 @@ export type Snippet = {
 const reader = createReader(process.cwd(), keystaticConfig)
 
 export const getThoughts = cache(async (limit?: number) => {
-  const thoughts = await reader.collections.thoughts.all()
+  const thoughts = await reader.collections.thoughts.all().then((thoughts) =>
+    thoughts.map((thought) => {
+      const { content, ...entry } = thought.entry
+      return {
+        ...thought,
+        entry: {
+          ...entry,
+        },
+      }
+    })
+  )
   return limit ? thoughts.slice(0, limit) : thoughts
 })
 
@@ -31,7 +41,17 @@ export const getThought = cache(async (slug: string) => {
 })
 
 export const getSnippets = cache(async (limit?: number) => {
-  const snippets = await reader.collections.snippets.all()
+  const snippets = await reader.collections.snippets.all().then((snippets) =>
+    snippets.map((snippet) => {
+      const { content, ...entry } = snippet.entry
+      return {
+        ...snippet,
+        entry: {
+          ...entry,
+        },
+      }
+    })
+  )
   return limit ? snippets.slice(0, limit) : snippets
 })
 export const getSnippet = cache(async (slug: string) => {
