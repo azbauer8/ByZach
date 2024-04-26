@@ -18,5 +18,5 @@ function Snippets() {
   const snippets = getSnippets()
   if (!snippets) return null
 
-  return <ContentList id="snippets" type="snippets" links={snippets} />
+  return <ContentList type="snippets" links={snippets} />
 }

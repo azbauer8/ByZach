@@ -1,4 +1,4 @@
-import { getDiscoveryCategories } from "@/lib/getContent"
+import { getDiscoveryCategories } from "@/lib/raindrop"
 import ContentList from "@/components/ContentList"
 
 export default function ContentLayout({
@@ -14,9 +14,9 @@ export default function ContentLayout({
   )
 }
 
-function Discoveries() {
-  const discoveries = getDiscoveryCategories()
+async function Discoveries() {
+  const discoveries = await getDiscoveryCategories()
   if (!discoveries) return null
 
-  return <ContentList id="discoveries" type="discoveries" links={discoveries} />
+  return <ContentList type="discoveries" links={discoveries} />
 }

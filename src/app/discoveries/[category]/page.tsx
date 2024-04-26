@@ -1,18 +1,22 @@
-import { Suspense } from "react"
+import slugify from "slugify"
 
 import {
   getDiscoveriesInCategory,
   getDiscoveryCategories,
-} from "@/lib/getContent"
+} from "@/lib/raindrop"
 import { Text } from "@/components/ui/text"
 import { PageLayout } from "@/components/PageLayout"
 import ProductCard from "@/components/ProductCard"
 
 export const dynamicParams = false
 
-export function generateMetadata({ params }: { params: { category: string } }) {
-  const category = getDiscoveryCategories().find(
-    (category) => category.slug === params.category
+export async function generateMetadata({
+  params,
+}: {
+  params: { category: string }
+}) {
+  const category = await getDiscoveryCategories().then((categories) =>
+    categories?.find((category) => slugify(category.slug) === params.category)
   )
   if (!category) return {}
 
@@ -24,36 +28,36 @@ export function generateMetadata({ params }: { params: { category: string } }) {
   }
 }
 
-export function generateStaticParams() {
-  const categories = getDiscoveryCategories()
-  return categories.map((category) => ({
-    category: category.slug,
+export async function generateStaticParams() {
+  const categories = await getDiscoveryCategories()
+  return categories?.map((category) => ({
+    category: slugify(category.slug),
   }))
 }
 
-export default function DiscoveryCategory({
+export default async function DiscoveryCategory({
   params,
 }: {
   params: { category: string }
 }) {
-  const discoveries = getDiscoveriesInCategory(params.category)
+  const discoveries = await getDiscoveriesInCategory(params.category)
   if (!discoveries) return null
 
-  const category = discoveries[0].metadata.category
+  const category = discoveries[0].tags[0]
 
   return (
     <PageLayout title={category} type="discoveries" hasList>
       <Text variant="h2">{category}</Text>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {discoveries.map((discovery) => (
-          <Suspense key={discovery.slug} fallback={<div />}>
-            <ProductCard
-              key={discovery.slug}
-              title={discovery.metadata.title}
-              description={discovery.metadata.description ?? ""}
-              link={discovery.metadata.link ?? ""}
-            />
-          </Suspense>
+          <ProductCard
+            key={discovery._id}
+            title={discovery.title}
+            description={discovery.note}
+            link={discovery.link}
+            shortLink={discovery.domain}
+            img={discovery.cover}
+          />
         ))}
       </div>
     </PageLayout>

@@ -1,27 +1,21 @@
 import Image from "next/image"
-import ogs from "open-graph-scraper"
 import { FaLink } from "react-icons/fa6"
 
-import { formatUrl } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
 
 export default async function ProductCard({
   title,
   description,
   link,
+  shortLink,
+  img,
 }: {
   title: string
   description: string
   link: string
+  shortLink: string
+  img: string
 }) {
-  let ogImgUrl: string | undefined = undefined
-  const options = { url: link }
-  const ogImg = await ogs(options)
-  ogImgUrl = ogImg.result?.ogImage?.[0].url
-  if (ogImgUrl?.startsWith("/")) {
-    ogImgUrl = `${ogImg?.result?.requestUrl}${ogImgUrl.slice(1)}`
-  }
-
   return (
     <a
       className="flex aspect-auto cursor-pointer flex-col gap-4 overflow-hidden rounded-xl p-4 shadow-card transition-shadow duration-300  ease-in-out hover:shadow-card-hover active:shadow-card-hover"
@@ -31,7 +25,7 @@ export default async function ProductCard({
     >
       <span className="aspect-[1200/630] overflow-hidden rounded-lg">
         <Image
-          src={ogImgUrl ?? "/fallback.png"}
+          src={img !== "" ? img : "/fallback.png"}
           alt={title}
           width={1200}
           height={630}
@@ -46,7 +40,7 @@ export default async function ProductCard({
         <Text variant="h4">{title}</Text>
         <Text affects="muted" className="inline-flex items-center gap-0.5">
           <FaLink size={16} />
-          {formatUrl(link)}
+          {shortLink}
         </Text>
         <Text className="leading-snug">{description}</Text>
       </div>

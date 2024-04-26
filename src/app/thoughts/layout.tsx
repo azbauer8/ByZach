@@ -18,5 +18,5 @@ function Thoughts() {
   const thoughts = getThoughts()
   if (!thoughts) return null
 
-  return <ContentList id="thoughts" type="thoughts" links={thoughts} />
+  return <ContentList type="thoughts" links={thoughts} />
 }

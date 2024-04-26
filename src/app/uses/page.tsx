@@ -1,21 +1,20 @@
-import { Suspense } from "react"
-
-import { getUses } from "@/lib/getContent"
+import { getSoftwareUses } from "@/lib/raindrop"
 import ProductCard from "@/components/ProductCard"
 
-export default function SoftwareUses() {
-  const software = getUses().filter((use) => use.metadata.type === "Software")
+export default async function SoftwareUses() {
+  const software = await getSoftwareUses()
+  if (!software) return null
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
       {software.map((softwareItem) => (
-        <Suspense key={softwareItem.slug} fallback={<div />}>
-          <ProductCard
-            key={softwareItem.slug}
-            title={softwareItem.metadata.title}
-            description={softwareItem.metadata.description ?? ""}
-            link={softwareItem.metadata.link ?? ""}
-          />
-        </Suspense>
+        <ProductCard
+          key={softwareItem._id}
+          title={softwareItem.title}
+          description={softwareItem.note}
+          link={softwareItem.link}
+          shortLink={softwareItem.domain}
+          img={softwareItem.cover}
+        />
       ))}
     </div>
   )

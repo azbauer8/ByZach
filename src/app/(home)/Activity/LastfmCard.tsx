@@ -2,10 +2,9 @@ import Image from "next/image"
 import { PiWaveformBold } from "react-icons/pi"
 
 import type { LastFmData } from "@/types/apiData"
+import Skeleton from "@/components/ui/skeleton"
 import { Text } from "@/components/ui/text"
 import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
-
-import { LoadingLastFm } from "./Activity.loading"
 
 async function loader() {
   try {
@@ -22,7 +21,7 @@ async function loader() {
 export default async function LastFmCard() {
   const data = await loader()
 
-  if (!data) return <LoadingLastFm />
+  if (!data) return <LastFmFallback />
 
   const latestTrack = data.recenttracks.track[0]
   const playingWhen = latestTrack["@attr"]?.nowplaying
@@ -62,5 +61,18 @@ export default async function LastFmCard() {
         <Text affects="muted">{latestTrack.artist["#text"]}</Text>
       </div>
     </a>
+  )
+}
+
+function LastFmFallback() {
+  return (
+    <div className="flex max-w-xl items-center space-x-5">
+      <Skeleton className="aspect-square w-1/4 flex-none animate-pulse items-center justify-center self-center rounded-lg" />
+      <div className="my-auto grow space-y-3">
+        <Skeleton className="h-4 w-[100px] rounded-lg" />
+        <Skeleton className="h-4 w-[150px] rounded-lg" />
+        <Skeleton className="h-4 w-[125px] rounded-lg" />
+      </div>
+    </div>
   )
 }

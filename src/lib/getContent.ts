@@ -158,7 +158,7 @@ export function getDiscoveryCategories() {
       {} as { [key: string]: { metadata: DiscoveryMetadata }[] }
     )
   ).map(([key, value]) => ({
-    slug: slugify(key.toLowerCase()),
+    slug: slugify(key),
     metadata: {
       title: key,
       subtitle: `${value.length} discoveries`,
