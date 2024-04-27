@@ -8,6 +8,7 @@ import { PiArrowUpRightBold } from "react-icons/pi"
 
 import { cn } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
+import NavLink from "@/components/NavLink"
 import sidebarLinks from "@/components/Sidebar/links"
 import { mobileSidebarState } from "@/components/Sidebar/MobileSidebar"
 
@@ -69,15 +70,13 @@ function SidebarLink({
     link.href === "/" ? pathname === link.href : pathname.startsWith(link.href)
 
   return (
-    <Link
+    <NavLink
       href={link.href}
+      $active={active}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noreferrer" : undefined}
       onClick={() => isMobile && setMobileSidebarOpen(false)}
-      className={cn(
-        "flex size-full items-center gap-3 rounded-lg px-2 py-1.5 font-medium hover:bg-accent-secondary/55 active:bg-accent-secondary/55",
-        active && "bg-accent-secondary"
-      )}
+      className="flex items-center gap-3 font-medium"
       prefetch={!isExternal}
     >
       <div className="text-foreground-muted">{link.icon}</div>
@@ -91,6 +90,6 @@ function SidebarLink({
           />
         )}
       </div>
-    </Link>
+    </NavLink>
   )
 }

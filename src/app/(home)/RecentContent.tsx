@@ -79,7 +79,7 @@ function RecentContentList({
           {subtitle}
         </Text>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col space-y-0.5">
         {list.map((item) => (
           <Link
             key={item.slug}
@@ -87,19 +87,19 @@ function RecentContentList({
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noreferrer" : undefined}
             prefetch={!isExternal}
-            className="group -mx-3 flex items-center justify-between rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-accent active:bg-accent"
+            className="group -mx-3 space-y-0.5 rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-accent active:bg-accent"
           >
-            <div className="space-y-0.5">
+            <div className="flex items-center justify-between">
               <Text className="font-medium">{item.metadata.title}</Text>
-              <Text affects="muted">
-                {itemSubtitle === "description"
-                  ? item.metadata.description
-                  : formatDate(item.metadata.dateTime)}
-              </Text>
+              {isExternal && (
+                <PiArrowUpRightBold className="text-foreground-muted transition-colors group-hover:text-foreground group-active:text-foreground" />
+              )}
             </div>
-            {isExternal && (
-              <PiArrowUpRightBold className="text-foreground-muted transition-colors group-hover:text-foreground group-active:text-foreground" />
-            )}
+            <Text affects="muted">
+              {itemSubtitle === "description"
+                ? item.metadata.description
+                : formatDate(item.metadata.dateTime)}
+            </Text>
           </Link>
         ))}
       </div>

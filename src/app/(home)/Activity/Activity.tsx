@@ -5,13 +5,11 @@ import TraktCard from "./TraktCard"
 
 export default function Activity() {
   return (
-    <div className="space-y-5">
-      <div className="space-y-0.5">
-        <Text variant="h3">Activity</Text>
-        <Text variant="p" affects="muted">
-          I enjoy consuming media, sometimes.
-        </Text>
-      </div>
+    <div className="space-y-0.5">
+      <Text variant="h3">Activity</Text>
+      <Text variant="p" affects="muted">
+        I enjoy consuming media, sometimes.
+      </Text>
       <LastFmCard />
       <TraktCard />
     </div>

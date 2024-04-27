@@ -1,89 +1,18 @@
 import Image from "next/image"
 import { PiPopcornBold } from "react-icons/pi"
 
-import type { TraktEntry } from "@/types/apiData"
+import { getTrakt } from "@/lib/getActivity"
 import Skeleton from "@/components/ui/skeleton"
 import { Text } from "@/components/ui/text"
-import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
-
-async function getTrakt() {
-  try {
-    const response = await fetch(
-      "https://api.trakt.tv/users/zacharlatan/history?extended=full",
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "trakt-api-key": `${process.env.TRAKT_API}`,
-          "trakt-api-version": "2",
-        },
-        next: { revalidate: 10 },
-      }
-    )
-    const traktData: TraktEntry[] = await response.json()
-    const latest = traktData[0]
-    return {
-      type: latest.type,
-      title: latest.show
-        ? latest.show.title
-        : latest.movie
-          ? latest.movie.title
-          : "",
-      url: latest.show
-        ? `https://trakt.tv/shows/${latest.show.ids.slug}`
-        : `https://trakt.tv/movies/${latest.movie?.ids.slug}`,
-
-      playingWhen: latest.watched_at
-        ? getTimeDiff(latest.watched_at, "trakt")
-        : "Currently Watching",
-      tagline: latest.movie?.tagline,
-      episode: latest.episode?.title ?? undefined,
-      season: latest.episode?.season ?? undefined,
-      episodeNum: latest.episode?.number ?? undefined,
-      tmdbId:
-        latest?.type === "episode"
-          ? latest.show?.ids.tmdb
-          : latest.movie?.ids.tmdb,
-    }
-  } catch (e) {
-    return
-  }
-}
-
-async function getTraktPoster(
-  tmdbId: number | undefined,
-  type: "movie" | "episode"
-) {
-  const baseUrl = "https://api.themoviedb.org/3/configuration"
-  const imageUrl = `https://api.themoviedb.org/3/${type === "episode" ? "tv" : "movie"}/${tmdbId}/images`
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.TMDB_API}`,
-    },
-    next: { revalidate: 10 },
-  }
-  try {
-    const baseData = await fetch(baseUrl, options)
-      .then((res) => res.json())
-      .catch((err) => console.error(`error:${err}`))
-
-    const posterData = await fetch(imageUrl, options)
-      .then((res) => res.json())
-      .catch((err) => console.error(`error:${err}`))
-
-    return `${baseData.images.base_url}w500/${posterData.posters[0].file_path}`
-  } catch (e) {}
-}
 
 export default async function TraktCard() {
-  const data = await getTrakt()
+  const traktData = await getTrakt()
+  if (!traktData) return <TraktFallback />
+  const { data, poster } = traktData
   if (!data) return <TraktFallback />
-  const poster = await getTraktPoster(data?.tmdbId, data.type)
-
   return (
     <a
-      className="flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 active:opacity-60"
+      className="hover:bg-highlight-hover active:bg-highlight-hover -mx-3 flex items-center space-x-5 rounded-lg px-3 py-2 ring-offset-4 transition"
       href={data.url}
     >
       <Image
@@ -96,7 +25,7 @@ export default async function TraktCard() {
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
         sizes="100vw"
-        className="w-1/4 flex-none animate-reveal items-center justify-center self-center rounded-lg"
+        className="w-1/5 flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
 
       <div className="my-auto grow space-y-0.5">

@@ -16,6 +16,9 @@ module.exports = {
         divider: 'rgb(var(--divider))',
         accent: 'rgb(var(--accent))',
         "accent-secondary": 'rgb(var(--accent-secondary))',
+        highlight: 'rgb(var(--highlight))',
+        "highlight-hover": 'rgb(var(--highlight-hover))',
+        "highlight-border": 'rgb(var(--highlight-border))',
         neutral: 'rgb(var(--neutral))',
         primary: 'rgb(var(--primary))',
         secondary: 'rgb(var(--secondary))',
@@ -56,6 +59,7 @@ module.exports = {
       boxShadow: {
         card: 'var(--card-shadow)',
         'card-hover': 'var(--card-shadow-hover)',
+        "highlight-shadow": 'var(--highlight-shadow)',
       }
     },
   },

@@ -5,6 +5,8 @@ import type { Entry } from "@keystatic/core/reader"
 import projects from "~content/projects"
 import slugify from "slugify"
 
+import "server-only"
+
 type Metadata = {
   title: string
   dateTime: string | null

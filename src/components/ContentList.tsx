@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 
 import { capitalize, cn, formatDate } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
+import NavLink from "@/components/NavLink"
 import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebar"
 import StickyHeader from "@/components/StickyHeader"
 
@@ -52,14 +53,7 @@ export default function ContentList({
             const fullLink = `/${type}/${link.slug.toLowerCase()}`
             const active = path === fullLink
             return (
-              <Link
-                key={link.slug}
-                href={fullLink}
-                className={cn(
-                  "size-full rounded-lg px-2  py-1.5 hover:bg-accent-secondary/55 active:bg-accent-secondary/55",
-                  active && "bg-accent-secondary"
-                )}
-              >
+              <NavLink key={link.slug} href={fullLink} $active={active}>
                 <Text className="font-medium">{link.entry.title}</Text>
                 <Text className="text-sm text-foreground-muted">
                   {link.entry.subtitle
@@ -68,7 +62,7 @@ export default function ContentList({
                       ? formatDate(link.entry.dateTime)
                       : undefined}
                 </Text>
-              </Link>
+              </NavLink>
             )
           })}
         </div>

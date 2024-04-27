@@ -1,37 +1,19 @@
 import Image from "next/image"
 import { PiWaveformBold } from "react-icons/pi"
 
-import type { LastFmData } from "@/types/apiData"
+import { getLastFm } from "@/lib/getActivity"
 import Skeleton from "@/components/ui/skeleton"
 import { Text } from "@/components/ui/text"
-import { getTimeDiff } from "@/app/(home)/Activity/activityCalc"
-
-async function loader() {
-  try {
-    const response = await fetch(
-      `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
-      { next: { revalidate: 10 } }
-    )
-    return (await response.json()) as LastFmData
-  } catch (e) {
-    return
-  }
-}
 
 export default async function LastFmCard() {
-  const data = await loader()
-
+  const data = await getLastFm()
   if (!data) return <LastFmFallback />
-
-  const latestTrack = data.recenttracks.track[0]
-  const playingWhen = latestTrack["@attr"]?.nowplaying
-    ? "Now Playing"
-    : getTimeDiff(latestTrack.date["#text"], "lastfm")
+  const { latestTrack, playingWhen } = data
 
   return (
     <a
       className={
-        "flex max-w-xl items-center space-x-5 ring-offset-4 transition hover:opacity-60 active:opacity-60"
+        "hover:bg-highlight-hover active:bg-highlight-hover -mx-3 flex items-center space-x-5 rounded-lg px-3 py-2 ring-offset-4 transition"
       }
       href={latestTrack.url}
     >
@@ -45,7 +27,7 @@ export default async function LastFmCard() {
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
         sizes="100vw"
-        className="w-1/4 flex-none animate-reveal items-center justify-center self-center rounded-lg"
+        className="w-1/5 flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
 
       <div className="my-auto grow space-y-0.5">
