@@ -5,7 +5,7 @@ import { Text } from "@/components/ui/text"
 import { ContentLayout } from "@/components/ContentLayout"
 import Tabs from "@/app/uses/UsesTabs"
 
-export const runtime = "edge"
+// export const runtime = "edge"
 export const revalidate = 60
 
 export const metadata: Metadata = {
