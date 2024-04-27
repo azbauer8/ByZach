@@ -32,7 +32,6 @@ export default function RecentContent() {
         subtitle="Bits of code I often refer back to."
         route="/snippets"
         list={snippets}
-        isExternal
         itemSubtitle="dateTime"
       />
     </div>
