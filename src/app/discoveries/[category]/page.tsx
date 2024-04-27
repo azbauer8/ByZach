@@ -31,7 +31,7 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const categories = await getDiscoveryCategories()
   return categories?.map((category) => ({
-    category: slugify(category.slug),
+    category: slugify(category.slug.toLowerCase()),
   }))
 }
 

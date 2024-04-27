@@ -72,16 +72,7 @@ function RecentContentList({
             {title}
           </Anchor>
         ) : (
-          <Text
-            variant="h3"
-            className={
-              route
-                ? "underline-offset-2 hover:underline active:underline"
-                : undefined
-            }
-          >
-            {title}
-          </Text>
+          <Text variant="h3">{title}</Text>
         )}
 
         <Text variant="p" affects="muted">
@@ -93,26 +84,22 @@ function RecentContentList({
           <Link
             key={item.slug}
             href={item.metadata.link ?? `${route}/${item.slug}`}
-            className="group py-2"
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noreferrer" : undefined}
             prefetch={!isExternal}
+            className="group -mx-3 flex items-center justify-between rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-accent active:bg-accent"
           >
-            <div className="flex items-center gap-0.5">
-              <Text className="underline decoration-foreground-muted/35 decoration-2 underline-offset-2 transition-colors group-hover:decoration-foreground/75 group-active:decoration-foreground/75">
-                {item.metadata.title}
+            <div className="space-y-0.5">
+              <Text className="font-medium">{item.metadata.title}</Text>
+              <Text affects="muted">
+                {itemSubtitle === "description"
+                  ? item.metadata.description
+                  : formatDate(item.metadata.dateTime)}
               </Text>
-              {isExternal && (
-                <span className="translate-y-[-0.5px] text-[0.9em] text-foreground-muted transition-colors group-hover:text-foreground group-active:text-foreground">
-                  <PiArrowUpRightBold />
-                </span>
-              )}
             </div>
-            <Text affects="muted" className="text-sm">
-              {itemSubtitle === "description"
-                ? item.metadata.description
-                : formatDate(item.metadata.dateTime)}
-            </Text>
+            {isExternal && (
+              <PiArrowUpRightBold className="text-foreground-muted transition-colors group-hover:text-foreground group-active:text-foreground" />
+            )}
           </Link>
         ))}
       </div>

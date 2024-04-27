@@ -49,7 +49,7 @@ export default function ContentList({
         </Text>
         <div className={"flex flex-col gap-1"}>
           {links.map((link) => {
-            const fullLink = `/${type}/${link.slug}`
+            const fullLink = `/${type}/${link.slug.toLowerCase()}`
             const active = path === fullLink
             return (
               <Link
