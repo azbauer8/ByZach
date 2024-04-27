@@ -1,5 +1,3 @@
-import { cache } from "react"
-
 import { unslugify } from "@/lib/utils"
 
 import "server-only"
@@ -19,7 +17,7 @@ const options = {
 
 const url = "https://api.raindrop.io/rest/v1"
 
-export const getDiscoveryCategories = cache(async () => {
+export async function getDiscoveryCategories() {
   try {
     const response = await fetch(
       `${url}/tags/${collectionIds.discoveries}`,
@@ -37,9 +35,9 @@ export const getDiscoveryCategories = cache(async () => {
     console.info(error)
     return null
   }
-})
+}
 
-export const getDiscoveriesInCategory = cache(async (category: string) => {
+export async function getDiscoveriesInCategory(category: string) {
   try {
     const response = await fetch(
       `${url}/raindrops/${collectionIds.discoveries}?${new URLSearchParams({
@@ -53,9 +51,9 @@ export const getDiscoveriesInCategory = cache(async (category: string) => {
     console.info("error")
     return null
   }
-})
+}
 
-export const getSoftwareUses = cache(async () => {
+export async function getSoftwareUses() {
   try {
     const response = await fetch(
       `${url}/raindrops/${collectionIds.uses}`,
@@ -67,7 +65,7 @@ export const getSoftwareUses = cache(async () => {
     console.info("error")
     return null
   }
-})
+}
 
 type Raindrops = {
   result: boolean
