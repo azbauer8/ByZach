@@ -21,7 +21,7 @@ export default function MobileSidebar() {
         className="flex w-80 flex-col overflow-y-auto border-r-[0.5px] sm:w-60"
         side="left"
       >
-        <StickyHeader className="justify-end bg-content1">
+        <StickyHeader className="bg-accent justify-end">
           <Text
             affects="small"
             className="absolute left-1/2 max-w-[50vw] -translate-x-1/2 truncate"

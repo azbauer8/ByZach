@@ -59,21 +59,23 @@ const codeOptions: Options = {
 
 export function MDXContent(props: MDXRemoteProps) {
   return (
-    <MDXRemote
-      {...props}
-      components={{ ...components, ...props.components }}
-      options={{
-        mdxOptions: {
-          remarkPlugins: [],
-          rehypePlugins: [
-            // @ts-expect-error
-            [rehypePrettyCode, codeOptions],
-            [rehypeSlug],
-            [rehypeAutolinkHeadings, { behavior: "wrap" }],
-            [remarkGfm],
-          ],
-        },
-      }}
-    />
+    <div className="prose prose-neutral text-default-500 dark:prose-invert prose-a:no-underline">
+      <MDXRemote
+        {...props}
+        components={{ ...components, ...props.components }}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [],
+            rehypePlugins: [
+              // @ts-expect-error
+              [rehypePrettyCode, codeOptions],
+              [rehypeSlug],
+              [rehypeAutolinkHeadings, { behavior: "wrap" }],
+              [remarkGfm],
+            ],
+          },
+        }}
+      />
+    </div>
   )
 }

@@ -7,6 +7,8 @@ import { Button } from "@nextui-org/button"
 import { useAtom } from "jotai"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
+import { cn } from "@/lib/utils"
+import ButtonLink from "@/components/ui/ButtonLink"
 import { Text } from "@/components/ui/text"
 import sidebarLinks from "@/components/Sidebar/links"
 import { mobileSidebarState } from "@/components/Sidebar/MobileSidebar"
@@ -69,28 +71,26 @@ function SidebarLink({
     link.href === "/" ? pathname === link.href : pathname.startsWith(link.href)
 
   return (
-    <Button
+    <ButtonLink
       as={Link}
-      variant={active ? "solid" : "light"}
-      disableRipple
       href={link.href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noreferrer" : undefined}
       onClick={() => isMobile && setMobileSidebarOpen(false)}
-      className="flex h-auto items-center gap-3 px-2 py-1.5 font-medium"
-      prefetch={!isExternal}
-    >
-      <div className="text-default-500">{link.icon}</div>
-      <div className="flex flex-1 items-center justify-between">
-        {link.name}
-        {isExternal && (
+      active={active}
+      variant={active ? "flat" : "light"}
+      startContent={link.icon}
+      endContent={
+        isExternal && (
           <PiArrowUpRightBold
             size={14}
             strokeWidth={8}
-            className="text-default-500"
+            className="ml-auto text-default-500"
           />
-        )}
-      </div>
-    </Button>
+        )
+      }
+    >
+      {link.name}
+    </ButtonLink>
   )
 }

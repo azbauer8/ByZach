@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { Button } from "@nextui-org/button"
 
 import { capitalize, cn, formatDate } from "@/lib/utils"
+import ButtonLink from "@/components/ui/ButtonLink"
 import { Text } from "@/components/ui/text"
 import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebar"
 import StickyHeader from "@/components/StickyHeader"
@@ -31,11 +32,11 @@ export default function ContentList({
     <div
       className={cn(
         isContentPage
-          ? "absolute top-0 max-h-dvh min-h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px] bg-content1 xl:sticky xl:translate-x-0"
-          : "max-h-dvh min-h-dvh w-full overflow-y-auto xl:w-80 xl:border-r-[0.5px] xl:bg-content1"
+          ? "bg-accent absolute top-0 max-h-dvh min-h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px] xl:sticky xl:translate-x-0"
+          : "xl:bg-accent max-h-dvh min-h-dvh w-full overflow-y-auto xl:w-80 xl:border-r-[0.5px]"
       )}
     >
-      <StickyHeader className="gap-2 bg-background xl:hidden xl:bg-content1">
+      <StickyHeader className="xl:bg-accent gap-2 bg-background xl:hidden">
         <MobileSidebarToggle />
         <Text
           affects="small"
@@ -53,13 +54,13 @@ export default function ContentList({
             const fullLink = `/${type}/${link.slug.toLowerCase()}`
             const active = path === fullLink
             return (
-              <Button
+              <ButtonLink
                 key={link.slug}
                 as={Link}
-                variant={active ? "solid" : "light"}
-                disableRipple
+                variant={active ? "flat" : "light"}
                 href={fullLink}
-                className="h-auto flex-col items-start justify-start gap-0 px-2 py-1.5 text-base"
+                active={active}
+                className="flex-col items-start gap-0 text-base"
               >
                 <Text className="font-medium">{link.entry.title}</Text>
                 <Text className="text-sm text-default-500">
@@ -69,7 +70,7 @@ export default function ContentList({
                       ? formatDate(link.entry.dateTime)
                       : undefined}
                 </Text>
-              </Button>
+              </ButtonLink>
             )
           })}
         </div>

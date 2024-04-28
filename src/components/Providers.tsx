@@ -6,7 +6,6 @@ import { NextUIProvider } from "@nextui-org/react"
 import { Provider as JotaiProvider } from "jotai"
 import { ThemeProvider } from "next-themes"
 
-import ThemeInit from "@/components/Theme"
 import TailwindIndicator from "@/components/TwIndicator"
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -19,7 +18,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         defaultTheme="system"
         disableTransitionOnChange
       >
-        <ThemeInit />
         <JotaiProvider>{children}</JotaiProvider>
         <TailwindIndicator />
       </ThemeProvider>

@@ -1,5 +1,15 @@
-@import "./theme.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   @apply border-divider;
+}
+
+.buttonLink {
+  transform: perspective(1000px) translateZ(0px);
+}
+
+.buttonLink [data-pressed="true"] {
+  transform: perspective(1000px) translateZ(300px);
 }

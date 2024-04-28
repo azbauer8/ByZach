@@ -45,9 +45,7 @@ export default function Thought({ params }: { params: { thought: string } }) {
         <Text variant="h2">{thought.metadata.title}</Text>
         <Text affects="muted">{formatDate(thought.metadata.dateTime)}</Text>
       </div>
-      <main className="prose prose-neutral text-default-500 dark:prose-invert">
-        <MDXContent source={thought.content} />
-      </main>
+      <MDXContent source={thought.content} />
     </ContentLayout>
   )
 }

@@ -2,19 +2,15 @@
   @apply !max-w-none;
 }
 
+/* Code Blocks */
+
 .prose pre {
-  @apply relative space-y-4 rounded-lg border bg-content1 p-4 text-foreground;
+  @apply bg-accent relative space-y-4 rounded-lg border p-4 text-foreground;
 }
 
 .prose code,
 .prose pre {
-  min-width: 100%;
-  width: 0px;
-  overflow: auto;
-}
-
-.anchor {
-  @apply no-underline hover:underline hover:underline-offset-4 active:underline active:underline-offset-4;
+  @apply w-0 min-w-full;
 }
 
 code[data-theme*=" "],
@@ -32,9 +28,5 @@ code[data-theme*=" "] span {
 }
 
 figcaption[data-rehype-pretty-code-title] {
-  @apply ml-2.5 w-fit rounded-lg rounded-b-none border border-b-0 bg-content1 px-1.5 py-1 font-mono tracking-tight text-foreground;
-}
-
-.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  @apply !no-underline;
+  @apply bg-accent ml-2.5 w-fit rounded-lg rounded-b-none border border-b-0 px-1.5 py-1 font-mono tracking-tight text-foreground;
 }

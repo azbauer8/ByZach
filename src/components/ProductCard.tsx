@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card"
+import { Card, CardBody, CardHeader } from "@nextui-org/card"
 import { FaLink } from "react-icons/fa6"
 
 import { Text } from "@/components/ui/text"
@@ -26,6 +26,7 @@ export default function ProductCard({
       rel="noopener noreferrer"
       isPressable
       disableRipple
+      isHoverable
     >
       <CardHeader className="flex-col items-start gap-0.5">
         <Text variant="h5" className="line-clamp-1">

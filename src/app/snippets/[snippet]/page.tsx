@@ -49,9 +49,7 @@ export default function Snippet({ params }: { params: { snippet: string } }) {
           {snippet.metadata.description}
         </Text>
       </div>
-      <main className="prose prose-neutral dark:prose-invert">
-        <MDXContent source={snippet.content} />
-      </main>
+      <MDXContent source={snippet.content} />
     </ContentLayout>
   )
 }

@@ -3,9 +3,8 @@ import { siteLinks } from "@/config"
 
 import { Text } from "@/components/ui/text"
 import { ContentLayout } from "@/components/ContentLayout"
-import Tabs from "@/app/uses/UsesTabs"
+import UsesTabs from "@/app/uses/UsesTabs"
 
-// export const runtime = "edge"
 export const revalidate = 60
 
 export const metadata: Metadata = {
@@ -31,7 +30,7 @@ export default function UsesLayout({
   return (
     <ContentLayout title="Uses">
       <Text variant="h2">Uses</Text>
-      <Tabs />
+      <UsesTabs />
       {children}
     </ContentLayout>
   )
