@@ -40,7 +40,7 @@ export default function Thought({ params }: { params: { thought: string } }) {
   if (!thought) return null
 
   return (
-    <ContentLayout title={thought.metadata.title} type="thoughts" hasList>
+    <ContentLayout title={thought.metadata.title} list="thoughts">
       <div className="space-y-1.5">
         <Text variant="h2">{thought.metadata.title}</Text>
         <Text affects="muted">{formatDate(thought.metadata.dateTime)}</Text>

@@ -28,14 +28,17 @@ export default function ProductCard({
       disableRipple
     >
       <CardHeader className="flex-col items-start gap-0.5">
-        <Text variant="h4" className="line-clamp-1">
+        <Text variant="h5" className="line-clamp-1">
           {title}
         </Text>
-        <Text affects="muted" className="inline-flex items-center gap-0.5">
+        <Text
+          affects="muted"
+          className="inline-flex items-center gap-0.5 text-sm"
+        >
           <FaLink size={16} />
           {shortLink}
         </Text>
-        <Text className="line-clamp-2 leading-snug">{description}</Text>
+        <Text className="line-clamp-2 text-sm leading-snug">{description}</Text>
       </CardHeader>
       <CardBody className="aspect-[1200/630] place-content-end overflow-hidden">
         <Image

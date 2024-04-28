@@ -42,7 +42,7 @@ export default function Snippet({ params }: { params: { snippet: string } }) {
   if (!snippet) return null
 
   return (
-    <ContentLayout title={snippet.metadata.title} type="snippets" hasList>
+    <ContentLayout title={snippet.metadata.title} list="snippets">
       <div className="space-y-0.5">
         <Text variant="h2">{snippet.metadata.title}</Text>
         <Text variant="p" affects="muted">

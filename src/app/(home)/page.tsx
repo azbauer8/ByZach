@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <ContentLayout title="Zach Bauer" hasList={false}>
+    <ContentLayout title="Zach Bauer">
       <About />
       <RecentContent />
       <Activity />

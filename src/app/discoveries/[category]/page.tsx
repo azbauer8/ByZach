@@ -46,7 +46,7 @@ export default async function DiscoveryCategory({
   const category = discoveries[0].tags[0]
 
   return (
-    <ContentLayout title={category} type="discoveries" hasList>
+    <ContentLayout title={category} list="discoveries">
       <Text variant="h2">{category}</Text>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {discoveries.map((discovery) => (

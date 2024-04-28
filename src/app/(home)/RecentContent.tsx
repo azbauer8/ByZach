@@ -99,7 +99,7 @@ function RecentContentList({
                 <PiArrowUpRightBold className="text-foreground-muted transition-colors group-hover:text-foreground group-active:text-foreground" />
               )}
             </div>
-            <Text affects="muted">
+            <Text affects="muted" className="text-wrap">
               {itemSubtitle === "description"
                 ? item.metadata.description
                 : formatDate(item.metadata.dateTime)}

@@ -29,7 +29,7 @@ export default function UsesLayout({
   children: React.ReactNode
 }) {
   return (
-    <ContentLayout title="Uses" hasList={false}>
+    <ContentLayout title="Uses">
       <Text variant="h2">Uses</Text>
       <Tabs />
       {children}
