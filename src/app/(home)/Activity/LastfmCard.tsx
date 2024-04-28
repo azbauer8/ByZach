@@ -1,8 +1,9 @@
 import Image from "next/image"
+import { Button } from "@nextui-org/button"
+import { Skeleton } from "@nextui-org/skeleton"
 import { PiWaveformBold } from "react-icons/pi"
 
 import { getLastFm } from "@/lib/getActivity"
-import Skeleton from "@/components/ui/skeleton"
 import { Text } from "@/components/ui/text"
 
 export default async function LastFmCard() {
@@ -11,10 +12,11 @@ export default async function LastFmCard() {
   const { latestTrack, playingWhen } = data
 
   return (
-    <a
-      className={
-        "hover:bg-highlight-hover active:bg-highlight-hover -mx-3 flex items-center space-x-5 rounded-lg px-3 py-2 ring-offset-4 transition"
-      }
+    <Button
+      as="a"
+      variant="light"
+      disableRipple
+      className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2"
       href={latestTrack.url}
     >
       <Image
@@ -44,7 +46,7 @@ export default async function LastFmCard() {
           {latestTrack.artist["#text"]}
         </Text>
       </div>
-    </a>
+    </Button>
   )
 }
 

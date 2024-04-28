@@ -2,10 +2,10 @@
 
 import React from "react"
 import { siteConfig } from "@/config"
+import { Button } from "@nextui-org/button"
 import { atom, useAtom } from "jotai"
 import { PiSidebarSimpleDuotone, PiXBold } from "react-icons/pi"
 
-import Button from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 import { Text } from "@/components/ui/text"
 import SidebarLinks from "@/components/Sidebar/SidebarLinks"
@@ -32,6 +32,10 @@ export default function MobileSidebar() {
             onClick={() => setMobileSidebarOpen(false)}
             aria-label="Close sidebar"
             tabIndex={-1}
+            isIconOnly
+            size="sm"
+            variant="light"
+            disableRipple
           >
             <PiXBold size={14} />
           </Button>
@@ -51,6 +55,10 @@ export function MobileSidebarToggle() {
         className="xl:hidden"
         onClick={() => setMobileSidebarOpen(true)}
         aria-label="Open sidebar"
+        isIconOnly
+        variant="light"
+        size="sm"
+        disableRipple
       >
         <PiSidebarSimpleDuotone size={24} />
       </Button>

@@ -2,6 +2,7 @@ import "@/lib/utils"
 import "@/styles/prose.css"
 
 import Link from "next/link"
+import { Button } from "@nextui-org/button"
 import { PiCaretLeftBold } from "react-icons/pi"
 
 import { capitalize, cn } from "@/lib/utils"
@@ -27,16 +28,19 @@ export function ContentLayout({
         isContentHeader
         leftContent={
           hasList && type ? (
-            <Link
+            <Button
+              as={Link}
+              variant="light"
+              disableRipple
               href={`/${type}`}
               className={cn(
                 textVariants({ affects: "small" }),
-                "flex items-center rounded-lg p-1.5  hover:bg-neutral/40 active:bg-neutral/40"
+                "w-10 min-w-fit items-center rounded-lg px-1.5"
               )}
             >
               <PiCaretLeftBold size={20} />
-              <span className="hidden sm:block">{capitalize(type)}</span>
-            </Link>
+              <span className="hidden pr-1.5 sm:block">{capitalize(type)}</span>
+            </Button>
           ) : (
             <MobileSidebarToggle />
           )

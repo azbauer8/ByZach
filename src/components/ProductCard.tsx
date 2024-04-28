@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card"
 import { FaLink } from "react-icons/fa6"
 
 import { Text } from "@/components/ui/text"
@@ -17,13 +18,26 @@ export default function ProductCard({
   img: string
 }) {
   return (
-    <a
-      className="flex aspect-auto cursor-pointer flex-col gap-4 overflow-hidden rounded-xl p-4 shadow-card transition-shadow duration-300  ease-in-out hover:shadow-card-hover active:shadow-card-hover"
+    <Card
+      className="flex aspect-auto cursor-pointer flex-col overflow-hidden border"
+      as="a"
       href={link}
       target="_blank"
       rel="noopener noreferrer"
+      isPressable
+      disableRipple
     >
-      <span className="aspect-[1200/630] overflow-hidden rounded-lg">
+      <CardHeader className="flex-col items-start gap-0.5">
+        <Text variant="h4" className="line-clamp-1">
+          {title}
+        </Text>
+        <Text affects="muted" className="inline-flex items-center gap-0.5">
+          <FaLink size={16} />
+          {shortLink}
+        </Text>
+        <Text className="line-clamp-2 leading-snug">{description}</Text>
+      </CardHeader>
+      <CardBody className="aspect-[1200/630] place-content-end overflow-hidden">
         <Image
           src={img !== "" ? img : "/fallback.png"}
           alt={title}
@@ -35,15 +49,7 @@ export default function ProductCard({
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
         />
-      </span>
-      <div className="space-y-0.5">
-        <Text variant="h4">{title}</Text>
-        <Text affects="muted" className="inline-flex items-center gap-0.5">
-          <FaLink size={16} />
-          {shortLink}
-        </Text>
-        <Text className="leading-snug">{description}</Text>
-      </div>
-    </a>
+      </CardBody>
+    </Card>
   )
 }

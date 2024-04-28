@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Button } from "@nextui-org/button"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
 import { getProjects, getSnippets, getThoughts } from "@/lib/getLocalContent"
@@ -81,15 +82,18 @@ function RecentContentList({
       </div>
       <div className="flex flex-col space-y-0.5">
         {list.map((item) => (
-          <Link
+          <Button
             key={item.slug}
+            as={Link}
+            disableRipple
+            variant="light"
             href={item.metadata.link ?? `${route}/${item.slug}`}
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noreferrer" : undefined}
             prefetch={!isExternal}
-            className="group -mx-3 space-y-0.5 rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-accent active:bg-accent"
+            className="group -mx-3 h-auto flex-col items-start gap-0.5 px-3 py-2 text-base"
           >
-            <div className="flex items-center justify-between">
+            <div className="flex w-full items-center justify-between">
               <Text className="font-medium">{item.metadata.title}</Text>
               {isExternal && (
                 <PiArrowUpRightBold className="text-foreground-muted transition-colors group-hover:text-foreground group-active:text-foreground" />
@@ -100,7 +104,7 @@ function RecentContentList({
                 ? item.metadata.description
                 : formatDate(item.metadata.dateTime)}
             </Text>
-          </Link>
+          </Button>
         ))}
       </div>
     </div>

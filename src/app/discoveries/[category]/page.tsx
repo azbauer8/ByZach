@@ -53,7 +53,9 @@ export default async function DiscoveryCategory({
           <ProductCard
             key={discovery._id}
             title={discovery.title}
-            description={discovery.note}
+            description={
+              discovery.note !== "" ? discovery.note : discovery.excerpt
+            }
             link={discovery.link}
             shortLink={discovery.domain}
             img={discovery.cover}

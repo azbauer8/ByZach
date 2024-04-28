@@ -2,10 +2,10 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { Button } from "@nextui-org/button"
 
 import { capitalize, cn, formatDate } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
-import NavLink from "@/components/NavLink"
 import { MobileSidebarToggle } from "@/components/Sidebar/MobileSidebar"
 import StickyHeader from "@/components/StickyHeader"
 
@@ -39,7 +39,7 @@ export default function ContentList({
         <MobileSidebarToggle />
         <Text
           affects="small"
-          className="absolute left-1/2 max-w-[50vw] -translate-x-1/2 truncate"
+          className="absolute left-1/2 h-full max-w-[50vw] -translate-x-1/2 content-center truncate"
         >
           {title}
         </Text>
@@ -53,7 +53,14 @@ export default function ContentList({
             const fullLink = `/${type}/${link.slug.toLowerCase()}`
             const active = path === fullLink
             return (
-              <NavLink key={link.slug} href={fullLink} $active={active}>
+              <Button
+                key={link.slug}
+                as={Link}
+                variant={active ? "solid" : "light"}
+                disableRipple
+                href={fullLink}
+                className="h-auto flex-col items-start justify-start gap-0 px-2 py-1.5 text-base"
+              >
                 <Text className="font-medium">{link.entry.title}</Text>
                 <Text className="text-sm text-foreground-muted">
                   {link.entry.subtitle
@@ -62,7 +69,7 @@ export default function ContentList({
                       ? formatDate(link.entry.dateTime)
                       : undefined}
                 </Text>
-              </NavLink>
+              </Button>
             )
           })}
         </div>

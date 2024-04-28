@@ -1,8 +1,9 @@
 import Image from "next/image"
+import { Button } from "@nextui-org/button"
+import { Skeleton } from "@nextui-org/skeleton"
 import { PiPopcornBold } from "react-icons/pi"
 
 import { getTrakt } from "@/lib/getActivity"
-import Skeleton from "@/components/ui/skeleton"
 import { Text } from "@/components/ui/text"
 
 export default async function TraktCard() {
@@ -11,8 +12,11 @@ export default async function TraktCard() {
   const { data, poster } = traktData
   if (!data) return <TraktFallback />
   return (
-    <a
-      className="hover:bg-highlight-hover active:bg-highlight-hover -mx-3 flex items-center space-x-5 rounded-lg px-3 py-2 ring-offset-4 transition"
+    <Button
+      as="a"
+      variant="light"
+      disableRipple
+      className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2"
       href={data.url}
     >
       <Image
@@ -49,7 +53,7 @@ export default async function TraktCard() {
           </>
         )}
       </div>
-    </a>
+    </Button>
   )
 }
 

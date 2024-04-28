@@ -3,12 +3,11 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config"
+import { Button } from "@nextui-org/button"
 import { useAtom } from "jotai"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
-import { cn } from "@/lib/utils"
 import { Text } from "@/components/ui/text"
-import NavLink from "@/components/NavLink"
 import sidebarLinks from "@/components/Sidebar/links"
 import { mobileSidebarState } from "@/components/Sidebar/MobileSidebar"
 
@@ -70,13 +69,15 @@ function SidebarLink({
     link.href === "/" ? pathname === link.href : pathname.startsWith(link.href)
 
   return (
-    <NavLink
+    <Button
+      as={Link}
+      variant={active ? "solid" : "light"}
+      disableRipple
       href={link.href}
-      $active={active}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noreferrer" : undefined}
       onClick={() => isMobile && setMobileSidebarOpen(false)}
-      className="flex items-center gap-3 font-medium"
+      className="flex h-auto items-center gap-3 px-2 py-1.5 font-medium"
       prefetch={!isExternal}
     >
       <div className="text-foreground-muted">{link.icon}</div>
@@ -90,6 +91,6 @@ function SidebarLink({
           />
         )}
       </div>
-    </NavLink>
+    </Button>
   )
 }

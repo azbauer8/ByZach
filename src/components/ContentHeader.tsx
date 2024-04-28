@@ -37,13 +37,13 @@ export default function ContentHeader({
       <Text
         affects="small"
         className={cn(
-          "absolute left-1/2 max-w-[50vw] -translate-x-1/2 truncate transition-all duration-200 ease-in-out",
+          "absolute left-1/2 h-full max-w-[50vw] -translate-x-1/2 content-center truncate transition-all duration-200 ease-in-out",
           scroll >= breakpoint
             ? "translate-y-0 opacity-100"
             : "-translate-y-[10px] opacity-0"
         )}
       >
-        {title}
+        {title}gggg
       </Text>
       <div className="absolute right-3">{rightContent}</div>
     </div>

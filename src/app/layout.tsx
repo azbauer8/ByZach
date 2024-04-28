@@ -21,7 +21,7 @@ const asap = Asap({
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#FEFEFE" },
-    { media: "(prefers-color-scheme: dark)", color: "#080808" },
+    { media: "(prefers-color-scheme: dark)", color: "#121212" },
   ],
 }
 
@@ -76,15 +76,17 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "flex bg-background font-sans text-foreground antialiased",
+          "bg-background font-sans text-foreground antialiased",
           asap.variable,
           GeistMono.variable
         )}
       >
         <Providers>
-          <Sidebar />
+          <div className="flex">
+            <Sidebar />
+            <div className="flex-1">{children}</div>
+          </div>
           <MobileSidebar />
-          <div className="flex-1">{children}</div>
         </Providers>
         <Analytics />
         <SpeedInsights />
