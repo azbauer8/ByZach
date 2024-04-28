@@ -3,19 +3,23 @@ import { siteConfig, siteLinks } from "@/config"
 import "@/styles/global.css"
 
 import type { Metadata, Viewport } from "next"
-import { Asap } from "next/font/google"
+import { JetBrains_Mono, Source_Sans_3 } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { GeistMono } from "geist/font/mono"
 
 import { cn } from "@/lib/utils"
 import Providers from "@/components/Providers"
 import MobileSidebar from "@/components/Sidebar/MobileSidebar"
 import Sidebar from "@/components/Sidebar/Sidebar"
 
-const asap = Asap({
+const asap = Source_Sans_3({
   subsets: ["latin"],
   variable: "--font-sans",
+})
+
+const sourceCode = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 })
 
 export const viewport: Viewport = {
@@ -78,7 +82,7 @@ export default function RootLayout({
         className={cn(
           "bg-background font-sans text-foreground antialiased",
           asap.variable,
-          GeistMono.variable
+          sourceCode.variable
         )}
       >
         <Providers>
