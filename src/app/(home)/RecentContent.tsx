@@ -91,7 +91,7 @@ function RecentContentList({
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noreferrer" : undefined}
             prefetch={!isExternal}
-            className="group -mx-3 h-auto flex-col items-start gap-0.5 px-3 py-2 text-base"
+            className="group -mx-3 h-auto flex-col items-start gap-1 px-3 py-2 text-base"
           >
             <div className="flex w-full items-center justify-between">
               <Text className="font-medium">{item.metadata.title}</Text>
