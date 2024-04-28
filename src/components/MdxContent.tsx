@@ -1,6 +1,8 @@
+// import NextLink, { type LinkProps } from "next/link"
 import Image, { type ImageProps } from "next/image"
-import Link, { type LinkProps } from "next/link"
 import type { MDXProvider } from "@mdx-js/react"
+import { Link } from "@nextui-org/link"
+import type { LinkProps } from "@nextui-org/react"
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode, { type Options } from "rehype-pretty-code"
@@ -8,24 +10,24 @@ import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
 import { cn } from "@/lib/utils"
-import { InlineAnchor } from "@/components/ui/anchor"
 
-function CustomLink(
-  props: LinkProps & {
-    children: React.ReactNode
-    href: string
-  }
-) {
+function CustomLink(props: LinkProps & React.RefAttributes<HTMLAnchorElement>) {
   const href = props.href
-  if (href.startsWith("/")) return <Link {...props}>{props.children}</Link>
-  if (href.startsWith("#"))
+  if (href?.startsWith("#"))
     return (
       <a
         className="no-underline underline-offset-2 hover:underline"
         {...props}
       />
     )
-  return <InlineAnchor target="_blank" rel="noopener noreferrer" {...props} />
+  return (
+    <Link
+      color="foreground"
+      underline="hover"
+      isExternal={!href?.startsWith("/")}
+      {...props}
+    />
+  )
 }
 
 function RoundedImage({ alt, className, ...props }: ImageProps) {

@@ -16,10 +16,6 @@ module.exports = {
       colors: {
         background: 'rgb(var(--background))',
         foreground: 'rgb(var(--foreground))',
-        "foreground-muted": 'rgb(var(--foreground-muted))',
-        divider: 'rgb(var(--divider))',
-        neutral: 'rgb(var(--neutral))',
-        accent: 'rgb(var(--accent))',
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -6,19 +6,10 @@
   :root {
     --background: 254 254 254;
     --foreground: 46 46 46;
-    --foreground-muted: 100 100 105;
-    --divider: 17 17 17 / 0.15;
-    --neutral: 212 212 216;
-    --accent: 246, 243, 246;
-
     --radius: 0.5rem;
   }
   .dark {
     --background: 18 18 18;
     --foreground: 245 245 245;
-    --foreground-muted: 130 132 135;
-    --divider: 255 255 255 / 0.15;
-    --accent: 28 28 28;
-    --neutral: 63 63 70;
   }
 }

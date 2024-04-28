@@ -1,6 +1,6 @@
 import { siteLinks } from "@/config"
+import { Link } from "@nextui-org/link"
 
-import { InlineAnchor } from "@/components/ui/anchor"
 import { Text } from "@/components/ui/text"
 
 export default function About() {
@@ -13,11 +13,25 @@ export default function About() {
       <Text variant="p" affects="muted">
         {`Hey there! I'm Zach. I'm currently living in Philly
        and working at `}
-        <InlineAnchor href={siteLinks.sig}>SIG</InlineAnchor>
+        <Link
+          href={siteLinks.sig}
+          color="foreground"
+          underline="hover"
+          isExternal
+        >
+          SIG
+        </Link>
         {
           " developing internal monitoring and operations tools for support teams. In 2021, I graduated from "
         }
-        <InlineAnchor href={siteLinks.pitt}>Pitt</InlineAnchor>
+        <Link
+          href={siteLinks.pitt}
+          color="foreground"
+          underline="hover"
+          isExternal
+        >
+          Pitt
+        </Link>
         {` with a bachelor's in information science.`}
       </Text>
     </>

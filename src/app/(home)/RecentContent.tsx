@@ -1,10 +1,10 @@
-import Link from "next/link"
+import NextLink from "next/link"
 import { Button } from "@nextui-org/button"
+import { Link } from "@nextui-org/link"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
 import { getProjects, getSnippets, getThoughts } from "@/lib/getLocalContent"
 import { cn, formatDate } from "@/lib/utils"
-import { Anchor } from "@/components/ui/anchor"
 import { Text, textVariants } from "@/components/ui/text"
 
 export default function RecentContent() {
@@ -66,12 +66,14 @@ function RecentContentList({
     <div className="space-y-2">
       <div className="space-y-0.5">
         {route ? (
-          <Anchor
+          <Link
             href={route}
-            className={cn(textVariants({ variant: "h3" }), "w-full")}
+            className={cn(textVariants({ variant: "h3" }), "-mx-2")}
+            color="foreground"
+            isBlock
           >
             {title}
-          </Anchor>
+          </Link>
         ) : (
           <Text variant="h3">{title}</Text>
         )}
@@ -84,7 +86,7 @@ function RecentContentList({
         {list.map((item) => (
           <Button
             key={item.slug}
-            as={Link}
+            as={NextLink}
             disableRipple
             variant="light"
             href={item.metadata.link ?? `${route}/${item.slug}`}
@@ -96,7 +98,7 @@ function RecentContentList({
             <div className="flex w-full items-center justify-between">
               <Text className="font-medium">{item.metadata.title}</Text>
               {isExternal && (
-                <PiArrowUpRightBold className="text-foreground-muted transition-colors group-hover:text-foreground group-active:text-foreground" />
+                <PiArrowUpRightBold className="text-default-500 transition-colors group-hover:text-foreground group-active:text-foreground" />
               )}
             </div>
             <Text affects="muted" className="text-wrap">

@@ -80,14 +80,14 @@ function SidebarLink({
       className="flex h-auto items-center gap-3 px-2 py-1.5 font-medium"
       prefetch={!isExternal}
     >
-      <div className="text-foreground-muted">{link.icon}</div>
+      <div className="text-default-500">{link.icon}</div>
       <div className="flex flex-1 items-center justify-between">
         {link.name}
         {isExternal && (
           <PiArrowUpRightBold
             size={14}
             strokeWidth={8}
-            className="text-foreground-muted"
+            className="text-default-500"
           />
         )}
       </div>
