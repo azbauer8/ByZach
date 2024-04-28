@@ -38,7 +38,9 @@ export default function ProductCard({
           <FaLink size={16} />
           {shortLink}
         </Text>
-        <Text className="line-clamp-2 text-sm leading-snug">{description}</Text>
+        <Text className="line-clamp-2 text-sm leading-snug text-foreground/75">
+          {description}
+        </Text>
       </CardHeader>
       <CardBody className="aspect-[1200/630] place-content-end overflow-hidden">
         <Image

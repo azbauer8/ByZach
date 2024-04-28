@@ -35,11 +35,12 @@ export default function ContentHeader({
         <Button
           as={Link}
           variant="light"
+          size="sm"
           disableRipple
           href={`/${list}`}
           className={cn(
             textVariants({ affects: "small" }),
-            "w-10 min-w-fit items-center rounded-lg px-1.5"
+            "w-8 min-w-fit items-center gap-1 rounded-lg px-1.5"
           )}
         >
           <PiCaretLeftBold size={20} />
