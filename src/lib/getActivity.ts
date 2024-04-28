@@ -108,7 +108,7 @@ type LastFmData = {
   }
 }
 
-export function getTimeDiff(givenDate: string, type: "lastfm" | "trakt") {
+function getTimeDiff(givenDate: string, type: "lastfm" | "trakt") {
   const givenDatetime =
     type === "trakt" ? new Date(`${givenDate}`) : new Date(`${givenDate} UTC`)
   const currentDatetime = new Date()

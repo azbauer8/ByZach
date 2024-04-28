@@ -12,11 +12,11 @@ type Metadata = {
   dateTime: string | null
 }
 
-export type ThoughtMetadata = Entry<
+type ThoughtMetadata = Entry<
   (typeof keystaticConfig)["collections"]["thoughts"]
 >
 
-export type SnippetMetadata = Entry<
+type SnippetMetadata = Entry<
   (typeof keystaticConfig)["collections"]["snippets"]
 >
 
