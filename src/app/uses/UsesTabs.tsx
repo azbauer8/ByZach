@@ -13,7 +13,10 @@ export default function UsesTabs() {
       selectedKey={pathname}
       defaultSelectedKey="/uses"
       variant="bordered"
-      classNames={{ base: "w-full", tabList: "w-full" }}
+      classNames={{
+        base: "w-full",
+        tabList: "w-full border-divider border bg-content1 dark:bg-content1",
+      }}
     >
       <Tab as={Link} key="/uses" href="/uses" title="Software" />
       <Tab
