@@ -1,4 +1,4 @@
-import { Text } from "@/components/ui/text"
+import { Typography } from "@/components/Primitives/Typography"
 
 import LastFmCard from "./LastfmCard"
 import TraktCard from "./TraktCard"
@@ -6,10 +6,10 @@ import TraktCard from "./TraktCard"
 export default function Activity() {
   return (
     <div className="space-y-0.5">
-      <Text variant="h3">Activity</Text>
-      <Text variant="p" affects="muted">
+      <Typography variant="h3">Activity</Typography>
+      <Typography variant="p" affects="muted">
         I enjoy consuming media, sometimes.
-      </Text>
+      </Typography>
       <LastFmCard />
       <TraktCard />
     </div>

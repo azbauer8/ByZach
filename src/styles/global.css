@@ -13,3 +13,7 @@
 .buttonLink [data-pressed="true"] {
   transform: perspective(1000px) translateZ(300px);
 }
+
+.navDrawer {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

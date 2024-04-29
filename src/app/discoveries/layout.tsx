@@ -1,9 +1,9 @@
 import { getDiscoveryCategories } from "@/lib/getRaindrop"
-import ContentList from "@/components/ContentList"
+import ListColumn from "@/components/ListColumn"
 
 export const revalidate = 60
 
-export default function ContentLayout({
+export default function DiscoveriesLayout({
   children,
 }: {
   children: React.ReactNode
@@ -20,5 +20,5 @@ async function Discoveries() {
   const discoveries = await getDiscoveryCategories()
   if (!discoveries) return null
 
-  return <ContentList type="discoveries" links={discoveries} />
+  return <ListColumn type="Discoveries" links={discoveries} />
 }

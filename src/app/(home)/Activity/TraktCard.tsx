@@ -1,10 +1,10 @@
 import Image from "next/image"
 import { Button } from "@nextui-org/button"
-import { Skeleton } from "@nextui-org/skeleton"
 import { PiPopcornBold } from "react-icons/pi"
 
 import { getTrakt } from "@/lib/getActivity"
-import { Text } from "@/components/ui/text"
+import { Skeleton } from "@/components/Primitives/Skeleton"
+import { Typography } from "@/components/Primitives/Typography"
 
 export default async function TraktCard() {
   const traktData = await getTrakt()
@@ -35,21 +35,21 @@ export default async function TraktCard() {
       <div className="my-auto grow space-y-0.5">
         <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
           <PiPopcornBold className="size-5" />
-          <Text affects="small">{data.playingWhen}</Text>
+          <Typography affects="small">{data.playingWhen}</Typography>
         </div>
-        <Text variant="h5">{data.title}</Text>
+        <Typography variant="h5">{data.title}</Typography>
         {data.episode ? (
           <>
-            <Text
+            <Typography
               affects="muted"
               className="text-sm"
-            >{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Text>
+            >{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Typography>
           </>
         ) : (
           <>
-            <Text affects="muted" className="text-sm italic">
+            <Typography affects="muted" className="text-sm italic">
               {data.tagline}
-            </Text>
+            </Typography>
           </>
         )}
       </div>
@@ -59,12 +59,23 @@ export default async function TraktCard() {
 
 function TraktFallback() {
   return (
-    <div className="flex max-w-xl items-center space-x-5">
-      <Skeleton className="aspect-[2/3] w-1/4 flex-none animate-pulse items-center justify-center self-center rounded-lg" />
-      <div className="my-auto grow space-y-3">
-        <Skeleton className="h-4 w-[100px] rounded-lg" />
-        <Skeleton className="h-4 w-[150px] rounded-lg" />
-        <Skeleton className="h-4 w-[125px] rounded-lg" />
+    <div className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2">
+      <Image
+        src="/trakt_placeholder.svg"
+        alt="Poster Placeholder"
+        width={144}
+        height={216}
+        loading="eager"
+        priority
+        placeholder="blur"
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
+        sizes="100vw"
+        className="w-1/5 flex-none items-center justify-center self-center rounded-lg"
+      />
+      <div className="my-auto w-full flex-1 space-y-3">
+        <Skeleton className="h-4 w-[100px] rounded-lg" disableAnimation />
+        <Skeleton className="h-4 w-[150px] rounded-lg" disableAnimation />
+        <Skeleton className="h-4 w-[125px] rounded-lg" disableAnimation />
       </div>
     </div>
   )

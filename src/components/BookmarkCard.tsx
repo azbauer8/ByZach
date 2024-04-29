@@ -2,9 +2,9 @@ import Image from "next/image"
 import { Card, CardBody, CardHeader } from "@nextui-org/card"
 import { FaLink } from "react-icons/fa6"
 
-import { Text } from "@/components/ui/text"
+import { Typography } from "@/components/Primitives/Typography"
 
-export default function ProductCard({
+export default function BookmarkCard({
   title,
   description,
   link,
@@ -29,19 +29,19 @@ export default function ProductCard({
       isHoverable
     >
       <CardHeader className="flex-col items-start gap-0.5">
-        <Text variant="h5" className="line-clamp-1">
+        <Typography variant="h5" className="line-clamp-1">
           {title}
-        </Text>
-        <Text
+        </Typography>
+        <Typography
           affects="muted"
           className="inline-flex items-center gap-0.5 text-sm"
         >
           <FaLink size={16} />
           {shortLink}
-        </Text>
-        <Text className="line-clamp-2 text-sm leading-snug text-foreground/75">
+        </Typography>
+        <Typography className="line-clamp-2 text-sm leading-snug text-foreground/75">
           {description}
-        </Text>
+        </Typography>
       </CardHeader>
       <CardBody className="aspect-[1200/630] place-content-end overflow-hidden">
         <Image

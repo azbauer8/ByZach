@@ -1,7 +1,7 @@
 import { getSnippets } from "@/lib/getLocalContent"
-import ContentList from "@/components/ContentList"
+import ListColumn from "@/components/ListColumn"
 
-export default function ContentLayout({
+export default function SnippetsLayout({
   children,
 }: {
   children: React.ReactNode
@@ -23,5 +23,5 @@ async function Snippets() {
     },
   }))
 
-  return <ContentList type="snippets" links={snippets} />
+  return <ListColumn type="Snippets" links={snippets} />
 }

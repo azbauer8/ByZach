@@ -1,5 +1,5 @@
 import { getSoftwareUses } from "@/lib/getRaindrop"
-import ProductCard from "@/components/ProductCard"
+import BookmarkCard from "@/components/BookmarkCard"
 
 export default async function SoftwareUses() {
   const software = await getSoftwareUses()
@@ -7,7 +7,7 @@ export default async function SoftwareUses() {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
       {software.map((softwareItem) => (
-        <ProductCard
+        <BookmarkCard
           key={softwareItem._id}
           title={softwareItem.title}
           description={softwareItem.note}

@@ -1,9 +1,8 @@
 import { siteLinks } from "@/config"
 
 import { getSnippet, getSnippets } from "@/lib/getLocalContent"
-import { Text } from "@/components/ui/text"
-import { ContentLayout } from "@/components/ContentLayout"
-import { MDXContent } from "@/components/MdxContent"
+import { Markdown } from "@/components/Markdown"
+import PageLayout from "@/components/PageLayout"
 
 export const dynamicParams = false
 
@@ -42,14 +41,12 @@ export default function Snippet({ params }: { params: { snippet: string } }) {
   if (!snippet) return null
 
   return (
-    <ContentLayout title={snippet.metadata.title} list="snippets">
-      <div className="space-y-0.5">
-        <Text variant="h2">{snippet.metadata.title}</Text>
-        <Text variant="p" affects="muted">
-          {snippet.metadata.description}
-        </Text>
-      </div>
-      <MDXContent source={snippet.content} />
-    </ContentLayout>
+    <PageLayout
+      title={snippet.metadata.title}
+      subtitle={snippet.metadata.description}
+      previousPage={{ link: "/snippets", title: "Snippets" }}
+    >
+      <Markdown source={snippet.content} />
+    </PageLayout>
   )
 }

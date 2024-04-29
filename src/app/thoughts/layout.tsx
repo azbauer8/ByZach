@@ -1,5 +1,5 @@
 import { getThoughts } from "@/lib/getLocalContent"
-import ContentList from "@/components/ContentList"
+import ListColumn from "@/components/ListColumn"
 
 export default function ThoughtsLayout({
   children,
@@ -23,5 +23,5 @@ function Thoughts() {
     },
   }))
 
-  return <ContentList type="thoughts" links={thoughts} />
+  return <ListColumn type="Thoughts" links={thoughts} />
 }

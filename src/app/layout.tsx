@@ -8,9 +8,9 @@ import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { cn } from "@/lib/utils"
-import Providers from "@/components/Providers"
-import MobileSidebar from "@/components/Sidebar/MobileSidebar"
-import Sidebar from "@/components/Sidebar/Sidebar"
+import NavDrawer from "@/components/Global/NavDrawer"
+import Providers from "@/components/Global/Providers"
+import Sidebar from "@/components/Global/Sidebar/Sidebar"
 
 const asap = Source_Sans_3({
   subsets: ["latin"],
@@ -90,7 +90,7 @@ export default function RootLayout({
             <Sidebar />
             <div className="flex-1">{children}</div>
           </div>
-          <MobileSidebar />
+          <NavDrawer />
         </Providers>
         <Analytics />
         <SpeedInsights />

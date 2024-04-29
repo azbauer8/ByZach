@@ -5,7 +5,10 @@ import { PiArrowUpRightBold } from "react-icons/pi"
 
 import { getProjects, getSnippets, getThoughts } from "@/lib/getLocalContent"
 import { cn, formatDate } from "@/lib/utils"
-import { Text, textVariants } from "@/components/ui/text"
+import {
+  Typography,
+  typographyVariants,
+} from "@/components/Primitives/Typography"
 
 export default function RecentContent() {
   const projects = getProjects(5)
@@ -68,19 +71,19 @@ function RecentContentList({
         {route ? (
           <Link
             href={route}
-            className={cn(textVariants({ variant: "h3" }), "-mx-2")}
+            className={cn(typographyVariants({ variant: "h3" }), "-mx-2")}
             color="foreground"
             isBlock
           >
             {title}
           </Link>
         ) : (
-          <Text variant="h3">{title}</Text>
+          <Typography variant="h3">{title}</Typography>
         )}
 
-        <Text variant="p" affects="muted">
+        <Typography variant="p" affects="muted">
           {subtitle}
-        </Text>
+        </Typography>
       </div>
       <div className="flex flex-col space-y-0.5">
         {list.map((item) => (
@@ -96,16 +99,18 @@ function RecentContentList({
             className="group -mx-3 h-auto flex-col items-start gap-1 px-3 py-2 text-base"
           >
             <div className="flex w-full items-center justify-between">
-              <Text className="font-medium">{item.metadata.title}</Text>
+              <Typography className="font-medium">
+                {item.metadata.title}
+              </Typography>
               {isExternal && (
                 <PiArrowUpRightBold className="text-default-500 transition-colors group-hover:text-foreground group-active:text-foreground" />
               )}
             </div>
-            <Text affects="muted" className="text-wrap">
+            <Typography affects="muted" className="text-wrap">
               {itemSubtitle === "description"
                 ? item.metadata.description
                 : formatDate(item.metadata.dateTime)}
-            </Text>
+            </Typography>
           </Button>
         ))}
       </div>

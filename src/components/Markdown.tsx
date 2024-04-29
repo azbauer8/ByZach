@@ -1,8 +1,7 @@
-// import NextLink, { type LinkProps } from "next/link"
 import Image, { type ImageProps } from "next/image"
 import type { MDXProvider } from "@mdx-js/react"
 import { Link } from "@nextui-org/link"
-import type { LinkProps } from "@nextui-org/react"
+import type { LinkProps } from "@nextui-org/link"
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode, { type Options } from "rehype-pretty-code"
@@ -57,7 +56,7 @@ const codeOptions: Options = {
   keepBackground: false,
 }
 
-export function MDXContent(props: MDXRemoteProps) {
+export function Markdown(props: MDXRemoteProps) {
   return (
     <div className="prose prose-neutral text-default-500 dark:prose-invert prose-a:no-underline">
       <MDXRemote

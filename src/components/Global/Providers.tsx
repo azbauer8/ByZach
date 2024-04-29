@@ -6,7 +6,7 @@ import { NextUIProvider } from "@nextui-org/react"
 import { Provider as JotaiProvider } from "jotai"
 import { ThemeProvider } from "next-themes"
 
-import TailwindIndicator from "@/components/TwIndicator"
+import TailwindIndicator from "@/components/Global/TwIndicator"
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const router = useRouter()

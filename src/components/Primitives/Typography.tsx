@@ -3,7 +3,7 @@ import type { TwcComponentProps } from "react-twc"
 
 import { twcn } from "@/lib/utils"
 
-const textVariants = cva("", {
+const typographyVariants = cva("", {
   variants: {
     variant: {
       h1: "text-4xl font-extrabold tracking-tight lg:text-5xl",
@@ -23,10 +23,10 @@ const textVariants = cva("", {
 })
 
 type TypographyProps = TwcComponentProps<"header"> &
-  VariantProps<typeof textVariants>
+  VariantProps<typeof typographyVariants>
 
-const Text = twcn.header<TypographyProps>(({ variant, affects }) =>
-  textVariants({ variant, affects })
+const Typography = twcn.header<TypographyProps>(({ variant, affects }) =>
+  typographyVariants({ variant, affects })
 )
 
-export { Text, textVariants }
+export { Typography, typographyVariants }

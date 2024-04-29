@@ -2,9 +2,8 @@ import { siteLinks } from "@/config"
 
 import { getThought, getThoughts } from "@/lib/getLocalContent"
 import { formatDate } from "@/lib/utils"
-import { Text } from "@/components/ui/text"
-import { ContentLayout } from "@/components/ContentLayout"
-import { MDXContent } from "@/components/MdxContent"
+import { Markdown } from "@/components/Markdown"
+import PageLayout from "@/components/PageLayout"
 
 export const dynamicParams = false
 
@@ -40,12 +39,12 @@ export default function Thought({ params }: { params: { thought: string } }) {
   if (!thought) return null
 
   return (
-    <ContentLayout title={thought.metadata.title} list="thoughts">
-      <div className="space-y-1.5">
-        <Text variant="h2">{thought.metadata.title}</Text>
-        <Text affects="muted">{formatDate(thought.metadata.dateTime)}</Text>
-      </div>
-      <MDXContent source={thought.content} />
-    </ContentLayout>
+    <PageLayout
+      title={thought.metadata.title}
+      subtitle={formatDate(thought.metadata.dateTime)}
+      previousPage={{ link: "/thoughts", title: "Thoughts" }}
+    >
+      <Markdown source={thought.content} />
+    </PageLayout>
   )
 }
