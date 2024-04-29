@@ -2,8 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  @apply border-divider;
+@layer base {
+  * {
+    @apply relative min-w-0 border-divider;
+  }
+  body {
+    @apply min-h-dvh;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-balance;
+  }
+  p {
+    @apply text-pretty;
+  }
 }
 
 .buttonLink {
