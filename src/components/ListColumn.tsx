@@ -28,8 +28,8 @@ export default function ListColumn({
     <div
       className={cn(
         isContentPage
-          ? "absolute top-0 h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px] bg-accent pt-0 xl:sticky xl:translate-x-0"
-          : "w-full overflow-y-auto pb-12 pt-9 xl:h-dvh xl:w-80 xl:border-r-[0.5px] xl:bg-accent"
+          ? "absolute top-0 h-dvh w-80 -translate-x-full overflow-y-auto border-r-[0.5px] bg-accent xl:sticky xl:translate-x-0"
+          : "w-full overflow-y-auto pb-12 pt-9 xl:h-dvh xl:w-80 xl:border-r-[0.5px] xl:bg-accent xl:pt-0"
       )}
     >
       <div className="space-y-2 p-3">
