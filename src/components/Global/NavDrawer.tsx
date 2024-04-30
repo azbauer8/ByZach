@@ -29,7 +29,7 @@ export default function NavDrawer() {
     // set theme color to overlay
     setTimeout(() => {
       if (value) {
-        if (typeof window != "undefined" && window.document) {
+        if (typeof window !== "undefined" && window.document) {
           document.body.style.overflow = "hidden"
         }
         document
@@ -95,7 +95,7 @@ export default function NavDrawer() {
           <PiCaretDoubleUpBold className={cn("size-5", open && "rotate-180")} />
         </div>
         {/* popup content */}
-        <div className="grid grid-cols-3 gap-1 p-4 pt-1 md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-3 gap-1 p-4 pt-1 ">
           {navLinks.site.map((link) => {
             const active =
               link.href === "/"
