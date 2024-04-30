@@ -52,6 +52,18 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  twitter: {
+    title: siteConfig.title,
+    card: "summary_large_image",
+  },
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteLinks.here,
+    siteName: siteConfig.title,
+    locale: "en_US",
+    type: "website",
+  },
 }
 
 export default function RootLayout({

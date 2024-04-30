@@ -18,6 +18,7 @@ export function generateMetadata({ params }: { params: { thought: string } }) {
       title,
       type: "article",
       url: `${siteLinks.here}/thoughts/${thought.slug}`,
+      publishedTime: thought.metadata.dateTime || undefined,
     },
     twitter: {
       card: "summary_large_image",

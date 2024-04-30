@@ -19,6 +19,7 @@ export function generateMetadata({ params }: { params: { snippet: string } }) {
       description,
       type: "article",
       url: `${siteLinks.here}/snippets/${snippet.slug}`,
+      publishedTime: snippet.metadata.dateTime || undefined,
     },
     twitter: {
       card: "summary_large_image",
