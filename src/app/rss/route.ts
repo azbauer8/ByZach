@@ -1,5 +1,4 @@
-import { siteConfig, siteLinks } from "@/config"
-
+import { siteConfig, siteLinks } from "@/lib/consts"
 import { getThoughts } from "@/lib/getLocalContent"
 
 export function GET() {

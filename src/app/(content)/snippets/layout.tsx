@@ -1,3 +1,4 @@
+import { pageHeaders } from "@/lib/consts"
 import { getSnippets } from "@/lib/getLocalContent"
 import ListColumn from "@/components/ListColumn"
 
@@ -23,5 +24,11 @@ async function Snippets() {
     },
   }))
 
-  return <ListColumn type="Snippets" links={snippets} />
+  return (
+    <ListColumn
+      title={pageHeaders.snippets.title}
+      subtitle={pageHeaders.snippets.subtitle}
+      links={snippets}
+    />
+  )
 }

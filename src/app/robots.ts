@@ -1,4 +1,4 @@
-import { siteLinks } from "@/config"
+import { siteLinks } from "@/lib/consts"
 
 export default function robots() {
   return {

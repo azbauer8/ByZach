@@ -4,7 +4,11 @@ import "server-only"
 
 import slugify from "slugify"
 
-const collectionIds = { uses: 43494387, discoveries: 43494386 }
+const collectionIds = {
+  uses: 43494387,
+  discoveries: 43494386,
+  projects: 43642995,
+}
 
 const options = {
   method: "GET",
@@ -16,6 +20,20 @@ const options = {
 }
 
 const url = "https://api.raindrop.io/rest/v1"
+
+export async function getProjects(limit?: number) {
+  try {
+    const response = await fetch(
+      `${url}/raindrops/${collectionIds.projects}`,
+      options
+    )
+    const projects: Raindrops = await response.json()
+    return limit ? projects.items.slice(0, limit) : projects.items
+  } catch (error) {
+    console.info("error")
+    return null
+  }
+}
 
 export async function getDiscoveryCategories() {
   try {

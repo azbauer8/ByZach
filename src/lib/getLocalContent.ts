@@ -2,8 +2,6 @@ import fs from "node:fs"
 import path from "node:path"
 import type keystaticConfig from "@/../keystatic.config"
 import type { Entry } from "@keystatic/core/reader"
-import projects from "~content/projects"
-import slugify from "slugify"
 
 import "server-only"
 
@@ -97,16 +95,4 @@ export function getSnippets(limit?: number) {
 
 export function getSnippet(slug: string) {
   return getSnippets().filter((t) => t.slug === slug)?.[0] ?? undefined
-}
-
-export function getProjects(limit?: number) {
-  const projectsList = projects.map((project) => ({
-    slug: slugify(project.title),
-    metadata: {
-      title: project.title,
-      description: project.description,
-      link: project.link,
-    },
-  }))
-  return limit ? projectsList.slice(0, limit) : projectsList
 }

@@ -1,4 +1,4 @@
-import { siteConfig, siteLinks } from "@/config"
+import { siteConfig } from "@/lib/consts"
 
 import "@/styles/global.css"
 
@@ -7,6 +7,7 @@ import { JetBrains_Mono, Source_Sans_3 } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
+import { siteLinks } from "@/lib/consts"
 import { cn } from "@/lib/utils"
 import NavDrawer from "@/components/Global/NavDrawer"
 import Providers from "@/components/Global/Providers"
@@ -30,10 +31,6 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.title,
-    template: `%s | ${siteConfig.title}`,
-  },
   description: siteConfig.description,
   applicationName: siteConfig.title,
   icons: {
@@ -44,19 +41,6 @@ export const metadata: Metadata = {
     canonical: siteLinks.here,
   },
   metadataBase: new URL(siteLinks.here),
-  openGraph: {
-    title: siteConfig.title,
-    description: siteConfig.description,
-    url: siteLinks.here,
-    siteName: siteConfig.title,
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.description,
-  },
   robots: {
     index: true,
     follow: true,

@@ -1,5 +1,4 @@
-import { siteLinks } from "@/config"
-
+import { siteLinks } from "@/lib/consts"
 import { getThought, getThoughts } from "@/lib/getLocalContent"
 import { formatDate } from "@/lib/utils"
 import { Markdown } from "@/components/Markdown"

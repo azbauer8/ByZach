@@ -1,6 +1,4 @@
-import { siteConfig } from "@/config"
-
-import sidebarLinks from "@/components/Global/Sidebar/links"
+import { navLinks, siteConfig, siteLinks } from "@/lib/consts"
 import SidebarLink from "@/components/Global/Sidebar/SidebarLink"
 import { Typography } from "@/components/Primitives/Typography"
 
@@ -13,7 +11,7 @@ export default function Sidebar() {
         </Typography>
         <div className="space-y-5">
           <div className="flex flex-col gap-1">
-            {sidebarLinks.site.map((link) => (
+            {navLinks.site.map((link) => (
               <SidebarLink key={link.name} link={link} />
             ))}
           </div>
@@ -22,7 +20,7 @@ export default function Sidebar() {
               Professional
             </Typography>
             <div className="flex flex-col gap-1">
-              {sidebarLinks.professional.map((link) => (
+              {siteLinks.professional.map((link) => (
                 <SidebarLink key={link.name} link={link} isExternal />
               ))}
             </div>
@@ -32,7 +30,7 @@ export default function Sidebar() {
               Personal
             </Typography>
             <div className="flex flex-col gap-1">
-              {sidebarLinks.personal.map((link) => (
+              {siteLinks.personal.map((link) => (
                 <SidebarLink key={link.name} link={link} isExternal />
               ))}
             </div>

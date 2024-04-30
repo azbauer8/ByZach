@@ -3,42 +3,53 @@ import { Button } from "@nextui-org/button"
 import { Link } from "@nextui-org/link"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
-import { getProjects, getSnippets, getThoughts } from "@/lib/getLocalContent"
-import { cn, formatDate } from "@/lib/utils"
-import {
-  Typography,
-  typographyVariants,
-} from "@/components/Primitives/Typography"
+import { pageHeaders } from "@/lib/consts"
+import { getSnippets, getThoughts } from "@/lib/getLocalContent"
+import { getProjects } from "@/lib/getRaindrop"
+import { formatDate } from "@/lib/utils"
+import { Typography } from "@/components/Primitives/Typography"
 
-export default function RecentContent() {
-  const projects = getProjects(5)
-  const thoughts = getThoughts(5)
-  const snippets = getSnippets(5)
+export default async function RecentContent() {
+  const projects = await getProjects(3).then((projects) =>
+    projects?.map((project) => ({
+      slug: project._id.toString(),
+      metadata: {
+        title: project.title,
+        link: project.link,
+        description: project.note !== "" ? project.note : project.excerpt,
+      },
+    }))
+  )
+  const thoughts = getThoughts(3)
+  const snippets = getSnippets(3)
 
   return (
-    <div className="space-y-5">
+    <>
+      {projects && (
+        <RecentContentList
+          title={pageHeaders.projects.title}
+          subtitle={pageHeaders.projects.subtitle}
+          route="/projects"
+          list={projects}
+          isExternal
+          itemSubtitle="description"
+        />
+      )}
       <RecentContentList
-        title="Projects"
-        subtitle="My latest work and experiments."
-        list={projects}
-        isExternal
-        itemSubtitle="description"
-      />
-      <RecentContentList
-        title="Thoughts"
-        subtitle="Poorly conveyed ideas about technology, design, and the web."
+        title={pageHeaders.thoughts.title}
+        subtitle={pageHeaders.thoughts.subtitle}
         route="/thoughts"
         list={thoughts}
         itemSubtitle="dateTime"
       />
       <RecentContentList
-        title="Snippets"
-        subtitle="Bits of code I often refer back to."
+        title={pageHeaders.snippets.title}
+        subtitle={pageHeaders.snippets.subtitle}
         route="/snippets"
         list={snippets}
         itemSubtitle="dateTime"
       />
-    </div>
+    </>
   )
 }
 
@@ -68,19 +79,21 @@ function RecentContentList({
   return (
     <div className="space-y-2">
       <div className="space-y-0.5">
-        {route ? (
-          <Link
-            href={route}
-            className={cn(typographyVariants({ variant: "h3" }), "-mx-2")}
-            color="foreground"
-            isBlock
-          >
-            {title}
-          </Link>
-        ) : (
+        <div className="flex items-center justify-between gap-2">
           <Typography variant="h3">{title}</Typography>
-        )}
-
+          {route && (
+            <Link
+              href={route}
+              className="gap-1 text-right text-default-500 transition-colors hover:text-foreground"
+              color="foreground"
+              isBlock
+              showAnchorIcon
+              anchorIcon={<PiArrowUpRightBold />}
+            >
+              More
+            </Link>
+          )}
+        </div>
         <Typography variant="p" affects="muted">
           {subtitle}
         </Typography>

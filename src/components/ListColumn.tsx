@@ -8,10 +8,12 @@ import ButtonLink from "@/components/Primitives/ButtonLink"
 import { Typography } from "@/components/Primitives/Typography"
 
 export default function ListColumn({
-  type,
+  title,
+  subtitle,
   links,
 }: {
-  type: "Discoveries" | "Thoughts" | "Snippets"
+  title: string
+  subtitle: string
   links: {
     slug: string
     entry: {
@@ -33,33 +35,40 @@ export default function ListColumn({
       )}
     >
       <div className="space-y-2 p-3">
-        <Typography variant="h3" className="pl-1">
-          {type}
-        </Typography>
-        <div className={"flex flex-col gap-1"}>
+        <div className="space-y-1.5 pl-1">
+          <Typography variant="h3">{title}</Typography>
+          <Typography affects="lead" className="xl:hidden">
+            {subtitle}
+          </Typography>
+        </div>
+        <div className={"-mx-3 flex flex-col xl:mx-0 xl:gap-1"}>
+          <hr className="opacity-50 xl:hidden" />
           {links.map((link) => {
-            const fullLink = `/${type.toLowerCase()}/${link.slug.toLowerCase()}`
+            const fullLink = `/${title.toLowerCase()}/${link.slug.toLowerCase()}`
             const active = path === fullLink
             return (
-              <ButtonLink
-                key={link.slug}
-                as={Link}
-                variant={active ? "flat" : "light"}
-                href={fullLink}
-                active={active}
-                className="flex-col items-start gap-0 text-base"
-              >
-                <Typography className="font-medium">
-                  {link.entry.title}
-                </Typography>
-                <Typography className="text-sm text-default-500">
-                  {link.entry.subtitle
-                    ? link.entry.subtitle
-                    : link.entry.dateTime
-                      ? formatDate(link.entry.dateTime)
-                      : undefined}
-                </Typography>
-              </ButtonLink>
+              <>
+                <ButtonLink
+                  key={link.slug}
+                  as={Link}
+                  variant={active ? "flat" : "light"}
+                  href={fullLink}
+                  active={active}
+                  className="flex-col items-start gap-0 rounded-none px-4 py-2 text-base xl:rounded-lg xl:px-2 xl:py-1.5"
+                >
+                  <Typography className="font-medium">
+                    {link.entry.title}
+                  </Typography>
+                  <Typography className="text-sm text-default-500">
+                    {link.entry.subtitle
+                      ? link.entry.subtitle
+                      : link.entry.dateTime
+                        ? formatDate(link.entry.dateTime)
+                        : undefined}
+                  </Typography>
+                </ButtonLink>
+                <hr className="opacity-50 xl:hidden" />
+              </>
             )
           })}
         </div>

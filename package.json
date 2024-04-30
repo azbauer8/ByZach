@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true ./src",
@@ -13,6 +13,7 @@
     "buster": "rm -rf .next"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.19",
     "@keystatic/core": "^0.5.11",
     "@keystatic/next": "^5.0.0",
     "@mdx-js/react": "^3.0.1",
@@ -41,20 +42,20 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.3",
-    "@tailwindcss/typography": "^0.5.12",
-    "postcss": "^8.4.38",
-    "autoprefixer": "^10.4.19",
-    "lefthook": "^1.6.10",
     "@biomejs/biome": "1.7.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
+    "@tailwindcss/typography": "^0.5.12",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.25",
+    "autoprefixer": "^10.4.19",
     "knip": "^5.9.4",
+    "lefthook": "^1.6.10",
     "next-unused": "^0.0.6",
+    "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "latest",
+    "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },
   "next-unused": {

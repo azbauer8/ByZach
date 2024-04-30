@@ -1,16 +1,25 @@
-import { siteLinks } from "@/config"
+import slugify from "slugify"
 
-import { getProjects, getSnippets, getThoughts } from "@/lib/getLocalContent"
-import { getDiscoveryCategories, getSoftwareUses } from "@/lib/getRaindrop"
+import { siteLinks } from "@/lib/consts"
+import { getSnippets, getThoughts } from "@/lib/getLocalContent"
+import {
+  getDiscoveryCategories,
+  getProjects,
+  getSoftwareUses,
+} from "@/lib/getRaindrop"
 
 export default async function sitemap() {
-  const projects = getProjects().map((project) => ({
-    url: `${siteLinks.here}/projects/${project.slug}`,
-  }))
+  const projects = await getProjects().then((projects) =>
+    projects?.map((project) => ({
+      url: `${siteLinks.here}/projects/${slugify(project.title)}`,
+      lastModified: project.lastUpdate,
+    }))
+  )
+  const projectsArray = projects || []
 
   const uses = await getSoftwareUses().then((uses) =>
     uses?.map((use) => ({
-      url: `${siteLinks.here}/uses/${use._id}`,
+      url: `${siteLinks.here}/uses/${slugify(use.title)}`,
       lastModified: use.lastUpdate,
     }))
   )
@@ -48,7 +57,7 @@ export default async function sitemap() {
 
   return [
     ...routes,
-    ...projects,
+    ...projectsArray,
     ...usesArray,
     ...thoughts,
     ...snippets,

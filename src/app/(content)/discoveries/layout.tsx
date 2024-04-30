@@ -1,3 +1,4 @@
+import { pageHeaders } from "@/lib/consts"
 import { getDiscoveryCategories } from "@/lib/getRaindrop"
 import ListColumn from "@/components/ListColumn"
 
@@ -20,5 +21,11 @@ async function Discoveries() {
   const discoveries = await getDiscoveryCategories()
   if (!discoveries) return null
 
-  return <ListColumn type="Discoveries" links={discoveries} />
+  return (
+    <ListColumn
+      title={pageHeaders.discoveries.title}
+      subtitle={pageHeaders.discoveries.subtitle}
+      links={discoveries}
+    />
+  )
 }

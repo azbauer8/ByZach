@@ -10,7 +10,9 @@ export default async function SoftwareUses() {
         <BookmarkCard
           key={softwareItem._id}
           title={softwareItem.title}
-          description={softwareItem.note}
+          description={
+            softwareItem.note !== "" ? softwareItem.note : softwareItem.excerpt
+          }
           link={softwareItem.link}
           shortLink={softwareItem.domain}
           img={softwareItem.cover}

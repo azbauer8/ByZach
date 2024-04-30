@@ -1,15 +1,14 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Button } from "@nextui-org/button"
-import { Divider } from "@nextui-org/divider"
+import { Transition } from "@headlessui/react"
 import { atom, useAtom } from "jotai"
 import { PiCaretDoubleUpBold } from "react-icons/pi"
 
+import { navLinks, pageHeaders } from "@/lib/consts"
 import { cn } from "@/lib/utils"
-import sidebarLinks from "@/components/Global/Sidebar/links"
 import ButtonLink from "@/components/Primitives/ButtonLink"
 import { Typography } from "@/components/Primitives/Typography"
 
@@ -17,7 +16,7 @@ export const navDrawerState = atom(false)
 
 export default function NavDrawer() {
   const [open, setOpen] = useAtom(navDrawerState)
-  const [pageTitle, setPageTitle] = useState("Home")
+  const [pageTitle, setPageTitle] = useState<string>(pageHeaders.about.title)
   const pathname = usePathname()
   // biome-ignore lint/correctness/useExhaustiveDependencies: pathname is basically a reactive version of document.title, so this works
   useEffect(() => {
@@ -28,8 +27,11 @@ export default function NavDrawer() {
     setOpen(value)
     // theme color change delayed to match overlay transition
     // set theme color to overlay
-    if (value) {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (value) {
+        if (typeof window != "undefined" && window.document) {
+          document.body.style.overflow = "hidden"
+        }
         document
           .querySelector(
             "meta[name='theme-color'][media='(prefers-color-scheme: light)']"
@@ -40,11 +42,10 @@ export default function NavDrawer() {
             "meta[name='theme-color'][media='(prefers-color-scheme: dark)']"
           )
           ?.setAttribute("content", "#050505")
-      }, 125)
-    }
-    // set theme color to normal
-    else {
-      setTimeout(() => {
+      }
+      // set theme color to normal
+      else {
+        document.body.style.overflow = "unset"
         document
           .querySelector(
             "meta[name='theme-color'][media='(prefers-color-scheme: light)']"
@@ -55,20 +56,28 @@ export default function NavDrawer() {
             "meta[name='theme-color'][media='(prefers-color-scheme: dark)']"
           )
           ?.setAttribute("content", "#121212")
-      }, 130)
-    }
+      }
+    }, 100)
   }
 
   return (
     <>
       {/* overlay */}
-      <div
-        className={cn(
-          "fixed left-0 top-0 size-full bg-black transition-all duration-400 ease-in-out",
-          open ? "z-20 opacity-75" : "-z-10 opacity-0"
-        )}
-        onClick={() => toggleOpen(false)}
-      />
+      <Transition
+        as={Fragment}
+        show={open}
+        enter="ease-out duration-500"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="ease-in duration-100"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 transition-opacity"
+          onClick={() => toggleOpen(false)}
+        />
+      </Transition>
       {/* drawer wrapper */}
       <div
         className={cn(
@@ -87,7 +96,7 @@ export default function NavDrawer() {
         </div>
         {/* popup content */}
         <div className="grid grid-cols-3 gap-1 p-4 pt-1 md:grid-cols-4 lg:grid-cols-5">
-          {sidebarLinks.site.map((link) => {
+          {navLinks.site.map((link) => {
             const active =
               link.href === "/"
                 ? pathname === link.href
@@ -97,7 +106,7 @@ export default function NavDrawer() {
                 key={link.href}
                 as={Link}
                 href={link.href}
-                onClick={() => setOpen(false)}
+                onClick={() => toggleOpen(false)}
                 active={active}
                 variant={active ? "flat" : "light"}
                 startContent={link.icon}
@@ -107,53 +116,6 @@ export default function NavDrawer() {
               </ButtonLink>
             )
           })}
-        </div>
-        <div className="flex h-[57px] gap-2 border-t p-2">
-          <div className="flex gap-1">
-            {sidebarLinks.professional.map((link) => {
-              return (
-                <Button
-                  key={link.href}
-                  as={Link}
-                  variant="light"
-                  disableRipple
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="min-w-fit font-medium text-default-500"
-                >
-                  {link.icon}
-                  <span className="hidden text-foreground md:block">
-                    {link.name}
-                  </span>
-                </Button>
-              )
-            })}
-          </div>
-          <Divider orientation="vertical" className="-my-2 h-[57px]" />
-          <div className="flex gap-1">
-            {sidebarLinks.personal.map((link) => {
-              return (
-                <Button
-                  key={link.href}
-                  as={Link}
-                  variant="light"
-                  disableRipple
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="min-w-fit font-medium text-default-500"
-                  endContent={
-                    <span className="hidden text-foreground md:block">
-                      {link.name}
-                    </span>
-                  }
-                >
-                  {link.icon}
-                </Button>
-              )
-            })}
-          </div>
         </div>
       </div>
     </>

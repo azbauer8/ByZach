@@ -1,3 +1,4 @@
+import { pageHeaders } from "@/lib/consts"
 import { getThoughts } from "@/lib/getLocalContent"
 import ListColumn from "@/components/ListColumn"
 
@@ -23,5 +24,11 @@ function Thoughts() {
     },
   }))
 
-  return <ListColumn type="Thoughts" links={thoughts} />
+  return (
+    <ListColumn
+      title={pageHeaders.thoughts.title}
+      subtitle={pageHeaders.thoughts.subtitle}
+      links={thoughts}
+    />
+  )
 }

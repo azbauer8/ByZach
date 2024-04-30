@@ -1,5 +1,4 @@
-import { siteLinks } from "@/config"
-
+import { siteLinks } from "@/lib/consts"
 import { getSnippet, getSnippets } from "@/lib/getLocalContent"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
