@@ -28,7 +28,7 @@ export default function BookmarkCard({
       disableRipple
       isHoverable
     >
-      <CardHeader className="flex-col items-start gap-0.5">
+      <CardHeader className="z-0 flex-col items-start gap-0.5">
         <Typography variant="h5" className="line-clamp-1">
           {title}
         </Typography>

@@ -8,7 +8,7 @@ import { PiArrowUpLeftBold } from "react-icons/pi"
 
 import { Typography } from "@/components/Primitives/Typography"
 
-export default function PageLayout({
+export default function PageContent({
   children,
   className,
   previousPage,
@@ -22,12 +22,7 @@ export default function PageLayout({
   subtitle?: string
 }) {
   return (
-    <div
-      className={cn(
-        "mx-auto max-w-3xl space-y-5 px-4 pb-20 pt-12 md:px-8",
-        className
-      )}
-    >
+    <div className={cn("space-y-5", className)}>
       <div className="space-y-1.5">
         {previousPage && (
           <Button
@@ -36,7 +31,7 @@ export default function PageLayout({
             variant="light"
             startContent={<PiArrowUpLeftBold />}
             disableRipple
-            className="-ml-2 gap-1 pl-2 pr-2.5 text-base text-default-500 transition-colors hover:text-foreground active:text-foreground"
+            className="-ml-2 gap-1 pl-2 pr-2.5 text-base text-default-500 transition-colors hover:text-foreground active:text-foreground md:hidden"
           >
             {previousPage.title}
           </Button>

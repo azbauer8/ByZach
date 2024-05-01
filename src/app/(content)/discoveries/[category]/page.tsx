@@ -5,7 +5,7 @@ import {
   getDiscoveryCategories,
 } from "@/lib/getRaindrop"
 import ProductCard from "@/components/BookmarkCard"
-import PageLayout from "@/components/PageLayout"
+import PageContent from "@/components/PageContent"
 
 export const dynamicParams = false
 
@@ -47,7 +47,7 @@ export default async function DiscoveryCategory({
   const category = discoveries[0].tags[0]
 
   return (
-    <PageLayout
+    <PageContent
       title={category}
       previousPage={{ link: "/discoveries", title: "Discoveries" }}
     >
@@ -65,6 +65,6 @@ export default async function DiscoveryCategory({
           />
         ))}
       </div>
-    </PageLayout>
+    </PageContent>
   )
 }

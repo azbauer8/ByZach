@@ -81,7 +81,7 @@ export default function NavDrawer() {
       {/* drawer wrapper */}
       <div
         className={cn(
-          "navDrawer fixed bottom-0 z-30 w-full translate-y-[calc(100%-56px)] border-t bg-background transition-transform duration-300 xl:hidden",
+          "fixed bottom-0 z-30 w-full translate-y-[calc(100%-56px)] border-t bg-background transition-transform duration-300 ease-nav md:hidden",
           open && "navDrawerOpen translate-y-0"
         )}
       >
@@ -96,7 +96,7 @@ export default function NavDrawer() {
         </div>
         {/* popup content */}
         <div className="grid grid-cols-3 gap-1 p-4 pt-1 ">
-          {navLinks.site.map((link) => {
+          {navLinks.map((link) => {
             const active =
               link.href === "/"
                 ? pathname === link.href

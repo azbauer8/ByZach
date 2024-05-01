@@ -1,7 +1,7 @@
 import { siteLinks } from "@/lib/consts"
 import { getSnippet, getSnippets } from "@/lib/getLocalContent"
 import { Markdown } from "@/components/Markdown"
-import PageLayout from "@/components/PageLayout"
+import PageContent from "@/components/PageContent"
 
 export const dynamicParams = false
 
@@ -9,7 +9,7 @@ export function generateMetadata({ params }: { params: { snippet: string } }) {
   const snippet = getSnippet(params.snippet)
   if (!snippet) return {}
 
-  const { description, title } = snippet.metadata
+  const { description, title } = snippet.entry
 
   return {
     title,
@@ -19,7 +19,7 @@ export function generateMetadata({ params }: { params: { snippet: string } }) {
       description,
       type: "article",
       url: `${siteLinks.here}/snippets/${snippet.slug}`,
-      publishedTime: snippet.metadata.dateTime || undefined,
+      publishedTime: snippet.entry.dateTime || undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -41,12 +41,12 @@ export default function Snippet({ params }: { params: { snippet: string } }) {
   if (!snippet) return null
 
   return (
-    <PageLayout
-      title={snippet.metadata.title}
-      subtitle={snippet.metadata.description}
+    <PageContent
+      title={snippet.entry.title}
+      subtitle={snippet.entry.description}
       previousPage={{ link: "/snippets", title: "Snippets" }}
     >
       <Markdown source={snippet.content} />
-    </PageLayout>
+    </PageContent>
   )
 }

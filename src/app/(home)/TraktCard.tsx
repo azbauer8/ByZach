@@ -16,7 +16,7 @@ export default async function TraktCard() {
       as="a"
       variant="light"
       disableRipple
-      className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2"
+      className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2 text-base"
       href={data.url}
     >
       <Image
@@ -32,7 +32,7 @@ export default async function TraktCard() {
         className="w-1/5 flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
 
-      <div className="my-auto grow space-y-0.5">
+      <div className="my-auto grow">
         <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
           <PiPopcornBold className="size-5" />
           <Typography affects="small">{data.playingWhen}</Typography>
@@ -40,14 +40,11 @@ export default async function TraktCard() {
         <Typography variant="h5">{data.title}</Typography>
         {data.episode ? (
           <>
-            <Typography
-              affects="muted"
-              className="text-sm"
-            >{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Typography>
+            <Typography affects="muted">{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Typography>
           </>
         ) : (
           <>
-            <Typography affects="muted" className="text-sm italic">
+            <Typography affects="muted" className="italic">
               {data.tagline}
             </Typography>
           </>

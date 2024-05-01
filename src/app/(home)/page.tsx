@@ -3,7 +3,7 @@ import { Button } from "@nextui-org/button"
 import { Link } from "@nextui-org/link"
 
 import { pageHeaders, siteLinks } from "@/lib/consts"
-import PageLayout from "@/components/PageLayout"
+import PageContent from "@/components/PageContent"
 import { Typography } from "@/components/Primitives/Typography"
 import RecentContent from "@/app/(home)/RecentContent"
 
@@ -16,15 +16,16 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <PageLayout
+    <PageContent
       title={pageHeaders.about.title}
       subtitle={pageHeaders.about.subtitle}
+      className="space-y-8"
     >
       <About />
       <RecentContent />
       <Activity />
       <Socials />
-    </PageLayout>
+    </PageContent>
   )
 }
 
@@ -78,7 +79,9 @@ function About() {
 function Activity() {
   return (
     <div className="space-y-0.5">
-      <Typography variant="h3">{pageHeaders.activity.title}</Typography>
+      <Typography className="font-semibold leading-none">
+        {pageHeaders.activity.title}
+      </Typography>
       <Typography variant="p" affects="muted">
         {pageHeaders.activity.subtitle}
       </Typography>
@@ -91,7 +94,9 @@ function Activity() {
 function Socials() {
   return (
     <div className="space-y-2">
-      <Typography variant="h3">{pageHeaders.activity.socials}</Typography>
+      <Typography className="font-semibold leading-none">
+        {pageHeaders.activity.socials}
+      </Typography>
       <div className="-mx-3 flex flex-wrap items-center gap-1">
         {siteLinks.personal.map((link) => (
           <Button

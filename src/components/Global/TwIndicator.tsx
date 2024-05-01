@@ -28,7 +28,7 @@ export default function TailwindIndicator() {
   }
 
   return (
-    <div className="fixed right-2 top-2 z-50 flex items-center space-x-2 rounded-full bg-black px-2.5 py-1 font-mono text-xs font-medium text-white">
+    <div className="fixed right-2 top-[72px] z-50 flex items-center space-x-2 rounded-full bg-black px-2.5 py-1 font-mono text-xs font-medium text-white">
       <span>
         {width.toLocaleString()} x {height.toLocaleString()}
       </span>

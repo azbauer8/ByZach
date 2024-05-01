@@ -99,37 +99,35 @@ export const siteLinks = {
   ],
 } as const
 
-export const navLinks = {
-  site: [
-    {
-      name: "About Me",
-      href: "/",
-      icon: <FaHandPeace size={16} />,
-    },
-    {
-      name: "Projects",
-      href: "/projects",
-      icon: <FaLaptop size={16} />,
-    },
-    {
-      name: "Thoughts",
-      href: "/thoughts",
-      icon: <FaBrain size={16} />,
-    },
-    {
-      name: "Snippets",
-      href: "/snippets",
-      icon: <FaCode size={16} />,
-    },
-    {
-      name: "Discoveries",
-      href: "/discoveries",
-      icon: <FaBookmark size={16} />,
-    },
-    {
-      name: "Uses",
-      href: "/uses",
-      icon: <FaHammer size={16} />,
-    },
-  ],
-} as const
+export const navLinks = [
+  {
+    name: "About Me",
+    href: "/",
+    icon: <FaHandPeace size={16} />,
+  },
+  {
+    name: "Projects",
+    href: "/projects",
+    icon: <FaLaptop size={16} />,
+  },
+  {
+    name: "Thoughts",
+    href: "/thoughts",
+    icon: <FaBrain size={16} />,
+  },
+  {
+    name: "Snippets",
+    href: "/snippets",
+    icon: <FaCode size={16} />,
+  },
+  {
+    name: "Discoveries",
+    href: "/discoveries",
+    icon: <FaBookmark size={16} />,
+  },
+  {
+    name: "Uses",
+    href: "/uses",
+    icon: <FaHammer size={16} />,
+  },
+] as const

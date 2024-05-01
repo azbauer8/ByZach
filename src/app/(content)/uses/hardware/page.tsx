@@ -4,9 +4,9 @@ export default function HardwareUses() {
       {/* {hardware.map((hardware) => (
           <ProductCard
             key={hardware.slug}
-            title={hardware.metadata.title}
-            description={hardware.metadata.description ?? ""}
-            link={hardware.metadata.link ?? ""}
+            title={hardware.entry.title}
+            description={hardware.entry.description ?? ""}
+            link={hardware.entry.link ?? ""}
           />
       ))} */}
     </div>

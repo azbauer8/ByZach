@@ -56,15 +56,15 @@ export function getThoughts(limit?: number) {
       const { metadata, content } = readMDXFile(path.join(dir, file))
       const slug = path.basename(file, path.extname(file))
       return {
-        metadata: metadata as ThoughtMetadata,
+        entry: metadata as ThoughtMetadata,
         slug,
         content,
       }
     })
     .sort(
       (a, b) =>
-        new Date(b.metadata.dateTime ?? "").getTime() -
-        new Date(a.metadata.dateTime ?? "").getTime()
+        new Date(b.entry.dateTime ?? "").getTime() -
+        new Date(a.entry.dateTime ?? "").getTime()
     )
   return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }
@@ -80,15 +80,15 @@ export function getSnippets(limit?: number) {
       const { metadata, content } = readMDXFile(path.join(dir, file))
       const slug = path.basename(file, path.extname(file))
       return {
-        metadata: metadata as SnippetMetadata,
+        entry: metadata as SnippetMetadata,
         slug,
         content,
       }
     })
     .sort(
       (a, b) =>
-        new Date(b.metadata.dateTime ?? "").getTime() -
-        new Date(a.metadata.dateTime ?? "").getTime()
+        new Date(b.entry.dateTime ?? "").getTime() -
+        new Date(a.entry.dateTime ?? "").getTime()
     )
   return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }

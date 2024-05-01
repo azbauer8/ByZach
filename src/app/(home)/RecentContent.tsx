@@ -1,27 +1,25 @@
-import NextLink from "next/link"
-import { Button } from "@nextui-org/button"
-import { Link } from "@nextui-org/link"
+import { Link } from "@nextui-org/react"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
 import { pageHeaders } from "@/lib/consts"
 import { getSnippets, getThoughts } from "@/lib/getLocalContent"
 import { getProjects } from "@/lib/getRaindrop"
-import { formatDate } from "@/lib/utils"
+import ContentList from "@/components/ContentList"
 import { Typography } from "@/components/Primitives/Typography"
 
 export default async function RecentContent() {
-  const projects = await getProjects(3).then((projects) =>
+  const projects = await getProjects(4).then((projects) =>
     projects?.map((project) => ({
       slug: project._id.toString(),
-      metadata: {
+      entry: {
         title: project.title,
         link: project.link,
         description: project.note !== "" ? project.note : project.excerpt,
       },
     }))
   )
-  const thoughts = getThoughts(3)
-  const snippets = getSnippets(3)
+  const thoughts = getThoughts(4)
+  const snippets = getSnippets(4)
 
   return (
     <>
@@ -58,15 +56,15 @@ function RecentContentList({
   subtitle,
   route,
   list,
-  isExternal,
   itemSubtitle,
+  isExternal,
 }: {
   title: string
   subtitle: string
   route?: string
   list: {
     slug: string
-    metadata: {
+    entry: {
       title: string
       link?: string
       dateTime?: string | null
@@ -80,7 +78,9 @@ function RecentContentList({
     <div className="space-y-2">
       <div className="space-y-0.5">
         <div className="flex items-center justify-between gap-2">
-          <Typography variant="h3">{title}</Typography>
+          <Typography className="font-semibold leading-none">
+            {title}
+          </Typography>
           {route && (
             <Link
               href={route}
@@ -98,35 +98,12 @@ function RecentContentList({
           {subtitle}
         </Typography>
       </div>
-      <div className="flex flex-col space-y-0.5">
-        {list.map((item) => (
-          <Button
-            key={item.slug}
-            as={NextLink}
-            disableRipple
-            variant="light"
-            href={item.metadata.link ?? `${route}/${item.slug}`}
-            target={isExternal ? "_blank" : undefined}
-            rel={isExternal ? "noreferrer" : undefined}
-            prefetch={!isExternal}
-            className="group -mx-3 h-auto flex-col items-start gap-1 px-3 py-2 text-base"
-          >
-            <div className="flex w-full items-center justify-between">
-              <Typography className="font-medium">
-                {item.metadata.title}
-              </Typography>
-              {isExternal && (
-                <PiArrowUpRightBold className="text-default-500 transition-colors group-hover:text-foreground group-active:text-foreground" />
-              )}
-            </div>
-            <Typography affects="muted" className="text-wrap">
-              {itemSubtitle === "description"
-                ? item.metadata.description
-                : formatDate(item.metadata.dateTime)}
-            </Typography>
-          </Button>
-        ))}
-      </div>
+      <ContentList
+        route="/snippets"
+        list={list}
+        itemSubtitle={itemSubtitle}
+        isExternal={isExternal}
+      />
     </div>
   )
 }

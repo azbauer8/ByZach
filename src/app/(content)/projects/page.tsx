@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { pageHeaders } from "@/lib/consts"
 import { getProjects } from "@/lib/getRaindrop"
 import BookmarkCard from "@/components/BookmarkCard"
-import PageLayout from "@/components/PageLayout"
+import PageContent from "@/components/PageContent"
 
 export const metadata: Metadata = {
   title: pageHeaders.projects.title,
@@ -15,7 +15,7 @@ export default async function Projects() {
 
   if (!projects) return null
   return (
-    <PageLayout
+    <PageContent
       title={pageHeaders.projects.title}
       subtitle={pageHeaders.projects.subtitle}
     >
@@ -31,6 +31,6 @@ export default async function Projects() {
           />
         ))}
       </div>
-    </PageLayout>
+    </PageContent>
   )
 }

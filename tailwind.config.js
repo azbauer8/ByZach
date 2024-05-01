@@ -27,6 +27,9 @@ module.exports = {
       animation: {
         reveal: 'reveal 0.5s ease-in-out',
       },
+      transitionTimingFunction: {
+        nav: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      }
     },
   },
   plugins: [require('@tailwindcss/typography'), require("tailwindcss-animate"), nextui({

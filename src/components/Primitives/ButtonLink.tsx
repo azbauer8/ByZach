@@ -19,7 +19,7 @@ const ButtonLink = forwardRef<HTMLButtonElement, LinkButtonProps>(
         ref={ref}
         className={cn(
           linkStyling &&
-            "buttonLink h-fit justify-start px-2 py-1.5 font-medium transition-transform duration-200 ease-in-out",
+            "buttonLink h-fit justify-start px-2 py-1.5 font-medium",
           active ? "border" : "border border-transparent",
           className
         )}
