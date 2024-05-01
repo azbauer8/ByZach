@@ -15,7 +15,7 @@ export default async function LastFmCard() {
     <Button
       as="a"
       variant="light"
-      className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2 text-base"
+      className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2 text-base md:mx-0"
       href={latestTrack.url}
       disableRipple
     >
@@ -29,7 +29,7 @@ export default async function LastFmCard() {
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
         sizes="100vw"
-        className="w-1/5 flex-none animate-reveal items-center justify-center self-center rounded-lg"
+        className="aspect-square max-w-[25%] flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
       <div className="my-auto grow">
         <div className="flex flex-row items-center space-x-1 text-emerald-600/95 dark:text-emerald-500">

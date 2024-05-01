@@ -10,24 +10,18 @@ interface LinkButtonProps extends ButtonProps, ButtonVariantProps {
 }
 
 const ButtonLink = forwardRef<HTMLButtonElement, LinkButtonProps>(
-  (
-    { className, active = false, linkStyling = true, startContent, ...props },
-    ref
-  ) => {
+  ({ className, active = false, linkStyling = true, ...props }, ref) => {
     return (
       <Button
         ref={ref}
         className={cn(
           linkStyling &&
             "buttonLink h-fit justify-start px-2 py-1.5 font-medium",
-          active ? "border" : "border border-transparent",
+          active
+            ? "border text-foreground"
+            : "border border-transparent text-default-500",
           className
         )}
-        startContent={
-          <div className={active ? "text-foreground" : "text-default-500"}>
-            {startContent}
-          </div>
-        }
         disableRipple
         {...props}
       />

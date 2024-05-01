@@ -85,8 +85,10 @@ function Activity() {
       <Typography variant="p" affects="muted">
         {pageHeaders.activity.subtitle}
       </Typography>
-      <LastFmCard />
-      <TraktCard />
+      <div className="grid grid-cols-1 gap-0.5 md:-mx-3 md:grid-cols-2">
+        <LastFmCard />
+        <TraktCard />
+      </div>
     </div>
   )
 }

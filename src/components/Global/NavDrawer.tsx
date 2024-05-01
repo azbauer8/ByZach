@@ -87,12 +87,17 @@ export default function NavDrawer() {
       >
         {/* drawer header/toggle */}
         <div
-          className="flex w-full items-center justify-between gap-2 whitespace-nowrap p-4 hover:cursor-pointer "
+          className="group flex w-full items-center justify-between gap-2 whitespace-nowrap p-4 hover:cursor-pointer"
           onClick={() => toggleOpen(!open)}
           onKeyUp={() => toggleOpen(!open)}
         >
-          <Typography>{pageTitle}</Typography>
-          <PiCaretDoubleUpBold className={cn("size-5", open && "rotate-180")} />
+          <Typography className="font-medium">{pageTitle}</Typography>
+          <PiCaretDoubleUpBold
+            className={cn(
+              "size-5 text-default-500 transition-colors group-hover:text-foreground",
+              open && "rotate-180"
+            )}
+          />
         </div>
         {/* popup content */}
         <div className="grid grid-cols-3 gap-1 p-4 pt-1 ">

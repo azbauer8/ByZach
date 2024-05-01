@@ -26,7 +26,7 @@ export default function ContentList({
   isExternal?: boolean
 }) {
   return (
-    <div className="grid grid-cols-1 gap-0.5 md:-mx-3 md:grid-cols-2">
+    <div className="grid grid-cols-1 gap-0.5 md:-mx-3 md:grid-cols-2 md:gap-x-1 md:gap-y-3">
       {list.map((item) => (
         <Button
           key={item.slug}

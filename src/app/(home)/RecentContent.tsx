@@ -1,4 +1,5 @@
-import { Link } from "@nextui-org/react"
+import Link from "next/link"
+import { Button } from "@nextui-org/react"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
 import { pageHeaders } from "@/lib/consts"
@@ -82,16 +83,15 @@ function RecentContentList({
             {title}
           </Typography>
           {route && (
-            <Link
+            <Button
+              as={Link}
               href={route}
-              className="gap-1 text-right text-default-500 transition-colors hover:text-foreground"
-              color="foreground"
-              isBlock
-              showAnchorIcon
-              anchorIcon={<PiArrowUpRightBold />}
+              className="-mr-2 h-auto min-w-fit gap-1 rounded-md px-2 py-1 text-right text-base text-default-500 transition-colors hover:text-foreground"
+              variant="light"
+              endContent={<PiArrowUpRightBold />}
             >
               More
-            </Link>
+            </Button>
           )}
         </div>
         <Typography variant="p" affects="muted">
@@ -99,7 +99,7 @@ function RecentContentList({
         </Typography>
       </div>
       <ContentList
-        route="/snippets"
+        route={route}
         list={list}
         itemSubtitle={itemSubtitle}
         isExternal={isExternal}
