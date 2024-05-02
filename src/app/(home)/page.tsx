@@ -38,7 +38,7 @@ function About() {
         <Link
           href={siteLinks.sig}
           color="foreground"
-          underline="hover"
+          underline="none"
           isExternal
         >
           SIG
@@ -49,7 +49,7 @@ function About() {
         <Link
           href={siteLinks.pitt}
           color="foreground"
-          underline="hover"
+          underline="none"
           isExternal
         >
           Pitt
@@ -66,7 +66,7 @@ function About() {
             variant="light"
             startContent={link.icon}
             disableRipple
-            className="px-3"
+            className="px-3 hover:bg-default/40 hover:opacity-100"
           >
             {link.name}
           </Button>
@@ -109,7 +109,7 @@ function Socials() {
             variant="light"
             startContent={link.icon}
             disableRipple
-            className="px-3"
+            className="px-3 hover:bg-default/40 hover:opacity-100"
           >
             {link.name}
           </Button>

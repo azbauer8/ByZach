@@ -22,7 +22,7 @@ function CustomLink(props: LinkProps & React.RefAttributes<HTMLAnchorElement>) {
   return (
     <Link
       color="foreground"
-      underline="hover"
+      underline="none"
       isExternal={!href?.startsWith("/")}
       {...props}
     />
