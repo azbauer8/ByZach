@@ -13,7 +13,7 @@ export default function NavBar() {
   )
 
   return (
-    <div className="hidden w-full items-center justify-center py-3 pb-8 md:flex ">
+    <div className="hidden w-full items-center justify-center gap-2 py-3 pb-8 md:block">
       <Tabs
         aria-label="NavBar Tabs"
         selectedKey={selected?.href}
@@ -34,7 +34,7 @@ export default function NavBar() {
             href={link.href}
             title={
               <div className="flex items-center space-x-2">
-                {link.icon}
+                {/* {link.icon} */}
                 <span>{link.name}</span>
               </div>
             }

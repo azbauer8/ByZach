@@ -4,7 +4,7 @@ import {
   getDiscoveriesInCategory,
   getDiscoveryCategories,
 } from "@/lib/getRaindrop"
-import ProductCard from "@/components/BookmarkCard"
+import BookmarkItemList from "@/components/BookmarkItem"
 import PageContent from "@/components/PageContent"
 
 export const dynamicParams = false
@@ -51,20 +51,16 @@ export default async function DiscoveryCategory({
       title={category}
       previousPage={{ link: "/discoveries", title: "Discoveries" }}
     >
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {discoveries.map((discovery) => (
-          <ProductCard
-            key={discovery._id}
-            title={discovery.title}
-            description={
-              discovery.note !== "" ? discovery.note : discovery.excerpt
-            }
-            link={discovery.link}
-            shortLink={discovery.domain}
-            img={discovery.cover}
-          />
-        ))}
-      </div>
+      <BookmarkItemList
+        items={discoveries.map((discovery) => ({
+          title: discovery.title,
+          description:
+            discovery.note !== "" ? discovery.note : discovery.excerpt,
+          link: discovery.link,
+          shortLink: discovery.domain,
+          img: discovery.cover,
+        }))}
+      />
     </PageContent>
   )
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 
 import { pageHeaders } from "@/lib/consts"
 import { getProjects } from "@/lib/getRaindrop"
-import BookmarkCard from "@/components/BookmarkCard"
+import BookmarkItemList from "@/components/BookmarkItem"
 import PageContent from "@/components/PageContent"
 
 export const metadata: Metadata = {
@@ -19,18 +19,15 @@ export default async function Projects() {
       title={pageHeaders.projects.title}
       subtitle={pageHeaders.projects.subtitle}
     >
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {projects.map((project) => (
-          <BookmarkCard
-            key={project._id}
-            title={project.title}
-            description={project.note !== "" ? project.note : project.excerpt}
-            link={project.link}
-            shortLink={project.domain}
-            img={project.cover}
-          />
-        ))}
-      </div>
+      <BookmarkItemList
+        items={projects.map((project) => ({
+          title: project.title,
+          description: project.note !== "" ? project.note : project.excerpt,
+          link: project.link,
+          shortLink: project.domain,
+          img: project.cover,
+        }))}
+      />
     </PageContent>
   )
 }

@@ -12,10 +12,12 @@ export default function UsesTabs() {
       aria-label="Uses Tabs"
       selectedKey={pathname}
       defaultSelectedKey="/uses"
-      variant="bordered"
+      variant="light"
       classNames={{
         base: "w-full",
-        tabList: "w-full border-divider border bg-content1 dark:bg-content1",
+        tabList: "w-[105%] p-0 -mx-1 px-1  rounded-none",
+        tab: "h-auto py-2 buttonLink font-medium hover:bg-default/40 hover:text-foreground-muted data-[hover-unselected=true]:opacity-100",
+        cursor: "bg-content2 dark:bg-content2 border rounded-md",
       }}
     >
       <Tab as={Link} key="/uses" href="/uses" title="Software" />

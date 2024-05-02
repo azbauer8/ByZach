@@ -8,7 +8,6 @@ import {
   FaHammer,
   FaHandPeace,
   FaLaptop,
-  FaLinkedin,
   FaSpotify,
   FaSquareLastfm,
 } from "react-icons/fa6"
@@ -60,6 +59,11 @@ export const siteLinks = {
   pitt: "https://www.pitt.edu/",
   professional: [
     {
+      name: "GitHub",
+      href: "https://github.com/azbauer8",
+      icon: <FaGithub size={16} />,
+    },
+    {
       name: "Email",
       href: "mailto:hi@byzach.dev",
       icon: <FaAt size={16} />,
@@ -68,16 +72,6 @@ export const siteLinks = {
       name: "Resume",
       href: "/Resume.pdf",
       icon: <FaFilePdf size={16} />,
-    },
-    {
-      name: "GitHub",
-      href: "https://github.com/azbauer8",
-      icon: <FaGithub size={16} />,
-    },
-    {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/zach-bauer8/",
-      icon: <FaLinkedin size={16} />,
     },
   ],
   personal: [
@@ -101,7 +95,7 @@ export const siteLinks = {
 
 export const navLinks = [
   {
-    name: "About Me",
+    name: "Home",
     href: "/",
     icon: <FaHandPeace size={16} />,
   },

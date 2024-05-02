@@ -36,7 +36,7 @@ export default function ContentList({
           target={isExternal ? "_blank" : undefined}
           rel={isExternal ? "noreferrer" : undefined}
           prefetch={!isExternal}
-          className="group -mx-3 h-auto flex-col items-start gap-1 px-3 py-2 text-base md:mx-0"
+          className="group -mx-3 h-auto flex-col items-start justify-start gap-1 px-3 py-2 text-base md:mx-0"
           disableRipple
         >
           <div className="flex w-full items-center justify-between">
