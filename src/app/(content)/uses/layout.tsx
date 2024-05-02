@@ -5,8 +5,6 @@ import PageContent from "@/components/PageContent"
 
 import UsesTabs from "./UsesTabs"
 
-export const revalidate = 60
-
 export const metadata: Metadata = {
   title: pageHeaders.uses.title,
   description: pageHeaders.uses.subtitle,

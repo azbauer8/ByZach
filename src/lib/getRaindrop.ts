@@ -16,7 +16,7 @@ const options = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${process.env.RAINDROP_ACCESS_TOKEN}`,
   },
-  next: { revalidate: 60 },
+  next: { tags: ["raindrop"] },
 }
 
 const url = "https://api.raindrop.io/rest/v1"
@@ -28,7 +28,11 @@ export async function getProjects(limit?: number) {
       options
     )
     const projects: Raindrops = await response.json()
-    return limit ? projects.items.slice(0, limit) : projects.items
+    const projectItems = projects.items.sort(
+      (a, b) =>
+        new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
+    )
+    return limit ? projectItems.slice(0, limit) : projectItems
   } catch (error) {
     console.info("error")
     return null
@@ -64,7 +68,10 @@ export async function getDiscoveriesInCategory(category: string) {
       options
     )
     const discoveries: Raindrops = await response.json()
-    return discoveries.items
+    return discoveries.items.sort(
+      (a, b) =>
+        new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
+    )
   } catch (error) {
     console.info("error")
     return null
@@ -78,7 +85,10 @@ export async function getSoftwareUses() {
       options
     )
     const uses: Raindrops = await response.json()
-    return uses.items
+    return uses.items.sort(
+      (a, b) =>
+        new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
+    )
   } catch (error) {
     console.info("error")
     return null

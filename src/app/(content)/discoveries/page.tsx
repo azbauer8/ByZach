@@ -5,8 +5,6 @@ import { getDiscoveryCategories } from "@/lib/getRaindrop"
 import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
 
-export const revalidate = 60
-
 export const metadata: Metadata = {
   title: pageHeaders.discoveries.title,
   description: pageHeaders.discoveries.subtitle,
