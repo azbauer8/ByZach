@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 import { pageHeaders } from "@/lib/consts"
-import { getProjects } from "@/lib/getRaindrop"
-import BookmarkItemList from "@/components/BookmarkItem"
+import { getProjects } from "@/lib/raindrop"
+import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
 
 export const metadata: Metadata = {
@@ -19,15 +19,7 @@ export default async function Projects() {
       title={pageHeaders.projects.title}
       subtitle={pageHeaders.projects.subtitle}
     >
-      <BookmarkItemList
-        items={projects.map((project) => ({
-          title: project.title,
-          description: project.note !== "" ? project.note : project.excerpt,
-          link: project.link,
-          shortLink: project.domain,
-          img: project.cover,
-        }))}
-      />
+      <ContentList list={projects} isExternal />
     </PageContent>
   )
 }

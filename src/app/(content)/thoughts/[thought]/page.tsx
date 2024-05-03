@@ -1,6 +1,5 @@
 import { siteLinks } from "@/lib/consts"
-import { getThought, getThoughts } from "@/lib/getLocalContent"
-import { formatDate } from "@/lib/utils"
+import { getThought, getThoughts } from "@/lib/localContent"
 import { Markdown } from "@/components/Markdown"
 import PageContent from "@/components/PageContent"
 
@@ -10,15 +9,15 @@ export function generateMetadata({ params }: { params: { thought: string } }) {
   const thought = getThought(params.thought)
 
   if (!thought) return {}
-  const { title } = thought.entry
+  const { title } = thought
 
   return {
     title,
     openGraph: {
       title,
       type: "article",
-      url: `${siteLinks.here}/thoughts/${thought.slug}`,
-      publishedTime: thought.entry.dateTime || undefined,
+      url: `${siteLinks.here}${thought.link}`,
+      publishedTime: thought.dateTime || undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -40,8 +39,8 @@ export default function Thought({ params }: { params: { thought: string } }) {
 
   return (
     <PageContent
-      title={thought.entry.title}
-      subtitle={formatDate(thought.entry.dateTime)}
+      title={thought.title}
+      subtitle={thought.subtitle}
       previousPage={{ link: "/thoughts", title: "Thoughts" }}
     >
       <Markdown source={thought.content} />

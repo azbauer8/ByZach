@@ -4,7 +4,8 @@ import { Link } from "@nextui-org/link"
 
 import { pageHeaders, siteLinks } from "@/lib/consts"
 import PageContent from "@/components/PageContent"
-import { Typography } from "@/components/Primitives/Typography"
+import SocialButtons from "@/components/SocialButtons"
+import { Typography } from "@/components/Typography"
 import RecentContent from "@/app/(home)/RecentContent"
 
 import LastFmCard from "./LastfmCard"
@@ -56,34 +57,16 @@ function About() {
         </Link>
         {` with a bachelor's in information science.`}
       </Typography>
-      <div className="-mx-3 flex flex-wrap items-center gap-1">
-        {siteLinks.professional.map((link) => (
-          <Button
-            key={link.name}
-            href={link.href}
-            as={Link}
-            isExternal
-            variant="light"
-            startContent={link.icon}
-            disableRipple
-            className="px-3 hover:bg-default/40 hover:opacity-100"
-          >
-            {link.name}
-          </Button>
-        ))}
-      </div>
+      <SocialButtons links={siteLinks.professional} />
     </div>
   )
 }
 
 function Activity() {
   return (
-    <div className="space-y-0.5">
+    <div className="space-y-4">
       <Typography className="font-semibold leading-none">
         {pageHeaders.activity.title}
-      </Typography>
-      <Typography variant="p" affects="muted">
-        {pageHeaders.activity.subtitle}
       </Typography>
       <div className="grid grid-cols-1 gap-0.5 md:-mx-3 md:grid-cols-2">
         <LastFmCard />
@@ -99,22 +82,7 @@ function Socials() {
       <Typography className="font-semibold leading-none">
         {pageHeaders.activity.socials}
       </Typography>
-      <div className="-mx-3 flex flex-wrap items-center gap-1">
-        {siteLinks.personal.map((link) => (
-          <Button
-            key={link.name}
-            href={link.href}
-            as={Link}
-            isExternal
-            variant="light"
-            startContent={link.icon}
-            disableRipple
-            className="px-3 hover:bg-default/40 hover:opacity-100"
-          >
-            {link.name}
-          </Button>
-        ))}
-      </div>
+      <SocialButtons links={siteLinks.personal} />
     </div>
   )
 }

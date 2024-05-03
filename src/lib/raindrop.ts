@@ -28,10 +28,17 @@ export async function getProjects(limit?: number) {
       options
     )
     const projects: Raindrops = await response.json()
-    const projectItems = projects.items.sort(
-      (a, b) =>
-        new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
-    )
+    const projectItems = projects.items
+      .sort(
+        (a, b) =>
+          new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
+      )
+      .map((project) => ({
+        slug: project?._id?.toString(),
+        title: project.title,
+        subtitle: project.note !== "" ? project.note : project.excerpt,
+        link: project.link,
+      }))
     return limit ? projectItems.slice(0, limit) : projectItems
   } catch (error) {
     console.info("error")
@@ -48,10 +55,9 @@ export async function getDiscoveryCategories() {
     const categories: RaindropTags = await response.json()
     return categories.items.map((category) => ({
       slug: slugify(category._id),
-      entry: {
-        title: category._id,
-        subtitle: `${category.count} discoveries`,
-      },
+      title: category._id,
+      subtitle: `${category.count} discoveries`,
+      link: `/discoveries/${slugify(category._id).toLowerCase()}`,
     }))
   } catch (error) {
     console.info(error)
@@ -68,10 +74,18 @@ export async function getDiscoveriesInCategory(category: string) {
       options
     )
     const discoveries: Raindrops = await response.json()
-    return discoveries.items.sort(
-      (a, b) =>
-        new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
-    )
+    return discoveries.items
+      .sort(
+        (a, b) =>
+          new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
+      )
+      .map((discovery) => ({
+        slug: discovery._id.toString(),
+        title: discovery.title,
+        subtitle: discovery.note !== "" ? discovery.note : discovery.excerpt,
+        link: discovery.link,
+        category: discovery.tags[0],
+      }))
   } catch (error) {
     console.info("error")
     return null
@@ -85,10 +99,17 @@ export async function getSoftwareUses() {
       options
     )
     const uses: Raindrops = await response.json()
-    return uses.items.sort(
-      (a, b) =>
-        new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
-    )
+    return uses.items
+      .sort(
+        (a, b) =>
+          new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime()
+      )
+      .map((use) => ({
+        slug: use._id.toString(),
+        title: use.title,
+        subtitle: use.note !== "" ? use.note : use.excerpt,
+        link: use.link,
+      }))
   } catch (error) {
     console.info("error")
     return null

@@ -17,7 +17,7 @@ export const siteConfig = {
   title: "ByZach",
   description: `Zach Bauer's Personal Website`,
   favicon: "/favicon.png",
-} as const
+}
 
 export const pageHeaders = {
   about: {
@@ -26,7 +26,6 @@ export const pageHeaders = {
   },
   activity: {
     title: "Activity",
-    subtitle: "I enjoy consuming media, sometimes.",
     socials: "Follow me on",
   },
   projects: {
@@ -49,7 +48,7 @@ export const pageHeaders = {
     title: "Uses",
     subtitle: "Devices, tools, and technologies I use on a daily basis.",
   },
-} as const
+}
 
 export const siteLinks = {
   here: "https://byzach.dev",
@@ -91,7 +90,7 @@ export const siteLinks = {
       icon: <SiTrakt size={16} />,
     },
   ],
-} as const
+}
 
 export const navLinks = [
   {
@@ -124,4 +123,4 @@ export const navLinks = [
     href: "/uses",
     icon: <FaHammer size={16} />,
   },
-] as const
+]

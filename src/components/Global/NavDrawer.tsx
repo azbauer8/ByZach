@@ -4,13 +4,13 @@ import { Fragment, useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Transition } from "@headlessui/react"
+import { Button } from "@nextui-org/react"
 import { atom, useAtom } from "jotai"
 import { PiCaretDoubleUpBold } from "react-icons/pi"
 
 import { navLinks, pageHeaders } from "@/lib/consts"
 import { cn } from "@/lib/utils"
-import ButtonLink from "@/components/Primitives/ButtonLink"
-import { Typography } from "@/components/Primitives/Typography"
+import { Typography } from "@/components/Typography"
 
 export const navDrawerState = atom(false)
 
@@ -107,18 +107,24 @@ export default function NavDrawer() {
                 ? pathname === link.href
                 : pathname.startsWith(link.href)
             return (
-              <ButtonLink
+              <Button
                 key={link.href}
                 as={Link}
                 href={link.href}
                 onClick={() => toggleOpen(false)}
-                active={active}
                 variant={active ? "flat" : "light"}
                 startContent={link.icon}
-                className={"flex-col justify-center pt-3"}
+                className={cn(
+                  "flex-col justify-center pt-3",
+                  "buttonLink h-fit justify-start px-2 py-1.5 font-medium",
+                  active
+                    ? "border text-foreground"
+                    : "border border-transparent text-default-500"
+                )}
+                disableRipple
               >
                 {link.name}
-              </ButtonLink>
+              </Button>
             )
           })}
         </div>

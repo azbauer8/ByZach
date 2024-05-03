@@ -2,27 +2,18 @@ import NextLink from "next/link"
 import { Button } from "@nextui-org/button"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
-import { formatDate } from "@/lib/utils"
-import { Typography } from "@/components/Primitives/Typography"
+import { Typography } from "@/components/Typography"
 
 export default function ContentList({
-  route,
   list,
   isExternal,
-  itemSubtitle,
 }: {
-  route?: string
   list: {
     slug: string
-    entry: {
-      title: string
-      link?: string
-      dateTime?: string | null
-      description?: string
-      subtitle?: string
-    }
+    title: string
+    subtitle: string
+    link: string
   }[]
-  itemSubtitle: "description" | "subtitle" | "dateTime"
   isExternal?: boolean
 }) {
   return (
@@ -32,25 +23,26 @@ export default function ContentList({
           key={item.slug}
           as={NextLink}
           variant="light"
-          href={item.entry.link ?? `${route}/${item.slug.toLowerCase()}`}
+          href={item.link}
           target={isExternal ? "_blank" : undefined}
           rel={isExternal ? "noreferrer" : undefined}
           prefetch={!isExternal}
           className="group -mx-3 h-auto flex-col items-start justify-start gap-1 px-3 py-2 text-base md:mx-0"
           disableRipple
         >
-          <div className="flex w-full items-center justify-between">
-            <Typography className="font-medium">{item.entry.title}</Typography>
+          <div className="flex w-full items-center justify-between gap-4">
+            <Typography className="truncate font-medium">
+              {item.title}
+            </Typography>
             {isExternal && (
-              <PiArrowUpRightBold className="text-default-500 transition-colors group-hover:text-foreground group-active:text-foreground" />
+              <PiArrowUpRightBold className="text-default-500 transition-colors group-hover:text-foreground" />
             )}
           </div>
-          <Typography affects="muted" className="text-wrap">
-            {itemSubtitle === "description"
-              ? item.entry.description
-              : itemSubtitle === "subtitle"
-                ? item.entry.subtitle
-                : formatDate(item.entry.dateTime)}
+          <Typography
+            affects="muted"
+            className="line-clamp-2 truncate text-wrap"
+          >
+            {item.subtitle}
           </Typography>
         </Button>
       ))}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next/types"
 
 import { pageHeaders } from "@/lib/consts"
-import { getDiscoveryCategories } from "@/lib/getRaindrop"
+import { getDiscoveryCategories } from "@/lib/raindrop"
 import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
 
@@ -19,11 +19,7 @@ export default async function DiscoveryCategories() {
       title={pageHeaders.discoveries.title}
       subtitle={pageHeaders.discoveries.subtitle}
     >
-      <ContentList
-        route="/discoveries"
-        list={discoveries}
-        itemSubtitle="subtitle"
-      />
+      <ContentList list={discoveries} />
     </PageContent>
   )
 }

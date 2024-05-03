@@ -1,5 +1,5 @@
 import { siteConfig, siteLinks } from "@/lib/consts"
-import { getThoughts } from "@/lib/getLocalContent"
+import { getThoughts } from "@/lib/localContent"
 
 export function GET() {
   const thoughts = getThoughts()

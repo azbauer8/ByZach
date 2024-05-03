@@ -2,9 +2,8 @@ import Image from "next/image"
 import { Button } from "@nextui-org/button"
 import { PiWaveformBold } from "react-icons/pi"
 
-import { getLastFm } from "@/lib/getActivity"
-import { Skeleton } from "@/components/Primitives/Skeleton"
-import { Typography } from "@/components/Primitives/Typography"
+import { getLastFm } from "@/lib/activity"
+import { Typography } from "@/components/Typography"
 
 export default async function LastFmCard() {
   const data = await getLastFm()
@@ -62,10 +61,13 @@ function LastFmFallback() {
         sizes="100vw"
         className="w-1/4 flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
-      <div className="my-auto grow space-y-3">
-        <Skeleton className="h-4 w-[100px]" disableAnimation />
-        <Skeleton className="h-4 w-[150px]" disableAnimation />
-        <Skeleton className="h-4 w-[125px]" disableAnimation />
+      <div className="my-auto grow">
+        <div className="flex flex-row items-center space-x-1 pb-1 text-emerald-600/95 dark:text-emerald-500">
+          {/* <PiWaveformBold className="size-5" /> */}
+          <Typography affects="small">{"(ノಠ益ಠ)ノ彡┻━┻"}</Typography>
+        </div>
+        <Typography variant="h5">Untitled</Typography>
+        <Typography affects="muted">Anonymous</Typography>
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import type { Metadata } from "next/types"
 
 import { pageHeaders } from "@/lib/consts"
-import { getSnippets } from "@/lib/getLocalContent"
+import { getSnippets } from "@/lib/localContent"
 import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
 
@@ -11,20 +11,14 @@ export const metadata: Metadata = {
 }
 
 export default async function Snippets() {
-  const snippets = getSnippets().map((snippet) => ({
-    slug: snippet.slug,
-    entry: {
-      title: snippet.entry.title,
-      dateTime: snippet.entry.dateTime,
-    },
-  }))
+  const snippets = getSnippets()
 
   return (
     <PageContent
       title={pageHeaders.snippets.title}
       subtitle={pageHeaders.snippets.subtitle}
     >
-      <ContentList route="/snippets" list={snippets} itemSubtitle="dateTime" />
+      <ContentList list={snippets} />
     </PageContent>
   )
 }

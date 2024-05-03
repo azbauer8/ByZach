@@ -3,6 +3,8 @@ import path from "node:path"
 import type keystaticConfig from "@/../keystatic.config"
 import type { Entry } from "@keystatic/core/reader"
 
+import { formatDate } from "@/lib/utils"
+
 import "server-only"
 
 type Metadata = {
@@ -56,15 +58,17 @@ export function getThoughts(limit?: number) {
       const { metadata, content } = readMDXFile(path.join(dir, file))
       const slug = path.basename(file, path.extname(file))
       return {
-        entry: metadata as ThoughtMetadata,
+        ...(metadata as ThoughtMetadata),
+        subtitle: metadata.dateTime ? formatDate(metadata.dateTime) : "",
+        link: `/thoughts/${slug}`,
         slug,
         content,
       }
     })
     .sort(
       (a, b) =>
-        new Date(b.entry.dateTime ?? "").getTime() -
-        new Date(a.entry.dateTime ?? "").getTime()
+        new Date(b.dateTime ?? "").getTime() -
+        new Date(a.dateTime ?? "").getTime()
     )
   return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }
@@ -80,15 +84,17 @@ export function getSnippets(limit?: number) {
       const { metadata, content } = readMDXFile(path.join(dir, file))
       const slug = path.basename(file, path.extname(file))
       return {
-        entry: metadata as SnippetMetadata,
+        ...(metadata as SnippetMetadata),
+        subtitle: metadata.dateTime ? formatDate(metadata.dateTime) : "",
+        link: `/snippets/${slug}`,
         slug,
         content,
       }
     })
     .sort(
       (a, b) =>
-        new Date(b.entry.dateTime ?? "").getTime() -
-        new Date(a.entry.dateTime ?? "").getTime()
+        new Date(b.dateTime ?? "").getTime() -
+        new Date(a.dateTime ?? "").getTime()
     )
   return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }

@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "@nextui-org/button"
 import { PiArrowUpLeftBold } from "react-icons/pi"
 
-import { Typography } from "@/components/Primitives/Typography"
+import { Typography } from "@/components/Typography"
 
 export default function PageContent({
   children,
@@ -31,7 +31,7 @@ export default function PageContent({
             variant="light"
             startContent={<PiArrowUpLeftBold />}
             disableRipple
-            className="-ml-2 gap-1 pl-2 pr-2.5 text-base text-default-500 transition-colors hover:text-foreground active:text-foreground md:hidden"
+            className="-ml-2 gap-1 pl-2 pr-2.5 text-base text-default-500 transition-colors hover:text-foreground md:hidden"
           >
             {previousPage.title}
           </Button>

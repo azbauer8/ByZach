@@ -1,12 +1,12 @@
 import slugify from "slugify"
 
 import { siteLinks } from "@/lib/consts"
-import { getSnippets, getThoughts } from "@/lib/getLocalContent"
+import { getSnippets, getThoughts } from "@/lib/localContent"
 import {
   getDiscoveryCategories,
   getProjects,
   getSoftwareUses,
-} from "@/lib/getRaindrop"
+} from "@/lib/raindrop"
 
 export default async function sitemap() {
   const projects = await getProjects().then((projects) =>

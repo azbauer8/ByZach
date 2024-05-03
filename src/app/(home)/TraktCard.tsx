@@ -2,9 +2,8 @@ import Image from "next/image"
 import { Button } from "@nextui-org/button"
 import { PiPopcornBold } from "react-icons/pi"
 
-import { getTrakt } from "@/lib/getActivity"
-import { Skeleton } from "@/components/Primitives/Skeleton"
-import { Typography } from "@/components/Primitives/Typography"
+import { getTrakt } from "@/lib/activity"
+import { Typography } from "@/components/Typography"
 
 export default async function TraktCard() {
   const traktData = await getTrakt()
@@ -69,10 +68,15 @@ function TraktFallback() {
         sizes="100vw"
         className="w-1/5 flex-none items-center justify-center self-center rounded-lg"
       />
-      <div className="my-auto w-full flex-1 space-y-3">
-        <Skeleton className="h-4 w-[100px] rounded-lg" disableAnimation />
-        <Skeleton className="h-4 w-[150px] rounded-lg" disableAnimation />
-        <Skeleton className="h-4 w-[125px] rounded-lg" disableAnimation />
+      <div className="my-auto grow">
+        <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
+          <PiPopcornBold className="size-5" />
+          <Typography affects="small">{"(ノಠ益ಠ)ノ彡┻━┻"}</Typography>
+        </div>
+        <Typography variant="h5">Untitled</Typography>
+        <Typography affects="muted">
+          {"S4E04: The gang hits an api error"}
+        </Typography>
       </div>
     </div>
   )

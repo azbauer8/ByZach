@@ -3,8 +3,8 @@ import slugify from "slugify"
 import {
   getDiscoveriesInCategory,
   getDiscoveryCategories,
-} from "@/lib/getRaindrop"
-import BookmarkItemList from "@/components/BookmarkItem"
+} from "@/lib/raindrop"
+import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
 
 export const dynamicParams = false
@@ -21,7 +21,7 @@ export async function generateMetadata({
   )
   if (!category) return {}
 
-  const { title, subtitle } = category.entry
+  const { title, subtitle } = category
 
   return {
     title,
@@ -44,23 +44,14 @@ export default async function DiscoveryCategory({
   const discoveries = await getDiscoveriesInCategory(params.category)
   if (!discoveries) return null
 
-  const category = discoveries[0].tags[0]
+  const category = discoveries[0].category
 
   return (
     <PageContent
       title={category}
       previousPage={{ link: "/discoveries", title: "Discoveries" }}
     >
-      <BookmarkItemList
-        items={discoveries.map((discovery) => ({
-          title: discovery.title,
-          description:
-            discovery.note !== "" ? discovery.note : discovery.excerpt,
-          link: discovery.link,
-          shortLink: discovery.domain,
-          img: discovery.cover,
-        }))}
-      />
+      <ContentList list={discoveries} isExternal />
     </PageContent>
   )
 }
