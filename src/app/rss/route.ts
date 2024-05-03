@@ -7,9 +7,9 @@ export function GET() {
   const itemsXml = thoughts
     .sort((a, b) => {
       if (
-        a.entry.dateTime &&
-        b.entry.dateTime &&
-        new Date(a.entry.dateTime) > new Date(b.entry.dateTime)
+        a.dateTime &&
+        b.dateTime &&
+        new Date(a.dateTime) > new Date(b.dateTime)
       ) {
         return -1
       }
@@ -18,12 +18,10 @@ export function GET() {
     .map(
       (post) =>
         `<item>
-          <title>${post.entry.title}</title>
+          <title>${post.title}</title>
           <link>${siteLinks.here}/thoughts/${post.slug}</link>
           <pubDate>${
-            post.entry.dateTime
-              ? new Date(post.entry.dateTime).toUTCString()
-              : ""
+            post.dateTime ? new Date(post.dateTime).toUTCString() : ""
           }</pubDate>
         </item>`
     )

@@ -38,6 +38,7 @@ export async function getProjects(limit?: number) {
         title: project.title,
         subtitle: project.note !== "" ? project.note : project.excerpt,
         link: project.link,
+        lastUpdate: project.lastUpdate,
       }))
     return limit ? projectItems.slice(0, limit) : projectItems
   } catch (error) {
@@ -109,6 +110,7 @@ export async function getSoftwareUses() {
         title: use.title,
         subtitle: use.note !== "" ? use.note : use.excerpt,
         link: use.link,
+        lastUpdate: use.lastUpdate,
       }))
   } catch (error) {
     console.info("error")

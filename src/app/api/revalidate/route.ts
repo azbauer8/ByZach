@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
   }
   try {
     revalidateTag("raindrop")
-
+    console.log("revalidating raindrop tag")
     return NextResponse.json({ revalidated: "raindrop" })
   } catch (e) {
     return NextResponse.json({ revalidated: false })

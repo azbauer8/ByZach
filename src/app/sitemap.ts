@@ -35,12 +35,12 @@ export default async function sitemap() {
 
   const thoughts = getThoughts().map((thought) => ({
     url: `${siteLinks.here}/thoughts/${thought.slug}`,
-    lastModified: thought.entry.dateTime,
+    lastModified: thought.dateTime,
   }))
 
   const snippets = getSnippets().map((snippet) => ({
     url: `${siteLinks.here}/snippets/${snippet.slug}`,
-    lastModified: snippet.entry.dateTime,
+    lastModified: snippet.dateTime,
   }))
 
   const routes = [
