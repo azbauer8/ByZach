@@ -13,6 +13,8 @@ import {
 } from "react-icons/fa6"
 import { SiTrakt } from "react-icons/si"
 
+export const revalidationInterval = 60 * 60 * 24 * 1 // revalidates once a day
+
 export const siteConfig = {
   title: "ByZach",
   description: `Zach Bauer's Personal Website`,

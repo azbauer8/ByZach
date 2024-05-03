@@ -1,3 +1,4 @@
+import { revalidationInterval } from "@/lib/consts"
 import { unslugify } from "@/lib/utils"
 
 import "server-only"
@@ -16,7 +17,9 @@ const options = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${process.env.RAINDROP_ACCESS_TOKEN}`,
   },
-  next: { tags: ["raindrop"] },
+  next: {
+    revalidate: revalidationInterval,
+  },
 }
 
 const url = "https://api.raindrop.io/rest/v1"
