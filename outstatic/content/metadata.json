@@ -1,6 +1,6 @@
 {
-  "commit": "830a1c7de9c70b1f70dbb919115a24c0b3d59272",
-  "generated": "2024-05-04T16:44:37.845Z",
+  "commit": "1ce372663c3b44249a3ee8d94946f6c51208d21b",
+  "generated": "2024-05-04T16:45:08.849Z",
   "metadata": [
     {
       "__outstatic": {
@@ -109,6 +109,24 @@
       "slug": "tailwind-responsive-font-sizes",
       "status": "draft",
       "title": "Tailwind responsive font sizes"
+    },
+    {
+      "__outstatic": {
+        "commit": "1ce372663c3b44249a3ee8d94946f6c51208d21b",
+        "hash": "2328059586",
+        "path": "outstatic/content/snippets/tailwind-window-size.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Indicates the current window size and Tailwind breakpoint. Only appears in dev.",
+      "publishedAt": "2024-05-04T16:20:55.586Z",
+      "slug": "tailwind-window-size",
+      "status": "published",
+      "title": "Tailwind Window Size"
     }
   ]
 }
