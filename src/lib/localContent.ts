@@ -1,61 +1,76 @@
+import fs from "node:fs"
+import path from "node:path"
+
 import { formatDate } from "@/lib/utils"
 
 import "server-only"
 
-import { getDocumentBySlug, getDocuments } from "outstatic/server"
-
 export function getLocalContent(collection: string, limit?: number) {
-  const content = getDocuments(collection, [
-    "title",
-    "publishedAt",
-    "description",
-    "slug",
-    "author",
-    "coverImage",
-  ]) as CMSContent[]
-  const formattedContent = content.map((entry) => ({
-    ...entry,
-    subtitle:
-      entry?.description && entry.description !== ""
-        ? entry.description
-        : formatDate(entry.publishedAt),
-    updatedAt: entry.publishedAt,
-    link: `/${collection}/${entry.slug}`,
-  }))
-  return limit ? formattedContent.slice(0, limit) : formattedContent
+  const dir = path.join(process.cwd(), `content/${collection}`)
+  const mdxFiles = getMDXFiles(dir)
+    .map((file) => {
+      const { metadata, content } = readMDXFile(path.join(dir, file))
+      return {
+        ...metadata,
+        subtitle:
+          metadata?.description && metadata.description !== ""
+            ? metadata.description
+            : formatDate(metadata.publishedAt),
+        link: `/${collection}/${metadata.slug}`,
+        updatedAt: metadata.publishedAt,
+        content,
+      }
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt ?? "").getTime() -
+        new Date(a.publishedAt ?? "").getTime()
+    )
+  return limit ? mdxFiles.slice(0, limit) : mdxFiles
 }
 
 export function getLocalContentEntry(collection: string, slug: string) {
-  const entry = getDocumentBySlug(collection, slug, [
-    "title",
-    "publishedAt",
-    "description",
-    "slug",
-    "author",
-    "content",
-    "coverImage",
-  ]) as CMSContent
-  return {
-    ...entry,
-    subtitle:
-      entry?.description && entry.description !== ""
-        ? entry.description
-        : formatDate(entry.publishedAt),
-    updatedAt: entry.publishedAt,
-    link: `/${collection}/${entry.slug}`,
-  }
+  return (
+    getLocalContent(collection).filter((t) => t.slug === slug)?.[0] ?? undefined
+  )
 }
 
-type CMSContent = {
+type Metadata = {
   title: string
+  status: string
   slug: string
-  publishedAt: string
-  description?: string
-  status: "published" | "draft"
-  author: {
-    name: string
-    picture: string
-  }
-  content: string
+  description: string
   coverImage: string
+  publishedAt: string
+}
+
+function parseFrontmatter(fileContent: string) {
+  const frontmatterRegex = /---\s*([\s\S]*?)\s*---/
+  const match = frontmatterRegex.exec(fileContent)
+  const frontMatterBlock = match?.[1]
+  const content = fileContent.replace(frontmatterRegex, "").trim()
+  const frontMatterLines = frontMatterBlock?.trim().split("\n")
+  const metadata: Partial<Metadata> = {}
+
+  if (frontMatterLines) {
+    for (const line of frontMatterLines) {
+      const [key, ...valueArr] = line.split(": ")
+      const value = valueArr
+        .join(": ")
+        .trim()
+        .replace(/^['"](.*)['"]$/, "$1")
+      metadata[key.trim() as keyof Metadata] = value
+    }
+  }
+
+  return { metadata, content }
+}
+
+function getMDXFiles(dir: fs.PathLike) {
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".md")
+}
+
+function readMDXFile(filePath: fs.PathOrFileDescriptor) {
+  const rawContent = fs.readFileSync(filePath, "utf-8")
+  return parseFrontmatter(rawContent)
 }

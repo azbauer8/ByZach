@@ -11,6 +11,7 @@ export default async function RecentContent() {
   const projects = await getProjects(4)
   const thoughts = getLocalContent("thoughts", 4)
   const snippets = getLocalContent("snippets", 4)
+  console.log("🚀 ~ RecentContent ~ snippets:", snippets)
 
   return (
     <>
@@ -45,8 +46,8 @@ function RecentContentList({
   title: string
   route?: string
   list: {
-    slug: string
-    title: string
+    title?: string | undefined
+    slug?: string | undefined
     subtitle: string
     link: string
   }[]

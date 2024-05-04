@@ -9,8 +9,8 @@ export default function ContentList({
   isExternal,
 }: {
   list: {
-    slug: string
-    title: string
+    title?: string | undefined
+    slug?: string | undefined
     subtitle: string
     link: string
   }[]
