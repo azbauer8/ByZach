@@ -5,7 +5,7 @@ author:
   name: 'Zach Bauer'
   picture: 'https://avatars.githubusercontent.com/u/8096606?v=4'
 slug: 'css-reset'
-description: ''
+description: 'Generally unopinionated default css styles. '
 coverImage: ''
 publishedAt: '2024-05-04T16:13:30.694Z'
 ---

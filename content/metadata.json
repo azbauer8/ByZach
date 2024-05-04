@@ -1,6 +1,6 @@
 {
-  "commit": "3a82f4ddd8cb13806b07bb54fbc40b34310de569",
-  "generated": "2024-05-04T17:20:07.423Z",
+  "commit": "f7c9cc8758e9bd1ecadb920bc5d7123ab58a9fc0",
+  "generated": "2024-05-04T19:42:29.626Z",
   "metadata": [
     {
       "__outstatic": {
@@ -19,24 +19,6 @@
       "slug": "how-i-built-this-site",
       "status": "published",
       "title": "How I built this site"
-    },
-    {
-      "__outstatic": {
-        "commit": "535508bce02b3f20ba3ea49f2210fe880fc049ea",
-        "hash": "2752806097",
-        "path": "content/snippets/css-reset.md"
-      },
-      "author": {
-        "name": "Zach Bauer",
-        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
-      },
-      "collection": "snippets",
-      "coverImage": "",
-      "description": "",
-      "publishedAt": "2024-05-04T16:13:30.694Z",
-      "slug": "css-reset",
-      "status": "published",
-      "title": "CSS Reset"
     },
     {
       "__outstatic": {
@@ -145,6 +127,24 @@
       "slug": "tailwind-responsive-font-sizes",
       "status": "published",
       "title": "Tailwind responsive font sizes"
+    },
+    {
+      "__outstatic": {
+        "commit": "f7c9cc8758e9bd1ecadb920bc5d7123ab58a9fc0",
+        "hash": "3418718881",
+        "path": "content/snippets/css-reset.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Generally unopinionated default css styles. ",
+      "publishedAt": "2024-05-04T16:13:30.694Z",
+      "slug": "css-reset",
+      "status": "published",
+      "title": "CSS Reset"
     }
   ]
 }
