@@ -1,6 +1,6 @@
 {
-  "commit": "3fef75da07c3c70a6bd1b2dd98e161e7e33fc3cf",
-  "generated": "2024-05-04T16:44:03.611Z",
+  "commit": "0c1fa6dab4a28595f775df27a64ac64f2bb749d7",
+  "generated": "2024-05-04T16:44:21.663Z",
   "metadata": [
     {
       "__outstatic": {
@@ -73,6 +73,24 @@
       "slug": "exclude-radix-from-auto-import",
       "status": "published",
       "title": "Exclude Radix from Auto Import"
+    },
+    {
+      "__outstatic": {
+        "commit": "0c1fa6dab4a28595f775df27a64ac64f2bb749d7",
+        "hash": "804008409",
+        "path": "outstatic/content/snippets/next-js-scaffolding.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Basic Next.js project setup including ppr, eslint, and prettier.",
+      "publishedAt": "2024-05-04T16:20:08.186Z",
+      "slug": "next-js-scaffolding",
+      "status": "published",
+      "title": "Next.js Scaffolding"
     }
   ]
 }
