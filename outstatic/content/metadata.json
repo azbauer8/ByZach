@@ -1,6 +1,6 @@
 {
-  "commit": "0c1fa6dab4a28595f775df27a64ac64f2bb749d7",
-  "generated": "2024-05-04T16:44:21.663Z",
+  "commit": "830a1c7de9c70b1f70dbb919115a24c0b3d59272",
+  "generated": "2024-05-04T16:44:37.845Z",
   "metadata": [
     {
       "__outstatic": {
@@ -91,6 +91,24 @@
       "slug": "next-js-scaffolding",
       "status": "published",
       "title": "Next.js Scaffolding"
+    },
+    {
+      "__outstatic": {
+        "commit": "830a1c7de9c70b1f70dbb919115a24c0b3d59272",
+        "hash": "2101507695",
+        "path": "outstatic/content/snippets/tailwind-responsive-font-sizes.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Tailwind font sizes recreated to adapt to the screen size.",
+      "publishedAt": "2024-05-04T16:20:27.626Z",
+      "slug": "tailwind-responsive-font-sizes",
+      "status": "draft",
+      "title": "Tailwind responsive font sizes"
     }
   ]
 }
