@@ -10,6 +10,9 @@ const config = () => {
 		},
 		experimental: {
 			webVitalsAttribution: ["FCP", "LCP", "CLS", "FID", "TTFB", "INP"],
+			outputFileTracingIncludes: {
+				'/content': ['./content/**/*'],
+			},
 		},
 		transpilePackages: ["next-mdx-remote"],
 
