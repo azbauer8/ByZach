@@ -1,6 +1,6 @@
 {
-  "commit": "d23ebf4c5c686ef4786d6f4ab184c87cbe89d410",
-  "generated": "2024-05-04T16:38:05.578Z",
+  "commit": "3fef75da07c3c70a6bd1b2dd98e161e7e33fc3cf",
+  "generated": "2024-05-04T16:44:03.611Z",
   "metadata": [
     {
       "__outstatic": {
@@ -55,6 +55,24 @@
       "slug": "disable-windows-explorer-auto-discovery",
       "status": "published",
       "title": "Disable Windows Explorer Auto-Discovery"
+    },
+    {
+      "__outstatic": {
+        "commit": "3fef75da07c3c70a6bd1b2dd98e161e7e33fc3cf",
+        "hash": "15586316",
+        "path": "outstatic/content/snippets/exclude-radix-from-auto-import.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Add this to your VS Code settings file.",
+      "publishedAt": "2024-05-04T16:19:46.289Z",
+      "slug": "exclude-radix-from-auto-import",
+      "status": "published",
+      "title": "Exclude Radix from Auto Import"
     }
   ]
 }
