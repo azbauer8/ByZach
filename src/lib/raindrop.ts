@@ -45,7 +45,7 @@ export async function getProjects(limit?: number) {
       }))
     return limit ? projectItems.slice(0, limit) : projectItems
   } catch (error) {
-    console.info("error")
+    console.info(error)
     return null
   }
 }
@@ -91,7 +91,7 @@ export async function getDiscoveriesInCategory(category: string) {
         category: discovery.tags[0],
       }))
   } catch (error) {
-    console.info("error")
+    console.info(error)
     return null
   }
 }
@@ -116,7 +116,7 @@ export async function getSoftwareUses() {
         lastUpdate: use.lastUpdate,
       }))
   } catch (error) {
-    console.info("error")
+    console.info(error)
     return null
   }
 }

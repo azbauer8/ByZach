@@ -1,12 +1,12 @@
 import { siteLinks } from "@/lib/consts"
-import { getThought, getThoughts } from "@/lib/localContent"
+import { getLocalContent, getLocalContentEntry } from "@/lib/localContent"
 import { Markdown } from "@/components/Markdown"
 import PageContent from "@/components/PageContent"
 
 export const dynamicParams = false
 
 export function generateMetadata({ params }: { params: { thought: string } }) {
-  const thought = getThought(params.thought)
+  const thought = getLocalContentEntry("thoughts", params.thought)
 
   if (!thought) return {}
   const { title } = thought
@@ -17,7 +17,7 @@ export function generateMetadata({ params }: { params: { thought: string } }) {
       title,
       type: "article",
       url: `${siteLinks.here}${thought.link}`,
-      publishedTime: thought.dateTime || undefined,
+      publishedTime: thought.publishedAt || undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -27,14 +27,14 @@ export function generateMetadata({ params }: { params: { thought: string } }) {
 }
 
 export function generateStaticParams() {
-  const thoughts = getThoughts()
+  const thoughts = getLocalContent("thoughts")
   return thoughts.map((thought) => ({
     thought: thought.slug,
   }))
 }
 
 export default function Thought({ params }: { params: { thought: string } }) {
-  const thought = getThought(params.thought)
+  const thought = getLocalContentEntry("thoughts", params.thought)
   if (!thought) return null
 
   return (

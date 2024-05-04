@@ -10,8 +10,6 @@ coverImage: ''
 publishedAt: '2024-05-04T16:20:08.186Z'
 ---
 
----
-
 ## Create Next.js app:
 
 ```bash

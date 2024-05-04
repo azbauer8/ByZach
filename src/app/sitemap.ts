@@ -1,7 +1,7 @@
 import slugify from "slugify"
 
 import { siteLinks } from "@/lib/consts"
-import { getSnippets, getThoughts } from "@/lib/localContent"
+import { getLocalContent } from "@/lib/localContent"
 import {
   getDiscoveryCategories,
   getProjects,
@@ -33,14 +33,14 @@ export default async function sitemap() {
 
   const discArray = discoveries || []
 
-  const thoughts = getThoughts().map((thought) => ({
+  const thoughts = getLocalContent("thoughts").map((thought) => ({
     url: `${siteLinks.here}/thoughts/${thought.slug}`,
-    lastModified: thought.dateTime,
+    lastModified: thought.publishedAt,
   }))
 
-  const snippets = getSnippets().map((snippet) => ({
+  const snippets = getLocalContent("snippets").map((snippet) => ({
     url: `${siteLinks.here}/snippets/${snippet.slug}`,
-    lastModified: snippet.dateTime,
+    lastModified: snippet.publishedAt,
   }))
 
   const routes = [

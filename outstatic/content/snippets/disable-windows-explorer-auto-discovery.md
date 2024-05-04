@@ -10,8 +10,6 @@ coverImage: ''
 publishedAt: '2024-05-04T16:13:47.636Z'
 ---
 
----
-
 ```bash
 [HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell]
 "FolderType"="NotSpecified"

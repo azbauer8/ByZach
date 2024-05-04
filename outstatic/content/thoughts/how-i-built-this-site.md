@@ -10,8 +10,6 @@ coverImage: ''
 publishedAt: '2024-05-04T15:57:23.122Z'
 ---
 
----
-
 What's a dev blog without a post explaining how it was made?
 
 At a high level, this site is 99% static content with a small bit content dynamically fetched from an api. I'm using Next.js 14 with partial pre-rendering to make this feel closer to 100% static.

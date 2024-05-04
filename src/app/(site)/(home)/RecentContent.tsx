@@ -2,15 +2,15 @@ import Link from "next/link"
 import { Button } from "@nextui-org/button"
 
 import { pageHeaders } from "@/lib/consts"
-import { getSnippets, getThoughts } from "@/lib/localContent"
+import { getLocalContent } from "@/lib/localContent"
 import { getProjects } from "@/lib/raindrop"
 import ContentList from "@/components/ContentList"
 import { Typography } from "@/components/Typography"
 
 export default async function RecentContent() {
   const projects = await getProjects(4)
-  const thoughts = getThoughts(4)
-  const snippets = getSnippets(4)
+  const thoughts = getLocalContent("thoughts", 4)
+  const snippets = getLocalContent("snippets", 4)
 
   return (
     <>

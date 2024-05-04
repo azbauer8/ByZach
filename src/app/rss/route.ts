@@ -1,15 +1,15 @@
 import { siteConfig, siteLinks } from "@/lib/consts"
-import { getThoughts } from "@/lib/localContent"
+import { getLocalContent } from "@/lib/localContent"
 
 export function GET() {
-  const thoughts = getThoughts()
+  const thoughts = getLocalContent("thoughts")
 
   const itemsXml = thoughts
     .sort((a, b) => {
       if (
-        a.dateTime &&
-        b.dateTime &&
-        new Date(a.dateTime) > new Date(b.dateTime)
+        a.publishedAt &&
+        b.publishedAt &&
+        new Date(a.publishedAt) > new Date(b.publishedAt)
       ) {
         return -1
       }
@@ -21,7 +21,7 @@ export function GET() {
           <title>${post.title}</title>
           <link>${siteLinks.here}/thoughts/${post.slug}</link>
           <pubDate>${
-            post.dateTime ? new Date(post.dateTime).toUTCString() : ""
+            post.publishedAt ? new Date(post.publishedAt).toUTCString() : ""
           }</pubDate>
         </item>`
     )

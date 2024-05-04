@@ -10,8 +10,6 @@ coverImage: ''
 publishedAt: '2024-05-04T16:13:30.694Z'
 ---
 
----
-
 #### Vanilla CSS
 
 ```css

@@ -10,8 +10,6 @@ coverImage: ''
 publishedAt: '2024-05-04T16:21:16.387Z'
 ---
 
----
-
 ```jsx
 import { useEffect, useState } from "react"
 

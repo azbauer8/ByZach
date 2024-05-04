@@ -1,7 +1,7 @@
 import type { Metadata } from "next/types"
 
 import { pageHeaders } from "@/lib/consts"
-import { getThoughts } from "@/lib/localContent"
+import { getLocalContent } from "@/lib/localContent"
 import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 export default function Thoughts() {
-  const thoughts = getThoughts()
+  const thoughts = getLocalContent("thoughts")
 
   return (
     <PageContent
