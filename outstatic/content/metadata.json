@@ -1,6 +1,24 @@
 {
-  "commit": "1bbefe7a9911ea33a933f73779c9d7a08b5a0dd8",
-  "generated": "2024-05-04T16:20:56.127Z",
+  "commit": "8391dbef5ef276563b6f7a8ec812e2b2df60c9a4",
+  "generated": "2024-05-04T16:21:37.806Z",
   "metadata": [
+    {
+      "__outstatic": {
+        "commit": "8391dbef5ef276563b6f7a8ec812e2b2df60c9a4",
+        "hash": "1407889452",
+        "path": "outstatic/content/thoughts/how-i-built-this-site.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "thoughts",
+      "coverImage": "",
+      "description": "",
+      "publishedAt": "2024-05-04T15:57:23.122Z",
+      "slug": "how-i-built-this-site",
+      "status": "published",
+      "title": "How I built this site"
+    }
   ]
 }
