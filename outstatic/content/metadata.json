@@ -1,6 +1,6 @@
 {
-  "commit": "1ce372663c3b44249a3ee8d94946f6c51208d21b",
-  "generated": "2024-05-04T16:45:08.849Z",
+  "commit": "40d895f1c3d132b3374c97c06bd92a4a09499d97",
+  "generated": "2024-05-04T16:45:26.250Z",
   "metadata": [
     {
       "__outstatic": {
@@ -127,6 +127,24 @@
       "slug": "tailwind-window-size",
       "status": "published",
       "title": "Tailwind Window Size"
+    },
+    {
+      "__outstatic": {
+        "commit": "40d895f1c3d132b3374c97c06bd92a4a09499d97",
+        "hash": "1404199558",
+        "path": "outstatic/content/snippets/usescrollposition.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "To listen for the vertical scroll position of the browser window.",
+      "publishedAt": "2024-05-04T16:21:16.387Z",
+      "slug": "usescrollposition",
+      "status": "published",
+      "title": "useScrollPosition"
     }
   ]
 }
