@@ -1,0 +1,150 @@
+{
+  "commit": "62fbc70c45a774ae1f34136d787bdd695c808d7d",
+  "generated": "Sat, 04 May 2024 15:54:45 GMT",
+  "metadata": [
+    {
+      "__outstatic": {
+        "commit": "ab2a6c4fceac80233a5143f2eea1db842f142d3f",
+        "hash": "55382195",
+        "path": "outstatic/content/snippets/exclude-radix-from-auto-import.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Add this to your VS Code settings file.",
+      "publishedAt": "2024-05-04T15:28:19.945Z",
+      "slug": "exclude-radix-from-auto-import",
+      "status": "draft",
+      "title": "Exclude Radix from Auto Import"
+    },
+    {
+      "__outstatic": {
+        "commit": "adf9966fef43840ff6a33fced5938dbbbf2b1b24",
+        "hash": "3988573661",
+        "path": "outstatic/content/snippets/disable-windows-explorer-auto-discovery.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Add/modify the regedit key below to get a noticeable performance boost in file explorer. Windows is stupid, idk.",
+      "publishedAt": "2024-05-04T15:27:41.380Z",
+      "slug": "disable-windows-explorer-auto-discovery",
+      "status": "draft",
+      "title": "Disable Windows Explorer Auto-Discovery"
+    },
+    {
+      "__outstatic": {
+        "commit": "920ff9033548b3d2244914b1f9d1050522797ffd",
+        "hash": "2093523339",
+        "path": "outstatic/content/snippets/css-reset.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "",
+      "publishedAt": "2024-05-04T15:26:57.390Z",
+      "slug": "css-reset",
+      "status": "draft",
+      "title": "CSS Reset"
+    },
+    {
+      "__outstatic": {
+        "commit": "9b20a5c00f9cccfe442ec9325cd5345ff8b5a33f",
+        "hash": "1091993073",
+        "path": "outstatic/content/thoughts/how-i-built-this-site.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "thoughts",
+      "coverImage": "",
+      "description": "",
+      "publishedAt": "2024-05-04T15:24:51.903Z",
+      "slug": "how-i-built-this-site",
+      "status": "draft",
+      "title": "How I built this site"
+    },
+    {
+      "__outstatic": {
+        "commit": "7ab250a49f23b4dd4da2ee0f6046f1714a712e1b",
+        "hash": "2070354645",
+        "path": "outstatic/content/snippets/usescrollposition.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "To listen for the vertical scroll position of the browser window.",
+      "publishedAt": "2024-05-04T15:29:51.366Z",
+      "slug": "usescrollposition",
+      "status": "draft",
+      "title": "useScrollPosition"
+    },
+    {
+      "__outstatic": {
+        "commit": "37dab6085f903fe8cb4f10b8a06abcdc09f3bc6a",
+        "hash": "2794728867",
+        "path": "outstatic/content/snippets/tailwind-window-size.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Indicates the current window size and Tailwind breakpoint. Only appears in dev.",
+      "publishedAt": "2024-05-04T15:29:29.127Z",
+      "slug": "tailwind-window-size",
+      "status": "draft",
+      "title": "Tailwind Window Size"
+    },
+    {
+      "__outstatic": {
+        "commit": "7f0380dc45f4281983ad1148e83cb7b8c629c7c0",
+        "hash": "727282641",
+        "path": "outstatic/content/snippets/tailwind-responsive-font-sizes.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Tailwind font sizes recreated to adapt to the screen size.",
+      "publishedAt": "2024-05-04T15:29:04.560Z",
+      "slug": "tailwind-responsive-font-sizes",
+      "status": "draft",
+      "title": "Tailwind responsive font sizes"
+    },
+    {
+      "__outstatic": {
+        "commit": "60e366ceb90b20c088eca45268f71559e0828cbd",
+        "hash": "2336494130",
+        "path": "outstatic/content/snippets/next-js-scaffolding.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Basic Next.js project setup including ppr, eslint, and prettier.",
+      "publishedAt": "2024-05-04T15:28:39.690Z",
+      "slug": "next-js-scaffolding",
+      "status": "draft",
+      "title": "Next.js Scaffolding"
+    }
+  ]
+}
