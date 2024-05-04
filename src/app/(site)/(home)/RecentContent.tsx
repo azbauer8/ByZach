@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Button } from "@nextui-org/react"
+import { Button } from "@nextui-org/button"
 
 import { pageHeaders } from "@/lib/consts"
 import { getSnippets, getThoughts } from "@/lib/localContent"

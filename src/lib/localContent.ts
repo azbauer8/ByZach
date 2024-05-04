@@ -7,6 +7,13 @@ import { formatDate } from "@/lib/utils"
 
 import "server-only"
 
+import {
+  getCollections,
+  getDocumentBySlug,
+  getDocumentPaths,
+  getDocuments,
+} from "outstatic/server"
+
 type Metadata = {
   title: string
   dateTime: string | null
@@ -101,4 +108,13 @@ export function getSnippets(limit?: number) {
 
 export function getSnippet(slug: string) {
   return getSnippets().filter((t) => t.slug === slug)?.[0] ?? undefined
+}
+
+export function getOutstaticThoughts() {
+  const post = getCollections()
+  for (const wasd of post) {
+    console.log("🚀 ~ post.forEach ~ wasd:", wasd)
+    const docs = getDocumentPaths(wasd)
+    console.log("🚀 ~ post.forEach ~ docs:", docs)
+  }
 }

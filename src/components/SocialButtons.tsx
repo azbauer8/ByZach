@@ -1,4 +1,5 @@
-import { Button, Link } from "@nextui-org/react"
+import { Button } from "@nextui-org/button"
+import { Link } from "@nextui-org/link"
 
 export default function SocialButtons({
   links,

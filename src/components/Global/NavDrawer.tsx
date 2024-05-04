@@ -4,7 +4,7 @@ import { Fragment, useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Transition } from "@headlessui/react"
-import { Button } from "@nextui-org/react"
+import { Button } from "@nextui-org/button"
 import { atom, useAtom } from "jotai"
 import { PiCaretDoubleUpBold } from "react-icons/pi"
 
