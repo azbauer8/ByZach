@@ -15,7 +15,10 @@ export function getLocalContent(collection: string, limit?: number) {
   ]) as CMSContent[]
   const formattedContent = content.map((entry) => ({
     ...entry,
-    subtitle: entry?.description ?? formatDate(entry.publishedAt),
+    subtitle:
+      entry?.description && entry.description !== ""
+        ? entry.description
+        : formatDate(entry.publishedAt),
     updatedAt: entry.publishedAt,
     link: `/${collection}/${entry.slug}`,
   }))
@@ -34,7 +37,10 @@ export function getLocalContentEntry(collection: string, slug: string) {
   ]) as CMSContent
   return {
     ...entry,
-    subtitle: entry?.description ?? formatDate(entry.publishedAt),
+    subtitle:
+      entry?.description && entry.description !== ""
+        ? entry.description
+        : formatDate(entry.publishedAt),
     updatedAt: entry.publishedAt,
     link: `/${collection}/${entry.slug}`,
   }
