@@ -1,6 +1,6 @@
 {
-  "commit": "40d895f1c3d132b3374c97c06bd92a4a09499d97",
-  "generated": "2024-05-04T16:45:26.250Z",
+  "commit": "0fa343775766ec3d48f4134ea6657ae0bccc43ff",
+  "generated": "2024-05-04T16:45:36.148Z",
   "metadata": [
     {
       "__outstatic": {
@@ -94,24 +94,6 @@
     },
     {
       "__outstatic": {
-        "commit": "830a1c7de9c70b1f70dbb919115a24c0b3d59272",
-        "hash": "2101507695",
-        "path": "outstatic/content/snippets/tailwind-responsive-font-sizes.md"
-      },
-      "author": {
-        "name": "Zach Bauer",
-        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
-      },
-      "collection": "snippets",
-      "coverImage": "",
-      "description": "Tailwind font sizes recreated to adapt to the screen size.",
-      "publishedAt": "2024-05-04T16:20:27.626Z",
-      "slug": "tailwind-responsive-font-sizes",
-      "status": "draft",
-      "title": "Tailwind responsive font sizes"
-    },
-    {
-      "__outstatic": {
         "commit": "1ce372663c3b44249a3ee8d94946f6c51208d21b",
         "hash": "2328059586",
         "path": "outstatic/content/snippets/tailwind-window-size.md"
@@ -145,6 +127,24 @@
       "slug": "usescrollposition",
       "status": "published",
       "title": "useScrollPosition"
+    },
+    {
+      "__outstatic": {
+        "commit": "0fa343775766ec3d48f4134ea6657ae0bccc43ff",
+        "hash": "851191859",
+        "path": "outstatic/content/snippets/tailwind-responsive-font-sizes.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Tailwind font sizes recreated to adapt to the screen size.",
+      "publishedAt": "2024-05-04T16:20:27.626Z",
+      "slug": "tailwind-responsive-font-sizes",
+      "status": "published",
+      "title": "Tailwind responsive font sizes"
     }
   ]
 }
