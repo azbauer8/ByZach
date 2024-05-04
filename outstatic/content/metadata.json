@@ -1,6 +1,6 @@
 {
-  "commit": "535508bce02b3f20ba3ea49f2210fe880fc049ea",
-  "generated": "2024-05-04T16:37:40.581Z",
+  "commit": "d23ebf4c5c686ef4786d6f4ab184c87cbe89d410",
+  "generated": "2024-05-04T16:38:05.578Z",
   "metadata": [
     {
       "__outstatic": {
@@ -37,6 +37,24 @@
       "slug": "css-reset",
       "status": "published",
       "title": "CSS Reset"
+    },
+    {
+      "__outstatic": {
+        "commit": "d23ebf4c5c686ef4786d6f4ab184c87cbe89d410",
+        "hash": "2163463088",
+        "path": "outstatic/content/snippets/disable-windows-explorer-auto-discovery.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "Add/modify the regedit key below to get a noticeable performance boost in file explorer. Windows is stupid, idk.",
+      "publishedAt": "2024-05-04T16:13:47.636Z",
+      "slug": "disable-windows-explorer-auto-discovery",
+      "status": "published",
+      "title": "Disable Windows Explorer Auto-Discovery"
     }
   ]
 }
