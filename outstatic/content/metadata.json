@@ -1,6 +1,6 @@
 {
-  "commit": "c8072db1861b67a2d3b45b84d827ed2120064002",
-  "generated": "Sat, 04 May 2024 16:21:55 GMT",
+  "commit": "535508bce02b3f20ba3ea49f2210fe880fc049ea",
+  "generated": "2024-05-04T16:37:40.581Z",
   "metadata": [
     {
       "__outstatic": {
@@ -19,6 +19,24 @@
       "slug": "how-i-built-this-site",
       "status": "published",
       "title": "How I built this site"
+    },
+    {
+      "__outstatic": {
+        "commit": "535508bce02b3f20ba3ea49f2210fe880fc049ea",
+        "hash": "2752806097",
+        "path": "outstatic/content/snippets/css-reset.md"
+      },
+      "author": {
+        "name": "Zach Bauer",
+        "picture": "https://avatars.githubusercontent.com/u/8096606?v=4"
+      },
+      "collection": "snippets",
+      "coverImage": "",
+      "description": "",
+      "publishedAt": "2024-05-04T16:13:30.694Z",
+      "slug": "css-reset",
+      "status": "published",
+      "title": "CSS Reset"
     }
   ]
 }
