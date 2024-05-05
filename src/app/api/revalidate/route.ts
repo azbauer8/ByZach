@@ -1,4 +1,4 @@
-import { revalidateTag } from "next/cache"
+import { revalidatePath } from "next/cache"
 
 export async function POST(request: Request) {
   if (request.method !== "POST") {
@@ -16,19 +16,6 @@ export async function POST(request: Request) {
     })
   }
 
-  //   Validate slug.
-  const slug = searchParams.get("slug")
-  if (!slug || (slug !== "cms" && slug !== "raindrop")) {
-    return new Response("Invalid slug.", {
-      status: 400,
-    })
-  }
-  try {
-    revalidateTag(slug)
-    return Response.json({ revalidated: slug })
-  } catch (error) {
-    return new Response("Something went wrong. Please try again later.", {
-      status: 404,
-    })
-  }
+  revalidatePath("/", "layout")
+  return Response.json({ revalidated: "all" })
 }

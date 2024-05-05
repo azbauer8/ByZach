@@ -1,77 +1,72 @@
 import "server-only"
 
 export async function getLastFm() {
-  try {
-    const response = await fetch(
-      `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
-      { next: { revalidate: 10 } }
-    )
-    const data: LastFmData | undefined = await response.json()
-    if (!data) return
-    const latestTrack = data.recenttracks.track[0]
-    const playingWhen = latestTrack["@attr"]?.nowplaying
-      ? "Now Playing"
-      : getTimeDiff(latestTrack.date["#text"], "lastfm")
+  const response = await fetch(
+    `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
+    { next: { revalidate: 10 } }
+  )
+  if (!response.ok) {
+    return undefined
+  }
+  const data: LastFmData | undefined = await response.json()
+  if (!data) return
+  const latestTrack = data.recenttracks.track[0]
+  const playingWhen = latestTrack["@attr"]?.nowplaying
+    ? "Now Playing"
+    : getTimeDiff(latestTrack.date["#text"], "lastfm")
 
-    return {
-      latestTrack,
-      playingWhen,
-    }
-  } catch (e) {
-    return
+  return {
+    latestTrack,
+    playingWhen,
   }
 }
 
 export async function getTrakt() {
-  try {
-    const response = await fetch(
-      "https://api.trakt.tv/users/zacharlatan/history?extended=full",
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "trakt-api-key": `${process.env.TRAKT_API}`,
-          "trakt-api-version": "2",
-        },
-        next: { revalidate: 10 },
-      }
-    )
-    const traktData: TraktEntry[] | undefined = await response.json()
-    if (!traktData) return
-    const latest = traktData[0]
-    const latestData = {
-      type: latest.type,
-      title: latest.show
-        ? latest.show.title
-        : latest.movie
-          ? latest.movie.title
-          : "",
-      url: latest.show
-        ? `https://trakt.tv/shows/${latest.show.ids.slug}`
-        : `https://trakt.tv/movies/${latest.movie?.ids.slug}`,
+  const response = await fetch(
+    "https://api.trakt.tv/users/zacharlatan/history?extended=full",
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "trakt-api-key": `${process.env.TRAKT_API}`,
+        "trakt-api-version": "2",
+      },
+      next: { revalidate: 10 },
+    }
+  )
+  if (!response.ok) {
+    return undefined
+  }
+  const traktData: TraktEntry[] | undefined = await response.json()
+  if (!traktData) return
+  const latest = traktData[0]
+  const latestData = {
+    type: latest.type,
+    title: latest.show
+      ? latest.show.title
+      : latest.movie
+        ? latest.movie.title
+        : "",
+    url: latest.show
+      ? `https://trakt.tv/shows/${latest.show.ids.slug}`
+      : `https://trakt.tv/movies/${latest.movie?.ids.slug}`,
 
-      playingWhen: latest.watched_at
-        ? getTimeDiff(latest.watched_at, "trakt")
-        : "Currently Watching",
-      tagline: latest.movie?.tagline,
-      episode: latest.episode?.title ?? undefined,
-      season: latest.episode?.season ?? undefined,
-      episodeNum: latest.episode?.number ?? undefined,
-      tmdbId:
-        latest?.type === "episode"
-          ? latest.show?.ids.tmdb
-          : latest.movie?.ids.tmdb,
-    }
-    const latestPoster = await getTraktPoster(
-      latestData.tmdbId,
-      latestData.type
-    )
-    if (!latestPoster) return { data: latestData, poster: undefined }
-    return {
-      data: latestData,
-      poster: latestPoster,
-    }
-  } catch (e) {
-    return
+    playingWhen: latest.watched_at
+      ? getTimeDiff(latest.watched_at, "trakt")
+      : "Currently Watching",
+    tagline: latest.movie?.tagline,
+    episode: latest.episode?.title ?? undefined,
+    season: latest.episode?.season ?? undefined,
+    episodeNum: latest.episode?.number ?? undefined,
+    tmdbId:
+      latest?.type === "episode"
+        ? latest.show?.ids.tmdb
+        : latest.movie?.ids.tmdb,
+  }
+  const latestPoster = await getTraktPoster(latestData.tmdbId, latestData.type)
+  if (!latestPoster) return { data: latestData, poster: undefined }
+  return {
+    data: latestData,
+    poster: latestPoster,
   }
 }
 
@@ -89,19 +84,15 @@ async function getTraktPoster(
     },
     next: { revalidate: 10 },
   }
-  try {
-    const baseData: TraktPosterBase | undefined = await fetch(
-      baseUrl,
-      options
-    ).then((res) => res.json())
+  const baseData: TraktPosterBase | undefined = await fetch(baseUrl, options)
+    .then((res) => res.json())
+    .catch((e) => e)
 
-    const posterData: TraktPosterData | undefined = await fetch(
-      imageUrl,
-      options
-    ).then((res) => res.json())
+  const posterData: TraktPosterData | undefined = await fetch(imageUrl, options)
+    .then((res) => res.json())
+    .catch((e) => e)
 
-    return `${baseData?.images.base_url}w500/${posterData?.posters[0].file_path}`
-  } catch (e) {}
+  return `${baseData?.images.base_url}w500/${posterData?.posters[0].file_path}`
 }
 
 function getTimeDiff(givenDate: string, type: "lastfm" | "trakt") {
