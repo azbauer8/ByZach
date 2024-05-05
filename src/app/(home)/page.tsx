@@ -5,9 +5,9 @@ import { pageHeaders, siteLinks } from "@/lib/consts"
 import PageContent from "@/components/PageContent"
 import SocialButtons from "@/components/SocialButtons"
 import { Typography } from "@/components/Typography"
-import RecentContent from "./RecentContent"
 
 import LastFmCard from "./LastfmCard"
+import RecentContent from "./RecentContent"
 import TraktCard from "./TraktCard"
 
 export const metadata: Metadata = {
