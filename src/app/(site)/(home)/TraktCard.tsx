@@ -31,7 +31,7 @@ export default async function TraktCard() {
         className="aspect-[2/3] max-w-[25%] flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
 
-      <div className="my-auto grow">
+      <div className="my-auto grow text-wrap">
         <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
           <PiPopcornBold className="size-5" />
           <Typography affects="small">{data.playingWhen}</Typography>
@@ -55,7 +55,7 @@ export default async function TraktCard() {
 
 function TraktFallback() {
   return (
-    <div className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2">
+    <div className="-mx-3 flex h-auto items-center space-x-5 text-wrap rounded-lg px-3 py-2">
       <Image
         src="/trakt_placeholder.svg"
         alt="Poster Placeholder"

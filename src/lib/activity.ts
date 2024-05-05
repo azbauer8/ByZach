@@ -90,22 +90,18 @@ async function getTraktPoster(
     next: { revalidate: 10 },
   }
   try {
-    const baseData = await fetch(baseUrl, options)
-      .then((res) => res.json())
-      .catch((err) => console.error(`error:${err}`))
+    const baseData: TraktPosterBase | undefined = await fetch(
+      baseUrl,
+      options
+    ).then((res) => res.json())
 
-    const posterData = await fetch(imageUrl, options)
-      .then((res) => res.json())
-      .catch((err) => console.error(`error:${err}`))
+    const posterData: TraktPosterData | undefined = await fetch(
+      imageUrl,
+      options
+    ).then((res) => res.json())
 
-    return `${baseData.images.base_url}w500/${posterData.posters[0].file_path}`
+    return `${baseData?.images.base_url}w500/${posterData?.posters[0].file_path}`
   } catch (e) {}
-}
-
-type LastFmData = {
-  recenttracks: {
-    track: LastFmTrack[]
-  }
 }
 
 function getTimeDiff(givenDate: string, type: "lastfm" | "trakt") {
@@ -149,6 +145,12 @@ function getTimeDiff(givenDate: string, type: "lastfm" | "trakt") {
     return `${daysAgo} day ago`
   }
   return `${daysAgo} days ago`
+}
+
+type LastFmData = {
+  recenttracks: {
+    track: LastFmTrack[]
+  }
 }
 
 type LastFmTrack = {
@@ -220,4 +222,33 @@ type TraktEntry = {
       imdb: string
     }
   }
+}
+
+type TraktPosterBase = {
+  images: {
+    base_url: string
+    secure_base_url: string
+    backdrop_sizes: ["w300", "w780", "w1280", "original"]
+    logo_sizes: ["w45", "w92", "w154", "w185", "w300", "w500", "original"]
+    poster_sizes: ["w92", "w154", "w185", "w342", "w500", "w780", "original"]
+    profile_sizes: ["w45", "w185", "h632", "original"]
+    still_sizes: ["w92", "w185", "w300", "original"]
+  }
+}
+
+type TraktPosterData = {
+  id: number
+  posters: TraktPosterDataEntry[]
+  backdrops: TraktPosterDataEntry[]
+  logos: TraktPosterDataEntry
+}
+
+type TraktPosterDataEntry = {
+  aspect_ratio: number
+  height: number
+  iso_639_1: string | null
+  file_path: string
+  vote_average: number
+  vote_count: number
+  width: number
 }

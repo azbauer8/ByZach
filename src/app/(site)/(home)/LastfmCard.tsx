@@ -30,7 +30,7 @@ export default async function LastFmCard() {
         sizes="100vw"
         className="aspect-square max-w-[25%] flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
-      <div className="my-auto grow">
+      <div className="my-auto grow text-wrap">
         <div className="flex flex-row items-center space-x-1 text-emerald-600/95 dark:text-emerald-500">
           {playingWhen === "Now Playing" ? (
             <Image src="/bars.svg" alt="Now Playing" width={14} height={14} />
@@ -61,7 +61,7 @@ function LastFmFallback() {
         sizes="100vw"
         className="w-1/4 flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
-      <div className="my-auto grow">
+      <div className="my-auto grow text-wrap">
         <div className="flex flex-row items-center space-x-1 pb-1 text-emerald-600/95 dark:text-emerald-500">
           {/* <PiWaveformBold className="size-5" /> */}
           <Typography affects="small">{"(ノಠ益ಠ)ノ彡┻━┻"}</Typography>
