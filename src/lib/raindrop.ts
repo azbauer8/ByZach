@@ -19,7 +19,6 @@ const options = {
   },
   next: {
     revalidate: revalidationInterval,
-    tags: ["raindrop"],
   },
 }
 

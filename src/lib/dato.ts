@@ -1,6 +1,5 @@
 import { cache } from "react"
 
-import { revalidationInterval } from "@/lib/consts"
 import { formatDate } from "@/lib/utils"
 
 type CMSContent = {
@@ -106,14 +105,12 @@ export async function performRequest({
   includeDrafts = false,
   excludeInvalid = false,
   visualEditingBaseUrl,
-  revalidate = revalidationInterval,
 }: {
   query: string
   variables?: Record<string, unknown>
   includeDrafts?: boolean
   excludeInvalid?: boolean
   visualEditingBaseUrl?: string
-  revalidate?: number
 }) {
   const { data } = await dedupedFetch(
     JSON.stringify({
@@ -129,8 +126,7 @@ export async function performRequest({
             }
           : {}),
       },
-      body: JSON.stringify({ query, variables, revalidate }),
-      next: { revalidate, tags: ["cms"] },
+      body: JSON.stringify({ query, variables }),
     })
   )
   return (
