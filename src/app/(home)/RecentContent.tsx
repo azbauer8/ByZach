@@ -2,15 +2,15 @@ import Link from "next/link"
 import { Button } from "@nextui-org/button"
 
 import { pageHeaders } from "@/lib/consts"
-import { getLocalContent } from "@/lib/localContent"
+import { getCMSContent } from "@/lib/dato"
 import { getProjects } from "@/lib/raindrop"
 import ContentList from "@/components/ContentList"
 import { Typography } from "@/components/Typography"
 
 export default async function RecentContent() {
   const projects = await getProjects(4)
-  const thoughts = getLocalContent("thoughts", 4)
-  const snippets = getLocalContent("snippets", 4)
+  const thoughts = await getCMSContent("Thoughts", 4)
+  const snippets = await getCMSContent("Snippets", 4)
 
   return (
     <>
@@ -22,16 +22,20 @@ export default async function RecentContent() {
           isExternal
         />
       )}
-      <RecentContentList
-        title={pageHeaders.thoughts.title}
-        route="/thoughts"
-        list={thoughts}
-      />
-      <RecentContentList
-        title={pageHeaders.snippets.title}
-        route="/snippets"
-        list={snippets}
-      />
+      {thoughts && (
+        <RecentContentList
+          title={pageHeaders.thoughts.title}
+          route="/thoughts"
+          list={thoughts}
+        />
+      )}
+      {snippets && (
+        <RecentContentList
+          title={pageHeaders.snippets.title}
+          route="/snippets"
+          list={snippets}
+        />
+      )}
     </>
   )
 }

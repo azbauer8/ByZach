@@ -9,6 +9,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { siteLinks } from "@/lib/consts"
 import { cn } from "@/lib/utils"
+import NavBar from "@/components/Global/NavBar"
+import NavDrawer from "@/components/Global/NavDrawer"
+import Providers from "@/components/Global/Providers"
 
 const asap = Source_Sans_3({
   subsets: ["latin"],
@@ -78,7 +81,13 @@ export default function RootLayout({
           sourceCode.variable
         )}
       >
-        {children}
+        <Providers>
+          <div className="mx-auto max-w-3xl flex-1 px-4 pb-20 pt-12 md:pb-12 md:pt-0">
+            <NavBar />
+            {children}
+          </div>
+          <NavDrawer />
+        </Providers>
 
         <Analytics />
         <SpeedInsights />

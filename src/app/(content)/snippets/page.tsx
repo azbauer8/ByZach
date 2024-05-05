@@ -1,7 +1,7 @@
 import type { Metadata } from "next/types"
 
 import { pageHeaders } from "@/lib/consts"
-import { getLocalContent } from "@/lib/localContent"
+import { getCMSContent } from "@/lib/dato"
 import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
 
@@ -11,7 +11,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Snippets() {
-  const snippets = getLocalContent("snippets")
+  const snippets = await getCMSContent("Snippets")
+  if (!snippets) return null
 
   return (
     <PageContent

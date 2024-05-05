@@ -1,7 +1,7 @@
 import slugify from "slugify"
 
 import { siteLinks } from "@/lib/consts"
-import { getLocalContent } from "@/lib/localContent"
+import { getCMSContent } from "@/lib/dato"
 import {
   getDiscoveryCategories,
   getProjects,
@@ -33,15 +33,19 @@ export default async function sitemap() {
 
   const discArray = discoveries || []
 
-  const thoughts = getLocalContent("thoughts").map((thought) => ({
-    url: `${siteLinks.here}/thoughts/${thought.slug}`,
-    lastModified: thought.publishedAt,
-  }))
+  const thoughts = await getCMSContent("Thoughts").then((thought) =>
+    thought?.map((thought) => ({
+      url: `${siteLinks.here}/thoughts/${thought.slug}`,
+      lastModified: thought.updatedAt,
+    }))
+  )
 
-  const snippets = getLocalContent("snippets").map((snippet) => ({
-    url: `${siteLinks.here}/snippets/${snippet.slug}`,
-    lastModified: snippet.publishedAt,
-  }))
+  const snippets = await getCMSContent("Snippets").then((snippet) =>
+    snippet?.map((snippet) => ({
+      url: `${siteLinks.here}/snippets/${snippet.slug}`,
+      lastModified: snippet.updatedAt,
+    }))
+  )
 
   const routes = [
     "",
@@ -59,8 +63,8 @@ export default async function sitemap() {
     ...routes,
     ...projectsArray,
     ...usesArray,
-    ...thoughts,
-    ...snippets,
+    ...(thoughts ?? []),
+    ...(snippets ?? []),
     ...discArray,
   ]
 }

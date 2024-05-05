@@ -1,12 +1,16 @@
 import { siteLinks } from "@/lib/consts"
-import { getLocalContent, getLocalContentEntry } from "@/lib/localContent"
+import { getCMSContent, getCMSContentEntry } from "@/lib/dato"
 import { Markdown } from "@/components/Markdown"
 import PageContent from "@/components/PageContent"
 
 export const dynamicParams = false
 
-export function generateMetadata({ params }: { params: { thought: string } }) {
-  const thought = getLocalContentEntry("thoughts", params.thought)
+export async function generateMetadata({
+  params,
+}: {
+  params: { thought: string }
+}) {
+  const thought = await getCMSContentEntry("Thoughts", params.thought)
 
   if (!thought) return {}
   const { title } = thought
@@ -17,7 +21,7 @@ export function generateMetadata({ params }: { params: { thought: string } }) {
       title,
       type: "article",
       url: `${siteLinks.here}${thought.link}`,
-      publishedTime: thought.publishedAt || undefined,
+      publishedTime: thought.updatedAt || undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -26,20 +30,24 @@ export function generateMetadata({ params }: { params: { thought: string } }) {
   }
 }
 
-export function generateStaticParams() {
-  const thoughts = getLocalContent("thoughts")
-  return thoughts.map((thought) => ({
+export async function generateStaticParams() {
+  const thoughts = await getCMSContent("Thoughts")
+  return thoughts?.map((thought) => ({
     thought: thought.slug,
   }))
 }
 
-export default function Thought({ params }: { params: { thought: string } }) {
-  const thought = getLocalContentEntry("thoughts", params.thought)
+export default async function Thought({
+  params,
+}: {
+  params: { thought: string }
+}) {
+  const thought = await getCMSContentEntry("Thoughts", params.thought)
   if (!thought) return null
 
   return (
     <PageContent
-      title={thought.title}
+      title={thought.title ?? "Thoughts"}
       subtitle={thought.subtitle}
       previousPage={{ link: "/thoughts", title: "Thoughts" }}
     >

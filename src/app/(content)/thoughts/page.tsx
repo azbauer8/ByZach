@@ -1,7 +1,7 @@
 import type { Metadata } from "next/types"
 
 import { pageHeaders } from "@/lib/consts"
-import { getLocalContent } from "@/lib/localContent"
+import { getCMSContent } from "@/lib/dato"
 import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
 
@@ -10,8 +10,9 @@ export const metadata: Metadata = {
   description: pageHeaders.thoughts.subtitle,
 }
 
-export default function Thoughts() {
-  const thoughts = getLocalContent("thoughts")
+export default async function Thoughts() {
+  const thoughts = await getCMSContent("Thoughts")
+  if (!thoughts) return null
 
   return (
     <PageContent

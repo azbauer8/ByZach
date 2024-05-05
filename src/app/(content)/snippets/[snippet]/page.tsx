@@ -1,12 +1,16 @@
 import { siteLinks } from "@/lib/consts"
-import { getLocalContent, getLocalContentEntry } from "@/lib/localContent"
+import { getCMSContent, getCMSContentEntry } from "@/lib/dato"
 import { Markdown } from "@/components/Markdown"
 import PageContent from "@/components/PageContent"
 
 export const dynamicParams = false
 
-export function generateMetadata({ params }: { params: { snippet: string } }) {
-  const snippet = getLocalContentEntry("snippets", params.snippet)
+export async function generateMetadata({
+  params,
+}: {
+  params: { snippet: string }
+}) {
+  const snippet = await getCMSContentEntry("Snippets", params.snippet)
   if (!snippet) return {}
 
   const { description, title } = snippet
@@ -19,7 +23,7 @@ export function generateMetadata({ params }: { params: { snippet: string } }) {
       description,
       type: "article",
       url: `${siteLinks.here}${snippet.link}`,
-      publishedTime: snippet.publishedAt || undefined,
+      publishedTime: snippet.updatedAt || undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -29,20 +33,26 @@ export function generateMetadata({ params }: { params: { snippet: string } }) {
   }
 }
 
-export function generateStaticParams() {
-  const snippets = getLocalContent("snippets")
-  return snippets.map((snippet) => ({
-    snippet: snippet.slug,
-  }))
+export async function generateStaticParams() {
+  const snippets = await getCMSContent("Snippets").then((snippet) =>
+    snippet?.map((snippet) => ({
+      snippet: snippet.slug,
+    }))
+  )
+  return snippets
 }
 
-export default function Snippet({ params }: { params: { snippet: string } }) {
-  const snippet = getLocalContentEntry("snippets", params.snippet)
+export default async function Snippet({
+  params,
+}: {
+  params: { snippet: string }
+}) {
+  const snippet = await getCMSContentEntry("Snippets", params.snippet)
   if (!snippet) return null
 
   return (
     <PageContent
-      title={snippet.title}
+      title={snippet.title ?? ""}
       subtitle={snippet.subtitle}
       previousPage={{ link: "/snippets", title: "Snippets" }}
     >
