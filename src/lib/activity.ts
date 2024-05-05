@@ -24,7 +24,7 @@ export async function getLastFm() {
 
 export async function getTrakt() {
   try {
-    const response = await fet ch(
+    const response = await fetch(
       "https://api.trakt.tv/users/zacharlatan/history?extended=full",
       {
         headers: {
