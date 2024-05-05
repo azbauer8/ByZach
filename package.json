@@ -58,7 +58,5 @@
   "trustedDependencies": [
     "@biomejs/biome",
     "@vercel/speed-insights"
-  ],
-  "module": "index.ts",
-  "type": "module"
+  ]
 }
