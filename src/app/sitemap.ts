@@ -2,7 +2,11 @@ import slugify from "slugify"
 
 import { siteLinks } from "@/lib/consts"
 import { getCMSContent } from "@/lib/dato"
-import { getDiscoveryCategories, getProjects, getUses } from "@/lib/raindrop"
+import {
+  getDiscoveryCategories,
+  getProjects,
+  getSoftwareUses,
+} from "@/lib/raindrop"
 
 export default async function sitemap() {
   const projects = await getProjects().then((projects) =>
@@ -13,7 +17,7 @@ export default async function sitemap() {
   )
   const projectsArray = projects || []
 
-  const uses = await getUses("Software").then((uses) =>
+  const uses = await getSoftwareUses().then((uses) =>
     uses?.map((use) => ({
       url: `${siteLinks.here}/uses/${slugify(use.title)}`,
       lastModified: use.lastUpdate,

@@ -1,15 +1,13 @@
 {
   "name": "by-zach",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true ./src",
-    "format": "prettier --write ./src",
-    "tscheck": "tsc",
-    "prepare": "husky"
+    "format": "prettier --write ./src"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.19",
@@ -46,21 +44,11 @@
     "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.25",
     "autoprefixer": "^10.4.19",
-    "husky": "^9.0.11",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "latest",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
-  },
-  "next-unused": {
-    "debug": true,
-    "include": [
-      "src"
-    ],
-    "entrypoints": [
-      "src"
-    ]
   },
   "trustedDependencies": [
     "@biomejs/biome",

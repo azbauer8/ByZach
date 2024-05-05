@@ -1,3 +1,0 @@
-bun run tscheck
-bun run lint
-bun run format

@@ -130,7 +130,7 @@ export async function performRequest({
           : {}),
       },
       body: JSON.stringify({ query, variables, revalidate }),
-      next: { revalidate, tags: ["cms"] },
+      next: { revalidate },
     })
   )
   return (

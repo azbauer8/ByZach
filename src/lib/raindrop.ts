@@ -19,7 +19,6 @@ const options = {
   },
   next: {
     revalidate: revalidationInterval,
-    tags: ["raindrop"],
   },
 }
 
@@ -97,12 +96,10 @@ export async function getDiscoveriesInCategory(category: string) {
   }
 }
 
-export async function getUses(type: "Software" | "Hardware") {
+export async function getSoftwareUses() {
   try {
     const response = await fetch(
-      `${url}/raindrops/${collectionIds.uses}?${new URLSearchParams({
-        search: `"#${type}"`,
-      })}`,
+      `${url}/raindrops/${collectionIds.uses}`,
       options
     )
     const uses: Raindrops = await response.json()
