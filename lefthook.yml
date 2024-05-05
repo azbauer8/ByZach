@@ -1,5 +1,7 @@
 pre-commit:
+  parallel: true
   commands:
-    check:
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: bunx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true ./src && git update-index
+    lint:
+      run: bun run lint && git update-index
+    format:
+      run: bun run format
