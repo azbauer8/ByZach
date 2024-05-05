@@ -1,6 +1,6 @@
 {
   "name": "by-zach",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
@@ -9,8 +9,8 @@
     "lint": "biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true ./src",
     "format": "prettier --write ./src",
     "knip": "knip",
-    "unused": "next-unused",
-    "t-safe": "typescript-coverage-report -i 'node_modules/**/*'"
+    "tscheck": "typescript-coverage-report",
+    "prepare": "husky"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.19",
@@ -47,23 +47,14 @@
     "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.25",
     "autoprefixer": "^10.4.19",
+    "husky": "^9.0.11",
     "knip": "^5.9.4",
     "lefthook": "^1.6.10",
-    "next-unused": "^0.0.6",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "latest",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
-  },
-  "next-unused": {
-    "debug": true,
-    "include": [
-      "src"
-    ],
-    "entrypoints": [
-      "src"
-    ]
   },
   "trustedDependencies": [
     "@biomejs/biome",
