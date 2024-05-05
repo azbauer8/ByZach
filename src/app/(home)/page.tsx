@@ -1,7 +1,8 @@
 import type { Metadata } from "next/types"
 import { Link } from "@nextui-org/link"
 
-import { pageHeaders, siteLinks } from "@/lib/consts"
+import { aboutSection, pageHeaders, siteLinks } from "@/lib/consts"
+import { Markdown } from "@/components/Markdown"
 import PageContent from "@/components/PageContent"
 import SocialButtons from "@/components/SocialButtons"
 import { Typography } from "@/components/Typography"
@@ -32,30 +33,7 @@ export default function Home() {
 function About() {
   return (
     <div className="space-y-2">
-      <Typography variant="p" affects="muted">
-        {`Hey there! I'm Zach. I'm currently living in Philly
-         and working at `}
-        <Link
-          href={siteLinks.sig}
-          color="foreground"
-          underline="none"
-          isExternal
-        >
-          SIG
-        </Link>
-        {
-          " developing internal monitoring and operations tools for support teams. In 2021, I graduated from "
-        }
-        <Link
-          href={siteLinks.pitt}
-          color="foreground"
-          underline="none"
-          isExternal
-        >
-          Pitt
-        </Link>
-        {` with a bachelor's in information science.`}
-      </Typography>
+      <Markdown source={aboutSection} />
       <SocialButtons links={siteLinks.professional} />
     </div>
   )

@@ -56,8 +56,6 @@ export const siteLinks = {
   here: "https://byzach.dev",
   hereShort: "byzach.dev",
   source: "https://github.com/azbauer8/ByZach",
-  sig: "https://sig.com/",
-  pitt: "https://www.pitt.edu/",
   professional: [
     {
       name: "GitHub",
@@ -126,3 +124,9 @@ export const navLinks = [
     icon: <FaHammer size={16} />,
   },
 ]
+
+export const aboutSection = `
+Hey there! I'm Zach. I'm currently working at [SIG](https://sig.com/) developing fullstack applications and internal tools for support teams. In my free time, I like messing around with new technologies. Mostly web dev stuff, but I'm interested in getting into mobile and desktop development too.
+ \n\n
+This site is mainly for my own benefit to collect my scattered thoughts and findings in one place. But maybe you'll find something interesting!
+`
