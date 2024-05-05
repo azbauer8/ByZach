@@ -1,4 +1,5 @@
 const config = () => {
+	const env = process.env.NODE_ENV;
 	/** @type {import('next').NextConfig} */
 	const nextConfig = {
 		eslint: {
@@ -9,6 +10,9 @@ const config = () => {
 		},
 		experimental: {
 			webVitalsAttribution: ["FCP", "LCP", "CLS", "FID", "TTFB", "INP"],
+			outputFileTracingIncludes: {
+				'/content': ['./content/**/*'],
+			},
 		},
 		transpilePackages: ["next-mdx-remote"],
 
@@ -25,7 +29,7 @@ const config = () => {
 			],
 		},
 	};
-	if (process.env.NODE_ENV === "development") {
+	if (env === "development") {
 		return nextConfig;
 	}
 	return {

@@ -1,6 +1,6 @@
 {
   "name": "by-zach",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
@@ -52,6 +52,15 @@
     "prettier-plugin-tailwindcss": "latest",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
+  },
+  "next-unused": {
+    "debug": true,
+    "include": [
+      "src"
+    ],
+    "entrypoints": [
+      "src"
+    ]
   },
   "trustedDependencies": [
     "@biomejs/biome",
