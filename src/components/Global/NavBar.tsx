@@ -12,6 +12,8 @@ export default function NavBar() {
   )
   const selected = selectedObject ? selectedObject[1] : undefined
 
+  const fullySelected = pathname === selected?.link
+
   return (
     <div className="hidden w-full items-center justify-center gap-2 py-3 pb-8 md:block">
       <Tabs
@@ -24,7 +26,7 @@ export default function NavBar() {
           tabList:
             "justify-center max-w-3xl w-[105%] p-0 -mx-1 px-1  rounded-none",
           tab: "h-auto py-2 buttonLink font-medium hover:bg-default/40 hover:text-foreground-muted data-[hover-unselected=true]:opacity-100",
-          cursor: "bg-content2 dark:bg-content2 border rounded-md",
+          cursor: `${fullySelected ? "bg-content2 dark:bg-content2" : "bg-transparent dark:bg-transparent"} border rounded-md`,
         }}
       >
         {Object.entries(pageMetadata).map(([, link]) => (

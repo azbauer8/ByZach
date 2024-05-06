@@ -29,7 +29,7 @@ export default function ImageContentList({
           rel={isExternal ? "noreferrer" : undefined}
           prefetch={!isExternal}
           disableRipple
-          className="group ring-divider hover:ring-2"
+          className="group z-0 ring-divider hover:ring-2"
         >
           <Image
             alt="Card background"

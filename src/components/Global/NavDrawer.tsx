@@ -106,6 +106,9 @@ export default function NavDrawer() {
               link.link === "/"
                 ? pathname === link.link
                 : pathname.startsWith(link.link)
+
+            const fullyActive = pathname === link.link
+
             return (
               <Button
                 key={link.link}
@@ -115,11 +118,12 @@ export default function NavDrawer() {
                 variant={active ? "flat" : "light"}
                 startContent={link.icon}
                 className={cn(
-                  "flex-col justify-center pt-3",
-                  "buttonLink h-fit justify-start px-2 py-1.5 font-medium",
+                  "flex-col justify-center",
+                  "buttonLink h-fit justify-start px-2 pb-0.5 pt-1.5 font-medium",
                   active
                     ? "border text-foreground"
-                    : "border border-transparent text-default-500"
+                    : "border border-transparent text-default-500",
+                  !fullyActive && "bg-transparent"
                 )}
                 disableRipple
               >
