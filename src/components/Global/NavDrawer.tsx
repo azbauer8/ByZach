@@ -3,12 +3,12 @@
 import { Fragment, useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { pageMetadata } from "@/siteData"
 import { Transition } from "@headlessui/react"
 import { Button } from "@nextui-org/button"
 import { atom, useAtom } from "jotai"
 import { PiCaretDoubleUpBold } from "react-icons/pi"
 
-import { navLinks, pageHeaders } from "@/lib/consts"
 import { cn } from "@/lib/utils"
 import { Typography } from "@/components/Typography"
 
@@ -16,7 +16,7 @@ export const navDrawerState = atom(false)
 
 export default function NavDrawer() {
   const [open, setOpen] = useAtom(navDrawerState)
-  const [pageTitle, setPageTitle] = useState<string>(pageHeaders.about.title)
+  const [pageTitle, setPageTitle] = useState<string>(pageMetadata.home.title)
   const pathname = usePathname()
   // biome-ignore lint/correctness/useExhaustiveDependencies: pathname is basically a reactive version of document.title, so this works
   useEffect(() => {
@@ -101,16 +101,16 @@ export default function NavDrawer() {
         </div>
         {/* popup content */}
         <div className="grid grid-cols-3 gap-1 p-4 pt-1 ">
-          {navLinks.map((link) => {
+          {Object.entries(pageMetadata).map(([, link]) => {
             const active =
-              link.href === "/"
-                ? pathname === link.href
-                : pathname.startsWith(link.href)
+              link.link === "/"
+                ? pathname === link.link
+                : pathname.startsWith(link.link)
             return (
               <Button
-                key={link.href}
+                key={link.link}
                 as={Link}
-                href={link.href}
+                href={link.link}
                 onClick={() => toggleOpen(false)}
                 variant={active ? "flat" : "light"}
                 startContent={link.icon}
@@ -123,7 +123,7 @@ export default function NavDrawer() {
                 )}
                 disableRipple
               >
-                {link.name}
+                {link.title}
               </Button>
             )
           })}

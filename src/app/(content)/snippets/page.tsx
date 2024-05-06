@@ -1,13 +1,13 @@
 import type { Metadata } from "next/types"
+import { pageMetadata } from "@/siteData"
 
-import { pageHeaders } from "@/lib/consts"
 import { getCMSContent } from "@/lib/dato"
-import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
+import TextContentList from "@/components/TextContentList"
 
 export const metadata: Metadata = {
-  title: pageHeaders.snippets.title,
-  description: pageHeaders.snippets.subtitle,
+  title: pageMetadata.snippets.title,
+  description: pageMetadata.snippets.subtitle,
 }
 
 export default async function Snippets() {
@@ -16,10 +16,10 @@ export default async function Snippets() {
 
   return (
     <PageContent
-      title={pageHeaders.snippets.title}
-      subtitle={pageHeaders.snippets.subtitle}
+      title={pageMetadata.snippets.title}
+      subtitle={pageMetadata.snippets.subtitle}
     >
-      <ContentList list={snippets} />
+      <TextContentList list={snippets} longForm />
     </PageContent>
   )
 }

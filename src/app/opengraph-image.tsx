@@ -1,8 +1,7 @@
 import { ImageResponse } from "next/og"
+import { pageMetadata, siteMetadata } from "@/siteData"
 
-import { pageHeaders, siteLinks } from "@/lib/consts"
-
-export const alt = `${pageHeaders.about.title} | ${pageHeaders.about.subtitle}`
+export const alt = `${pageMetadata.home.sections.header.title} | ${pageMetadata.home.sections.header.subtitle}`
 export const size = {
   width: 1200,
   height: 630,
@@ -61,7 +60,7 @@ export default async function Image() {
                     fontWeight: 700,
                   }}
                 >
-                  {pageHeaders.about.title}
+                  {pageMetadata.home.sections.header.title}
                 </span>
                 <span
                   style={{
@@ -71,7 +70,7 @@ export default async function Image() {
                     fontWeight: 500,
                   }}
                 >
-                  {pageHeaders.about.subtitle}
+                  {pageMetadata.home.sections.header.subtitle}
                 </span>
               </div>
             </div>
@@ -83,9 +82,9 @@ export default async function Image() {
                 fontWeight: 500,
               }}
             >
-              {siteLinks.hereShort}
+              {siteMetadata.hereShort}
             </span>
-          </div>{" "}
+          </div>
         </div>
       </div>
     )

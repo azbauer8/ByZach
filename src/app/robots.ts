@@ -1,4 +1,4 @@
-import { siteLinks } from "@/lib/consts"
+import { siteMetadata } from "@/siteData"
 
 export default function robots() {
   return {
@@ -7,6 +7,6 @@ export default function robots() {
         userAgent: "*",
       },
     ],
-    sitemap: `${siteLinks.here}/sitemap.xml`,
+    sitemap: `${siteMetadata.here}/sitemap.xml`,
   }
 }

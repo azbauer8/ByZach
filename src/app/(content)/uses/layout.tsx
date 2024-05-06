@@ -1,13 +1,13 @@
 import type { Metadata } from "next/types"
+import { pageMetadata } from "@/siteData"
 
-import { pageHeaders } from "@/lib/consts"
 import PageContent from "@/components/PageContent"
 
 import UsesTabs from "./UsesTabs"
 
 export const metadata: Metadata = {
-  title: pageHeaders.uses.title,
-  description: pageHeaders.uses.subtitle,
+  title: pageMetadata.uses.title,
+  description: pageMetadata.uses.subtitle,
 }
 
 export default function UsesLayout({
@@ -17,8 +17,8 @@ export default function UsesLayout({
 }) {
   return (
     <PageContent
-      title={pageHeaders.uses.title}
-      subtitle={pageHeaders.uses.subtitle}
+      title={pageMetadata.uses.title}
+      subtitle={pageMetadata.uses.subtitle}
     >
       <UsesTabs />
       {children}

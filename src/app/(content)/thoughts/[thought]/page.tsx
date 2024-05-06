@@ -1,4 +1,5 @@
-import { siteLinks } from "@/lib/consts"
+import { siteMetadata } from "@/siteData"
+
 import { getCMSContent, getCMSContentEntry } from "@/lib/dato"
 import { Markdown } from "@/components/Markdown"
 import PageContent from "@/components/PageContent"
@@ -20,7 +21,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       type: "article",
-      url: `${siteLinks.here}${thought.link}`,
+      url: `${siteMetadata.here}${thought.link}`,
       publishedTime: thought.updatedAt || undefined,
     },
     twitter: {

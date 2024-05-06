@@ -13,49 +13,73 @@ import {
 } from "react-icons/fa6"
 import { SiTrakt } from "react-icons/si"
 
-export const revalidationInterval = 60 * 60 * 24 * 2 // revalidates once every 2 days
-
-export const siteConfig = {
+export const siteMetadata = {
   title: "ByZach",
   description: `Zach Bauer's Personal Website`,
   favicon: "/favicon.png",
+  here: "https://byzach.dev",
+  hereShort: "byzach.dev",
 }
 
-export const pageHeaders = {
-  about: {
-    title: "Zach Bauer",
-    subtitle: "Full Stack Developer",
-  },
-  activity: {
-    title: "Activity",
-    socials: "Follow me on",
+export const pageMetadata = {
+  home: {
+    title: "Home",
+    subtitle: "",
+    link: "/",
+    icon: <FaHandPeace size={16} />,
+    sections: {
+      header: {
+        title: "Zach Bauer",
+        subtitle: "Full Stack Developer",
+      },
+      about: `
+        Hey there! I'm Zach. I'm currently working at [SIG](https://sig.com/) developing fullstack applications and internal tools for support teams. In my free time, I like messing around with new technologies. Mostly web dev stuff, but I'm interested in getting into mobile and desktop development too.
+        \n\n
+        This site is mainly for my own benefit to collect my scattered thoughts and findings in one place. But maybe you'll find something interesting!
+      `,
+      siteLinks: {
+        title: "Links",
+      },
+      activity: {
+        title: "Activity",
+        subtitle: "I enjoy consuming media, sometimes.",
+        socials: "Follow me on",
+      },
+    },
   },
   projects: {
     title: "Projects",
     subtitle: "My latest work and experiments.",
+    link: "/projects",
+    icon: <FaLaptop size={16} />,
   },
   thoughts: {
     title: "Thoughts",
     subtitle: "Poorly conveyed ideas about technology, design, and the web.",
+    link: "/thoughts",
+    icon: <FaBrain size={16} />,
   },
   snippets: {
     title: "Snippets",
     subtitle: "Bits of code I often refer back to.",
+    link: "/snippets",
+    icon: <FaCode size={16} />,
   },
   discoveries: {
     title: "Discoveries",
     subtitle: "Useful links I've found around the web.",
+    link: "/discoveries",
+    icon: <FaBookmark size={16} />,
   },
   uses: {
     title: "Uses",
     subtitle: "Devices, tools, and technologies I use on a daily basis.",
+    link: "/uses",
+    icon: <FaHammer size={16} />,
   },
 }
 
-export const siteLinks = {
-  here: "https://byzach.dev",
-  hereShort: "byzach.dev",
-  source: "https://github.com/azbauer8/ByZach",
+export const externalLinks = {
   professional: [
     {
       name: "GitHub",
@@ -91,42 +115,3 @@ export const siteLinks = {
     },
   ],
 }
-
-export const navLinks = [
-  {
-    name: "Home",
-    href: "/",
-    icon: <FaHandPeace size={16} />,
-  },
-  {
-    name: "Projects",
-    href: "/projects",
-    icon: <FaLaptop size={16} />,
-  },
-  {
-    name: "Thoughts",
-    href: "/thoughts",
-    icon: <FaBrain size={16} />,
-  },
-  {
-    name: "Snippets",
-    href: "/snippets",
-    icon: <FaCode size={16} />,
-  },
-  {
-    name: "Discoveries",
-    href: "/discoveries",
-    icon: <FaBookmark size={16} />,
-  },
-  {
-    name: "Uses",
-    href: "/uses",
-    icon: <FaHammer size={16} />,
-  },
-]
-
-export const aboutSection = `
-Hey there! I'm Zach. I'm currently working at [SIG](https://sig.com/) developing fullstack applications and internal tools for support teams. In my free time, I like messing around with new technologies. Mostly web dev stuff, but I'm interested in getting into mobile and desktop development too.
- \n\n
-This site is mainly for my own benefit to collect my scattered thoughts and findings in one place. But maybe you'll find something interesting!
-`

@@ -2,25 +2,34 @@ import NextLink from "next/link"
 import { Button } from "@nextui-org/button"
 import { PiArrowUpRightBold } from "react-icons/pi"
 
+import { cn } from "@/lib/utils"
 import { Typography } from "@/components/Typography"
 
-export default function ContentList({
+export default function TextContentList({
   list,
   isExternal,
+  longForm,
 }: {
   list: {
     title?: string | undefined
     slug?: string | undefined
     subtitle: string
     link: string
+    icon?: JSX.Element
   }[]
   isExternal?: boolean
+  longForm?: boolean
 }) {
   return (
-    <div className="grid grid-cols-1 gap-0.5 md:-mx-3 md:grid-cols-2 md:gap-x-1 md:gap-y-3">
+    <div
+      className={cn(
+        "grid gap-3 md:-mx-3",
+        longForm ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
+      )}
+    >
       {list.map((item) => (
         <Button
-          key={item.slug}
+          key={item?.slug ?? item?.title}
           as={NextLink}
           variant="light"
           href={item.link}
@@ -31,9 +40,16 @@ export default function ContentList({
           disableRipple
         >
           <div className="flex w-full items-center justify-between gap-4">
-            <Typography className="truncate font-medium">
-              {item.title}
-            </Typography>
+            <div className="flex items-center gap-2">
+              {item?.icon && (
+                <div className="text-default-500 group-hover:text-foreground">
+                  {item.icon}
+                </div>
+              )}
+              <Typography className="truncate font-medium">
+                {item.title}
+              </Typography>
+            </div>
             {isExternal && (
               <PiArrowUpRightBold className="text-default-500 transition-colors group-hover:text-foreground" />
             )}

@@ -1,4 +1,5 @@
-import { siteLinks } from "@/lib/consts"
+import { siteMetadata } from "@/siteData"
+
 import { getCMSContent, getCMSContentEntry } from "@/lib/dato"
 import { Markdown } from "@/components/Markdown"
 import PageContent from "@/components/PageContent"
@@ -22,7 +23,7 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
-      url: `${siteLinks.here}${snippet.link}`,
+      url: `${siteMetadata.here}${snippet.link}`,
       publishedTime: snippet.updatedAt || undefined,
     },
     twitter: {

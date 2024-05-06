@@ -1,11 +1,10 @@
 import type { Metadata } from "next"
-
-import { siteConfig } from "@/lib/consts"
+import { siteMetadata } from "@/siteData"
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.title,
-    template: `%s | ${siteConfig.title}`,
+    default: siteMetadata.title,
+    template: `%s | ${siteMetadata.title}`,
   },
 }
 export default function Layout({ children }: { children: React.ReactNode }) {

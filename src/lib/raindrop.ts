@@ -1,4 +1,3 @@
-import { revalidationInterval } from "@/lib/consts"
 import { unslugify } from "@/lib/utils"
 
 import "server-only"
@@ -18,7 +17,7 @@ const options = {
     Authorization: `Bearer ${process.env.RAINDROP_ACCESS_TOKEN}`,
   },
   next: {
-    revalidate: revalidationInterval,
+    revalidate: 60 * 60 * 24 * 2,
   },
 }
 
@@ -44,6 +43,7 @@ export async function getProjects(limit?: number) {
       subtitle: project.note !== "" ? project.note : project.excerpt,
       link: project.link,
       lastUpdate: project.lastUpdate,
+      image: project.cover,
     }))
   return limit ? projectItems.slice(0, limit) : projectItems
 }
@@ -87,6 +87,7 @@ export async function getDiscoveriesInCategory(category: string) {
       subtitle: discovery.note !== "" ? discovery.note : discovery.excerpt,
       link: discovery.link,
       category: discovery.tags[0],
+      image: discovery.cover,
     }))
 }
 
@@ -112,6 +113,7 @@ export async function getUses(type: "Software" | "Hardware") {
       subtitle: use.note !== "" ? use.note : use.excerpt,
       link: use.link,
       lastUpdate: use.lastUpdate,
+      image: use.cover,
     }))
 }
 

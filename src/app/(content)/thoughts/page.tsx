@@ -1,13 +1,13 @@
 import type { Metadata } from "next/types"
+import { pageMetadata } from "@/siteData"
 
-import { pageHeaders } from "@/lib/consts"
 import { getCMSContent } from "@/lib/dato"
-import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
+import TextContentList from "@/components/TextContentList"
 
 export const metadata: Metadata = {
-  title: pageHeaders.thoughts.title,
-  description: pageHeaders.thoughts.subtitle,
+  title: pageMetadata.thoughts.title,
+  description: pageMetadata.thoughts.subtitle,
 }
 
 export default async function Thoughts() {
@@ -16,10 +16,10 @@ export default async function Thoughts() {
 
   return (
     <PageContent
-      title={pageHeaders.thoughts.title}
-      subtitle={pageHeaders.thoughts.subtitle}
+      title={pageMetadata.thoughts.title}
+      subtitle={pageMetadata.thoughts.subtitle}
     >
-      <ContentList list={thoughts} />
+      <TextContentList list={thoughts} longForm />
     </PageContent>
   )
 }

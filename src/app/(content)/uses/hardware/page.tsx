@@ -1,8 +1,8 @@
 import { getUses } from "@/lib/raindrop"
-import ContentList from "@/components/ContentList"
+import ImageContentList from "@/components/ImageContentList"
 
 export default async function HardwareUses() {
   const hardware = await getUses("Hardware")
   if (!hardware) return null
-  return <ContentList list={hardware} isExternal />
+  return <ImageContentList list={hardware} isExternal />
 }

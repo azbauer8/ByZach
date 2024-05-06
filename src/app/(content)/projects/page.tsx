@@ -1,13 +1,13 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/siteData"
 
-import { pageHeaders } from "@/lib/consts"
 import { getProjects } from "@/lib/raindrop"
-import ContentList from "@/components/ContentList"
+import ImageContentList from "@/components/ImageContentList"
 import PageContent from "@/components/PageContent"
 
 export const metadata: Metadata = {
-  title: pageHeaders.projects.title,
-  description: pageHeaders.projects.subtitle,
+  title: pageMetadata.projects.title,
+  description: pageMetadata.projects.subtitle,
 }
 
 export default async function Projects() {
@@ -16,10 +16,10 @@ export default async function Projects() {
   if (!projects) return null
   return (
     <PageContent
-      title={pageHeaders.projects.title}
-      subtitle={pageHeaders.projects.subtitle}
+      title={pageMetadata.projects.title}
+      subtitle={pageMetadata.projects.subtitle}
     >
-      <ContentList list={projects} isExternal />
+      <ImageContentList list={projects} isExternal />
     </PageContent>
   )
 }

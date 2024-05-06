@@ -1,29 +1,28 @@
 import type { Metadata } from "next/types"
-import { Link } from "@nextui-org/link"
+import { externalLinks, pageMetadata } from "@/siteData"
 
-import { aboutSection, pageHeaders, siteLinks } from "@/lib/consts"
 import { Markdown } from "@/components/Markdown"
 import PageContent from "@/components/PageContent"
 import SocialButtons from "@/components/SocialButtons"
+import TextContentList from "@/components/TextContentList"
 import { Typography } from "@/components/Typography"
 
 import LastFmCard from "./LastfmCard"
-import RecentContent from "./RecentContent"
 import TraktCard from "./TraktCard"
 
 export const metadata: Metadata = {
-  title: `${pageHeaders.about.title} | ${pageHeaders.about.subtitle}`,
+  title: `${pageMetadata.home.sections.header.title} | ${pageMetadata.home.sections.header.subtitle}`,
 }
 
 export default function Home() {
   return (
     <PageContent
-      title={pageHeaders.about.title}
-      subtitle={pageHeaders.about.subtitle}
+      title={pageMetadata.home.sections.header.title}
+      subtitle={pageMetadata.home.sections.header.subtitle}
       className="space-y-8"
     >
       <About />
-      <RecentContent />
+      <SiteLinks />
       <Activity />
       <Socials />
     </PageContent>
@@ -33,8 +32,23 @@ export default function Home() {
 function About() {
   return (
     <div className="space-y-2">
-      <Markdown source={aboutSection} />
-      <SocialButtons links={siteLinks.professional} />
+      <Markdown source={pageMetadata.home.sections?.about ?? ""} />
+      <SocialButtons links={externalLinks.professional} />
+    </div>
+  )
+}
+
+function SiteLinks() {
+  return (
+    <div className="space-y-4">
+      <Typography className="font-semibold leading-none">
+        {pageMetadata.home.sections.siteLinks.title}
+      </Typography>
+      <TextContentList
+        list={Object.entries(pageMetadata)
+          .map(([, link]) => link)
+          .filter((link) => link.title !== "Home")}
+      />
     </div>
   )
 }
@@ -42,9 +56,14 @@ function About() {
 function Activity() {
   return (
     <div className="space-y-4">
-      <Typography className="font-semibold leading-none">
-        {pageHeaders.activity.title}
-      </Typography>
+      <div className="space-y-1.5">
+        <Typography className="font-semibold leading-none">
+          {pageMetadata.home.sections.activity.title}
+        </Typography>
+        <Typography affects="muted">
+          {pageMetadata.home.sections.activity.subtitle}
+        </Typography>
+      </div>
       <div className="grid grid-cols-1 gap-0.5 md:-mx-3 md:grid-cols-2">
         <LastFmCard />
         <TraktCard />
@@ -57,9 +76,9 @@ function Socials() {
   return (
     <div className="space-y-2">
       <Typography className="font-semibold leading-none">
-        {pageHeaders.activity.socials}
+        {pageMetadata.home.sections.activity.socials}
       </Typography>
-      <SocialButtons links={siteLinks.personal} />
+      <SocialButtons links={externalLinks.personal} />
     </div>
   )
 }

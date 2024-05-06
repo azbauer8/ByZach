@@ -1,13 +1,13 @@
 import type { Metadata } from "next/types"
+import { pageMetadata } from "@/siteData"
 
-import { pageHeaders } from "@/lib/consts"
 import { getDiscoveryCategories } from "@/lib/raindrop"
-import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
+import TextContentList from "@/components/TextContentList"
 
 export const metadata: Metadata = {
-  title: pageHeaders.discoveries.title,
-  description: pageHeaders.discoveries.subtitle,
+  title: pageMetadata.discoveries.title,
+  description: pageMetadata.discoveries.subtitle,
 }
 
 export default async function DiscoveryCategories() {
@@ -16,10 +16,10 @@ export default async function DiscoveryCategories() {
 
   return (
     <PageContent
-      title={pageHeaders.discoveries.title}
-      subtitle={pageHeaders.discoveries.subtitle}
+      title={pageMetadata.discoveries.title}
+      subtitle={pageMetadata.discoveries.subtitle}
     >
-      <ContentList list={discoveries} />
+      <TextContentList list={discoveries} />
     </PageContent>
   )
 }

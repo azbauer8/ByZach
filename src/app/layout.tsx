@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/consts"
+import { siteMetadata } from "@/siteData"
 
 import "@/styles/global.css"
 
@@ -7,7 +7,6 @@ import { JetBrains_Mono, Source_Sans_3 } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-import { siteLinks } from "@/lib/consts"
 import { cn } from "@/lib/utils"
 import NavBar from "@/components/Global/NavBar"
 import NavDrawer from "@/components/Global/NavDrawer"
@@ -31,16 +30,16 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  description: siteConfig.description,
-  applicationName: siteConfig.title,
+  description: siteMetadata.description,
+  applicationName: siteMetadata.title,
   icons: {
-    icon: siteConfig.favicon,
-    shortcut: siteConfig.favicon,
+    icon: siteMetadata.favicon,
+    shortcut: siteMetadata.favicon,
   },
   alternates: {
-    canonical: siteLinks.here,
+    canonical: siteMetadata.here,
   },
-  metadataBase: new URL(siteLinks.here),
+  metadataBase: new URL(siteMetadata.here),
   robots: {
     index: true,
     follow: true,
@@ -53,14 +52,14 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: siteConfig.title,
+    title: siteMetadata.title,
     card: "summary_large_image",
   },
   openGraph: {
-    title: siteConfig.title,
-    description: siteConfig.description,
-    url: siteLinks.here,
-    siteName: siteConfig.title,
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    url: siteMetadata.here,
+    siteName: siteMetadata.title,
     locale: "en_US",
     type: "website",
   },

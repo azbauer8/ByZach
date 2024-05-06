@@ -2,21 +2,21 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { pageMetadata } from "@/siteData"
 import { Tab, Tabs } from "@nextui-org/tabs"
-
-import { navLinks } from "@/lib/consts"
 
 export default function NavBar() {
   const pathname = usePathname()
-  const selected = navLinks.find((link) =>
-    link.href === "/" ? pathname === link.href : pathname.startsWith(link.href)
+  const selectedObject = Object.entries(pageMetadata).find(([, link]) =>
+    link.link === "/" ? pathname === link.link : pathname.startsWith(link.link)
   )
+  const selected = selectedObject ? selectedObject[1] : undefined
 
   return (
     <div className="hidden w-full items-center justify-center gap-2 py-3 pb-8 md:block">
       <Tabs
         aria-label="NavBar Tabs"
-        selectedKey={selected?.href}
+        selectedKey={selected?.link}
         defaultSelectedKey="/"
         variant="light"
         classNames={{
@@ -27,15 +27,14 @@ export default function NavBar() {
           cursor: "bg-content2 dark:bg-content2 border rounded-md",
         }}
       >
-        {navLinks.map((link) => (
+        {Object.entries(pageMetadata).map(([, link]) => (
           <Tab
             as={Link}
-            key={link.href}
-            href={link.href}
+            key={link.link}
+            href={link.link}
             title={
               <div className="flex items-center space-x-2">
-                {/* {link.icon} */}
-                <span>{link.name}</span>
+                <span>{link.title}</span>
               </div>
             }
           />

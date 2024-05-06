@@ -1,13 +1,13 @@
+import { siteMetadata } from "@/siteData"
 import slugify from "slugify"
 
-import { siteLinks } from "@/lib/consts"
 import { getCMSContent } from "@/lib/dato"
 import { getDiscoveryCategories, getProjects, getUses } from "@/lib/raindrop"
 
 export default async function sitemap() {
   const projects = await getProjects().then((projects) =>
     projects?.map((project) => ({
-      url: `${siteLinks.here}/projects/${slugify(project.title)}`,
+      url: `${siteMetadata.here}/projects/${slugify(project.title)}`,
       lastModified: project.lastUpdate,
     }))
   )
@@ -15,7 +15,7 @@ export default async function sitemap() {
 
   const uses = await getUses("Software").then((uses) =>
     uses?.map((use) => ({
-      url: `${siteLinks.here}/uses/${slugify(use.title)}`,
+      url: `${siteMetadata.here}/uses/${slugify(use.title)}`,
       lastModified: use.lastUpdate,
     }))
   )
@@ -23,7 +23,7 @@ export default async function sitemap() {
 
   const discoveries = await getDiscoveryCategories().then((discoveries) =>
     discoveries?.map((discovery) => ({
-      url: `${siteLinks.here}/discoveries/${discovery.slug}`,
+      url: `${siteMetadata.here}/discoveries/${discovery.slug}`,
     }))
   )
 
@@ -31,14 +31,14 @@ export default async function sitemap() {
 
   const thoughts = await getCMSContent("Thoughts").then((thought) =>
     thought?.map((thought) => ({
-      url: `${siteLinks.here}/thoughts/${thought.slug}`,
+      url: `${siteMetadata.here}/thoughts/${thought.slug}`,
       lastModified: thought.updatedAt,
     }))
   )
 
   const snippets = await getCMSContent("Snippets").then((snippet) =>
     snippet?.map((snippet) => ({
-      url: `${siteLinks.here}/snippets/${snippet.slug}`,
+      url: `${siteMetadata.here}/snippets/${snippet.slug}`,
       lastModified: snippet.updatedAt,
     }))
   )
@@ -51,7 +51,7 @@ export default async function sitemap() {
     "/snippets",
     "/discoveries",
   ].map((route) => ({
-    url: `${siteLinks.here}${route}`,
+    url: `${siteMetadata.here}${route}`,
     lastModified: new Date().toISOString().split("T")[0],
   }))
 
