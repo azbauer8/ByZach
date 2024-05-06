@@ -31,12 +31,12 @@ export default async function TraktCard() {
         className="aspect-[2/3] max-w-[25%] flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
 
-      <div className="my-auto grow text-wrap">
+      <div className="my-auto grow space-y-0.5 text-wrap">
         <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
           <PiPopcornBold className="size-5" />
           <Typography affects="small">{data.playingWhen}</Typography>
         </div>
-        <Typography variant="h5">{data.title}</Typography>
+        <Typography className="font-semibold">{data.title}</Typography>
         {data.episode ? (
           <>
             <Typography affects="muted">{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Typography>

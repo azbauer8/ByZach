@@ -30,7 +30,7 @@ export default async function LastFmCard() {
         sizes="100vw"
         className="aspect-square max-w-[25%] flex-none animate-reveal items-center justify-center self-center rounded-lg"
       />
-      <div className="my-auto grow text-wrap">
+      <div className="my-auto grow space-y-0.5 text-wrap">
         <div className="flex flex-row items-center space-x-1 text-emerald-600/95 dark:text-emerald-500">
           {playingWhen === "Now Playing" ? (
             <Image src="/bars.svg" alt="Now Playing" width={14} height={14} />
@@ -39,7 +39,7 @@ export default async function LastFmCard() {
           )}
           <Typography affects="small">{playingWhen}</Typography>
         </div>
-        <Typography variant="h5">{latestTrack.name}</Typography>
+        <Typography className="font-semibold">{latestTrack.name}</Typography>
         <Typography affects="muted">{latestTrack.artist["#text"]}</Typography>
       </div>
     </Button>
