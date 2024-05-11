@@ -1,5 +1,7 @@
-import { Button } from "@nextui-org/button"
-import { Link } from "@nextui-org/link"
+import Link from "next/link"
+import { Icon } from "@iconify-icon/react"
+
+import { Button } from "@/components/ui/button"
 
 export default function SocialButtons({
   links,
@@ -7,27 +9,17 @@ export default function SocialButtons({
   links: {
     name: string
     href: string
-    icon: JSX.Element
+    icon: string
   }[]
 }) {
   return (
     <div className="-mx-3 flex flex-wrap items-center gap-1">
       {links.map((link) => (
-        <Button
-          key={link.name}
-          href={link.href}
-          as={Link}
-          isExternal
-          variant="light"
-          startContent={
-            <div className="text-default-500 group-hover:text-foreground">
-              {link.icon}
-            </div>
-          }
-          disableRipple
-          className="group px-3 text-default-500 hover:bg-default/40 hover:text-foreground hover:opacity-100"
-        >
-          {link.name}
+        <Button key={link.name} variant="ghost" asChild>
+          <Link href={link.href} target="_blank">
+            <Icon icon={link.icon} size={20} />
+            {link.name}
+          </Link>
         </Button>
       ))}
     </div>

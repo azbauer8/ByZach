@@ -3,7 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { pageMetadata } from "@/siteData"
-import { Tab, Tabs } from "@nextui-org/tabs"
+
+// import { Tab, Tabs } from "@nextui-org/tabs"
 
 export default function NavBar() {
   const pathname = usePathname()
@@ -16,7 +17,7 @@ export default function NavBar() {
 
   return (
     <div className="hidden w-full items-center justify-center gap-2 py-3 pb-8 md:block">
-      <Tabs
+      {/* <Tabs
         aria-label="NavBar Tabs"
         selectedKey={selected?.link}
         defaultSelectedKey="/"
@@ -41,7 +42,7 @@ export default function NavBar() {
             }
           />
         ))}
-      </Tabs>
+      </Tabs> */}
     </div>
   )
 }

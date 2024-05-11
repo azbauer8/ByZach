@@ -1,8 +1,8 @@
 import Image from "next/image"
-import { Button } from "@nextui-org/button"
-import { PiPopcornBold } from "react-icons/pi"
+import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
 
 import { getTrakt } from "@/lib/activity"
+import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/Typography"
 
 export default async function TraktCard() {
@@ -12,43 +12,45 @@ export default async function TraktCard() {
   if (!data) return <TraktFallback />
   return (
     <Button
-      as="a"
-      variant="light"
-      disableRipple
+      asChild
+      variant="ghost"
       className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2 text-base md:mx-0"
-      href={data.url}
     >
-      <Image
-        src={poster ?? "/trakt_placeholder.svg"}
-        alt={data.title}
-        width={144}
-        height={216}
-        loading="eager"
-        priority
-        placeholder="blur"
-        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
-        sizes="100vw"
-        className="aspect-[2/3] max-w-[25%] flex-none animate-reveal items-center justify-center self-center rounded-lg"
-      />
+      <a href={data.url} target="_blank" rel="noopener noreferrer">
+        <Image
+          src={poster ?? "/trakt_placeholder.svg"}
+          alt={data.title}
+          width={144}
+          height={216}
+          loading="eager"
+          priority
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
+          sizes="100vw"
+          className="aspect-[2/3] max-w-[25%] flex-none animate-reveal items-center justify-center self-center rounded-lg"
+        />
 
-      <div className="my-auto grow space-y-0.5 text-wrap">
-        <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
-          <PiPopcornBold className="size-5" />
-          <Typography affects="small">{data.playingWhen}</Typography>
+        <div className="my-auto grow space-y-0.5 text-wrap">
+          <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
+            <Icon icon="ph:popcorn-bold" size={20} />
+            <Typography affects="small">{data.playingWhen}</Typography>
+          </div>
+          <Typography className="font-semibold text-foreground">
+            {data.title}
+          </Typography>
+          {data.episode ? (
+            <>
+              <Typography affects="muted">{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Typography>
+            </>
+          ) : (
+            <>
+              <Typography affects="muted" className="italic">
+                {data.tagline}
+              </Typography>
+            </>
+          )}
         </div>
-        <Typography className="font-semibold">{data.title}</Typography>
-        {data.episode ? (
-          <>
-            <Typography affects="muted">{`S${data.season}E${data.episodeNum}: ${data.episode}`}</Typography>
-          </>
-        ) : (
-          <>
-            <Typography affects="muted" className="italic">
-              {data.tagline}
-            </Typography>
-          </>
-        )}
-      </div>
+      </a>
     </Button>
   )
 }
@@ -70,7 +72,7 @@ function TraktFallback() {
       />
       <div className="my-auto grow">
         <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
-          <PiPopcornBold className="size-5" />
+          <Icon icon="ph:popcorn-bold" size={20} />
           <Typography affects="small">{"(ノಠ益ಠ)ノ彡┻━┻"}</Typography>
         </div>
         <Typography variant="h5">Untitled</Typography>

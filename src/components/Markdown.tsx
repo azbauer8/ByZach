@@ -1,7 +1,7 @@
 import Image, { type ImageProps } from "next/image"
 import type { MDXProvider } from "@mdx-js/react"
-import { Link } from "@nextui-org/link"
-import type { LinkProps } from "@nextui-org/link"
+// import { Link } from "@nextui-org/link"
+// import type { LinkProps } from "@nextui-org/link"
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode, { type Options } from "rehype-pretty-code"
@@ -10,20 +10,18 @@ import remarkGfm from "remark-gfm"
 
 import { cn } from "@/lib/utils"
 
-function CustomLink(props: LinkProps & React.RefAttributes<HTMLAnchorElement>) {
-  const href = props.href
+function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+  const href = props.href?.toString()
   if (href?.startsWith("#"))
     return (
       <a
-        className="no-underline underline-offset-2 hover:underline"
+        className="text-foreground no-underline underline-offset-2 hover:underline"
         {...props}
       />
     )
   return (
-    <Link
-      color="foreground"
-      underline="none"
-      isExternal={!href?.startsWith("/")}
+    <a
+      className="text-foreground no-underline underline-offset-2 hover:underline"
       {...props}
     />
   )
@@ -58,7 +56,7 @@ const codeOptions: Options = {
 
 export function Markdown(props: MDXRemoteProps) {
   return (
-    <div className="prose prose-neutral text-default-500 dark:prose-invert prose-a:no-underline">
+    <div className="text-foreground-muted prose prose-neutral dark:prose-invert prose-a:no-underline">
       <MDXRemote
         {...props}
         components={{ ...components, ...props.components }}

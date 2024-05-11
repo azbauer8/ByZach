@@ -5,7 +5,7 @@
 /* Code Blocks */
 
 .prose pre {
-  @apply relative space-y-4 rounded-lg border bg-accent p-4 text-foreground;
+  @apply relative space-y-4 rounded-lg border bg-muted/50 p-4 text-foreground;
 }
 
 .prose code,
@@ -28,5 +28,5 @@ code[data-theme*=" "] span {
 }
 
 figcaption[data-rehype-pretty-code-title] {
-  @apply ml-2.5 w-fit rounded-lg rounded-b-none border border-b-0 bg-accent px-1.5 py-1 font-mono tracking-tight text-foreground;
+  @apply ml-2.5 w-fit rounded-lg rounded-b-none border border-b-0 bg-muted/50 px-1.5 py-1 font-mono tracking-tight text-foreground;
 }

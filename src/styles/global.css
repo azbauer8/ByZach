@@ -3,8 +3,43 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --foreground-muted: 240 4% 46%;
+    --card: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --primary: 0 0% 9%;
+    --secondary: 0 0% 96.1%;
+    --muted: 0 0% 88%;
+    --accent: 0 0% 96.1%;
+    --destructive: 0 84.2% 60.2%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+    --foreground-muted: 240 5% 65%;
+    --card: 0 0% 3.9%;
+    --popover: 0 0% 3.9%;
+    --primary: 0 0% 98%;
+    --secondary: 0 0% 14.9%;
+    --muted: 0 0% 14.9%;
+    --accent: 0 0% 14.9%;
+    --destructive: 0 62.8% 30.6%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
   * {
-    @apply relative min-w-0 border-divider;
+    @apply relative min-w-0 border-border;
   }
   body {
     @apply min-h-dvh;
@@ -18,12 +53,4 @@
   p {
     @apply text-pretty;
   }
-}
-
-.buttonLink {
-  transform: perspective(1000px) translateZ(0px);
-}
-
-.buttonLink [data-pressed="true"] {
-  transform: perspective(1000px) translateZ(300px);
 }

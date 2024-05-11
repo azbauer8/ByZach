@@ -5,11 +5,11 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { pageMetadata } from "@/siteData"
 import { Transition } from "@headlessui/react"
-import { Button } from "@nextui-org/button"
+import { Icon } from "@iconify-icon/react"
 import { atom, useAtom } from "jotai"
-import { PiCaretDoubleUpBold } from "react-icons/pi"
 
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/Typography"
 
 export const navDrawerState = atom(false)
@@ -92,9 +92,11 @@ export default function NavDrawer() {
           onKeyUp={() => toggleOpen(!open)}
         >
           <Typography className="font-medium">{pageTitle}</Typography>
-          <PiCaretDoubleUpBold
+          <Icon
+            icon="ph:caret-double-up-bold"
+            size={20}
             className={cn(
-              "size-5 text-default-500 transition-colors group-hover:text-foreground",
+              "text-foreground-muted transition-colors group-hover:text-foreground",
               open && "rotate-180"
             )}
           />
@@ -112,22 +114,20 @@ export default function NavDrawer() {
             return (
               <Button
                 key={link.link}
-                as={Link}
-                href={link.link}
+                asChild
                 onClick={() => toggleOpen(false)}
-                variant={active ? "flat" : "light"}
-                startContent={link.icon}
+                variant={active ? "outline" : "ghost"}
                 className={cn(
                   "flex-col justify-center",
                   "buttonLink h-fit justify-start px-2 pb-0.5 pt-1.5 font-medium",
-                  active
-                    ? "border text-foreground"
-                    : "border border-transparent text-default-500",
                   !fullyActive && "bg-transparent"
                 )}
-                disableRipple
               >
-                {link.title}
+                <Link href={link.link}>
+                  <Icon icon={link.icon} size={20} />
+
+                  {link.title}
+                </Link>
               </Button>
             )
           })}

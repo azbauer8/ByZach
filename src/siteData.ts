@@ -1,17 +1,4 @@
-import {
-  FaAt,
-  FaBookmark,
-  FaBrain,
-  FaCode,
-  FaFilePdf,
-  FaGithub,
-  FaHammer,
-  FaHandPeace,
-  FaLaptop,
-  FaSpotify,
-  FaSquareLastfm,
-} from "react-icons/fa6"
-import { SiTrakt } from "react-icons/si"
+import { Icon } from "@iconify-icon/react"
 
 export const siteMetadata = {
   title: "ByZach",
@@ -26,7 +13,7 @@ export const pageMetadata = {
     title: "Home",
     subtitle: "",
     link: "/",
-    icon: <FaHandPeace size={16} />,
+    icon: "fa6-solid:hand-peace",
     sections: {
       header: {
         title: "Zach Bauer",
@@ -51,31 +38,31 @@ export const pageMetadata = {
     title: "Projects",
     subtitle: "My latest work and experiments.",
     link: "/projects",
-    icon: <FaLaptop size={16} />,
+    icon: "fa6-solid:laptop",
   },
   thoughts: {
     title: "Thoughts",
     subtitle: "Poorly conveyed ideas about technology, design, and the web.",
     link: "/thoughts",
-    icon: <FaBrain size={16} />,
+    icon: "fa6-solid:brain",
   },
   snippets: {
     title: "Snippets",
     subtitle: "Bits of code I often refer back to.",
     link: "/snippets",
-    icon: <FaCode size={16} />,
+    icon: "fa6-solid:code",
   },
   discoveries: {
     title: "Discoveries",
     subtitle: "Useful links I've found around the web.",
     link: "/discoveries",
-    icon: <FaBookmark size={16} />,
+    icon: "fa6-solid:bookmark",
   },
   uses: {
     title: "Uses",
     subtitle: "Devices, tools, and technologies I use on a daily basis.",
     link: "/uses",
-    icon: <FaHammer size={16} />,
+    icon: "fa6-solid:hammer",
   },
 }
 
@@ -84,34 +71,34 @@ export const externalLinks = {
     {
       name: "GitHub",
       href: "https://github.com/azbauer8",
-      icon: <FaGithub size={16} />,
+      icon: "fa6-brands:github",
     },
     {
       name: "Email",
       href: "mailto:hi@byzach.dev",
-      icon: <FaAt size={16} />,
+      icon: "fa6-solid:at",
     },
     {
       name: "Resume",
       href: "/Resume.pdf",
-      icon: <FaFilePdf size={16} />,
+      icon: "fa6-solid:file-pdf",
     },
   ],
   personal: [
     {
       name: "Spotify",
       href: "https://open.spotify.com/user/31krvuuup255gx2tkfuueknhctwy",
-      icon: <FaSpotify size={16} />,
+      icon: "fa6-brands:spotify",
     },
     {
       name: "Last.fm",
       href: "https://www.last.fm/user/zacharlatanz",
-      icon: <FaSquareLastfm size={16} />,
+      icon: "fa6-brands:square-lastfm",
     },
     {
       name: "Trakt",
       href: "https://trakt.tv/users/zacharlatan",
-      icon: <SiTrakt size={16} />,
+      icon: "simple-icons:trakt",
     },
   ],
 }

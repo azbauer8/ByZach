@@ -3,9 +3,9 @@ import { cn } from "@/lib/utils"
 import "@/styles/prose.css"
 
 import Link from "next/link"
-import { Button } from "@nextui-org/button"
-import { PiArrowUpLeftBold } from "react-icons/pi"
+import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
 
+import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/Typography"
 
 export default function PageContent({
@@ -26,14 +26,14 @@ export default function PageContent({
       <div className="space-y-1.5">
         {previousPage && (
           <Button
-            href={previousPage.link}
-            as={Link}
-            variant="light"
-            startContent={<PiArrowUpLeftBold />}
-            disableRipple
-            className="-ml-2 gap-1 pl-2 pr-2.5 text-base text-default-500 transition-colors hover:text-foreground md:hidden"
+            asChild
+            variant="ghost"
+            className="-ml-2 gap-1 pl-2 pr-2.5 text-base md:hidden"
           >
-            {previousPage.title}
+            <Link href={previousPage.link}>
+              <Icon icon="ph:arrow-up-left-bold" size={20} />
+              {previousPage.title}
+            </Link>
           </Button>
         )}
         <Typography variant="h2">{title}</Typography>
