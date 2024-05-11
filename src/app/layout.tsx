@@ -75,14 +75,14 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "bg-background font-sans text-foreground antialiased",
+          "bg-background font-sans text-foreground antialiased md:pb-20 md:pt-5",
           asap.variable,
           sourceCode.variable
         )}
       >
-        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]" />
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#ededea_1px,transparent_1px),linear-gradient(to_bottom,#ededea_1px,transparent_1px)] bg-[size:14px_24px] dark:bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)]" />
         <Providers>
-          <div className="mx-auto min-h-dvh max-w-4xl bg-background px-4 pb-20 pt-12 md:border-x md:px-6">
+          <div className="mx-auto min-h-dvh max-w-3xl bg-background px-4 pb-20 pt-12 md:rounded-md md:border md:px-6 md:pb-5 md:pt-5">
             {children}
           </div>
           <NavDrawer />

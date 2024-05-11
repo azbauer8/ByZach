@@ -25,11 +25,11 @@ export default function NavDock() {
   const pathname = usePathname()
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 mx-auto hidden w-full max-w-4xl sm:block">
+    <div className="fixed bottom-0 left-0 right-0 mx-auto hidden w-full max-w-3xl md:block">
       <motion.div
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Number.POSITIVE_INFINITY)}
-        className="mx-auto mb-1 flex h-14 w-fit items-end justify-center gap-4 rounded-2xl border px-4 py-2 shadow-md"
+        className="mx-auto mb-1 flex h-14 w-fit items-end justify-center gap-4 rounded-2xl border bg-background px-4 py-2 shadow-md"
       >
         <TooltipProvider delayDuration={0}>
           {Object.entries(pageMetadata).map(([, link]) => {

@@ -26,14 +26,14 @@ export default function ImageContentList({
           variant="ghost"
           key={item.slug}
           asChild
-          className="flex h-[6.5rem] justify-between overflow-hidden border-border p-0 text-base"
+          className="flex justify-between overflow-hidden border-border p-0 text-base"
         >
           <Link
             href={item.link}
             target={isExternal ? "_blank" : undefined}
             prefetch={!isExternal}
           >
-            <div className="flex h-full flex-col justify-between p-3">
+            <div className="flex h-full flex-col justify-between gap-2 p-2">
               <div className="flex flex-col gap-1">
                 <Typography className="truncate font-medium text-foreground">
                   {item.title}
@@ -53,9 +53,9 @@ export default function ImageContentList({
             <ImageWithFallback
               alt={item.title ?? item.subtitle}
               src={item.image}
-              width={198}
+              width={104}
               height={104}
-              className="aspect-[198/104] min-w-[198px] animate-reveal bg-contain bg-center bg-no-repeat object-none"
+              className="aspect-square min-w-[104px] animate-reveal bg-contain bg-center bg-no-repeat object-cover"
             />
           </Link>
         </Button>
