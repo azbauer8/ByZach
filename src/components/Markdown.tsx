@@ -9,6 +9,7 @@ import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
 import { cn } from "@/lib/utils"
+import ImageWithFallback from "@/components/ImageWithFallback"
 
 function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const href = props.href?.toString()
@@ -29,7 +30,7 @@ function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
 
 function RoundedImage({ alt, className, ...props }: ImageProps) {
   return (
-    <Image
+    <ImageWithFallback
       {...props}
       alt={alt}
       className={cn("animate-reveal rounded-lg", className)}

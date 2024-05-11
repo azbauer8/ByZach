@@ -5,11 +5,11 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { pageMetadata } from "@/siteData"
 import { Transition } from "@headlessui/react"
-import { Icon } from "@iconify-icon/react"
 import { atom, useAtom } from "jotai"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { DrawerIcon } from "@/components/Icons"
 import { Typography } from "@/components/Typography"
 
 export const navDrawerState = atom(false)
@@ -81,7 +81,7 @@ export default function NavDrawer() {
       {/* drawer wrapper */}
       <div
         className={cn(
-          "fixed bottom-0 z-30 w-full translate-y-[calc(100%-56px)] border-t bg-background transition-transform duration-300 ease-nav md:hidden",
+          "fixed bottom-0 left-0 right-0 z-30 mx-auto w-full max-w-4xl translate-y-[calc(100%-56px)] border-t bg-background transition-transform duration-300 ease-nav sm:hidden md:border-x",
           open && "navDrawerOpen translate-y-0"
         )}
       >
@@ -92,9 +92,7 @@ export default function NavDrawer() {
           onKeyUp={() => toggleOpen(!open)}
         >
           <Typography className="font-medium">{pageTitle}</Typography>
-          <Icon
-            icon="ph:caret-double-up-bold"
-            size={20}
+          <DrawerIcon
             className={cn(
               "text-foreground-muted transition-colors group-hover:text-foreground",
               open && "rotate-180"
@@ -120,12 +118,12 @@ export default function NavDrawer() {
                 className={cn(
                   "flex-col justify-center",
                   "buttonLink h-fit justify-start px-2 pb-0.5 pt-1.5 font-medium",
+                  active && "bg-muted",
                   !fullyActive && "bg-transparent"
                 )}
               >
                 <Link href={link.link}>
-                  <Icon icon={link.icon} size={20} />
-
+                  {link.icon}
                   {link.title}
                 </Link>
               </Button>

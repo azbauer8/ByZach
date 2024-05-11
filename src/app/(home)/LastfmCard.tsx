@@ -1,8 +1,9 @@
 import Image from "next/image"
-import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
 
 import { getLastFm } from "@/lib/activity"
 import { Button } from "@/components/ui/button"
+import { ListeningIcon } from "@/components/Icons"
+import ImageWithFallback from "@/components/ImageWithFallback"
 import { Typography } from "@/components/Typography"
 
 export default async function LastFmCard() {
@@ -17,8 +18,9 @@ export default async function LastFmCard() {
       asChild
     >
       <a href={latestTrack.url} target="_blank" rel="noopener noreferrer">
-        <Image
+        <ImageWithFallback
           src={latestTrack.image[3]["#text"] ?? "/lastfm_placeholder.png"}
+          fallbackSrc="/lastfm_placeholder.png"
           alt={latestTrack.album["#text"]}
           width={144}
           height={144}
@@ -34,7 +36,7 @@ export default async function LastFmCard() {
             {playingWhen === "Now Playing" ? (
               <Image src="/bars.svg" alt="Now Playing" width={14} height={14} />
             ) : (
-              <Icon icon="ph:waveform-bold" size={20} />
+              <ListeningIcon />
             )}
             <Typography affects="small">{playingWhen}</Typography>
           </div>
@@ -65,7 +67,7 @@ function LastFmFallback() {
       />
       <div className="my-auto grow text-wrap">
         <div className="flex flex-row items-center space-x-1 pb-1 text-emerald-600/95 dark:text-emerald-500">
-          <Icon icon="ph:waveform-bold" size={20} />
+          <ListeningIcon />
           <Typography affects="small">{"(ノಠ益ಠ)ノ彡┻━┻"}</Typography>
         </div>
         <Typography variant="h5">Untitled</Typography>

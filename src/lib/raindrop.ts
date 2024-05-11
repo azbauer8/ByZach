@@ -42,6 +42,7 @@ export async function getProjects(limit?: number) {
       title: project.title,
       subtitle: project.note !== "" ? project.note : project.excerpt,
       link: project.link,
+      shortLink: project.domain,
       lastUpdate: project.lastUpdate,
       image: project.cover,
     }))
@@ -86,6 +87,7 @@ export async function getDiscoveriesInCategory(category: string) {
       title: discovery.title,
       subtitle: discovery.note !== "" ? discovery.note : discovery.excerpt,
       link: discovery.link,
+      shortLink: discovery.domain,
       category: discovery.tags[0],
       image: discovery.cover,
     }))
@@ -112,6 +114,7 @@ export async function getUses(type: "Software" | "Hardware") {
       title: use.title,
       subtitle: use.note !== "" ? use.note : use.excerpt,
       link: use.link,
+      shortLink: use.domain,
       lastUpdate: use.lastUpdate,
       image: use.cover,
     }))

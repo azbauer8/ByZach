@@ -3,9 +3,9 @@ import { cn } from "@/lib/utils"
 import "@/styles/prose.css"
 
 import Link from "next/link"
-import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
 
 import { Button } from "@/components/ui/button"
+import { BackIcon } from "@/components/Icons"
 import { Typography } from "@/components/Typography"
 
 export default function PageContent({
@@ -28,10 +28,10 @@ export default function PageContent({
           <Button
             asChild
             variant="ghost"
-            className="-ml-2 gap-1 pl-2 pr-2.5 text-base md:hidden"
+            className="-ml-2 gap-1 pl-2 pr-2.5 text-base"
           >
             <Link href={previousPage.link}>
-              <Icon icon="ph:arrow-up-left-bold" size={20} />
+              <BackIcon />
               {previousPage.title}
             </Link>
           </Button>

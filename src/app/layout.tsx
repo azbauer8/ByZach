@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { cn } from "@/lib/utils"
-import NavBar from "@/components/Global/NavBar"
+import NavDock from "@/components/Global/NavDock"
 import NavDrawer from "@/components/Global/NavDrawer"
 import Providers from "@/components/Global/Providers"
 
@@ -80,12 +80,13 @@ export default function RootLayout({
           sourceCode.variable
         )}
       >
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]" />
         <Providers>
-          <div className="mx-auto max-w-3xl flex-1 px-4 pb-20 pt-12 md:pb-12 md:pt-0">
-            <NavBar />
+          <div className="mx-auto min-h-dvh max-w-4xl bg-background px-4 pb-20 pt-12 md:border-x md:px-6">
             {children}
           </div>
           <NavDrawer />
+          <NavDock />
         </Providers>
 
         <Analytics />

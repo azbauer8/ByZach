@@ -1,7 +1,7 @@
 // @ts-check
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+export default {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
@@ -26,6 +26,3 @@ const nextConfig = {
 		],
 	},
 };
-
-
-module.exports = nextConfig

@@ -1,8 +1,9 @@
 import Image from "next/image"
-import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
 
 import { getTrakt } from "@/lib/activity"
 import { Button } from "@/components/ui/button"
+import { WatchingIcon } from "@/components/Icons"
+import ImageWithFallback from "@/components/ImageWithFallback"
 import { Typography } from "@/components/Typography"
 
 export default async function TraktCard() {
@@ -17,8 +18,9 @@ export default async function TraktCard() {
       className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2 text-base md:mx-0"
     >
       <a href={data.url} target="_blank" rel="noopener noreferrer">
-        <Image
+        <ImageWithFallback
           src={poster ?? "/trakt_placeholder.svg"}
+          fallbackSrc="/trakt_placeholder.svg"
           alt={data.title}
           width={144}
           height={216}
@@ -32,7 +34,7 @@ export default async function TraktCard() {
 
         <div className="my-auto grow space-y-0.5 text-wrap">
           <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
-            <Icon icon="ph:popcorn-bold" size={20} />
+            <WatchingIcon />
             <Typography affects="small">{data.playingWhen}</Typography>
           </div>
           <Typography className="font-semibold text-foreground">
@@ -72,7 +74,7 @@ function TraktFallback() {
       />
       <div className="my-auto grow">
         <div className="flex flex-row items-center space-x-1 text-red-500/95 dark:text-red-400">
-          <Icon icon="ph:popcorn-bold" size={20} />
+          <WatchingIcon />
           <Typography affects="small">{"(ノಠ益ಠ)ノ彡┻━┻"}</Typography>
         </div>
         <Typography variant="h5">Untitled</Typography>

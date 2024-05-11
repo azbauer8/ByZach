@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { Icon } from "@iconify-icon/react"
 
 import { Button } from "@/components/ui/button"
 
@@ -9,7 +8,7 @@ export default function SocialButtons({
   links: {
     name: string
     href: string
-    icon: string
+    icon: JSX.Element
   }[]
 }) {
   return (
@@ -17,7 +16,7 @@ export default function SocialButtons({
       {links.map((link) => (
         <Button key={link.name} variant="ghost" asChild>
           <Link href={link.href} target="_blank">
-            <Icon icon={link.icon} size={20} />
+            {link.icon}
             {link.name}
           </Link>
         </Button>

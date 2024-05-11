@@ -45,6 +45,7 @@ function SiteLinks() {
         {pageMetadata.home.sections.siteLinks.title}
       </Typography>
       <TextContentList
+        bordered={false}
         list={Object.entries(pageMetadata)
           .map(([, link]) => link)
           .filter((link) => link.title !== "Home")}

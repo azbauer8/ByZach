@@ -1,4 +1,17 @@
-import { Icon } from "@iconify-icon/react"
+import {
+  DiscoveriesIcon,
+  EmailIcon,
+  GithubIcon,
+  HomeIcon,
+  LastfmIcon,
+  ProjectsIcon,
+  ResumeIcon,
+  SnippetsIcon,
+  SpotifyIcon,
+  ThoughtsIcon,
+  TraktIcon,
+  UsesIcon,
+} from "@/components/Icons"
 
 export const siteMetadata = {
   title: "ByZach",
@@ -13,7 +26,7 @@ export const pageMetadata = {
     title: "Home",
     subtitle: "",
     link: "/",
-    icon: "fa6-solid:hand-peace",
+    icon: <HomeIcon />,
     sections: {
       header: {
         title: "Zach Bauer",
@@ -38,31 +51,31 @@ export const pageMetadata = {
     title: "Projects",
     subtitle: "My latest work and experiments.",
     link: "/projects",
-    icon: "fa6-solid:laptop",
+    icon: <ProjectsIcon />,
   },
   thoughts: {
     title: "Thoughts",
     subtitle: "Poorly conveyed ideas about technology, design, and the web.",
     link: "/thoughts",
-    icon: "fa6-solid:brain",
+    icon: <ThoughtsIcon />,
   },
   snippets: {
     title: "Snippets",
     subtitle: "Bits of code I often refer back to.",
     link: "/snippets",
-    icon: "fa6-solid:code",
+    icon: <SnippetsIcon />,
   },
   discoveries: {
     title: "Discoveries",
     subtitle: "Useful links I've found around the web.",
     link: "/discoveries",
-    icon: "fa6-solid:bookmark",
+    icon: <DiscoveriesIcon />,
   },
   uses: {
     title: "Uses",
     subtitle: "Devices, tools, and technologies I use on a daily basis.",
     link: "/uses",
-    icon: "fa6-solid:hammer",
+    icon: <UsesIcon />,
   },
 }
 
@@ -71,34 +84,34 @@ export const externalLinks = {
     {
       name: "GitHub",
       href: "https://github.com/azbauer8",
-      icon: "fa6-brands:github",
+      icon: <GithubIcon />,
     },
     {
       name: "Email",
       href: "mailto:hi@byzach.dev",
-      icon: "fa6-solid:at",
+      icon: <EmailIcon />,
     },
     {
       name: "Resume",
       href: "/Resume.pdf",
-      icon: "fa6-solid:file-pdf",
+      icon: <ResumeIcon />,
     },
   ],
   personal: [
     {
       name: "Spotify",
       href: "https://open.spotify.com/user/31krvuuup255gx2tkfuueknhctwy",
-      icon: "fa6-brands:spotify",
+      icon: <SpotifyIcon />,
     },
     {
       name: "Last.fm",
       href: "https://www.last.fm/user/zacharlatanz",
-      icon: "fa6-brands:square-lastfm",
+      icon: <LastfmIcon />,
     },
     {
       name: "Trakt",
       href: "https://trakt.tv/users/zacharlatan",
-      icon: "simple-icons:trakt",
+      icon: <TraktIcon />,
     },
   ],
 }

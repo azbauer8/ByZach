@@ -1,34 +1,43 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { motion } from "framer-motion"
 
-// import { Tab, Tabs } from "@nextui-org/tabs"
+import { cn } from "@/lib/utils"
 
+const tabs = [
+  { id: "/uses", label: "Software" },
+  { id: "/uses/hardware", label: "Hardware" },
+]
 export default function UsesTabs() {
   const pathname = usePathname()
+  const [activeTab, setActiveTab] = useState(pathname || "/uses")
 
   return (
-    <div>Placeholder</div>
-    // <Tabs
-    //   aria-label="Uses Tabs"
-    //   selectedKey={pathname}
-    //   defaultSelectedKey="/uses"
-    //   variant="light"
-    //   classNames={{
-    //     base: "w-full",
-    //     tabList: "w-[105%] p-0 -mx-1 px-1  rounded-none",
-    //     tab: "h-auto py-2 buttonLink font-medium hover:bg-default/40 hover:text-foreground-muted data-[hover-unselected=true]:opacity-100",
-    //     cursor: "bg-content2 dark:bg-content2 border rounded-md",
-    //   }}
-    // >
-    //   <Tab as={Link} key="/uses" href="/uses" title="Software" />
-    //   <Tab
-    //     as={Link}
-    //     key="/uses/hardware"
-    //     href="/uses/hardware"
-    //     title="Hardware"
-    //   />
-    // </Tabs>
+    <div className="flex space-x-1">
+      {tabs.map((tab) => (
+        <Link
+          key={tab.id}
+          href={tab.id}
+          onClick={() => setActiveTab(tab.id)}
+          className={cn(
+            "relative rounded-md px-3 py-1.5 text-sm font-medium transition",
+            activeTab !== tab.id &&
+              "text-foreground-muted hover:bg-muted hover:text-foreground"
+          )}
+        >
+          {activeTab === tab.id && (
+            <motion.span
+              layoutId="bubble"
+              className="absolute inset-0 rounded-md border"
+              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            />
+          )}
+          {tab.label}
+        </Link>
+      ))}
+    </div>
   )
 }

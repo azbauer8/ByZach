@@ -1,24 +1,26 @@
 import Link from "next/link"
-import { Icon } from "@iconify-icon/react/dist/iconify.mjs"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { BackIcon } from "@/components/Icons"
 import { Typography } from "@/components/Typography"
 
 export default function TextContentList({
   list,
   isExternal,
   longForm,
+  bordered = true,
 }: {
   list: {
     title?: string | undefined
     slug?: string | undefined
     subtitle: string
     link: string
-    icon?: string
+    icon?: JSX.Element
   }[]
   isExternal?: boolean
   longForm?: boolean
+  bordered?: boolean
 }) {
   return (
     <div
@@ -31,7 +33,7 @@ export default function TextContentList({
         <Button
           key={item?.slug ?? item?.title}
           asChild
-          variant="ghost"
+          variant={bordered ? "outline" : "ghost"}
           className="group -mx-3 h-auto flex-col items-start justify-start gap-1 px-3 py-2 text-base md:mx-0"
         >
           <Link
@@ -41,16 +43,13 @@ export default function TextContentList({
           >
             <div className="flex w-full items-center justify-between gap-4">
               <div className="flex items-center gap-2">
-                {item?.icon && <Icon icon={item.icon} />}
+                {item?.icon && item.icon}
                 <Typography className="truncate font-medium text-foreground">
                   {item.title}
                 </Typography>
               </div>
               {isExternal && (
-                <Icon
-                  icon="ph:arrow-up-right-bold"
-                  className="text-foreground-muted transition-colors group-hover:text-foreground"
-                />
+                <BackIcon className="text-foreground-muted transition-colors group-hover:text-foreground" />
               )}
             </div>
             <Typography

@@ -1,7 +1,8 @@
-import Image from "next/image"
 import Link from "next/link"
+import { FaLink } from "react-icons/fa"
 
 import { Button } from "@/components/ui/button"
+import ImageWithFallback from "@/components/ImageWithFallback"
 import { Typography } from "@/components/Typography"
 
 export default function ImageContentList({
@@ -13,41 +14,49 @@ export default function ImageContentList({
     slug?: string | undefined
     subtitle: string
     link: string
+    shortLink: string
     image: string
   }[]
   isExternal?: boolean
 }) {
   return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:-mx-3">
+    <div className="flex flex-col gap-3 md:-mx-3">
       {list.map((item) => (
         <Button
+          variant="ghost"
           key={item.slug}
           asChild
-          className="ring-divider group z-0 hover:ring-2"
+          className="flex h-[6.5rem] justify-between overflow-hidden border-border p-0 text-base"
         >
           <Link
             href={item.link}
             target={isExternal ? "_blank" : undefined}
             prefetch={!isExternal}
           >
-            <Image
-              alt="Card background"
-              src={item.image}
-              width={1200}
-              height={630}
-              className="aspect-[1200/630] animate-reveal rounded-lg border bg-cover bg-center bg-no-repeat object-cover"
-            />
-            <div className="absolute bottom-0 z-10 flex h-[74px] flex-col items-start gap-1 bg-background backdrop-blur-sm group-hover:bg-background/85">
-              <Typography affects="small" className="truncate font-medium">
-                {item.title}
-              </Typography>
-              <Typography
-                affects="muted"
-                className="!text-tiny line-clamp-2 truncate text-wrap"
-              >
-                {item.subtitle}
+            <div className="flex h-full flex-col justify-between p-3">
+              <div className="flex flex-col gap-1">
+                <Typography className="truncate font-medium text-foreground">
+                  {item.title}
+                </Typography>
+                <Typography
+                  affects="muted"
+                  className="line-clamp-2 truncate text-wrap text-sm"
+                >
+                  {item.subtitle}
+                </Typography>
+              </div>
+              <Typography className="line-clamp-2 inline-flex items-center gap-1.5 truncate text-wrap text-sm">
+                <FaLink />
+                {item.shortLink}
               </Typography>
             </div>
+            <ImageWithFallback
+              alt={item.title ?? item.subtitle}
+              src={item.image}
+              width={198}
+              height={104}
+              className="aspect-[198/104] min-w-[198px] animate-reveal bg-contain bg-center bg-no-repeat object-none"
+            />
           </Link>
         </Button>
       ))}
