@@ -29,7 +29,7 @@ export default function NavDock() {
       <motion.div
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Number.POSITIVE_INFINITY)}
-        className="mx-auto mb-1 flex h-14 w-fit items-end justify-center gap-4 rounded-2xl border bg-background px-4 py-2 shadow-md"
+        className="mx-auto mb-2 flex h-14 w-fit items-end justify-center gap-4 rounded-lg border bg-background p-2 shadow-md"
       >
         <TooltipProvider delayDuration={0}>
           {Object.entries(pageMetadata).map(([, link]) => {
@@ -95,7 +95,7 @@ function AppIcon({
           {active && (
             <motion.span
               layoutId="navIndicator"
-              className="absolute -bottom-2 left-1/2 size-[5px] translate-x-[-50%] animate-pulse rounded-full bg-foreground-muted"
+              className="absolute bottom-[-7px] h-[3px] w-full rounded-full bg-foreground/60"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}

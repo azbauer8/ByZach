@@ -23,7 +23,7 @@ export default function UsesTabs() {
           href={tab.id}
           onClick={() => setActiveTab(tab.id)}
           className={cn(
-            "relative rounded-md px-3 py-1.5 text-sm font-medium transition",
+            "relative rounded-lg px-3 py-1.5 text-sm font-medium transition",
             activeTab !== tab.id &&
               "text-foreground-muted hover:bg-hover hover:text-foreground"
           )}
@@ -31,7 +31,7 @@ export default function UsesTabs() {
           {activeTab === tab.id && (
             <motion.span
               layoutId="usesTabIndicator"
-              className="absolute inset-0 z-0 rounded-md border bg-accent"
+              className="absolute inset-0 z-0 rounded-lg border bg-accent"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}
