@@ -25,7 +25,7 @@ export default function UsesTabs() {
           className={cn(
             "relative rounded-md px-3 py-1.5 text-sm font-medium transition",
             activeTab !== tab.id &&
-              "hover:bg-hover text-foreground-muted hover:text-foreground"
+              "text-foreground-muted hover:bg-hover hover:text-foreground"
           )}
         >
           {activeTab === tab.id && (
