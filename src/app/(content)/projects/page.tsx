@@ -3,7 +3,7 @@ import { pageMetadata } from "@/siteData"
 
 import { getProjects } from "@/lib/raindrop"
 import ContentList from "@/components/ContentList"
-import PageContent from "@/components/PageContent"
+import PageLayout from "@/components/PageLayout"
 
 export const metadata: Metadata = {
   title: pageMetadata.projects.title,
@@ -15,11 +15,11 @@ export default async function Projects() {
 
   if (!projects) return null
   return (
-    <PageContent
+    <PageLayout
       title={pageMetadata.projects.title}
       subtitle={pageMetadata.projects.subtitle}
     >
       <ContentList list={projects} isExternal hasImage />
-    </PageContent>
+    </PageLayout>
   )
 }

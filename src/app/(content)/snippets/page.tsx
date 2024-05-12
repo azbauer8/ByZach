@@ -3,7 +3,7 @@ import { pageMetadata } from "@/siteData"
 
 import { getCMSContent } from "@/lib/dato"
 import ContentList from "@/components/ContentList"
-import PageContent from "@/components/PageContent"
+import PageLayout from "@/components/PageLayout"
 
 export const metadata: Metadata = {
   title: pageMetadata.snippets.title,
@@ -15,11 +15,11 @@ export default async function Snippets() {
   if (!snippets) return null
 
   return (
-    <PageContent
+    <PageLayout
       title={pageMetadata.snippets.title}
       subtitle={pageMetadata.snippets.subtitle}
     >
       <ContentList list={snippets} />
-    </PageContent>
+    </PageLayout>
   )
 }

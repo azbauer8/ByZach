@@ -12,6 +12,7 @@ export default function ContentList({
   compact,
   hasImage,
   noBorder,
+  noBg,
 }: {
   list: {
     title: string
@@ -24,6 +25,7 @@ export default function ContentList({
   compact?: boolean
   hasImage?: boolean
   noBorder?: boolean
+  noBg?: boolean
 }) {
   return (
     <div
@@ -37,7 +39,10 @@ export default function ContentList({
           key={item.link}
           asChild
           variant={noBorder ? "ghost" : "outline"}
-          className="group -mx-3 flex h-auto items-start justify-between gap-3 overflow-hidden p-0 text-base md:mx-0"
+          className={cn(
+            "group -mx-3 flex h-auto items-start justify-between gap-3 overflow-hidden p-0 text-base md:mx-0",
+            noBg ? "bg-transparent" : "bg-accent"
+          )}
         >
           <Link
             href={item.link}

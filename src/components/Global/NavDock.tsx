@@ -70,17 +70,17 @@ function AppIcon({
     return val - bounds.x - bounds.width / 2
   })
 
-  const widthSync = useTransform(distance, [-150, 0, 150], [40, 100, 40])
+  const widthSync = useTransform(distance, [-150, 0, 150], [40, 75, 40])
   const width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 })
 
   return (
     <Tooltip>
-      <TooltipTrigger>
+      <TooltipTrigger asChild>
         <motion.div
           ref={ref}
           style={{ width }}
           className={
-            "group relative flex aspect-square w-10 items-center justify-center rounded-full border-2 bg-background p-2"
+            "group relative flex aspect-square w-10 items-center justify-center rounded-lg border bg-accent p-2"
           }
         >
           <Link
@@ -93,7 +93,11 @@ function AppIcon({
             {link.icon}
           </Link>
           {active && (
-            <div className="absolute -bottom-2 left-1/2 size-[5px] -translate-x-1/2 animate-pulse rounded-full bg-foreground-muted" />
+            <motion.span
+              layoutId="navIndicator"
+              className="absolute -bottom-2 left-1/2 size-[5px] translate-x-[-50%] animate-pulse rounded-full bg-foreground-muted"
+              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            />
           )}
         </motion.div>
       </TooltipTrigger>

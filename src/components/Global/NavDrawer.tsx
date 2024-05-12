@@ -74,7 +74,7 @@ export default function NavDrawer() {
         leaveTo="opacity-0"
       >
         <div
-          className="fixed inset-0 bg-black bg-opacity-75 transition-opacity"
+          className="fixed inset-0 z-20 bg-black bg-opacity-75 transition-opacity"
           onClick={() => toggleOpen(false)}
         />
       </Transition>
@@ -118,7 +118,7 @@ export default function NavDrawer() {
                 className={cn(
                   "flex-col justify-center",
                   "buttonLink h-fit justify-start px-2 pb-0.5 pt-1.5 font-medium",
-                  active && "bg-muted",
+                  active && "bg-accent",
                   !fullyActive && "bg-transparent"
                 )}
               >

@@ -1,7 +1,7 @@
 import type { Metadata } from "next/types"
 import { pageMetadata } from "@/siteData"
 
-import PageContent from "@/components/PageContent"
+import PageLayout from "@/components/PageLayout"
 
 import UsesTabs from "./UsesTabs"
 
@@ -16,12 +16,12 @@ export default function UsesLayout({
   children: React.ReactNode
 }) {
   return (
-    <PageContent
+    <PageLayout
       title={pageMetadata.uses.title}
       subtitle={pageMetadata.uses.subtitle}
     >
       <UsesTabs />
       {children}
-    </PageContent>
+    </PageLayout>
   )
 }

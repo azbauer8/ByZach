@@ -2,10 +2,16 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { Back2Icon, BackIcon } from "@/components/Icons"
 import { Typography } from "@/components/Typography"
 
-export default function PageContent({
+export default function PageLayout({
   children,
   className,
   previousPage,
@@ -34,16 +40,25 @@ export default function PageContent({
               </Link>
             </Button>
             <div className="absolute -top-5 left-[-4.5rem] hidden min-[865px]:block">
-              <Button
-                asChild
-                variant="outline"
-                size="icon"
-                className="rounded-full bg-background"
-              >
-                <Link href={previousPage.link}>
-                  <Back2Icon />
-                </Link>
-              </Button>
+              <TooltipProvider delayDuration={0}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="icon"
+                      className="bg-background"
+                    >
+                      <Link href={previousPage.link}>
+                        <Back2Icon />
+                      </Link>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="left">
+                    <p>{previousPage.title}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </>
         )}

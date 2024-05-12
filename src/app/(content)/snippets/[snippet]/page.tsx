@@ -2,7 +2,7 @@ import { siteMetadata } from "@/siteData"
 
 import { getCMSContent, getCMSContentEntry } from "@/lib/dato"
 import { Markdown } from "@/components/Markdown"
-import PageContent from "@/components/PageContent"
+import PageLayout from "@/components/PageLayout"
 
 export const dynamicParams = false
 
@@ -52,12 +52,12 @@ export default async function Snippet({
   if (!snippet) return null
 
   return (
-    <PageContent
+    <PageLayout
       title={snippet.title ?? ""}
       subtitle={snippet.subtitle}
       previousPage={{ link: "/snippets", title: "Snippets" }}
     >
       <Markdown source={snippet.content} />
-    </PageContent>
+    </PageLayout>
   )
 }

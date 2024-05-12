@@ -8,30 +8,19 @@ const config = {
     hoverOnlyWhenSupported: true,
   },
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         mono: ["var(--font-mono)", ...fontFamily.mono],
       },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         "foreground-muted": "hsl(var(--foreground-muted))",
-        primary: "hsl(var(--primary))",
-        secondary: "hsl(var(--secondary))",
-        destructive: "hsl(var(--destructive))",
         muted: "hsl(var(--muted))",
         accent: "hsl(var(--accent))",
+        hover: "hsl(var(--hover))",
+        border: "hsl(var(--border))",
       },
       borderRadius: {
         lg: "var(--radius)",

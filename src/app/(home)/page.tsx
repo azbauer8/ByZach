@@ -3,7 +3,7 @@ import { externalLinks, pageMetadata } from "@/siteData"
 
 import ContentList from "@/components/ContentList"
 import { Markdown } from "@/components/Markdown"
-import PageContent from "@/components/PageContent"
+import PageLayout from "@/components/PageLayout"
 import SocialButtons from "@/components/SocialButtons"
 import { Typography } from "@/components/Typography"
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <PageContent
+    <PageLayout
       title={pageMetadata.home.sections.header.title}
       subtitle={pageMetadata.home.sections.header.subtitle}
       className="space-y-8"
@@ -25,7 +25,7 @@ export default function Home() {
       <SiteLinks />
       <Activity />
       <Socials />
-    </PageContent>
+    </PageLayout>
   )
 }
 
@@ -46,6 +46,8 @@ function SiteLinks() {
       </Typography>
       <ContentList
         noBorder
+        noBg
+        compact
         list={Object.entries(pageMetadata)
           .map(([, link]) => link)
           .filter((link) => link.title !== "Home")}

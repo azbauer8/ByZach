@@ -3,7 +3,7 @@ import { pageMetadata } from "@/siteData"
 
 import { getCMSContent } from "@/lib/dato"
 import ContentList from "@/components/ContentList"
-import PageContent from "@/components/PageContent"
+import PageLayout from "@/components/PageLayout"
 
 export const metadata: Metadata = {
   title: pageMetadata.thoughts.title,
@@ -15,11 +15,11 @@ export default async function Thoughts() {
   if (!thoughts) return null
 
   return (
-    <PageContent
+    <PageLayout
       title={pageMetadata.thoughts.title}
       subtitle={pageMetadata.thoughts.subtitle}
     >
       <ContentList list={thoughts} />
-    </PageContent>
+    </PageLayout>
   )
 }

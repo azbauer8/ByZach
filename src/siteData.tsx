@@ -55,7 +55,7 @@ export const pageMetadata = {
   },
   thoughts: {
     title: "Thoughts",
-    subtitle: "Poorly conveyed ideas about technology, design, and the web.",
+    subtitle: "Poorly conveyed ideas about web dev and design.",
     link: "/thoughts",
     icon: <ThoughtsIcon />,
   },
