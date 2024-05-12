@@ -4,7 +4,7 @@ import {
   getDiscoveriesInCategory,
   getDiscoveryCategories,
 } from "@/lib/raindrop"
-import ImageContentList from "@/components/ImageContentList"
+import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
 
 export const dynamicParams = false
@@ -51,7 +51,7 @@ export default async function DiscoveryCategory({
       title={category}
       previousPage={{ link: "/discoveries", title: "Discoveries" }}
     >
-      <ImageContentList list={discoveries} isExternal />
+      <ContentList list={discoveries} isExternal hasImage />
     </PageContent>
   )
 }

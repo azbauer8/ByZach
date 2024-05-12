@@ -4,7 +4,6 @@ import { fontFamily } from "tailwindcss/defaultTheme"
 const config = {
   darkMode: ["class"],
   content: ["./src/**/*.{ts,tsx,js,jsx,mdx}"],
-  prefix: "",
   future: {
     hoverOnlyWhenSupported: true,
   },
@@ -33,8 +32,6 @@ const config = {
         destructive: "hsl(var(--destructive))",
         muted: "hsl(var(--muted))",
         accent: "hsl(var(--accent))",
-        popover: "hsl(var(--popover))",
-        card: "hsl(var(--card))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -42,14 +39,6 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
         reveal: {
           "0%": { opacity: "0", filter: "blur(10px)" },
           "10%": { opacity: "1", filter: "blur(5px)" },
@@ -57,8 +46,6 @@ const config = {
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
         reveal: "reveal 0.5s ease-in-out",
       },
       transitionTimingFunction: {

@@ -7,11 +7,11 @@ interface ImageWithFallbackProps extends ImageProps {
   fallbackSrc?: string
 }
 
-const ImageWithFallback = ({
+export default function ImageWithFallback({
   src,
   fallbackSrc = "/fallback.png",
   ...rest
-}: ImageWithFallbackProps) => {
+}: ImageWithFallbackProps) {
   const [imgSrc, setImgSrc] = useState(src)
 
   return (
@@ -24,5 +24,3 @@ const ImageWithFallback = ({
     />
   )
 }
-
-export default ImageWithFallback

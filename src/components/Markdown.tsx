@@ -1,7 +1,5 @@
-import Image, { type ImageProps } from "next/image"
+import type { ImageProps } from "next/image"
 import type { MDXProvider } from "@mdx-js/react"
-// import { Link } from "@nextui-org/link"
-// import type { LinkProps } from "@nextui-org/link"
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode, { type Options } from "rehype-pretty-code"
@@ -10,6 +8,8 @@ import remarkGfm from "remark-gfm"
 
 import { cn } from "@/lib/utils"
 import ImageWithFallback from "@/components/ImageWithFallback"
+
+import "@/styles/prose.css"
 
 function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const href = props.href?.toString()

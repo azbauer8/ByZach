@@ -2,8 +2,8 @@ import type { Metadata } from "next/types"
 import { pageMetadata } from "@/siteData"
 
 import { getCMSContent } from "@/lib/dato"
+import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
-import TextContentList from "@/components/TextContentList"
 
 export const metadata: Metadata = {
   title: pageMetadata.snippets.title,
@@ -19,7 +19,7 @@ export default async function Snippets() {
       title={pageMetadata.snippets.title}
       subtitle={pageMetadata.snippets.subtitle}
     >
-      <TextContentList list={snippets} longForm />
+      <ContentList list={snippets} />
     </PageContent>
   )
 }

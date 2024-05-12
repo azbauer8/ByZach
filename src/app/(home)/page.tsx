@@ -1,10 +1,10 @@
 import type { Metadata } from "next/types"
 import { externalLinks, pageMetadata } from "@/siteData"
 
+import ContentList from "@/components/ContentList"
 import { Markdown } from "@/components/Markdown"
 import PageContent from "@/components/PageContent"
 import SocialButtons from "@/components/SocialButtons"
-import TextContentList from "@/components/TextContentList"
 import { Typography } from "@/components/Typography"
 
 import LastFmCard from "./LastfmCard"
@@ -44,8 +44,8 @@ function SiteLinks() {
       <Typography className="font-semibold leading-none">
         {pageMetadata.home.sections.siteLinks.title}
       </Typography>
-      <TextContentList
-        bordered={false}
+      <ContentList
+        noBorder
         list={Object.entries(pageMetadata)
           .map(([, link]) => link)
           .filter((link) => link.title !== "Home")}

@@ -2,8 +2,8 @@ import type { Metadata } from "next/types"
 import { pageMetadata } from "@/siteData"
 
 import { getDiscoveryCategories } from "@/lib/raindrop"
+import ContentList from "@/components/ContentList"
 import PageContent from "@/components/PageContent"
-import TextContentList from "@/components/TextContentList"
 
 export const metadata: Metadata = {
   title: pageMetadata.discoveries.title,
@@ -19,7 +19,7 @@ export default async function DiscoveryCategories() {
       title={pageMetadata.discoveries.title}
       subtitle={pageMetadata.discoveries.subtitle}
     >
-      <TextContentList list={discoveries} />
+      <ContentList list={discoveries} compact />
     </PageContent>
   )
 }

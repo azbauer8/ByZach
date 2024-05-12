@@ -12,7 +12,9 @@ import {
   FaSpotify,
 } from "react-icons/fa"
 import {
+  PiArrowLeftBold,
   PiArrowUpLeftBold,
+  PiArrowUpRightBold,
   PiCaretDoubleUpBold,
   PiPopcornBold,
   PiWaveformBold,
@@ -25,7 +27,9 @@ const iconSize = "size-4"
 
 // ui
 export const BackIcon = twcn(PiArrowUpLeftBold)`${iconSize}`
+export const Back2Icon = twcn(PiArrowLeftBold)`${iconSize}`
 export const DrawerIcon = twcn(PiCaretDoubleUpBold)`${iconSize}`
+export const ExternalLinkIcon = twcn(PiArrowUpRightBold)`${iconSize}`
 
 // nav links
 export const HomeIcon = twcn(FaHome)`${iconSize}`
