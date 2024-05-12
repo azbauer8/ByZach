@@ -68,7 +68,7 @@ export default function ContentList({
                 alt={item.title}
                 src={item.image ?? "/fallback.png"}
                 width={128}
-                height={85}
+                height={67}
                 className="aspect-square !min-h-full min-w-[80px] max-w-[80px] animate-reveal bg-contain bg-center bg-no-repeat object-cover md:aspect-[3/2] md:min-w-[128px] md:max-w-none"
               />
             )}

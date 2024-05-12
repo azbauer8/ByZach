@@ -39,26 +39,28 @@ export default function PageLayout({
                 {previousPage.title}
               </Link>
             </Button>
-            <div className="absolute -top-5 left-[-4.5rem] hidden min-[900px]:block">
-              <TooltipProvider delayDuration={0}>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="icon"
-                      className="bg-background"
-                    >
-                      <Link href={previousPage.link}>
-                        <Back2Icon />
-                      </Link>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent side="left">
-                    <p>{previousPage.title}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+            <div className="fixed left-3 top-4 hidden w-dvw min-[900px]:block">
+              <div className="mx-auto w-full max-w-4xl">
+                <TooltipProvider delayDuration={0}>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="icon"
+                        className="bg-background"
+                      >
+                        <Link href={previousPage.link}>
+                          <Back2Icon />
+                        </Link>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent side="left">
+                      <p>{previousPage.title}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
             </div>
           </>
         )}
