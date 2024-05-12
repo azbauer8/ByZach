@@ -9,8 +9,9 @@
     "lint": "biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true ./src",
     "format": "prettier --write ./src",
     "tscheck": "tsc",
-    "prepare": "husky"
-  },
+    "prepare": "husky",
+    "clean": "bunx rimraf {.next,node_modules,bun.lockb}"
+    },
   "dependencies": {
     "@headlessui/react": "^1.7.19",
     "@mdx-js/react": "^3.0.1",

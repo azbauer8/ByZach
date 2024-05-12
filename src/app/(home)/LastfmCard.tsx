@@ -14,7 +14,7 @@ export default async function LastFmCard() {
   return (
     <Button
       variant="ghost"
-      className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2 text-base md:mx-0"
+      className="flex h-auto items-center space-x-5 rounded-lg px-3 py-2 text-base"
       asChild
     >
       <a href={latestTrack.url} target="_blank" rel="noopener noreferrer">

@@ -15,7 +15,7 @@ export default async function TraktCard() {
     <Button
       asChild
       variant="ghost"
-      className="-mx-3 flex h-auto items-center space-x-5 rounded-lg px-3 py-2 text-base md:mx-0"
+      className="flex h-auto items-center space-x-5 rounded-lg px-3 py-2 text-base"
     >
       <a href={data.url} target="_blank" rel="noopener noreferrer">
         <ImageWithFallback
@@ -59,7 +59,7 @@ export default async function TraktCard() {
 
 function TraktFallback() {
   return (
-    <div className="-mx-3 flex h-auto items-center space-x-5 text-wrap rounded-lg px-3 py-2">
+    <div className="flex h-auto items-center space-x-5 text-wrap rounded-lg px-3 py-2">
       <Image
         src="/trakt_placeholder.svg"
         alt="Poster Placeholder"

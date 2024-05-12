@@ -75,17 +75,17 @@ function AppIcon({
 
   return (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger>
         <motion.div
           ref={ref}
           style={{ width }}
           className={
-            "group relative flex aspect-square w-10 items-center justify-center rounded-lg border bg-accent p-2"
+            "group relative flex aspect-square w-10 items-center justify-center rounded-lg border bg-accent"
           }
         >
           <Link
             className={cn(
-              "size-full transition-colors duration-500 group-hover:text-foreground [&>svg]:size-full",
+              "size-full p-2 transition-colors duration-500 group-hover:text-foreground [&>svg]:size-full",
               active ? "text-foreground" : "text-foreground-muted"
             )}
             href={link.link}

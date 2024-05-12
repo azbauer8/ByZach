@@ -28,19 +28,14 @@ export default function ContentList({
   noBg?: boolean
 }) {
   return (
-    <div
-      className={cn(
-        "grid grid-cols-1 gap-3 md:-mx-3",
-        compact && "md:grid-cols-2"
-      )}
-    >
+    <div className={cn("grid grid-cols-1 gap-3", compact && "md:grid-cols-2")}>
       {list.map((item) => (
         <Button
           key={item.link}
           asChild
           variant={noBorder ? "ghost" : "outline"}
           className={cn(
-            "group -mx-3 flex h-auto items-start justify-between gap-3 overflow-hidden p-0 text-base md:mx-0",
+            "group flex h-auto items-start justify-between gap-3 overflow-hidden p-0 text-base",
             noBg ? "bg-transparent" : "bg-accent"
           )}
         >

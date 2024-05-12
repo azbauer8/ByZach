@@ -26,23 +26,23 @@ export default function PageLayout({
 }) {
   return (
     <div className={cn("space-y-5", className)}>
-      <div className="space-y-1.5">
+      <div className="space-y-1.5 px-2">
         {previousPage && (
           <>
             <Button
               asChild
               variant="ghost"
-              className="-ml-2 gap-1 pl-2 pr-2.5 text-base min-[865px]:hidden"
+              className="-ml-2 gap-1 pl-2 pr-2.5 text-base min-[900px]:hidden"
             >
               <Link href={previousPage.link}>
                 <BackIcon />
                 {previousPage.title}
               </Link>
             </Button>
-            <div className="absolute -top-5 left-[-4.5rem] hidden min-[865px]:block">
+            <div className="absolute -top-5 left-[-4.5rem] hidden min-[900px]:block">
               <TooltipProvider delayDuration={0}>
                 <Tooltip>
-                  <TooltipTrigger asChild>
+                  <TooltipTrigger>
                     <Button
                       asChild
                       variant="outline"

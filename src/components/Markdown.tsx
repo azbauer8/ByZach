@@ -57,7 +57,7 @@ const codeOptions: Options = {
 
 export function Markdown(props: MDXRemoteProps) {
   return (
-    <div className="prose prose-neutral text-foreground-muted dark:prose-invert prose-a:no-underline">
+    <div className="prose prose-neutral px-2 text-foreground-muted dark:prose-invert prose-a:no-underline">
       <MDXRemote
         {...props}
         components={{ ...components, ...props.components }}
