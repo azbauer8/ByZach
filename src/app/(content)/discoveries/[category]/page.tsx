@@ -1,9 +1,4 @@
-import slugify from "slugify"
-
-import {
-  getDiscoveriesInCategory,
-  getDiscoveryCategories,
-} from "@/lib/raindrop"
+import { getDiscoveriesInCategory, getDiscoveryCategories } from "@/lib/notion"
 import ContentList from "@/components/ContentList"
 import PageLayout from "@/components/PageLayout"
 
@@ -15,9 +10,7 @@ export async function generateMetadata({
   params: { category: string }
 }) {
   const category = await getDiscoveryCategories().then((categories) =>
-    categories?.find(
-      (category) => category.slug.toLowerCase() === params.category
-    )
+    categories?.find((category) => category.slug === params.category)
   )
   if (!category) return {}
 
@@ -32,7 +25,7 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const categories = await getDiscoveryCategories()
   return categories?.map((category) => ({
-    category: slugify(category.slug.toLowerCase()),
+    category: category.slug,
   }))
 }
 
@@ -51,7 +44,7 @@ export default async function DiscoveryCategory({
       title={category}
       previousPage={{ link: "/discoveries", title: "Discoveries" }}
     >
-      <ContentList list={discoveries} isExternal hasImage />
+      <ContentList list={discoveries} isExternal />
     </PageLayout>
   )
 }

@@ -1,29 +1,28 @@
 import { siteMetadata } from "@/siteData"
-import slugify from "slugify"
 
 import { getCMSContent } from "@/lib/dato"
-import { getDiscoveryCategories, getProjects, getUses } from "@/lib/raindrop"
+import { getDiscoveryCategories, getProjects, getUses } from "@/lib/notion"
 
 export default async function sitemap() {
   const projects = await getProjects().then((projects) =>
     projects?.map((project) => ({
-      url: `${siteMetadata.here}/projects/${slugify(project.title)}`,
-      lastModified: project.lastUpdate,
+      url: `${siteMetadata.here}/projects/${project.slug}`,
+      lastModified: project.updatedAt,
     }))
   )
   const projectsArray = projects || []
 
   const uses = await getUses("Software").then((uses) =>
     uses?.map((use) => ({
-      url: `${siteMetadata.here}/uses/${slugify(use.title)}`,
-      lastModified: use.lastUpdate,
+      url: `${siteMetadata.here}/uses/${use.slug}`,
+      lastModified: use.updatedAt,
     }))
   )
   const usesArray = uses || []
 
   const discoveries = await getDiscoveryCategories().then((discoveries) =>
     discoveries?.map((discovery) => ({
-      url: `${siteMetadata.here}/discoveries/${discovery.slug}`,
+      url: `${siteMetadata.here}${discovery.link}`,
     }))
   )
 

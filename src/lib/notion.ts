@@ -1,0 +1,211 @@
+import { Client } from "@notionhq/client"
+import slugify from "slugify"
+
+import "server-only"
+
+import { cache } from "react"
+
+import { unslugify } from "@/lib/utils"
+
+const notionIds = {
+  projects: "7d4cc30d-8b5a-4798-b34f-b3c7372f71f3",
+  discoveries: "751aedae-1d44-4bf1-b202-8394e0a163ca",
+  uses: "1221a5cd-c4a6-4bd9-8fb1-cad16eb7fe57",
+}
+
+export const getProjects = cache(async () => {
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  })
+  const response = (await notion.databases.query({
+    database_id: notionIds.projects,
+  })) as unknown as NotionQuery | null
+  return response?.results
+    ? response.results.map((project) => ({
+        slug: slugify(
+          project.properties.Title.title[0].plain_text.toLowerCase()
+        ),
+        title: project.properties.Title.title[0].plain_text,
+        subtitle: project.properties.Description.rich_text[0].plain_text,
+        link: project.properties.Link.url,
+        extIcon: project.icon?.external.url,
+        image: project.cover?.external.url,
+        createdAt: project.created_time,
+        updatedAt: project.last_edited_time,
+      }))
+    : null
+})
+
+export const getDiscoveryCategories = cache(async () => {
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  })
+  const response = (await notion.databases.retrieve({
+    database_id: notionIds.discoveries,
+  })) as unknown as NotionDatabase | null
+
+  if (!response) return null
+  const result = []
+  for (const option of response.properties.Tags.multi_select.options) {
+    const entries = await getDiscoveriesInCategory(option.name)
+    result.push({
+      slug: slugify(option.name.toLowerCase()),
+      title: option.name,
+      subtitle: entries?.length
+        ? entries.length > 1
+          ? `${entries.length} discoveries`
+          : `${entries.length} discovery`
+        : "",
+      link: `/discoveries/${slugify(option.name.toLowerCase())}`,
+    })
+  }
+  return result
+})
+
+export const getDiscoveriesInCategory = cache(async (category: string) => {
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  })
+  const response = (await notion.databases.query({
+    database_id: notionIds.discoveries,
+    filter: {
+      property: "Tags",
+      multi_select: {
+        contains: unslugify(category),
+      },
+    },
+  })) as unknown as NotionQuery | null
+  return response?.results
+    ? response.results.map((discovery) => ({
+        slug: slugify(
+          discovery.properties.Title.title[0].plain_text.toLowerCase()
+        ),
+        title: discovery.properties.Title.title[0].plain_text,
+        subtitle: discovery.properties.Description.rich_text[0].plain_text,
+        link: discovery.properties.Link.url,
+        extIcon: discovery.icon?.external.url,
+        image: discovery.cover?.external.url,
+        category: discovery.properties.Tags.multi_select[0].name,
+        createdAt: discovery.created_time,
+        updatedAt: discovery.last_edited_time,
+      }))
+    : null
+})
+export const getUses = cache(async (type: "Software" | "Hardware") => {
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  })
+  const response = (await notion.databases.query({
+    database_id: notionIds.uses,
+    filter: {
+      property: "Tags",
+      multi_select: {
+        contains: type,
+      },
+    },
+  })) as unknown as NotionQuery | null
+  return response?.results
+    ? response.results.map((use) => ({
+        slug: slugify(use.properties.Title.title[0].plain_text.toLowerCase()),
+        title: use.properties.Title.title[0].plain_text,
+        subtitle: use.properties.Description.rich_text[0].plain_text,
+        link: use.properties.Link.url,
+        extIcon: use.icon?.external.url,
+        image: use.cover?.external.url,
+        createdAt: use.created_time,
+        updatedAt: use.last_edited_time,
+        category: use.properties.Tags.multi_select[0].name,
+      }))
+    : null
+})
+
+type NotionDatabase = {
+  id: string
+  created_time: string
+  last_edited_time: string
+  title: [
+    {
+      type: "text"
+      plain_text: string
+      href: null
+    },
+  ]
+  description: []
+  properties: {
+    Description: {
+      id: string
+      name: "Description"
+      type: "rich_text"
+    }
+    Link: {
+      id: string
+      name: "Link"
+      type: "url"
+    }
+    Tags: {
+      id: string
+      name: "Tags"
+      type: "multi_select"
+      multi_select: {
+        options: {
+          id: string
+          name: string
+          color: string
+          description?: string
+        }[]
+      }
+    }
+    Title: {
+      id: string
+      name: "Title"
+      type: "title"
+    }
+  }
+  url: string
+}
+
+type NotionQuery = {
+  results: {
+    id: string
+    created_time: string
+    last_edited_time: string
+    cover: { type: string; external: { url: string } } | null
+    icon: { type: string; external: { url: string } } | null
+    properties: {
+      Description: {
+        id: string
+        type: "rich_text"
+        rich_text: {
+          type: "text"
+          text: {
+            content: string
+            link: string | null
+          }
+          plain_text: string
+          link: string | null
+        }[]
+      }
+      Link: { id: string; type: "url"; url: string }
+      Tags: {
+        id: string
+        type: "multi_select"
+        multi_select: {
+          id: string
+          name: string
+          color: string
+        }[]
+      }
+      Title: {
+        id: string
+        type: "title"
+        title: {
+          type: "text"
+          text: { content: string; link: string | null }
+          plain_text: string
+          href: string | null
+        }[]
+      }
+    }
+    url: string
+  }[]
+}

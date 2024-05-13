@@ -1,7 +1,7 @@
 import type { Metadata } from "next/types"
 import { pageMetadata } from "@/siteData"
 
-import { getDiscoveryCategories } from "@/lib/raindrop"
+import { getDiscoveryCategories } from "@/lib/notion"
 import ContentList from "@/components/ContentList"
 import PageLayout from "@/components/PageLayout"
 

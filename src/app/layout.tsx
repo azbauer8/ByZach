@@ -8,6 +8,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { cn } from "@/lib/utils"
+import Footer from "@/components/Global/Footer"
 import NavDock from "@/components/Global/NavDock"
 import NavDrawer from "@/components/Global/NavDrawer"
 import Providers from "@/components/Global/Providers"
@@ -65,6 +66,8 @@ export const metadata: Metadata = {
   },
 }
 
+export const revalidate = 172800 // 2 days
+
 export default function RootLayout({
   children,
 }: {
@@ -82,8 +85,9 @@ export default function RootLayout({
       >
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#ededea_1px,transparent_1px),linear-gradient(to_bottom,#ededea_1px,transparent_1px)] bg-[size:14px_14px] dark:bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)]" />
         <Providers>
-          <div className="mx-auto min-h-dvh max-w-3xl bg-background px-3 pb-20 pt-12 shadow-md md:min-h-fit md:rounded-lg md:border md:pb-3 md:pt-5">
-            {children}
+          <div className="relative mx-auto flex min-h-dvh max-w-3xl flex-col bg-background px-5 pt-12 shadow-md md:min-h-fit md:rounded-lg md:border md:pb-3 md:pt-5">
+            <div className="flex-1"> {children}</div>
+            <Footer />
           </div>
           <NavDrawer />
           <NavDock />

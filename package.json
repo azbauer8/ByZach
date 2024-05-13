@@ -11,10 +11,11 @@
     "tscheck": "tsc",
     "prepare": "husky",
     "clean": "bunx rimraf {.next,node_modules,bun.lockb}"
-    },
+  },
   "dependencies": {
     "@headlessui/react": "^1.7.19",
     "@mdx-js/react": "^3.0.1",
+    "@notionhq/client": "^2.2.15",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.7",

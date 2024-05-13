@@ -12,7 +12,7 @@ export default function SocialButtons({
   }[]
 }) {
   return (
-    <div className="flex flex-wrap items-center gap-1">
+    <div className="-mx-3 flex flex-wrap items-center gap-1">
       {links.map((link) => (
         <Button key={link.name} variant="ghost" className="px-2.5" asChild>
           <Link href={link.href} target="_blank">

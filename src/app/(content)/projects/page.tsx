@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { pageMetadata } from "@/siteData"
 
-import { getProjects } from "@/lib/raindrop"
+import { getProjects } from "@/lib/notion"
 import ContentList from "@/components/ContentList"
 import PageLayout from "@/components/PageLayout"
 
@@ -19,7 +19,7 @@ export default async function Projects() {
       title={pageMetadata.projects.title}
       subtitle={pageMetadata.projects.subtitle}
     >
-      <ContentList list={projects} isExternal hasImage />
+      <ContentList list={projects} isExternal />
     </PageLayout>
   )
 }

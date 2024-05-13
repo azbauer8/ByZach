@@ -2,8 +2,9 @@ import { clsx, type ClassValue } from "clsx"
 import { createTwc } from "react-twc"
 import { twMerge } from "tailwind-merge"
 
-export function formatDate(date: string | null | undefined) {
-  return new Date(date ?? "").toLocaleDateString("en-us", {
+export function formatDate(dateString?: string | null | undefined) {
+  const date = dateString ? new Date(dateString) : new Date()
+  return date.toLocaleDateString("en-us", {
     year: "numeric",
     month: "short",
     day: "numeric",

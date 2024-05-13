@@ -19,6 +19,7 @@ export const siteMetadata = {
   favicon: "/favicon.png",
   here: "https://byzach.dev",
   hereShort: "byzach.dev",
+  source: "https://github.com/azbauer8/ByZach",
 }
 
 export const pageMetadata = {

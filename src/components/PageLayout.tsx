@@ -26,7 +26,7 @@ export default function PageLayout({
 }) {
   return (
     <div className={cn("space-y-5", className)}>
-      <div className="space-y-1.5 px-2">
+      <div className="space-y-1.5">
         {previousPage && (
           <>
             <Button

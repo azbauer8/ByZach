@@ -41,7 +41,7 @@ function About() {
 function SiteLinks() {
   return (
     <div className="space-y-4">
-      <Typography className="px-2 font-semibold leading-none">
+      <Typography className="font-semibold leading-none">
         {pageMetadata.home.sections.siteLinks.title}
       </Typography>
       <ContentList
@@ -59,7 +59,7 @@ function SiteLinks() {
 function Activity() {
   return (
     <div className="space-y-4">
-      <div className="space-y-1.5 px-2">
+      <div className="space-y-1.5">
         <Typography className="font-semibold leading-none">
           {pageMetadata.home.sections.activity.title}
         </Typography>
@@ -67,7 +67,7 @@ function Activity() {
           {pageMetadata.home.sections.activity.subtitle}
         </Typography>
       </div>
-      <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
+      <div className="-mx-3 grid grid-cols-1 gap-1 md:grid-cols-2">
         <LastFmCard />
         <TraktCard />
       </div>
@@ -78,7 +78,7 @@ function Activity() {
 function Socials() {
   return (
     <div className="space-y-2">
-      <Typography className="px-2 font-semibold leading-none">
+      <Typography className="font-semibold leading-none">
         {pageMetadata.home.sections.activity.socials}
       </Typography>
       <SocialButtons links={externalLinks.personal} />
