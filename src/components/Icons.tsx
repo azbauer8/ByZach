@@ -1,5 +1,5 @@
-import React from "react"
-import type { SVGProps } from "react"
+import type { ForwardRefExoticComponent, SVGProps } from "react"
+import type { ClassValue } from "clsx"
 import {
   ArrowLeft,
   ArrowUpLeft,
@@ -20,6 +20,12 @@ import {
 import { twcn } from "@/lib/utils"
 
 const iconSize = "size-4"
+
+export type Icon = ForwardRefExoticComponent<
+  Omit<SVGProps<SVGSVGElement>, "className"> & {
+    className?: ClassValue
+  }
+>
 
 // ui
 export const BackIcon = twcn(ArrowUpLeft)`${iconSize}`

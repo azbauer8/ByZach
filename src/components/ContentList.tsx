@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { ExternalLinkIcon } from "@/components/Icons"
+import { ExternalLinkIcon, type Icon } from "@/components/Icons"
 import ImageWithFallback from "@/components/ImageWithFallback"
 import { Typography } from "@/components/Typography"
 
@@ -17,7 +17,7 @@ export default function ContentList({
     title: string
     subtitle: string
     link: string
-    icon?: JSX.Element
+    icon?: Icon
     extIcon?: string
     image?: string
   }[]
@@ -50,7 +50,7 @@ export default function ContentList({
           >
             <div className="flex w-full items-center justify-between gap-4">
               <div className="flex items-center gap-2">
-                {item?.icon && item.icon}
+                {item?.icon && <item.icon />}
                 {item?.extIcon && (
                   <ImageWithFallback
                     src={item.extIcon}

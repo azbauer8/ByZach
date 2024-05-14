@@ -27,7 +27,7 @@ export const pageMetadata = {
     title: "Home",
     subtitle: "",
     link: "/",
-    icon: <HomeIcon />,
+    icon: HomeIcon,
     sections: {
       header: {
         title: "Zach Bauer",
@@ -52,31 +52,31 @@ export const pageMetadata = {
     title: "Projects",
     subtitle: "My latest work and experiments.",
     link: "/projects",
-    icon: <ProjectsIcon />,
+    icon: ProjectsIcon,
   },
   thoughts: {
     title: "Thoughts",
     subtitle: "Poorly conveyed ideas about web dev and design.",
     link: "/thoughts",
-    icon: <ThoughtsIcon />,
+    icon: ThoughtsIcon,
   },
   snippets: {
     title: "Snippets",
     subtitle: "Bits of code I often refer back to.",
     link: "/snippets",
-    icon: <SnippetsIcon />,
+    icon: SnippetsIcon,
   },
   discoveries: {
     title: "Discoveries",
     subtitle: "Useful links I've found around the web.",
     link: "/discoveries",
-    icon: <DiscoveriesIcon />,
+    icon: DiscoveriesIcon,
   },
   uses: {
     title: "Uses",
     subtitle: "Devices, tools, and technologies I use on a daily basis.",
     link: "/uses",
-    icon: <UsesIcon />,
+    icon: UsesIcon,
   },
 }
 
@@ -85,34 +85,34 @@ export const externalLinks = {
     {
       name: "GitHub",
       href: "https://github.com/azbauer8",
-      icon: <GithubIcon />,
+      icon: GithubIcon,
     },
     {
       name: "Email",
       href: "mailto:hi@byzach.dev",
-      icon: <EmailIcon />,
+      icon: EmailIcon,
     },
     {
       name: "Resume",
       href: "/Resume.pdf",
-      icon: <ResumeIcon />,
+      icon: ResumeIcon,
     },
   ],
   personal: [
     {
       name: "Spotify",
       href: "https://open.spotify.com/user/31krvuuup255gx2tkfuueknhctwy",
-      icon: <SpotifyIcon />,
+      icon: SpotifyIcon,
     },
     {
       name: "Last.fm",
       href: "https://www.last.fm/user/zacharlatanz",
-      icon: <LastfmIcon />,
+      icon: LastfmIcon,
     },
     {
       name: "Trakt",
       href: "https://trakt.tv/users/zacharlatan",
-      icon: <TraktIcon />,
+      icon: TraktIcon,
     },
   ],
 }

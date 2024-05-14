@@ -22,12 +22,21 @@ export default function NavDrawer() {
 
   function toggleOpen(value: boolean) {
     setOpen(value)
+    if (value) {
+      if (typeof window !== "undefined" && window.document) {
+        document.body.classList.add("overflow-y-hidden")
+      }
+    } else {
+      if (typeof window !== "undefined" && window.document) {
+        document.body.classList.remove("overflow-y-hidden")
+      }
+    }
     // theme color change delayed to match overlay transition
     // set theme color to overlay
     setTimeout(() => {
       if (value) {
         if (typeof window !== "undefined" && window.document) {
-          document.body.style.overflow = "hidden"
+          document.body.classList.add("overflow-y-hidden")
         }
         document
           .querySelector(
@@ -42,7 +51,6 @@ export default function NavDrawer() {
       }
       // set theme color to normal
       else {
-        document.body.style.overflow = "unset"
         document
           .querySelector(
             "meta[name='theme-color'][media='(prefers-color-scheme: light)']"
@@ -120,7 +128,7 @@ export default function NavDrawer() {
                 )}
               >
                 <Link href={link.link}>
-                  {link.icon}
+                  <link.icon />
                   {link.title}
                 </Link>
               </Button>

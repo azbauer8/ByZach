@@ -19,6 +19,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import type { Icon } from "@/components/Icons"
 
 export default function NavDock() {
   const mouseX = useMotionValue(Number.POSITIVE_INFINITY)
@@ -59,7 +60,7 @@ function AppIcon({
   active,
 }: {
   mouseX: MotionValue
-  link: { title: string; link: string; icon: JSX.Element }
+  link: { title: string; link: string; icon: Icon }
   active: boolean
 }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -85,12 +86,12 @@ function AppIcon({
         >
           <Link
             className={cn(
-              "size-full p-2 transition-colors duration-500 group-hover:text-foreground [&>svg]:size-full",
+              "size-full p-2 transition-colors duration-500 group-hover:text-foreground",
               active ? "text-foreground" : "text-foreground-muted"
             )}
             href={link.link}
           >
-            {link.icon}
+            <link.icon className="size-full" />
           </Link>
           {active && (
             <motion.span

@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
+import type { Icon } from "@/components/Icons"
 
 export default function SocialButtons({
   links,
@@ -8,7 +9,7 @@ export default function SocialButtons({
   links: {
     name: string
     href: string
-    icon: JSX.Element
+    icon: Icon
   }[]
 }) {
   return (
@@ -16,7 +17,7 @@ export default function SocialButtons({
       {links.map((link) => (
         <Button key={link.name} variant="ghost" className="px-2.5" asChild>
           <Link href={link.href} target="_blank">
-            {link.icon}
+            <link.icon />
             {link.name}
           </Link>
         </Button>
