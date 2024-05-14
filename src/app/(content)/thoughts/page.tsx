@@ -1,7 +1,7 @@
 import type { Metadata } from "next/types"
 import { pageMetadata } from "@/siteData"
 
-import { getCMSContent } from "@/lib/dato"
+import { getThoughts } from "@/lib/notion"
 import ContentList from "@/components/ContentList"
 import PageLayout from "@/components/PageLayout"
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Thoughts() {
-  const thoughts = await getCMSContent("Thoughts")
+  const thoughts = await getThoughts()
   if (!thoughts) return null
 
   return (

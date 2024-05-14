@@ -1,7 +1,12 @@
 import { siteMetadata } from "@/siteData"
 
-import { getCMSContent } from "@/lib/dato"
-import { getDiscoveryCategories, getProjects, getUses } from "@/lib/notion"
+import {
+  getDiscoveryCategories,
+  getProjects,
+  getSnippets,
+  getThoughts,
+  getUses,
+} from "@/lib/notion"
 
 export default async function sitemap() {
   const projects = await getProjects().then((projects) =>
@@ -28,14 +33,14 @@ export default async function sitemap() {
 
   const discArray = discoveries || []
 
-  const thoughts = await getCMSContent("Thoughts").then((thought) =>
+  const thoughts = await getThoughts().then((thought) =>
     thought?.map((thought) => ({
       url: `${siteMetadata.here}/thoughts/${thought.slug}`,
       lastModified: thought.updatedAt,
     }))
   )
 
-  const snippets = await getCMSContent("Snippets").then((snippet) =>
+  const snippets = await getSnippets().then((snippet) =>
     snippet?.map((snippet) => ({
       url: `${siteMetadata.here}/snippets/${snippet.slug}`,
       lastModified: snippet.updatedAt,

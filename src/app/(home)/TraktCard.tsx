@@ -29,7 +29,7 @@ export default async function TraktCard() {
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
           sizes="100vw"
-          className="aspect-[2/3] max-w-[25%] flex-none animate-reveal items-center justify-center self-center rounded-lg"
+          className="aspect-[2/3] max-w-[25%] flex-none items-center justify-center self-center"
         />
 
         <div className="my-auto grow space-y-0.5 text-wrap">

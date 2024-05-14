@@ -3,19 +3,16 @@
 import { Fragment, useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { pageMetadata } from "@/siteData"
+import { pageMetadata, siteMetadata } from "@/siteData"
 import { Transition } from "@headlessui/react"
-import { atom, useAtom } from "jotai"
 
-import { cn } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { DrawerIcon } from "@/components/Icons"
 import { Typography } from "@/components/Typography"
 
-export const navDrawerState = atom(false)
-
 export default function NavDrawer() {
-  const [open, setOpen] = useAtom(navDrawerState)
+  const [open, setOpen] = useState(false)
   const [pageTitle, setPageTitle] = useState<string>(pageMetadata.home.title)
   const pathname = usePathname()
   // biome-ignore lint/correctness/useExhaustiveDependencies: pathname is basically a reactive version of document.title, so this works
@@ -130,6 +127,34 @@ export default function NavDrawer() {
             )
           })}
         </div>
+        <footer className="border-t py-3">
+          <div className="flex w-full items-center justify-between gap-2 px-5">
+            <p className="truncate text-sm text-foreground-muted">
+              Created by Zach Bauer <br />
+              Updated: {formatDate()}
+            </p>
+            <div className="flex items-center gap-1">
+              <Button
+                asChild
+                variant="outline"
+                // size="sm"
+                className="h-fit px-2.5 py-1 text-foreground-muted"
+              >
+                <Link href="/colophon">Colophon</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                // size="sm"
+                className="h-fit px-2.5 py-1 text-foreground-muted"
+              >
+                <Link href={siteMetadata.source} target="_blank">
+                  Source
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   )

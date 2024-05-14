@@ -1,6 +1,6 @@
 import { siteMetadata } from "@/siteData"
 
-import { getCMSContent, getCMSContentEntry } from "@/lib/dato"
+import { getMarkdownContent, getThought, getThoughts } from "@/lib/notion"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
 
@@ -11,15 +11,17 @@ export async function generateMetadata({
 }: {
   params: { thought: string }
 }) {
-  const thought = await getCMSContentEntry("Thoughts", params.thought)
+  const thought = await getThought(params.thought)
 
   if (!thought) return {}
-  const { title } = thought
+  const { title, subtitle } = thought
 
   return {
     title,
+    description: subtitle,
     openGraph: {
       title,
+      description: subtitle,
       type: "article",
       url: `${siteMetadata.here}${thought.link}`,
       publishedTime: thought.updatedAt || undefined,
@@ -27,12 +29,13 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title,
+      description: subtitle,
     },
   }
 }
 
 export async function generateStaticParams() {
-  const thoughts = await getCMSContent("Thoughts")
+  const thoughts = await getThoughts()
   return thoughts?.map((thought) => ({
     thought: thought.slug,
   }))
@@ -43,16 +46,17 @@ export default async function Thought({
 }: {
   params: { thought: string }
 }) {
-  const thought = await getCMSContentEntry("Thoughts", params.thought)
+  const thought = await getThought(params.thought)
   if (!thought) return null
 
+  const mdContent = await getMarkdownContent(thought.id)
   return (
     <PageLayout
       title={thought.title ?? "Thoughts"}
       subtitle={thought.subtitle}
       previousPage={{ link: "/thoughts", title: "Thoughts" }}
     >
-      <Markdown source={thought.content} />
+      <Markdown source={mdContent} />
     </PageLayout>
   )
 }

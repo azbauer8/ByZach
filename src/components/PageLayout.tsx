@@ -56,7 +56,7 @@ export default function PageLayout({
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent side="left">
-                      <p>{previousPage.title}</p>
+                      <p className="text-sm">{previousPage.title}</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>

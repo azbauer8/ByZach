@@ -3,6 +3,8 @@
 import React, { useState } from "react"
 import Image, { type ImageProps } from "next/image"
 
+import { cn } from "@/lib/utils"
+
 interface ImageWithFallbackProps extends ImageProps {
   fallbackSrc?: string
 }
@@ -10,6 +12,7 @@ interface ImageWithFallbackProps extends ImageProps {
 export default function ImageWithFallback({
   src,
   fallbackSrc = "/fallback.png",
+  className,
   ...rest
 }: ImageWithFallbackProps) {
   const [imgSrc, setImgSrc] = useState(src)
@@ -21,6 +24,7 @@ export default function ImageWithFallback({
       onError={() => {
         setImgSrc(fallbackSrc)
       }}
+      className={cn("animate-reveal rounded-lg", className)}
     />
   )
 }

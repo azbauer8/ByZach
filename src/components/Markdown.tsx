@@ -33,7 +33,6 @@ function RoundedImage({ alt, className, ...props }: ImageProps) {
     <ImageWithFallback
       {...props}
       alt={alt}
-      className={cn("animate-reveal rounded-lg", className)}
       loading="eager"
       priority
       placeholder="blur"

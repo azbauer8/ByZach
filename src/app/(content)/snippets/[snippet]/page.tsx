@@ -1,6 +1,6 @@
 import { siteMetadata } from "@/siteData"
 
-import { getCMSContent, getCMSContentEntry } from "@/lib/dato"
+import { getMarkdownContent, getSnippet, getSnippets } from "@/lib/notion"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
 
@@ -11,17 +11,17 @@ export async function generateMetadata({
 }: {
   params: { snippet: string }
 }) {
-  const snippet = await getCMSContentEntry("Snippets", params.snippet)
+  const snippet = await getSnippet(params.snippet)
   if (!snippet) return {}
 
-  const { description, title } = snippet
+  const { subtitle, title } = snippet
 
   return {
     title,
-    description,
+    description: subtitle,
     openGraph: {
       title,
-      description,
+      description: subtitle,
       type: "article",
       url: `${siteMetadata.here}${snippet.link}`,
       publishedTime: snippet.updatedAt || undefined,
@@ -29,13 +29,13 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title,
-      description,
+      description: subtitle,
     },
   }
 }
 
 export async function generateStaticParams() {
-  const snippets = await getCMSContent("Snippets").then((snippet) =>
+  const snippets = await getSnippets().then((snippet) =>
     snippet?.map((snippet) => ({
       snippet: snippet.slug,
     }))
@@ -48,16 +48,17 @@ export default async function Snippet({
 }: {
   params: { snippet: string }
 }) {
-  const snippet = await getCMSContentEntry("Snippets", params.snippet)
+  const snippet = await getSnippet(params.snippet)
   if (!snippet) return null
 
+  const mdContent = await getMarkdownContent(snippet.id)
   return (
     <PageLayout
       title={snippet.title ?? ""}
       subtitle={snippet.subtitle}
       previousPage={{ link: "/snippets", title: "Snippets" }}
     >
-      <Markdown source={snippet.content} />
+      <Markdown source={mdContent} />
     </PageLayout>
   )
 }
