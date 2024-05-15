@@ -1,6 +1,7 @@
 import type { Metadata } from "next/types"
 import { externalLinks, pageMetadata } from "@/siteData"
 
+import { getMarkdownContent, notionIds } from "@/lib/notion"
 import ContentList from "@/components/ContentList"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
@@ -29,10 +30,11 @@ export default function Home() {
   )
 }
 
-function About() {
+async function About() {
+  const aboutContent = await getMarkdownContent(notionIds.about)
   return (
     <div className="space-y-2">
-      <Markdown source={pageMetadata.home.sections?.about ?? ""} />
+      <Markdown source={aboutContent} />
       <SocialButtons links={externalLinks.professional} />
     </div>
   )
@@ -50,7 +52,7 @@ function SiteLinks() {
         compact
         list={Object.entries(pageMetadata)
           .map(([, link]) => link)
-          .filter((link) => link.title !== "Home")}
+          .filter((link) => link.title !== "Home" && link.title !== "Colophon")}
       />
     </div>
   )

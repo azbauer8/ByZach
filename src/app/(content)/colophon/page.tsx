@@ -1,12 +1,14 @@
+import { colophon } from "@/siteData"
+
+import { getMarkdownContent, notionIds } from "@/lib/notion"
+import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
 
-export default function Colophon() {
+export default async function Colophon() {
+  const pageContent = await getMarkdownContent(notionIds.colophon)
   return (
-    <PageLayout
-      title="Colophon"
-      subtitle="An overview of how I built this site."
-    >
-      <div />
+    <PageLayout title={colophon.title} subtitle={colophon.subtitle}>
+      <Markdown source={pageContent} />
     </PageLayout>
   )
 }

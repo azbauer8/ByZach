@@ -33,11 +33,6 @@ export const pageMetadata = {
         title: "Zach Bauer",
         subtitle: "Full Stack Developer",
       },
-      about: `
-        Hey there! I'm Zach. I'm currently working at [SIG](https://sig.com/) developing fullstack applications and internal tools for support teams. In my free time, I like messing around with new technologies. Mostly web dev stuff, but I'm interested in getting into mobile and desktop development too.
-        \n\n
-        This site is mainly for my own benefit to collect my scattered thoughts and findings in one place. But maybe you'll find something interesting!
-      `,
       siteLinks: {
         title: "Links",
       },
@@ -78,6 +73,12 @@ export const pageMetadata = {
     link: "/uses",
     icon: UsesIcon,
   },
+}
+
+export const colophon = {
+  title: "Colophon",
+  subtitle: "An overview of how I built this site.",
+  link: "/colophon",
 }
 
 export const externalLinks = {

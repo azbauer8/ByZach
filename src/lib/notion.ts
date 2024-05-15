@@ -6,9 +6,9 @@ import { cache } from "react"
 import { Client } from "@notionhq/client"
 import { NotionToMarkdown } from "notion-to-md"
 
-import { unslugify } from "@/lib/utils"
-
-const notionIds = {
+export const notionIds = {
+  about: "4c31db80-a8e1-4134-a802-a90b8bd88f7d",
+  colophon: "92f6f19a-0bf4-449b-8a12-642f7c685694",
   projects: "7d4cc30d-8b5a-4798-b34f-b3c7372f71f3",
   discoveries: "751aedae-1d44-4bf1-b202-8394e0a163ca",
   uses: "1221a5cd-c4a6-4bd9-8fb1-cad16eb7fe57",
@@ -200,7 +200,7 @@ export const getDiscoveriesInCategory = cache(async (category: string) => {
     filter: {
       property: "Tags",
       multi_select: {
-        contains: unslugify(category),
+        contains: category,
       },
     },
   })) as unknown as NotionQuery | null
@@ -210,7 +210,8 @@ export const getDiscoveriesInCategory = cache(async (category: string) => {
   return response.results.map((discovery) => ({
     slug: slugify(discovery.properties.Title.title[0].plain_text.toLowerCase()),
     title: discovery.properties.Title.title[0].plain_text,
-    subtitle: discovery.properties.Description.rich_text[0].plain_text,
+    subtitle:
+      discovery.properties?.Description?.rich_text?.[0]?.plain_text ?? "",
     link: discovery.properties.Link.url,
     extIcon: discovery.icon?.external.url,
     image: discovery.cover?.external.url,

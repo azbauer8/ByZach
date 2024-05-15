@@ -1,4 +1,5 @@
 import { getDiscoveriesInCategory, getDiscoveryCategories } from "@/lib/notion"
+import { unslugify } from "@/lib/utils"
 import ContentList from "@/components/ContentList"
 import PageLayout from "@/components/PageLayout"
 
@@ -34,10 +35,14 @@ export default async function DiscoveryCategory({
 }: {
   params: { category: string }
 }) {
-  const discoveries = await getDiscoveriesInCategory(params.category)
+  const discoveries = await getDiscoveriesInCategory(
+    params.category === "ui-libraries"
+      ? "UI Libraries"
+      : unslugify(params.category)
+  )
   if (!discoveries) return null
 
-  const category = discoveries[0].category
+  const category = discoveries[0]?.category
 
   return (
     <PageLayout
