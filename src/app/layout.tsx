@@ -78,7 +78,7 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "bg-accent font-sans text-foreground antialiased dark:bg-[#0a0a0a] md:pb-20 md:pt-5",
+          "bg-accent font-sans text-foreground antialiased dark:bg-[#0a0a0a] md:pb-28 md:pt-5",
           asap.variable,
           sourceCode.variable
         )}
