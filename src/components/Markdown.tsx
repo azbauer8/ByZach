@@ -23,6 +23,8 @@ function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
     <a
       className="text-foreground no-underline underline-offset-2 hover:underline"
+      target="_blank"
+      rel="noopener noreferrer"
       {...props}
     />
   )
