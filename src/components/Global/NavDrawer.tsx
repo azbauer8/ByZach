@@ -135,26 +135,27 @@ export default function NavDrawer() {
             )
           })}
         </div>
-        <footer className="border-t py-3">
+        <footer className="border-t py-2.5">
           <div className="flex w-full items-center justify-between gap-2 px-5">
             <p className="truncate text-sm text-foreground-muted">
-              Created by Zach Bauer <br />
-              Updated: {formatDate()}
+              Created by Zach Bauer
             </p>
             <div className="flex items-center gap-1">
               <Button
                 asChild
                 variant="outline"
-                // size="sm"
+                size="sm"
                 className="h-fit px-2.5 py-1 text-foreground-muted"
+                onClick={() => toggleOpen(false)}
               >
                 <Link href="/colophon">Colophon</Link>
               </Button>
               <Button
                 asChild
                 variant="outline"
-                // size="sm"
+                size="sm"
                 className="h-fit px-2.5 py-1 text-foreground-muted"
+                onClick={() => toggleOpen(false)}
               >
                 <Link href={siteMetadata.source} target="_blank">
                   Source

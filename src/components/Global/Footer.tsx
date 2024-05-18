@@ -9,7 +9,7 @@ export default function Footer() {
     <>
       <footer className="absolute -bottom-8 right-0 hidden w-full justify-between gap-1 md:flex">
         <div className="h-fit rounded-md border bg-background px-2.5 py-1 text-xs text-foreground-muted">
-          Created by Zach Bauer. Last updated: {formatDate()}
+          Created by Zach Bauer
         </div>
         <div className="flex items-center gap-1">
           <Button
