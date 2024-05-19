@@ -1,6 +1,7 @@
 import Image from "next/image"
 
 import { getLastFm } from "@/lib/activity"
+import { imageSources } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
 import { ListeningIcon } from "@/components/Icons"
 import ImageWithFallback from "@/components/ImageWithFallback"
@@ -8,7 +9,7 @@ import { Typography } from "@/components/Typography"
 
 export default async function LastFmCard() {
   const data = await getLastFm()
-  if (!data) return <LastFmFallback />
+  if (!data) return
   const { latestTrack, playingWhen } = data
 
   return (
@@ -19,22 +20,23 @@ export default async function LastFmCard() {
     >
       <a href={latestTrack.url} target="_blank" rel="noopener noreferrer">
         <ImageWithFallback
-          src={latestTrack.image[3]["#text"] ?? "/lastfm_placeholder.png"}
-          fallbackSrc="/lastfm_placeholder.png"
+          src={latestTrack.image[3]["#text"] ?? imageSources.lastfmFallback}
+          fallbackSrc={imageSources.lastfmFallback}
           alt={latestTrack.album["#text"]}
           width={144}
           height={144}
-          loading="eager"
-          priority
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
           sizes="100vw"
           className="aspect-square max-w-[25%] flex-none items-center justify-center self-center"
         />
         <div className="my-auto grow space-y-0.5 text-wrap">
           <div className="flex flex-row items-center space-x-1 text-emerald-600/95 dark:text-emerald-500">
             {playingWhen === "Now Playing" ? (
-              <Image src="/bars.svg" alt="Now Playing" width={14} height={14} />
+              <Image
+                src={imageSources.nowPlaying}
+                alt="Now Playing"
+                width={14}
+                height={14}
+              />
             ) : (
               <ListeningIcon />
             )}
@@ -47,32 +49,5 @@ export default async function LastFmCard() {
         </div>
       </a>
     </Button>
-  )
-}
-
-function LastFmFallback() {
-  return (
-    <div className="flex max-w-xl items-center space-x-5">
-      <Image
-        src="/lastfm_placeholder.png"
-        alt="Album Cover Placeholder"
-        width={144}
-        height={144}
-        loading="eager"
-        priority
-        placeholder="blur"
-        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
-        sizes="100vw"
-        className="w-1/4 flex-none animate-reveal items-center justify-center self-center rounded-lg"
-      />
-      <div className="my-auto grow text-wrap">
-        <div className="flex flex-row items-center space-x-1 pb-1 text-emerald-600/95 dark:text-emerald-500">
-          <ListeningIcon />
-          <Typography affects="small">{"(ノಠ益ಠ)ノ彡┻━┻"}</Typography>
-        </div>
-        <Typography variant="h5">Untitled</Typography>
-        <Typography affects="muted">Anonymous</Typography>
-      </div>
-    </div>
   )
 }

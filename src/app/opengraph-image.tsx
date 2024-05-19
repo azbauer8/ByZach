@@ -42,7 +42,7 @@ export default async function Image() {
               <img
                 alt="Vercel"
                 height={180}
-                src={"https://byzach.dev/favicon.png"}
+                src={`${siteMetadata.here}${siteMetadata.favicon}`}
                 width={180}
               />
               <div

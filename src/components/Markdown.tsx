@@ -30,16 +30,7 @@ function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
 }
 
 function RoundedImage({ alt, className, ...props }: ImageProps) {
-  return (
-    <ImageWithFallback
-      {...props}
-      alt={alt}
-      loading="eager"
-      priority
-      placeholder="blur"
-      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUUdGoBwAB1QDxUtk2pwAAAABJRU5ErkJggg=="
-    />
-  )
+  return <ImageWithFallback {...props} alt={alt} />
 }
 
 const components = {

@@ -1,17 +1,20 @@
 "use client"
 
 import React, { useState } from "react"
-import Image, { type ImageProps } from "next/image"
+import Image, { type ImageProps, type StaticImageData } from "next/image"
 
+import { imageSources } from "@/lib/metadata"
 import { cn } from "@/lib/utils"
 
 interface ImageWithFallbackProps extends ImageProps {
-  fallbackSrc?: string
+  fallbackSrc?: StaticImageData
+  blurDataURL?: string
 }
 
 export default function ImageWithFallback({
   src,
-  fallbackSrc = "/fallback.png",
+  fallbackSrc = imageSources.fallback,
+  blurDataURL,
   className,
   ...rest
 }: ImageWithFallbackProps) {
@@ -24,7 +27,9 @@ export default function ImageWithFallback({
       onError={() => {
         setImgSrc(fallbackSrc)
       }}
-      className={cn("animate-reveal rounded-lg", className)}
+      placeholder={blurDataURL ? "blur" : undefined}
+      blurDataURL={blurDataURL ?? undefined}
+      className={cn("rounded-lg", className)}
     />
   )
 }

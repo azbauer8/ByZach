@@ -1,3 +1,9 @@
+import fallback from "~/public/fallback.png"
+import favicon from "~/public/favicon.png"
+import lastfmFallback from "~/public/lastfm_placeholder.png"
+import nowPlaying from "~/public/now_playing.svg"
+import traktFallback from "~/public/trakt_placeholder.png"
+
 import {
   DiscoveriesIcon,
   EmailIcon,
@@ -12,6 +18,14 @@ import {
   TraktIcon,
   UsesIcon,
 } from "@/components/Icons"
+
+export const imageSources = {
+  favicon,
+  fallback,
+  lastfmFallback,
+  traktFallback,
+  nowPlaying,
+}
 
 export const siteMetadata = {
   title: "ByZach",

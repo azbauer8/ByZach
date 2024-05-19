@@ -237,17 +237,32 @@ export const getUses = cache(async (type: "Software" | "Hardware") => {
   })) as unknown as NotionQuery | null
 
   if (!response) return null
-  return response.results.map((use) => ({
-    slug: use.properties.Slug.formula.string,
-    title: use.properties.Title.title[0].plain_text,
-    subtitle: use.properties.Description.rich_text[0].plain_text,
-    link: use.properties.Link.url,
-    extIcon: use.icon?.external.url,
-    image: use.cover?.external.url,
-    createdAt: use.created_time,
-    updatedAt: use.last_edited_time,
-    category: use.properties.Tags.multi_select[0].name,
-  }))
+
+  return response.results.reduce(
+    (acc, item) => {
+      const category =
+        item.properties.Tags.multi_select.find((tag) => tag.name !== type)
+          ?.name ?? "General"
+      if (!acc[category]) {
+        acc[category] = []
+      }
+      acc[category].push({
+        slug: item.properties.Slug.formula.string,
+        title: item.properties.Title.title[0].plain_text,
+        subtitle: item.properties.Description.rich_text[0].plain_text,
+        link: item.properties.Link.url,
+        extIcon: item.icon?.external.url,
+        image: item.cover?.external.url,
+        createdAt: item.created_time,
+        updatedAt: item.last_edited_time,
+        category:
+          item.properties.Tags.multi_select.find((tag) => tag.name !== type)
+            ?.name ?? "General",
+      })
+      return acc
+    },
+    {} as Record<string, FormattedNotionResult[]>
+  )
 })
 
 type NotionDatabase = {
@@ -294,54 +309,66 @@ type NotionDatabase = {
   }
   url: string
 }
-
 type NotionQuery = {
-  results: {
-    id: string
-    created_time: string
-    last_edited_time: string
-    cover: { type: string; external: { url: string } } | null
-    icon: { type: string; external: { url: string } } | null
-    properties: {
-      Description: {
-        id: string
-        type: "rich_text"
-        rich_text: {
-          type: "text"
-          text: {
-            content: string
-            link: string | null
-          }
-          plain_text: string
+  results: NotionResult[]
+}
+type NotionResult = {
+  id: string
+  created_time: string
+  last_edited_time: string
+  cover: { type: string; external: { url: string } } | null
+  icon: { type: string; external: { url: string } } | null
+  properties: {
+    Description: {
+      id: string
+      type: "rich_text"
+      rich_text: {
+        type: "text"
+        text: {
+          content: string
           link: string | null
-        }[]
-      }
-      Link: { id: string; type: "url"; url: string }
-      Tags: {
-        id: string
-        type: "multi_select"
-        multi_select: {
-          id: string
-          name: string
-          color: string
-        }[]
-      }
-      Title: {
-        id: string
-        type: "title"
-        title: {
-          type: "text"
-          text: { content: string; link: string | null }
-          plain_text: string
-          href: string | null
-        }[]
-      }
-      Slug: {
-        id: string
-        type: "formula"
-        formula: { type: "string"; string: string }
-      }
+        }
+        plain_text: string
+        link: string | null
+      }[]
     }
-    url: string
-  }[]
+    Link: { id: string; type: "url"; url: string }
+    Tags: {
+      id: string
+      type: "multi_select"
+      multi_select: {
+        id: string
+        name: string
+        color: string
+      }[]
+    }
+    Title: {
+      id: string
+      type: "title"
+      title: {
+        type: "text"
+        text: { content: string; link: string | null }
+        plain_text: string
+        href: string | null
+      }[]
+    }
+    Slug: {
+      id: string
+      type: "formula"
+      formula: { type: "string"; string: string }
+    }
+  }
+  url: string
+}
+
+type FormattedNotionResult = {
+  slug: string
+  title: string
+  subtitle: string
+  link: string
+  extIcon: string | undefined
+  image: string | undefined
+  createdAt: string
+  updatedAt: string
+  category: string
 }
