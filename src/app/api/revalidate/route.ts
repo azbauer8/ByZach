@@ -1,7 +1,7 @@
 import { revalidatePath } from "next/cache"
 
-export async function POST(request: Request) {
-  if (request.method !== "POST") {
+export async function GET(request: Request) {
+  if (request.method !== "GET") {
     return new Response("Method not allowed.", {
       status: 405,
     })
