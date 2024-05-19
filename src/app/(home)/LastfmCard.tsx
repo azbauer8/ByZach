@@ -3,8 +3,8 @@ import Image from "next/image"
 import { getLastFm } from "@/lib/activity"
 import { imageSources } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
+import DynamicImage from "@/components/DynamicImage"
 import { ListeningIcon } from "@/components/Icons"
-import ImageWithFallback from "@/components/ImageWithFallback"
 import { Typography } from "@/components/Typography"
 
 export default async function LastFmCard() {
@@ -19,8 +19,8 @@ export default async function LastFmCard() {
       asChild
     >
       <a href={latestTrack.url} target="_blank" rel="noopener noreferrer">
-        <ImageWithFallback
-          src={latestTrack.image[3]["#text"] ?? imageSources.lastfmFallback}
+        <DynamicImage
+          src={latestTrack.image[3]["#text"]}
           fallbackSrc={imageSources.lastfmFallback}
           alt={latestTrack.album["#text"]}
           width={144}

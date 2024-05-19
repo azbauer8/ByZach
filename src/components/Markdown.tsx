@@ -6,9 +6,9 @@ import rehypePrettyCode, { type Options } from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
-import ImageWithFallback from "@/components/ImageWithFallback"
-
 import "@/styles/prose.css"
+
+import DynamicImage from "@/components/DynamicImage"
 
 function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const href = props.href?.toString()
@@ -30,7 +30,7 @@ function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
 }
 
 function RoundedImage({ alt, className, ...props }: ImageProps) {
-  return <ImageWithFallback {...props} alt={alt} />
+  return <DynamicImage {...props} alt={alt} />
 }
 
 const components = {

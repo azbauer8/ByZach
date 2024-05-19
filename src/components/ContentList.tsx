@@ -2,8 +2,8 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import DynamicImage from "@/components/DynamicImage"
 import { ExternalLinkIcon, type Icon } from "@/components/Icons"
-import ImageWithFallback from "@/components/ImageWithFallback"
 import { Typography } from "@/components/Typography"
 
 export default function ContentList({
@@ -52,7 +52,7 @@ export default function ContentList({
               <div className="flex items-center gap-2">
                 {item?.icon && <item.icon />}
                 {item?.extIcon && (
-                  <ImageWithFallback
+                  <DynamicImage
                     src={item.extIcon}
                     alt={item.title}
                     width={20}

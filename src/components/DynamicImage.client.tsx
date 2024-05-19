@@ -1,23 +1,19 @@
 "use client"
 
-import React, { useState } from "react"
-import Image, { type ImageProps, type StaticImageData } from "next/image"
+import { useState } from "react"
+import Image from "next/image"
 
 import { imageSources } from "@/lib/metadata"
 import { cn } from "@/lib/utils"
+import type { DynamicImageProps } from "@/components/DynamicImage"
 
-interface ImageWithFallbackProps extends ImageProps {
-  fallbackSrc?: StaticImageData
-  blurDataURL?: string
-}
-
-export default function ImageWithFallback({
+export default function DynamicClientImage({
   src,
   fallbackSrc = imageSources.fallback,
   blurDataURL,
   className,
   ...rest
-}: ImageWithFallbackProps) {
+}: DynamicImageProps) {
   const [imgSrc, setImgSrc] = useState(src)
 
   return (

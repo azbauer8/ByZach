@@ -63,7 +63,7 @@ export async function getTrakt() {
         : latest.movie?.ids.tmdb,
   }
   const latestPoster = await getTraktPoster(latestData.tmdbId, latestData.type)
-  if (!latestPoster) return { data: latestData, poster: undefined }
+  if (!latestPoster) return { data: latestData, poster: "" }
   return {
     data: latestData,
     poster: latestPoster,
