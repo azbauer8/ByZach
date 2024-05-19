@@ -1,4 +1,5 @@
 import { revalidatePath } from "next/cache"
+import arcjet, { fixedWindow } from "@arcjet/next"
 
 export async function GET(request: Request) {
   if (request.method !== "GET") {
@@ -15,7 +16,32 @@ export async function GET(request: Request) {
       status: 400,
     })
   }
+
+  // rate-limiting
+  const decision = await aj.protect(request)
+  console.log("Arcjet decision", decision)
+
+  if (decision.isDenied()) {
+    return Response.json(
+      { error: "Too Many Requests", reason: decision.reason },
+      { status: 429 }
+    )
+  }
+
   console.log("Revalidating...")
   revalidatePath("/", "layout")
   return Response.json({ revalidated: "all" })
 }
+
+const aj = arcjet({
+  key: process.env.ARCJET_KEY ?? "",
+  rules: [
+    // max 5 requests every 10 mins
+    // if exceeded, block for 10 mins
+    fixedWindow({
+      mode: "LIVE",
+      window: "10m",
+      max: 5,
+    }),
+  ],
+})

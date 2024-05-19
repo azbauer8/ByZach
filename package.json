@@ -13,6 +13,7 @@
     "clean": "bunx rimraf {.next,node_modules,bun.lockb}"
   },
   "dependencies": {
+    "@arcjet/next": "^1.0.0-alpha.12",
     "@headlessui/react": "^1.7.19",
     "@mdx-js/react": "^3.0.1",
     "@notionhq/client": "^2.2.15",
