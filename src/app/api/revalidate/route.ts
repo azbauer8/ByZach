@@ -22,10 +22,7 @@ export async function GET(request: Request) {
   console.log("Arcjet decision", decision)
 
   if (decision.isDenied()) {
-    return Response.json(
-      { error: "Too Many Requests", reason: decision.reason },
-      { status: 429 }
-    )
+    return Response.json({ error: "Too Many Requests" }, { status: 429 })
   }
 
   console.log("Revalidating...")
