@@ -1,6 +1,6 @@
 import type { Metadata } from "next/types"
-import { pageMetadata } from "@/siteData"
 
+import { pageMetadata } from "@/lib/metadata"
 import { getThoughts } from "@/lib/notion"
 import ContentList from "@/components/ContentList"
 import PageLayout from "@/components/PageLayout"

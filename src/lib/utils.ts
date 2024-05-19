@@ -11,13 +11,29 @@ export function formatDate(dateString?: string | null | undefined) {
   })
 }
 
+export function slugify(input: string) {
+  return input
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+}
+
 export function unslugify(slug: string) {
+  // acronyms to account for
+  const acronyms = ["UI", "API", "HTTP", "CSS", "HTML"]
+
   return slug
-    .replace(/\-/g, " ")
-    .replace(
-      /\w\S*/g,
-      (text) => text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
-    )
+    .replace(/-/g, " ")
+    .split(" ")
+    .map((word) => {
+      if (acronyms.includes(word.toUpperCase())) {
+        return word.toUpperCase()
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    })
+    .join(" ")
 }
 
 export function cn(...inputs: ClassValue[]) {

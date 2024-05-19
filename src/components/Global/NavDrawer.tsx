@@ -3,10 +3,10 @@
 import { Fragment, useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { pageMetadata, siteMetadata } from "@/siteData"
 import { Transition } from "@headlessui/react"
 
-import { cn, formatDate } from "@/lib/utils"
+import { pageMetadata, siteMetadata } from "@/lib/metadata"
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { DrawerIcon } from "@/components/Icons"
 import { Typography } from "@/components/Typography"

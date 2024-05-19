@@ -1,10 +1,10 @@
-import slugify from "slugify"
-
 import "server-only"
 
 import { cache } from "react"
 import { Client } from "@notionhq/client"
 import { NotionToMarkdown } from "notion-to-md"
+
+import { slugify, unslugify } from "@/lib/utils"
 
 export const notionIds = {
   about: "4c31db80-a8e1-4134-a802-a90b8bd88f7d",
@@ -153,7 +153,7 @@ export const getProjects = cache(async () => {
   if (!response) return null
 
   return response.results.map((project) => ({
-    slug: slugify(project.properties.Title.title[0].plain_text.toLowerCase()),
+    slug: project.properties.Slug.formula.string,
     title: project.properties.Title.title[0].plain_text,
     subtitle: project.properties.Description.rich_text[0].plain_text,
     link: project.properties.Link.url,
@@ -177,15 +177,16 @@ export const getDiscoveryCategories = cache(async () => {
   const result = []
   for (const option of response.properties.Tags.multi_select.options) {
     const entries = await getDiscoveriesInCategory(option.name)
+    const slug = slugify(option.name.toLowerCase())
     result.push({
-      slug: slugify(option.name.toLowerCase()),
+      slug,
       title: option.name,
       subtitle: entries?.length
         ? entries.length > 1
           ? `${entries.length} discoveries`
           : `${entries.length} discovery`
         : "",
-      link: `/discoveries/${slugify(option.name.toLowerCase())}`,
+      link: `/discoveries/${slug}`,
     })
   }
   return result
@@ -200,7 +201,7 @@ export const getDiscoveriesInCategory = cache(async (category: string) => {
     filter: {
       property: "Tags",
       multi_select: {
-        contains: category,
+        contains: unslugify(category),
       },
     },
   })) as unknown as NotionQuery | null
@@ -208,7 +209,7 @@ export const getDiscoveriesInCategory = cache(async (category: string) => {
   if (!response) return null
 
   return response.results.map((discovery) => ({
-    slug: slugify(discovery.properties.Title.title[0].plain_text.toLowerCase()),
+    slug: discovery.properties.Slug.formula.string,
     title: discovery.properties.Title.title[0].plain_text,
     subtitle:
       discovery.properties?.Description?.rich_text?.[0]?.plain_text ?? "",
@@ -237,7 +238,7 @@ export const getUses = cache(async (type: "Software" | "Hardware") => {
 
   if (!response) return null
   return response.results.map((use) => ({
-    slug: slugify(use.properties.Title.title[0].plain_text.toLowerCase()),
+    slug: use.properties.Slug.formula.string,
     title: use.properties.Title.title[0].plain_text,
     subtitle: use.properties.Description.rich_text[0].plain_text,
     link: use.properties.Link.url,

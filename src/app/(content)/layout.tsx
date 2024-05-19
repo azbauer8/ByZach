@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { siteMetadata } from "@/siteData"
+
+import { siteMetadata } from "@/lib/metadata"
 
 export const metadata: Metadata = {
   title: {

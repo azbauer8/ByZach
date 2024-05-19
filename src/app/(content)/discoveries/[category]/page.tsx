@@ -15,11 +15,9 @@ export async function generateMetadata({
   )
   if (!category) return {}
 
-  const { title, subtitle } = category
-
   return {
-    title,
-    description: subtitle,
+    title: category.title,
+    description: category.subtitle,
   }
 }
 
@@ -35,11 +33,7 @@ export default async function DiscoveryCategory({
 }: {
   params: { category: string }
 }) {
-  const discoveries = await getDiscoveriesInCategory(
-    params.category === "ui-libraries"
-      ? "UI Libraries"
-      : unslugify(params.category)
-  )
+  const discoveries = await getDiscoveriesInCategory(params.category)
   if (!discoveries) return null
 
   const category = discoveries[0]?.category

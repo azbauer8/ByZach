@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { siteMetadata } from "@/siteData"
 
+import { siteMetadata } from "@/lib/metadata"
 import { formatDate } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 

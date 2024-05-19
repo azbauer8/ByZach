@@ -1,4 +1,4 @@
-import { siteMetadata } from "@/siteData"
+import { siteMetadata } from "@/lib/metadata"
 
 import "@/styles/global.css"
 

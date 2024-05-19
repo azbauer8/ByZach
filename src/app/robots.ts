@@ -1,4 +1,4 @@
-import { siteMetadata } from "@/siteData"
+import { siteMetadata } from "@/lib/metadata"
 
 export default function robots() {
   return {

@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og"
-import { pageMetadata, siteMetadata } from "@/siteData"
+
+import { pageMetadata, siteMetadata } from "@/lib/metadata"
 
 export const alt = `${pageMetadata.home.sections.header.title} | ${pageMetadata.home.sections.header.subtitle}`
 export const size = {

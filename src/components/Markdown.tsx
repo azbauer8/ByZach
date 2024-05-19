@@ -6,7 +6,6 @@ import rehypePrettyCode, { type Options } from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
-import { cn } from "@/lib/utils"
 import ImageWithFallback from "@/components/ImageWithFallback"
 
 import "@/styles/prose.css"

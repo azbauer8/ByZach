@@ -1,5 +1,4 @@
-import { siteMetadata } from "@/siteData"
-
+import { siteMetadata } from "@/lib/metadata"
 import { getMarkdownContent, getSnippet, getSnippets } from "@/lib/notion"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"

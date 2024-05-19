@@ -1,6 +1,6 @@
 import type { Metadata } from "next/types"
-import { pageMetadata } from "@/siteData"
 
+import { pageMetadata } from "@/lib/metadata"
 import PageLayout from "@/components/PageLayout"
 
 import UsesTabs from "./UsesTabs"

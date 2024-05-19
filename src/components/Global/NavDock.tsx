@@ -3,7 +3,6 @@
 import { useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { pageMetadata } from "@/siteData"
 import {
   motion,
   useMotionValue,
@@ -12,6 +11,7 @@ import {
   type MotionValue,
 } from "framer-motion"
 
+import { pageMetadata } from "@/lib/metadata"
 import { cn } from "@/lib/utils"
 import {
   Tooltip,
