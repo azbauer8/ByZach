@@ -3,7 +3,7 @@
 import type * as React from "react"
 import { ThemeProvider } from "next-themes"
 
-import TailwindIndicator from "@/components/Global/TwIndicator"
+import TailwindIndicator from "@/components/layout/TwIndicator"
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (

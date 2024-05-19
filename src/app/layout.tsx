@@ -8,10 +8,10 @@ import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { cn } from "@/lib/utils"
-import Footer from "@/components/Global/Footer"
-import NavDock from "@/components/Global/NavDock"
-import NavDrawer from "@/components/Global/NavDrawer"
-import Providers from "@/components/Global/Providers"
+import Footer from "@/components/layout/Footer"
+import NavDock from "@/components/layout/NavDock"
+import NavDrawer from "@/components/layout/NavDrawer"
+import Providers from "@/components/layout/Providers"
 
 const asap = Source_Sans_3({
   subsets: ["latin"],
