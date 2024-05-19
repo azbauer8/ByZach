@@ -1,5 +1,4 @@
 import { getDiscoveriesInCategory, getDiscoveryCategories } from "@/lib/notion"
-import { unslugify } from "@/lib/utils"
 import ContentList from "@/components/ContentList"
 import PageLayout from "@/components/PageLayout"
 

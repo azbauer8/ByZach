@@ -1,3 +1,4 @@
+import iconFallback from "~/public/fallback_icon.png"
 import fallback from "~/public/fallback.png"
 import favicon from "~/public/favicon.png"
 import lastfmFallback from "~/public/lastfm_placeholder.png"
@@ -22,6 +23,7 @@ import {
 export const imageSources = {
   favicon,
   fallback,
+  iconFallback,
   lastfmFallback,
   traktFallback,
   nowPlaying,

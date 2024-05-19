@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { imageSources } from "@/lib/metadata"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import DynamicImage from "@/components/DynamicImage"
@@ -55,8 +56,10 @@ export default function ContentList({
                   <DynamicImage
                     src={item.extIcon}
                     alt={item.title}
+                    fallbackSrc={imageSources.iconFallback}
                     width={20}
                     height={20}
+                    className="rounded-none"
                   />
                 )}
 
