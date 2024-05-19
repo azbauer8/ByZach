@@ -4,7 +4,6 @@ import {
   getProjects,
   getSnippets,
   getThoughts,
-  getUses,
 } from "@/lib/notion"
 
 export default async function sitemap() {
@@ -16,13 +15,15 @@ export default async function sitemap() {
   )
   const projectsArray = projects || []
 
-  const uses = await getUses("Software").then((uses) =>
-    uses?.map((use) => ({
-      url: `${siteMetadata.here}/uses/${use.slug}`,
-      lastModified: use.updatedAt,
-    }))
-  )
-  const usesArray = uses || []
+  const usesArray =
+    [
+      {
+        url: `${siteMetadata.here}/uses`,
+      },
+      {
+        url: `${siteMetadata.here}/uses/hardware`,
+      },
+    ] || []
 
   const discoveries = await getDiscoveryCategories().then((discoveries) =>
     discoveries?.map((discovery) => ({
