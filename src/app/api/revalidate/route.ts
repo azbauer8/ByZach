@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       status: 400,
     })
   }
-
+  console.log("Revalidating...")
   revalidatePath("/", "layout")
   return Response.json({ revalidated: "all" })
 }
