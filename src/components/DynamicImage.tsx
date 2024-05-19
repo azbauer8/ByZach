@@ -10,7 +10,7 @@ export interface DynamicImageProps extends ImageProps {
 
 export default async function DynamicImage(props: DynamicImageProps) {
   let blurData = undefined
-  if (typeof props.src === "string") {
+  if (props.placeholder === "blur" && typeof props.src === "string") {
     blurData = await getBase64(props.src)
   }
 

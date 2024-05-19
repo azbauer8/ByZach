@@ -22,6 +22,7 @@ export default async function LastFmCard() {
         <DynamicImage
           src={latestTrack.image[3]["#text"]}
           fallbackSrc={imageSources.lastfmFallback}
+          placeholder="blur"
           alt={latestTrack.album["#text"]}
           width={144}
           height={144}

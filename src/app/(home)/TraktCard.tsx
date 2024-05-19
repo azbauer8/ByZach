@@ -21,6 +21,7 @@ export default async function TraktCard() {
         <DynamicImage
           src={poster}
           fallbackSrc={imageSources.traktFallback}
+          placeholder="blur"
           alt={data.title}
           width={144}
           height={216}

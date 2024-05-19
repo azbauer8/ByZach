@@ -30,7 +30,7 @@ function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
 }
 
 function RoundedImage({ alt, className, ...props }: ImageProps) {
-  return <DynamicImage {...props} alt={alt} />
+  return <DynamicImage {...props} alt={alt} placeholder="blur" />
 }
 
 const components = {

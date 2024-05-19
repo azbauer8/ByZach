@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Link as TransitionLink } from "next-view-transitions"
 
 import { siteMetadata } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
@@ -17,7 +18,7 @@ export default function Footer() {
             className="h-fit bg-background px-2.5 py-1 text-foreground-muted"
             asChild
           >
-            <Link href="/colophon">Colophon</Link>
+            <TransitionLink href="/colophon">Colophon</TransitionLink>
           </Button>
           <Button
             variant="outline"

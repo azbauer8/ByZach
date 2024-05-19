@@ -14,6 +14,7 @@ export default {
 	transpilePackages: ["next-mdx-remote"],
 
 	images: {
+		dangerouslyAllowSVG: true,
 		remotePatterns: [
 			{
 				protocol: "https",

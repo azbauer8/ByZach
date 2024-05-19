@@ -1,4 +1,4 @@
-import Link from "next/link"
+import { Link as TransitionLink } from "next-view-transitions"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -34,10 +34,10 @@ export default function PageLayout({
               variant="ghost"
               className="-ml-2 gap-1 pl-2 pr-2.5 text-base min-[900px]:hidden"
             >
-              <Link href={previousPage.link}>
+              <TransitionLink href={previousPage.link}>
                 <BackIcon />
                 {previousPage.title}
-              </Link>
+              </TransitionLink>
             </Button>
             <div className="fixed left-3 top-4 hidden w-dvw min-[900px]:block">
               <div className="mx-auto w-full max-w-4xl">
@@ -50,9 +50,9 @@ export default function PageLayout({
                         size="icon"
                         className="bg-background"
                       >
-                        <Link href={previousPage.link}>
+                        <TransitionLink href={previousPage.link}>
                           <Back2Icon />
-                        </Link>
+                        </TransitionLink>
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent side="left">
