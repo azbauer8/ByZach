@@ -27,19 +27,6 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      keyframes: {
-        reveal: {
-          "0%": { opacity: "0", filter: "blur(10px)" },
-          "10%": { opacity: "1", filter: "blur(5px)" },
-          "100%": { filter: "blur(0)" },
-        },
-      },
-      animation: {
-        reveal: "reveal 0.5s ease-in-out",
-      },
-      transitionTimingFunction: {
-        nav: "cubic-bezier(0.4, 0, 0.2, 1)",
-      },
     },
   },
   plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],

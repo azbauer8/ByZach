@@ -86,7 +86,7 @@ export default function NavDrawer() {
       {/* drawer wrapper */}
       <div
         className={cn(
-          "fixed bottom-0 left-0 right-0 z-30 mx-auto w-full max-w-3xl translate-y-[calc(100%-56px)] border-t bg-background transition-transform duration-300 ease-nav md:hidden md:border-x",
+          "ease-[cubic-bezier(0.4, 0, 0.2, 1)] fixed bottom-0 left-0 right-0 z-30 mx-auto w-full max-w-3xl translate-y-[calc(100%-56px)] border-t bg-background transition-transform duration-300 md:hidden md:border-x",
           open && "navDrawerOpen translate-y-0"
         )}
       >
