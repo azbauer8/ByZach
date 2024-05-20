@@ -1,14 +1,26 @@
 import type { ImageProps } from "next/image"
-import type { MDXProvider } from "@mdx-js/react"
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode, { type Options } from "rehype-pretty-code"
-import rehypeSlug from "rehype-slug"
-import remarkGfm from "remark-gfm"
 
 import "@/styles/prose.css"
 
+import { createElement, type ReactNode } from "react"
+
+import { slugify } from "@/lib/utils"
 import DynamicImage from "@/components/DynamicImage"
+
+function createHeading(level: number) {
+  return ({ children }: { children: ReactNode }) => {
+    const slug = slugify(children?.toString() || "")
+    return createElement(
+      CustomLink,
+      {
+        href: `#${slug}`,
+      },
+      createElement(`h${level}`, [], children)
+    )
+  }
+}
 
 function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const href = props.href?.toString()
@@ -33,10 +45,22 @@ function RoundedImage({ alt, className, ...props }: ImageProps) {
   return <DynamicImage {...props} alt={alt} placeholder="blur" />
 }
 
+function Code({ children }: { children: ReactNode }) {
+  // console.log("🚀 ~ Code ~ children:", children[0].props.children)
+  return children
+}
+
 const components = {
+  h1: createHeading(1),
+  h2: createHeading(2),
+  h3: createHeading(3),
+  h4: createHeading(4),
+  h5: createHeading(5),
+  h6: createHeading(6),
   Image: RoundedImage,
   a: CustomLink,
-} as React.ComponentProps<typeof MDXProvider>["components"]
+  code: Code,
+}
 
 const codeOptions: Options = {
   theme: {
@@ -51,16 +75,13 @@ export function Markdown(props: MDXRemoteProps) {
     <div className="prose prose-neutral text-foreground-muted dark:prose-invert prose-a:no-underline">
       <MDXRemote
         {...props}
+        // @ts-expect-error
         components={{ ...components, ...props.components }}
         options={{
           mdxOptions: {
-            remarkPlugins: [],
             rehypePlugins: [
               // @ts-expect-error
               [rehypePrettyCode, codeOptions],
-              [rehypeSlug],
-              [rehypeAutolinkHeadings, { behavior: "wrap" }],
-              [remarkGfm],
             ],
           },
         }}

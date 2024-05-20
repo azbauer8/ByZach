@@ -1,5 +1,5 @@
 .prose {
-  @apply !max-w-none;
+  @apply !max-w-none text-pretty break-words;
 }
 
 /* Code Blocks */
@@ -27,6 +27,23 @@ code[data-theme*=" "] span {
   }
 }
 
-figcaption[data-rehype-pretty-code-title] {
-  @apply ml-2.5 w-fit rounded-lg rounded-b-none border border-b-0 bg-accent px-1.5 py-1 font-mono tracking-tight text-foreground;
+:root {
+  --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-string: #007f7a;
+  --sh-keyword: #e02518;
+  --sh-comment: #a19595;
+  --sh-jsxliterals: #6266d1;
+  --sh-property: #e25a1c;
+  --sh-entity: #e25a1c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sh-class: #4c97f8;
+    --sh-identifier: white;
+    --sh-keyword: #f47067;
+    --sh-string: #0fa295;
+  }
 }

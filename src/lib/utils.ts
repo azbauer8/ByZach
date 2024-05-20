@@ -41,3 +41,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const twcn = createTwc({ compose: cn })
+
+export default clsx

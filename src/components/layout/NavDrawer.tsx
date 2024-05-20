@@ -1,9 +1,8 @@
 "use client"
 
-import { Fragment, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Transition } from "@headlessui/react"
 
 import { pageMetadata, siteMetadata } from "@/lib/metadata"
 import { cn } from "@/lib/utils"
@@ -68,26 +67,18 @@ export default function NavDrawer() {
   return (
     <>
       {/* overlay */}
-      <Transition
-        as={Fragment}
-        show={open}
-        enter="ease-out duration-500"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="ease-in duration-100"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <div
-          className="fixed inset-0 z-20 bg-black bg-opacity-75 transition-opacity"
-          onClick={() => toggleOpen(false)}
-        />
-      </Transition>
+      <div
+        className={cn(
+          "fixed inset-0 z-20 bg-black bg-opacity-75 transition-opacity duration-300",
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        )}
+        onClick={() => toggleOpen(false)}
+      />
       {/* drawer wrapper */}
       <div
         className={cn(
           "ease-[cubic-bezier(0.4, 0, 0.2, 1)] fixed bottom-0 left-0 right-0 z-30 mx-auto w-full max-w-3xl translate-y-[calc(100%-56px)] border-t bg-background transition-transform duration-300 md:hidden md:border-x",
-          open && "navDrawerOpen translate-y-0"
+          open && "translate-y-0"
         )}
       >
         {/* drawer header/toggle */}
