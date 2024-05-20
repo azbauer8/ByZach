@@ -1,13 +1,17 @@
+import {
+  createElement,
+  type DetailedHTMLProps,
+  type HTMLAttributes,
+  type ReactNode,
+} from "react"
 import type { ImageProps } from "next/image"
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
-import rehypePrettyCode, { type Options } from "rehype-pretty-code"
+import rehypePrettyCode from "rehype-pretty-code"
 
-import "@/styles/prose.css"
-
-import { createElement, type ReactNode } from "react"
-
-import { slugify } from "@/lib/utils"
+import { capitalize, slugify } from "@/lib/utils"
+import CopyButton from "@/components/CopyCode"
 import DynamicImage from "@/components/DynamicImage"
+import { Typography } from "@/components/Typography"
 
 function createHeading(level: number) {
   return ({ children }: { children: ReactNode }) => {
@@ -46,11 +50,27 @@ function RoundedImage({ alt, className, ...props }: ImageProps) {
   return <DynamicImage {...props} alt={alt} placeholder="blur" />
 }
 
-function Code({ children }: { children: ReactNode }) {
-  // console.log("🚀 ~ Code ~ children:", children[0].props.children)
-  return children
+export function Pre({
+  children,
+  ...props
+}: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement> & {
+  "data-language": string
+  "data-theme": string
+}) {
+  return (
+    <div className="flex size-full flex-col divide-y rounded-lg border bg-accent text-foreground">
+      <div className="flex w-full items-center justify-between px-2 py-0.5">
+        <Typography affects="small">
+          {capitalize(props["data-language"])}
+        </Typography>
+        <CopyButton />
+      </div>
+      <pre {...props} className="my-0 flex-1 rounded-none bg-transparent p-2">
+        {children}
+      </pre>
+    </div>
+  )
 }
-
 const components = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -60,15 +80,7 @@ const components = {
   h6: createHeading(6),
   Image: RoundedImage,
   a: CustomLink,
-  code: Code,
-}
-
-const codeOptions: Options = {
-  theme: {
-    dark: "vesper",
-    light: "github-light-default",
-  },
-  keepBackground: false,
+  pre: Pre,
 }
 
 export function Markdown(props: MDXRemoteProps) {
@@ -81,8 +93,16 @@ export function Markdown(props: MDXRemoteProps) {
         options={{
           mdxOptions: {
             rehypePlugins: [
-              // @ts-expect-error
-              [rehypePrettyCode, codeOptions],
+              [
+                // @ts-expect-error
+                rehypePrettyCode,
+                {
+                  theme: {
+                    dark: "vesper",
+                    light: "github-light-default",
+                  },
+                },
+              ],
             ],
           },
         }}

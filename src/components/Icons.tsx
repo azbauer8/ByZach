@@ -7,8 +7,12 @@ import {
   AtSign,
   AudioLines,
   Bookmark,
+  Check,
   ChevronsUp,
+  ClipboardCopy,
   Code,
+  Copy,
+  CopyCheck,
   FileText,
   Hammer,
   Home,
@@ -32,6 +36,8 @@ export const BackIcon = twcn(ArrowUpLeft)`${iconSize}`
 export const Back2Icon = twcn(ArrowLeft)`${iconSize}`
 export const DrawerIcon = twcn(ChevronsUp)`size-5`
 export const ExternalLinkIcon = twcn(ArrowUpRight)`${iconSize}`
+export const CopyIcon = twcn(Copy)`${iconSize}`
+export const CopiedIcon = twcn(CopyCheck)`${iconSize}`
 
 // nav links
 export const HomeIcon = twcn(Home)`${iconSize}`

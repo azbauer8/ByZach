@@ -2,6 +2,10 @@ import { clsx, type ClassValue } from "clsx"
 import { createTwc } from "react-twc"
 import { twMerge } from "tailwind-merge"
 
+export function capitalize(input: string) {
+  return input.replace(/^(.)|\s+(.)/g, (c) => c.toUpperCase())
+}
+
 export function formatDate(dateString?: string | null | undefined) {
   const date = dateString ? new Date(dateString) : new Date()
   return date.toLocaleDateString("en-us", {

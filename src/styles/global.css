@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Reset */
+@layer base {
+  * {
+    @apply relative min-w-0 border-border;
+  }
+  body {
+    @apply min-h-dvh;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-balance;
+  }
+  p {
+    @apply text-pretty;
+  }
+}
+
+.prose {
+  @apply !max-w-none text-pretty break-words;
+}
+
+/* Colors */
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -24,20 +49,16 @@
   }
 }
 
-@layer base {
-  * {
-    @apply relative min-w-0 border-border;
-  }
-  body {
-    @apply min-h-dvh;
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply text-balance;
-  }
-  p {
-    @apply text-pretty;
+/* Code Blocks */
+
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+}
+
+.dark {
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-dark);
   }
 }
