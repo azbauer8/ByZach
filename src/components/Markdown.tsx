@@ -16,8 +16,9 @@ function createHeading(level: number) {
       CustomLink,
       {
         href: `#${slug}`,
+        id: slug,
       },
-      createElement(`h${level}`, [], children)
+      createElement(`h${level}`, {}, children)
     )
   }
 }
