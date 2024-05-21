@@ -35,7 +35,7 @@ export default function ContentList({
   return (
     <div
       className={cn(
-        "-mx-3 grid grid-cols-1 gap-3",
+        "-mx-2.5 grid grid-cols-1 gap-3",
         compact && "md:grid-cols-2"
       )}
     >
@@ -45,7 +45,7 @@ export default function ContentList({
           asChild
           variant={noBorder ? "ghost" : "outline"}
           className={cn(
-            "group flex h-auto flex-col items-start gap-1 p-2.5 text-base",
+            "group flex h-auto flex-col items-start justify-start gap-1 p-2.5 text-base",
             noBg ? "bg-transparent" : "bg-accent"
           )}
         >

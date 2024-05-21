@@ -4,6 +4,12 @@ import { cache } from "react"
 import { Client } from "@notionhq/client"
 import { NotionToMarkdown } from "notion-to-md"
 
+import type {
+  FormattedNotionResult,
+  NotionDatabase,
+  NotionPage,
+  NotionQuery,
+} from "@/lib/notion.types"
 import { slugify, unslugify } from "@/lib/utils"
 
 export const notionIds = {
@@ -30,6 +36,16 @@ export const getMarkdownContent = cache(async (pageId: string) => {
   return n2m.toMarkdownString(mdblocks).parent
 })
 
+export const getPageInfo = cache(async (pageId: string) => {
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  })
+  const response = (await notion.pages.retrieve({
+    page_id: pageId,
+  })) as unknown as NotionPage
+  return response
+})
+
 export const getThoughts = async () => {
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -40,17 +56,22 @@ export const getThoughts = async () => {
 
   if (!response) return null
 
-  return response.results.map((thought) => ({
-    id: thought.id,
-    slug: thought.properties.Slug.formula.string,
-    title: thought.properties.Title.title[0].plain_text,
-    subtitle: thought.properties.Description.rich_text[0].plain_text,
-    extIcon: thought.icon?.external.url,
-    image: thought.cover?.external.url,
-    createdAt: thought.created_time,
-    updatedAt: thought.last_edited_time,
-    link: `/thoughts/${thought.properties.Slug.formula.string}`,
-  }))
+  return response.results
+    .map((thought) => ({
+      id: thought.id,
+      slug: thought.properties.Slug.formula.string,
+      title: thought.properties.Title.title[0].plain_text,
+      subtitle: thought.properties.Description.rich_text[0].plain_text,
+      extIcon: thought.icon?.external.url,
+      image: thought.cover?.external.url,
+      createdAt: thought.created_time,
+      updatedAt: thought.last_edited_time,
+      link: `/thoughts/${thought.properties.Slug.formula.string}`,
+    }))
+    .sort(
+      (a, b) =>
+        new Date(b.updatedAt).valueOf() - new Date(a.updatedAt).valueOf()
+    )
 }
 
 export const getThought = async (slug: string) => {
@@ -96,17 +117,22 @@ export const getSnippets = async () => {
 
   if (!response) return null
 
-  return response.results.map((snippet) => ({
-    id: snippet.id,
-    slug: snippet.properties.Slug.formula.string,
-    title: snippet.properties.Title.title[0].plain_text,
-    subtitle: snippet.properties.Description.rich_text[0].plain_text,
-    extIcon: snippet.icon?.external.url,
-    image: snippet.cover?.external.url,
-    createdAt: snippet.created_time,
-    updatedAt: snippet.last_edited_time,
-    link: `/snippets/${snippet.properties.Slug.formula.string}`,
-  }))
+  return response.results
+    .map((snippet) => ({
+      id: snippet.id,
+      slug: snippet.properties.Slug.formula.string,
+      title: snippet.properties.Title.title[0].plain_text,
+      subtitle: snippet.properties.Description.rich_text[0].plain_text,
+      extIcon: snippet.icon?.external.url,
+      image: snippet.cover?.external.url,
+      createdAt: snippet.created_time,
+      updatedAt: snippet.last_edited_time,
+      link: `/snippets/${snippet.properties.Slug.formula.string}`,
+    }))
+    .sort(
+      (a, b) =>
+        new Date(b.updatedAt).valueOf() - new Date(a.updatedAt).valueOf()
+    )
 }
 
 export const getSnippet = async (slug: string) => {
@@ -152,16 +178,21 @@ export const getProjects = cache(async () => {
 
   if (!response) return null
 
-  return response.results.map((project) => ({
-    slug: project.properties.Slug.formula.string,
-    title: project.properties.Title.title[0].plain_text,
-    subtitle: project.properties.Description.rich_text[0].plain_text,
-    link: project.properties.Link.url,
-    extIcon: project.icon?.external.url,
-    image: project.cover?.external.url,
-    createdAt: project.created_time,
-    updatedAt: project.last_edited_time,
-  }))
+  return response.results
+    .map((project) => ({
+      slug: project.properties.Slug.formula.string,
+      title: project.properties.Title.title[0].plain_text,
+      subtitle: project.properties.Description.rich_text[0].plain_text,
+      link: project.properties.Link.url,
+      extIcon: project.icon?.external.url,
+      image: project.cover?.external.url,
+      createdAt: project.created_time,
+      updatedAt: project.last_edited_time,
+    }))
+    .sort(
+      (a, b) =>
+        new Date(b.updatedAt).valueOf() - new Date(a.updatedAt).valueOf()
+    )
 })
 
 export const getDiscoveryCategories = cache(async () => {
@@ -174,11 +205,11 @@ export const getDiscoveryCategories = cache(async () => {
 
   if (!response) return null
 
-  const result = []
+  const categories = []
   for (const option of response.properties.Tags.multi_select.options) {
     const entries = await getDiscoveriesInCategory(option.name)
     const slug = slugify(option.name.toLowerCase())
-    result.push({
+    categories.push({
       slug,
       title: option.name,
       subtitle: entries?.length
@@ -187,9 +218,10 @@ export const getDiscoveryCategories = cache(async () => {
           : `${entries.length} discovery`
         : "",
       link: `/discoveries/${slug}`,
+      entries: entries?.length ?? 0,
     })
   }
-  return result
+  return categories.sort((a, b) => b.entries - a.entries)
 })
 
 export const getDiscoveriesInCategory = cache(async (category: string) => {
@@ -208,18 +240,23 @@ export const getDiscoveriesInCategory = cache(async (category: string) => {
 
   if (!response) return null
 
-  return response.results.map((discovery) => ({
-    slug: discovery.properties.Slug.formula.string,
-    title: discovery.properties.Title.title[0].plain_text,
-    subtitle:
-      discovery.properties?.Description?.rich_text?.[0]?.plain_text ?? "",
-    link: discovery.properties.Link.url,
-    extIcon: discovery.icon?.external.url,
-    image: discovery.cover?.external.url,
-    category: discovery.properties.Tags.multi_select[0].name,
-    createdAt: discovery.created_time,
-    updatedAt: discovery.last_edited_time,
-  }))
+  return response.results
+    .map((discovery) => ({
+      slug: discovery.properties.Slug.formula.string,
+      title: discovery.properties.Title.title[0].plain_text,
+      subtitle:
+        discovery.properties?.Description?.rich_text?.[0]?.plain_text ?? "",
+      link: discovery.properties.Link.url,
+      extIcon: discovery.icon?.external.url,
+      image: discovery.cover?.external.url,
+      category: discovery.properties.Tags.multi_select[0].name,
+      createdAt: discovery.created_time,
+      updatedAt: discovery.last_edited_time,
+    }))
+    .sort(
+      (a, b) =>
+        new Date(b.updatedAt).valueOf() - new Date(a.updatedAt).valueOf()
+    )
 })
 
 export const getUses = cache(async (type: "Software" | "Hardware") => {
@@ -238,7 +275,7 @@ export const getUses = cache(async (type: "Software" | "Hardware") => {
 
   if (!response) return null
 
-  return response.results.reduce(
+  const groupedUses = response.results.reduce(
     (acc, item) => {
       const category =
         item.properties.Tags.multi_select.find((tag) => tag.name !== type)
@@ -263,112 +300,15 @@ export const getUses = cache(async (type: "Software" | "Hardware") => {
     },
     {} as Record<string, FormattedNotionResult[]>
   )
+
+  const groupedAndSortedUses: Record<string, FormattedNotionResult[]> = {}
+
+  for (const [key, values] of Object.entries(groupedUses)) {
+    groupedAndSortedUses[key] = values.sort(
+      (a, b) =>
+        new Date(b.updatedAt).valueOf() - new Date(a.updatedAt).valueOf()
+    )
+  }
+
+  return groupedAndSortedUses
 })
-
-type NotionDatabase = {
-  id: string
-  created_time: string
-  last_edited_time: string
-  title: [
-    {
-      type: "text"
-      plain_text: string
-      href: null
-    },
-  ]
-  description: []
-  properties: {
-    Description: {
-      id: string
-      name: "Description"
-      type: "rich_text"
-    }
-    Link: {
-      id: string
-      name: "Link"
-      type: "url"
-    }
-    Tags: {
-      id: string
-      name: "Tags"
-      type: "multi_select"
-      multi_select: {
-        options: {
-          id: string
-          name: string
-          color: string
-          description?: string
-        }[]
-      }
-    }
-    Title: {
-      id: string
-      name: "Title"
-      type: "title"
-    }
-  }
-  url: string
-}
-type NotionQuery = {
-  results: NotionResult[]
-}
-type NotionResult = {
-  id: string
-  created_time: string
-  last_edited_time: string
-  cover: { type: string; external: { url: string } } | null
-  icon: { type: string; external: { url: string } } | null
-  properties: {
-    Description: {
-      id: string
-      type: "rich_text"
-      rich_text: {
-        type: "text"
-        text: {
-          content: string
-          link: string | null
-        }
-        plain_text: string
-        link: string | null
-      }[]
-    }
-    Link: { id: string; type: "url"; url: string }
-    Tags: {
-      id: string
-      type: "multi_select"
-      multi_select: {
-        id: string
-        name: string
-        color: string
-      }[]
-    }
-    Title: {
-      id: string
-      type: "title"
-      title: {
-        type: "text"
-        text: { content: string; link: string | null }
-        plain_text: string
-        href: string | null
-      }[]
-    }
-    Slug: {
-      id: string
-      type: "formula"
-      formula: { type: "string"; string: string }
-    }
-  }
-  url: string
-}
-
-type FormattedNotionResult = {
-  slug: string
-  title: string
-  subtitle: string
-  link: string
-  extIcon: string | undefined
-  image: string | undefined
-  createdAt: string
-  updatedAt: string
-  category: string
-}

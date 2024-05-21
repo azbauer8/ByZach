@@ -1,5 +1,6 @@
 import { siteMetadata } from "@/lib/metadata"
 import { getMarkdownContent, getSnippet, getSnippets } from "@/lib/notion"
+import { formatDate } from "@/lib/utils"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
 
@@ -55,6 +56,7 @@ export default async function Snippet({
     <PageLayout
       title={snippet.title ?? ""}
       subtitle={snippet.subtitle}
+      updatedAt={formatDate(snippet.updatedAt)}
       previousPage={{ link: "/snippets", title: "Snippets" }}
     >
       <Markdown source={mdContent} />

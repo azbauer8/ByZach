@@ -17,12 +17,14 @@ export default function PageLayout({
   previousPage,
   title,
   subtitle,
+  updatedAt,
 }: {
   children: React.ReactNode
   className?: string
   previousPage?: { link: string; title: string }
   title: string
   subtitle?: string
+  updatedAt?: string
 }) {
   return (
     <div className={cn("space-y-5", className)}>
@@ -68,6 +70,12 @@ export default function PageLayout({
         {subtitle && <Typography affects="lead">{subtitle}</Typography>}
       </div>
       {children}
+
+      {updatedAt && (
+        <Typography affects="muted" className="text-right text-sm">
+          Last updated: {updatedAt}
+        </Typography>
+      )}
     </div>
   )
 }

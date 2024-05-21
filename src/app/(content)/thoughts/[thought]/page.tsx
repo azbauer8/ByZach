@@ -1,7 +1,9 @@
 import { siteMetadata } from "@/lib/metadata"
 import { getMarkdownContent, getThought, getThoughts } from "@/lib/notion"
+import { formatDate } from "@/lib/utils"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
+import { Typography } from "@/components/Typography"
 
 export const dynamicParams = false
 
@@ -53,6 +55,7 @@ export default async function Thought({
     <PageLayout
       title={thought.title ?? "Thoughts"}
       subtitle={thought.subtitle}
+      updatedAt={formatDate(thought.updatedAt)}
       previousPage={{ link: "/thoughts", title: "Thoughts" }}
     >
       <Markdown source={mdContent} />

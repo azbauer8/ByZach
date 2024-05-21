@@ -19,7 +19,7 @@ export default async function Thoughts() {
       title={pageMetadata.thoughts.title}
       subtitle={pageMetadata.thoughts.subtitle}
     >
-      <ContentList list={thoughts} />
+      <ContentList list={thoughts} compact />
     </PageLayout>
   )
 }

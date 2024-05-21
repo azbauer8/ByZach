@@ -19,7 +19,7 @@ export default async function Projects() {
       title={pageMetadata.projects.title}
       subtitle={pageMetadata.projects.subtitle}
     >
-      <ContentList list={projects} isExternal />
+      <ContentList list={projects} isExternal compact />
     </PageLayout>
   )
 }

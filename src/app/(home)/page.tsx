@@ -69,7 +69,7 @@ function Activity() {
           {pageMetadata.home.sections.activity.subtitle}
         </Typography>
       </div>
-      <div className="-mx-3 grid grid-cols-1 gap-1 md:grid-cols-2">
+      <div className="-mx-2.5 grid grid-cols-1 gap-1 md:grid-cols-2">
         <LastFmCard />
         <TraktCard />
       </div>

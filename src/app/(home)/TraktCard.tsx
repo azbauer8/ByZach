@@ -15,7 +15,7 @@ export default async function TraktCard() {
     <Button
       asChild
       variant="ghost"
-      className="flex h-auto items-center space-x-5 rounded-lg px-3 py-2 text-base"
+      className="flex h-auto items-center space-x-5 rounded-lg p-2.5 text-base"
     >
       <a href={data.url} target="_blank" rel="noopener noreferrer">
         <DynamicImage

@@ -42,7 +42,7 @@ export default async function DiscoveryCategory({
       title={category}
       previousPage={{ link: "/discoveries", title: "Discoveries" }}
     >
-      <ContentList list={discoveries} isExternal />
+      <ContentList list={discoveries} isExternal compact />
     </PageLayout>
   )
 }

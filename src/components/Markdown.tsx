@@ -59,10 +59,10 @@ export function Pre({
 }) {
   return (
     <div className="flex size-full flex-col divide-y rounded-lg border bg-accent text-foreground">
-      <div className="flex w-full items-center justify-between px-2 py-0.5">
-        <Typography affects="small">
+      <div className="flex w-full items-center justify-end px-2 py-0.5">
+        {/* <Typography affects="small">
           {capitalize(props["data-language"])}
-        </Typography>
+        </Typography> */}
         <CopyButton />
       </div>
       <pre {...props} className="my-0 flex-1 rounded-none bg-transparent p-2">

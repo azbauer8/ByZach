@@ -80,15 +80,17 @@ export default function RootLayout({
         <head />
         <body
           className={cn(
-            "bg-accent font-sans text-foreground antialiased dark:bg-[#0a0a0a] md:pb-28 md:pt-5",
+            "bg-accent font-sans text-foreground antialiased dark:bg-[#0a0a0a] md:pb-20 md:pt-5",
             asap.variable,
             sourceCode.variable
           )}
         >
+          {/* grid background on desktop */}
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#ededea_1px,transparent_1px),linear-gradient(to_bottom,#ededea_1px,transparent_1px)] bg-[size:14px_14px] dark:bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)]" />
+
           <Providers>
-            <div className="relative mx-auto flex min-h-dvh max-w-3xl flex-col bg-background px-5 pb-20 pt-12 shadow-md md:min-h-fit md:rounded-lg md:border md:pb-3 md:pt-5">
-              <div className="flex-1"> {children}</div>
+            <div className="relative mx-auto flex min-h-dvh max-w-3xl flex-col bg-background px-5 pb-20 pt-12 shadow-md md:min-h-fit md:rounded-lg md:border md:py-5">
+              {children}
               <Footer />
             </div>
             <NavDrawer />
