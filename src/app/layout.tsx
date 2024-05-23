@@ -6,6 +6,8 @@ import type { Metadata, Viewport } from "next"
 import { JetBrains_Mono, Source_Sans_3 } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+// 2 days
+import { VercelToolbar } from "@vercel/toolbar/next"
 import { ViewTransitions } from "next-view-transitions"
 
 import { cn } from "@/lib/utils"
@@ -67,7 +69,7 @@ export const metadata: Metadata = {
   },
 }
 
-export const revalidate = 172800 // 2 days
+export const revalidate = 172800
 
 export default function RootLayout({
   children,
@@ -99,6 +101,7 @@ export default function RootLayout({
 
           <Analytics />
           <SpeedInsights />
+          {process.env.NODE_ENV === "development" && <VercelToolbar />}
         </body>
       </html>
     </ViewTransitions>

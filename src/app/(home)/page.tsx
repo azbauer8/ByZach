@@ -11,6 +11,8 @@ import { Typography } from "@/components/Typography"
 import LastFmCard from "./LastfmCard"
 import TraktCard from "./TraktCard"
 
+export const experimental_ppr = true
+
 export const metadata: Metadata = {
   title: `${pageMetadata.home.sections.header.title} | ${pageMetadata.home.sections.header.subtitle}`,
 }
