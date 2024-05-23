@@ -3,7 +3,7 @@ import "server-only"
 export async function getLastFm() {
   const response = await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
-    { next: { revalidate: 0 } }
+    { next: { revalidate: 10 } }
   )
   if (!response.ok) {
     return undefined
@@ -30,7 +30,7 @@ export async function getTrakt() {
         "trakt-api-key": `${process.env.TRAKT_API}`,
         "trakt-api-version": "2",
       },
-      next: { revalidate: 0 },
+      next: { revalidate: 10 },
     }
   )
   if (!response.ok) {
@@ -82,7 +82,7 @@ async function getTraktPoster(
       accept: "application/json",
       Authorization: `Bearer ${process.env.TMDB_API}`,
     },
-    next: { revalidate: 0 },
+    next: { revalidate: 10 },
   }
   const baseData: TraktPosterBase | undefined = await fetch(baseUrl, options)
     .then((res) => res.json())

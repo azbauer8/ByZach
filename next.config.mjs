@@ -1,7 +1,7 @@
-
+// @ts-check
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+export default {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
@@ -10,8 +10,6 @@ const nextConfig = {
 	},
 	experimental: {
 		webVitalsAttribution: ["FCP", "LCP", "CLS", "FID", "TTFB", "INP"],
-		reactCompiler: true,
-		ppr: 'incremental',
 	},
 	transpilePackages: ["next-mdx-remote"],
 
@@ -29,6 +27,3 @@ const nextConfig = {
 		],
 	},
 };
-const withVercelToolbar = require('@vercel/toolbar/plugins/next')();
-// Instead of module.exports = nextConfig, do this:
-module.exports = withVercelToolbar(nextConfig);
