@@ -1,4 +1,3 @@
-import { Suspense } from "react"
 import type { Metadata } from "next/types"
 
 import { externalLinks, pageMetadata } from "@/lib/metadata"
@@ -11,8 +10,6 @@ import { Typography } from "@/components/Typography"
 
 import LastFmCard from "./LastfmCard"
 import TraktCard from "./TraktCard"
-
-export const experimental_ppr = true
 
 export const metadata: Metadata = {
   title: `${pageMetadata.home.sections.header.title} | ${pageMetadata.home.sections.header.subtitle}`,
@@ -73,12 +70,8 @@ function Activity() {
         </Typography>
       </div>
       <div className="-mx-2.5 grid grid-cols-1 gap-1 md:grid-cols-2">
-        <Suspense fallback={null}>
-          <LastFmCard />
-        </Suspense>
-        <Suspense fallback={null}>
-          <TraktCard />
-        </Suspense>
+        <LastFmCard />
+        <TraktCard />
       </div>
     </div>
   )

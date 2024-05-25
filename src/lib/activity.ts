@@ -3,7 +3,7 @@ import "server-only"
 export async function getLastFm() {
   const response = await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
-    { cache: "no-store" }
+    { next: { revalidate: 10 } }
   )
   if (!response.ok) {
     return undefined
@@ -30,7 +30,7 @@ export async function getTrakt() {
         "trakt-api-key": `${process.env.TRAKT_API}`,
         "trakt-api-version": "2",
       },
-      cache: "no-store",
+      next: { revalidate: 10 },
     }
   )
   if (!response.ok) {
@@ -76,13 +76,13 @@ async function getTraktPoster(
 ) {
   const baseUrl = "https://api.themoviedb.org/3/configuration"
   const imageUrl = `https://api.themoviedb.org/3/${type === "episode" ? "tv" : "movie"}/${tmdbId}/images`
-  const options: RequestInit = {
+  const options = {
     method: "GET",
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${process.env.TMDB_API}`,
     },
-    cache: "no-store",
+    next: { revalidate: 10 },
   }
   const baseData: TraktPosterBase | undefined = await fetch(baseUrl, options)
     .then((res) => res.json())

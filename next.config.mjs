@@ -10,7 +10,6 @@ export default {
 	},
 	experimental: {
 		webVitalsAttribution: ["FCP", "LCP", "CLS", "FID", "TTFB", "INP"],
-		ppr: "incremental"
 	},
 	transpilePackages: ["next-mdx-remote"],
 
