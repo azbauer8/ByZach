@@ -96,7 +96,7 @@ function AppIcon({
           {active && (
             <motion.span
               layoutId="navIndicator"
-              className="absolute bottom-[-7px] h-[3px] w-full rounded-full bg-foreground/60"
+              className="absolute bottom-[-7px] h-[2px] w-full rounded-full bg-foreground/60"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}

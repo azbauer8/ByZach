@@ -3,7 +3,6 @@ import { getMarkdownContent, getThought, getThoughts } from "@/lib/notion"
 import { formatDate } from "@/lib/utils"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
-import { Typography } from "@/components/Typography"
 
 export const dynamicParams = false
 
@@ -37,9 +36,11 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const thoughts = await getThoughts()
-  return thoughts?.map((thought) => ({
-    thought: thought.slug,
-  }))
+  return thoughts
+    ? thoughts.map((thought) => ({
+        thought: thought.slug,
+      }))
+    : []
 }
 
 export default async function Thought({

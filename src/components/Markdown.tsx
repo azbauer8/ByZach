@@ -8,10 +8,9 @@ import type { ImageProps } from "next/image"
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 import rehypePrettyCode from "rehype-pretty-code"
 
-import { capitalize, slugify } from "@/lib/utils"
+import { slugify } from "@/lib/utils"
 import CopyButton from "@/components/CopyCode"
 import DynamicImage from "@/components/DynamicImage"
-import { Typography } from "@/components/Typography"
 
 function createHeading(level: number) {
   return ({ children }: { children: ReactNode }) => {
@@ -60,9 +59,6 @@ export function Pre({
   return (
     <div className="flex size-full flex-col divide-y rounded-lg border bg-accent text-foreground">
       <div className="flex w-full items-center justify-end px-2 py-0.5">
-        {/* <Typography affects="small">
-          {capitalize(props["data-language"])}
-        </Typography> */}
         <CopyButton />
       </div>
       <pre {...props} className="my-0 flex-1 rounded-none bg-transparent p-2">

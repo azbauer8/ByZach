@@ -3,6 +3,7 @@ import "server-only"
 import { cache } from "react"
 import { Client } from "@notionhq/client"
 import { NotionToMarkdown } from "notion-to-md"
+import type { MdBlock } from "notion-to-md/build/types"
 
 import type {
   FormattedNotionResult,
@@ -33,8 +34,27 @@ export const getMarkdownContent = cache(async (pageId: string) => {
     },
   })
   const mdblocks = await n2m.pageToMarkdown(pageId)
-  return n2m.toMarkdownString(mdblocks).parent
+  return parseMdCode(n2m, mdblocks)
 })
+
+function parseMdCode(n2m: NotionToMarkdown, blocks: MdBlock[]) {
+  const formattedBlocks = blocks
+    .map((block) => {
+      if (block.type === "code") {
+        const { parent } = block
+        if (parent.startsWith("```typescript") && parent.includes("return (")) {
+          return { ...block, parent: parent.replace("```typescript", "```tsx") }
+        }
+        if (parent.startsWith("```javascript") && parent.includes("return (")) {
+          return { ...block, parent: parent.replace("```javascript", "```jsx") }
+        }
+      }
+      return block
+    })
+    .filter((block) => block !== undefined)
+
+  return n2m.toMarkdownString(formattedBlocks).parent
+}
 
 export const getPageInfo = cache(async (pageId: string) => {
   const notion = new Client({

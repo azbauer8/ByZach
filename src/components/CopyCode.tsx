@@ -46,7 +46,11 @@ export default function ClipboardButton() {
           }
         }}
       >
-        {isClicked ? <CopiedIcon /> : <CopyIcon />}
+        {isClicked ? (
+          <CopiedIcon className="size-4" />
+        ) : (
+          <CopyIcon className="size-4" />
+        )}
       </Button>
     </>
   )
