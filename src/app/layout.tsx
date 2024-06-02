@@ -9,10 +9,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ViewTransitions } from "next-view-transitions"
 
 import { cn } from "@/lib/utils"
-import Footer from "@/components/layout/Footer"
-import NavDock from "@/components/layout/NavDock"
-import NavDrawer from "@/components/layout/NavDrawer"
-import Providers from "@/components/layout/Providers"
+import Footer from "@/app/_layout/Footer"
+import NavDock from "@/app/_layout/NavDock"
+import NavDrawer from "@/app/_layout/NavDrawer"
+import Providers from "@/app/_layout/Providers"
 
 const asap = Source_Sans_3({
   subsets: ["latin"],
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     shortcut: siteMetadata.favicon,
   },
   alternates: {
-    canonical: siteMetadata.here,
+    canonical: siteMetadata.here.full,
   },
-  metadataBase: new URL(siteMetadata.here),
+  metadataBase: new URL(siteMetadata.here.full),
   robots: {
     index: true,
     follow: true,
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteMetadata.title,
     description: siteMetadata.description,
-    url: siteMetadata.here,
+    url: siteMetadata.here.full,
     siteName: siteMetadata.title,
     locale: "en_US",
     type: "website",

@@ -5,8 +5,8 @@ import { getMarkdownContent, notionIds } from "@/lib/notion"
 import ContentList from "@/components/ContentList"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
+import Section from "@/components/Section"
 import SocialButtons from "@/components/SocialButtons"
-import { Typography } from "@/components/Typography"
 
 import LastFmCard from "./LastfmCard"
 import TraktCard from "./TraktCard"
@@ -20,9 +20,9 @@ export default function Home() {
     <PageLayout
       title={pageMetadata.home.sections.header.title}
       subtitle={pageMetadata.home.sections.header.subtitle}
-      className="space-y-8"
     >
       <About />
+      <SocialButtons links={externalLinks.professional} />
       <SiteLinks />
       <Activity />
       <Socials />
@@ -32,58 +32,49 @@ export default function Home() {
 
 async function About() {
   const aboutContent = await getMarkdownContent(notionIds.about)
-  return (
-    <div className="space-y-2">
-      <Markdown source={aboutContent} />
-      <SocialButtons links={externalLinks.professional} />
-    </div>
-  )
+  return <Markdown source={aboutContent} />
 }
 
 function SiteLinks() {
   return (
-    <div className="space-y-4">
-      <Typography className="font-semibold leading-none">
-        {pageMetadata.home.sections.siteLinks.title}
-      </Typography>
+    <Section
+      title={pageMetadata.home.sections.siteLinks.title}
+      subtitle={pageMetadata.home.sections.siteLinks.subtitle}
+    >
       <ContentList
         noBorder
         noBg
         compact
         list={Object.entries(pageMetadata)
           .map(([, link]) => link)
-          .filter((link) => link.title !== "Home" && link.title !== "Colophon")}
+          .filter(
+            (link) =>
+              link.title !== pageMetadata.home.title &&
+              link.title !== pageMetadata.colophon.title
+          )}
       />
-    </div>
+    </Section>
   )
 }
 
 function Activity() {
   return (
-    <div className="space-y-4">
-      <div className="space-y-1.5">
-        <Typography className="font-semibold leading-none">
-          {pageMetadata.home.sections.activity.title}
-        </Typography>
-        <Typography affects="muted">
-          {pageMetadata.home.sections.activity.subtitle}
-        </Typography>
-      </div>
+    <Section
+      title={pageMetadata.home.sections.activity.title}
+      subtitle={pageMetadata.home.sections.activity.subtitle}
+    >
       <div className="-mx-2.5 grid grid-cols-1 gap-1 md:grid-cols-2">
         <LastFmCard />
         <TraktCard />
       </div>
-    </div>
+    </Section>
   )
 }
 
 function Socials() {
   return (
-    <div className="space-y-2">
-      <Typography className="font-semibold leading-none">
-        {pageMetadata.home.sections.activity.socials}
-      </Typography>
+    <Section title={pageMetadata.home.sections.activity.socials}>
       <SocialButtons links={externalLinks.personal} />
-    </div>
+    </Section>
   )
 }

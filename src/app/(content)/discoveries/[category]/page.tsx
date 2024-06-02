@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata"
 import { getDiscoveriesInCategory, getDiscoveryCategories } from "@/lib/notion"
 import ContentList from "@/components/ContentList"
 import PageLayout from "@/components/PageLayout"
@@ -42,7 +43,10 @@ export default async function DiscoveryCategory({
   return (
     <PageLayout
       title={category}
-      previousPage={{ link: "/discoveries", title: "Discoveries" }}
+      previousPage={{
+        link: pageMetadata.discoveries.link,
+        title: pageMetadata.discoveries.title,
+      }}
     >
       <ContentList list={discoveries} isExternal compact />
     </PageLayout>

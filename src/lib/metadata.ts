@@ -1,6 +1,5 @@
 import iconFallback from "~/public/fallback_icon.png"
 import fallback from "~/public/fallback.png"
-import favicon from "~/public/favicon.png"
 import lastfmFallback from "~/public/lastfm_placeholder.png"
 import nowPlaying from "~/public/now_playing.svg"
 import traktFallback from "~/public/trakt_placeholder.png"
@@ -21,7 +20,6 @@ import {
 } from "@/components/Icons"
 
 export const imageSources = {
-  favicon,
   fallback,
   iconFallback,
   lastfmFallback,
@@ -32,10 +30,16 @@ export const imageSources = {
 export const siteMetadata = {
   title: "ByZach",
   description: `Zach Bauer's Personal Website`,
+  footer: "Created by Zach Bauer",
   favicon: "/favicon.png",
-  here: "https://byzach.dev",
-  hereShort: "byzach.dev",
-  source: "https://github.com/azbauer8/ByZach",
+  here: {
+    full: "https://byzach.dev",
+    short: "byzach.dev",
+  },
+  source: {
+    title: "Source",
+    link: "https://github.com/azbauer8/ByZach",
+  },
 }
 
 export const pageMetadata = {
@@ -51,6 +55,7 @@ export const pageMetadata = {
       },
       siteLinks: {
         title: "Links",
+        subtitle: "Peruse the site, if you so desire.",
       },
       activity: {
         title: "Activity",
@@ -58,6 +63,12 @@ export const pageMetadata = {
         socials: "Follow me on",
       },
     },
+  },
+  colophon: {
+    title: "Colophon",
+    subtitle: "An overview of how I built this site.",
+    link: "/colophon",
+    icon: HomeIcon,
   },
   projects: {
     title: "Projects",
@@ -85,16 +96,10 @@ export const pageMetadata = {
   },
   uses: {
     title: "Uses",
-    subtitle: "Devices, tools, and technologies I use on a daily basis.",
+    subtitle: "Tools and technologies I use on a daily basis.",
     link: "/uses",
     icon: UsesIcon,
   },
-}
-
-export const colophon = {
-  title: "Colophon",
-  subtitle: "An overview of how I built this site.",
-  link: "/colophon",
 }
 
 export const externalLinks = {

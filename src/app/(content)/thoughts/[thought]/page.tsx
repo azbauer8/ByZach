@@ -1,4 +1,4 @@
-import { siteMetadata } from "@/lib/metadata"
+import { pageMetadata, siteMetadata } from "@/lib/metadata"
 import { getMarkdownContent, getThought, getThoughts } from "@/lib/notion"
 import { formatDate } from "@/lib/utils"
 import { Markdown } from "@/components/Markdown"
@@ -23,7 +23,7 @@ export async function generateMetadata({
       title,
       description: subtitle,
       type: "article",
-      url: `${siteMetadata.here}${thought.link}`,
+      url: `${siteMetadata.here.full}${thought.link}`,
       publishedTime: thought.updatedAt || undefined,
     },
     twitter: {
@@ -54,10 +54,13 @@ export default async function Thought({
   const mdContent = await getMarkdownContent(thought.id)
   return (
     <PageLayout
-      title={thought.title ?? "Thoughts"}
+      title={thought.title ?? pageMetadata.thoughts.title}
       subtitle={thought.subtitle}
       updatedAt={formatDate(thought.updatedAt)}
-      previousPage={{ link: "/thoughts", title: "Thoughts" }}
+      previousPage={{
+        link: pageMetadata.thoughts.link,
+        title: pageMetadata.thoughts.title,
+      }}
     >
       <Markdown source={mdContent} />
     </PageLayout>

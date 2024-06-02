@@ -42,7 +42,7 @@ export default async function Image() {
               <img
                 alt="Vercel"
                 height={180}
-                src={`${siteMetadata.here}${siteMetadata.favicon}`}
+                src={`${siteMetadata.here.full}${siteMetadata.favicon}`}
                 width={180}
               />
               <div
@@ -83,7 +83,7 @@ export default async function Image() {
                 fontWeight: 500,
               }}
             >
-              {siteMetadata.hereShort}
+              {siteMetadata.here.short}
             </span>
           </div>
         </div>

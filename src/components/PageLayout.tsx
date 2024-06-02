@@ -1,6 +1,5 @@
 import { Link as TransitionLink } from "next-view-transitions"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Tooltip,
@@ -13,21 +12,20 @@ import { Typography } from "@/components/Typography"
 
 export default function PageLayout({
   children,
-  className,
   previousPage,
   title,
   subtitle,
   updatedAt,
 }: {
   children: React.ReactNode
-  className?: string
   previousPage?: { link: string; title: string }
   title: string
   subtitle?: string
   updatedAt?: string
 }) {
   return (
-    <div className={cn("space-y-5", className)}>
+    <div className="space-y-4">
+      {/* header */}
       <div className="space-y-1.5">
         {previousPage && (
           <>
@@ -69,8 +67,11 @@ export default function PageLayout({
         <Typography variant="h2">{title}</Typography>
         {subtitle && <Typography affects="lead">{subtitle}</Typography>}
       </div>
+
+      {/* body */}
       {children}
 
+      {/* footer */}
       {updatedAt && (
         <Typography affects="muted" className="text-right text-sm">
           Last updated: {updatedAt}

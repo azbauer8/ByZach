@@ -50,7 +50,7 @@ export default function ContentList({
           )}
         >
           {isExternal ? (
-            <Link href={item.link} target={"_blank"} prefetch>
+            <Link href={item.link} target={"_blank"}>
               <ListItemContent item={item} isExternal={isExternal} />
             </Link>
           ) : (

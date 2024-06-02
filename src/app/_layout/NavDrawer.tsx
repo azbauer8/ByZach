@@ -97,39 +97,41 @@ export default function NavDrawer() {
         </div>
         {/* popup content */}
         <div className="grid grid-cols-3 gap-1 p-4 pt-1 ">
-          {Object.entries(pageMetadata).map(([, link]) => {
-            const active =
-              link.link === "/"
-                ? pathname === link.link
-                : pathname.startsWith(link.link)
+          {Object.entries(pageMetadata)
+            .filter(([, link]) => link.title !== pageMetadata.colophon.title)
+            .map(([, link]) => {
+              const active =
+                link.link === pageMetadata.home.link
+                  ? pathname === link.link
+                  : pathname.startsWith(link.link)
 
-            const fullyActive = pathname === link.link
+              const fullyActive = pathname === link.link
 
-            return (
-              <Button
-                key={link.link}
-                asChild
-                onClick={() => toggleOpen(false)}
-                variant={active ? "outline" : "ghost"}
-                className={cn(
-                  "flex-col justify-center",
-                  "buttonLink h-fit justify-start px-2 pb-0.5 pt-1.5 font-medium",
-                  active && "bg-accent",
-                  !fullyActive && "bg-transparent"
-                )}
-              >
-                <Link href={link.link}>
-                  <link.icon />
-                  {link.title}
-                </Link>
-              </Button>
-            )
-          })}
+              return (
+                <Button
+                  key={link.link}
+                  asChild
+                  onClick={() => toggleOpen(false)}
+                  variant={active ? "outline" : "ghost"}
+                  className={cn(
+                    "flex-col justify-center",
+                    "buttonLink h-fit justify-start px-2 pb-0.5 pt-1.5 font-medium",
+                    active && "bg-accent",
+                    !fullyActive && "bg-transparent"
+                  )}
+                >
+                  <Link href={link.link}>
+                    <link.icon />
+                    {link.title}
+                  </Link>
+                </Button>
+              )
+            })}
         </div>
         <footer className="border-t py-2.5">
           <div className="flex w-full items-center justify-between gap-2 px-5">
             <p className="truncate text-sm text-foreground-muted">
-              Created by Zach Bauer
+              {siteMetadata.footer}
             </p>
             <div className="flex items-center gap-1">
               <Button
@@ -139,7 +141,9 @@ export default function NavDrawer() {
                 className="h-fit px-2.5 py-1 text-foreground-muted"
                 onClick={() => toggleOpen(false)}
               >
-                <Link href="/colophon">Colophon</Link>
+                <Link href={pageMetadata.colophon.link}>
+                  {pageMetadata.colophon.title}
+                </Link>
               </Button>
               <Button
                 asChild
@@ -148,8 +152,8 @@ export default function NavDrawer() {
                 className="h-fit px-2.5 py-1 text-foreground-muted"
                 onClick={() => toggleOpen(false)}
               >
-                <Link href={siteMetadata.source} target="_blank">
-                  Source
+                <Link href={siteMetadata.source.link} target="_blank">
+                  {siteMetadata.source.title}
                 </Link>
               </Button>
             </div>

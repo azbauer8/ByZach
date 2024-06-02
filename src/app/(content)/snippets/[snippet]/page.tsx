@@ -1,4 +1,4 @@
-import { siteMetadata } from "@/lib/metadata"
+import { pageMetadata, siteMetadata } from "@/lib/metadata"
 import { getMarkdownContent, getSnippet, getSnippets } from "@/lib/notion"
 import { formatDate } from "@/lib/utils"
 import { Markdown } from "@/components/Markdown"
@@ -23,7 +23,7 @@ export async function generateMetadata({
       title,
       description: subtitle,
       type: "article",
-      url: `${siteMetadata.here}${snippet.link}`,
+      url: `${siteMetadata.here.full}${snippet.link}`,
       publishedTime: snippet.updatedAt || undefined,
     },
     twitter: {
@@ -54,10 +54,13 @@ export default async function Snippet({
   const mdContent = await getMarkdownContent(snippet.id)
   return (
     <PageLayout
-      title={snippet.title ?? ""}
+      title={snippet.title ?? pageMetadata.snippets.title}
       subtitle={snippet.subtitle}
       updatedAt={formatDate(snippet.updatedAt)}
-      previousPage={{ link: "/snippets", title: "Snippets" }}
+      previousPage={{
+        link: pageMetadata.snippets.link,
+        title: pageMetadata.snippets.title,
+      }}
     >
       <Markdown source={mdContent} />
     </PageLayout>

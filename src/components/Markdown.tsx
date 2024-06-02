@@ -9,7 +9,7 @@ import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 import rehypePrettyCode from "rehype-pretty-code"
 
 import { slugify } from "@/lib/utils"
-import CopyButton from "@/components/CopyCode"
+import CopyToClipboard from "@/components/CopyCode"
 import DynamicImage from "@/components/DynamicImage"
 
 function createHeading(level: number) {
@@ -59,7 +59,7 @@ export function Pre({
   return (
     <div className="flex size-full flex-col divide-y rounded-lg border bg-accent text-foreground">
       <div className="flex w-full items-center justify-end px-2 py-0.5">
-        <CopyButton />
+        <CopyToClipboard />
       </div>
       <pre {...props} className="my-0 flex-1 rounded-none bg-transparent p-2">
         {children}

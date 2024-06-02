@@ -21,10 +21,6 @@
   }
 }
 
-.prose {
-  @apply !max-w-none text-pretty break-words;
-}
-
 /* Colors */
 
 @layer base {
@@ -47,6 +43,12 @@
     --hover: 0 0% 10%;
     --border: 0 0% 14.9%;
   }
+}
+
+/* Markdown  Content */
+
+.prose {
+  @apply !max-w-none text-pretty break-words;
 }
 
 /* Code Blocks */

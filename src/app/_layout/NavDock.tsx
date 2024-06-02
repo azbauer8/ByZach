@@ -33,21 +33,23 @@ export default function NavDock() {
         className="mx-auto mb-2 flex h-14 w-fit items-end justify-center gap-4 rounded-lg border bg-background p-2 shadow-md"
       >
         <TooltipProvider delayDuration={0}>
-          {Object.entries(pageMetadata).map(([, link]) => {
-            const active =
-              link.link === "/"
-                ? pathname === link.link
-                : pathname.startsWith(link.link)
+          {Object.entries(pageMetadata)
+            .filter(([, link]) => link.title !== pageMetadata.colophon.title)
+            .map(([, link]) => {
+              const active =
+                link.link === pageMetadata.home.link
+                  ? pathname === link.link
+                  : pathname.startsWith(link.link)
 
-            return (
-              <AppIcon
-                mouseX={mouseX}
-                key={link.title}
-                link={link}
-                active={active}
-              />
-            )
-          })}
+              return (
+                <AppIcon
+                  mouseX={mouseX}
+                  key={link.title}
+                  link={link}
+                  active={active}
+                />
+              )
+            })}
         </TooltipProvider>
       </motion.div>
     </div>
