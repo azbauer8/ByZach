@@ -96,7 +96,7 @@ export default function NavDrawer() {
           />
         </div>
         {/* popup content */}
-        <div className="grid grid-cols-3 gap-1 p-4 pt-1 ">
+        <div className="grid grid-cols-3 gap-1 p-4 pt-1">
           {Object.entries(pageMetadata)
             .filter(([, link]) => link.title !== pageMetadata.colophon.title)
             .map(([, link]) => {
