@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Uses() {
-  const software = await getUses("Software")
+  const software = await getUses()
   if (!software) return null
   return (
     <PageLayout

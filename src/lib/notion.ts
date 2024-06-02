@@ -279,7 +279,7 @@ export const getDiscoveriesInCategory = cache(async (category: string) => {
     )
 })
 
-export const getUses = cache(async (type: "Software" | "Hardware") => {
+export const getUses = cache(async () => {
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
   })
@@ -288,7 +288,7 @@ export const getUses = cache(async (type: "Software" | "Hardware") => {
     filter: {
       property: "Tags",
       multi_select: {
-        contains: type,
+        contains: "Software",
       },
     },
   })) as unknown as NotionQuery | null
@@ -298,7 +298,7 @@ export const getUses = cache(async (type: "Software" | "Hardware") => {
   const groupedUses = response.results.reduce(
     (acc, item) => {
       const category =
-        item.properties.Tags.multi_select.find((tag) => tag.name !== type)
+        item.properties.Tags.multi_select.find((tag) => tag.name !== "Software")
           ?.name ?? "General"
       if (!acc[category]) {
         acc[category] = []
@@ -313,8 +313,9 @@ export const getUses = cache(async (type: "Software" | "Hardware") => {
         createdAt: item.created_time,
         updatedAt: item.last_edited_time,
         category:
-          item.properties.Tags.multi_select.find((tag) => tag.name !== type)
-            ?.name ?? "General",
+          item.properties.Tags.multi_select.find(
+            (tag) => tag.name !== "Software"
+          )?.name ?? "General",
       })
       return acc
     },
@@ -323,7 +324,10 @@ export const getUses = cache(async (type: "Software" | "Hardware") => {
 
   const groupedAndSortedUses: Record<string, FormattedNotionResult[]> = {}
 
-  for (const [key, values] of Object.entries(groupedUses)) {
+  const sortedKeys = Object.keys(groupedUses).sort()
+
+  for (const key of sortedKeys) {
+    const values = groupedUses[key]
     groupedAndSortedUses[key] = values.sort(
       (a, b) =>
         new Date(b.updatedAt).valueOf() - new Date(a.updatedAt).valueOf()
