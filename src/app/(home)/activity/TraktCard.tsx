@@ -1,9 +1,10 @@
-import { getTrakt } from "@/lib/activity"
 import { imageSources } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
 import DynamicImage from "@/components/DynamicImage"
 import { WatchingIcon } from "@/components/Icons"
 import { Typography } from "@/components/Typography"
+
+import { getTrakt } from "./getActivity"
 
 export default async function TraktCard() {
   const traktData = await getTrakt()

@@ -34,18 +34,15 @@ export const getMarkdownContent = cache(async (pageId: string) => {
     },
   })
   const mdblocks = await n2m.pageToMarkdown(pageId)
-  return parseMdCode(n2m, mdblocks)
-})
-
-function parseMdCode(n2m: NotionToMarkdown, blocks: MdBlock[]) {
-  const formattedBlocks = blocks
+  // fixes syntax highlighting for jsx code
+  const formattedBlocks = mdblocks
     .map((block) => {
       if (block.type === "code") {
         const { parent } = block
-        if (parent.startsWith("```typescript") && parent.includes("return (")) {
+        if (parent.startsWith("```typescript") && parent.includes("/>")) {
           return { ...block, parent: parent.replace("```typescript", "```tsx") }
         }
-        if (parent.startsWith("```javascript") && parent.includes("return (")) {
+        if (parent.startsWith("```javascript") && parent.includes("/>")) {
           return { ...block, parent: parent.replace("```javascript", "```jsx") }
         }
       }
@@ -54,7 +51,7 @@ function parseMdCode(n2m: NotionToMarkdown, blocks: MdBlock[]) {
     .filter((block) => block !== undefined)
 
   return n2m.toMarkdownString(formattedBlocks).parent
-}
+})
 
 export const getPageInfo = cache(async (pageId: string) => {
   const notion = new Client({
@@ -264,8 +261,7 @@ export const getDiscoveriesInCategory = cache(async (category: string) => {
     .map((discovery) => ({
       slug: discovery.properties.Slug.formula.string,
       title: discovery.properties.Title.title[0].plain_text,
-      subtitle:
-        discovery.properties?.Description?.rich_text?.[0]?.plain_text ?? "",
+      subtitle: discovery.properties?.Description?.rich_text?.[0]?.plain_text,
       link: discovery.properties.Link.url,
       extIcon: discovery.icon?.external.url,
       image: discovery.cover?.external.url,

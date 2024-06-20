@@ -1,18 +1,18 @@
 import { siteMetadata } from "@/lib/metadata"
 
-import "@/styles/global.css"
+import "@/layout/styles.css"
 
 import type { Metadata, Viewport } from "next"
 import { JetBrains_Mono, Source_Sans_3 } from "next/font/google"
+import DotPattern from "@/layout/DotPattern"
+import Footer from "@/layout/Footer"
+import NavDrawer from "@/layout/NavDrawer"
+import Providers from "@/layout/Providers"
+import TopNav from "@/layout/TopNav"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { cn } from "@/lib/utils"
-import DotPattern from "@/app/_layout/DotPattern"
-import Footer from "@/app/_layout/Footer"
-import NavDrawer from "@/app/_layout/NavDrawer"
-import Providers from "@/app/_layout/Providers"
-import TopNav from "@/app/_layout/TopNav"
 
 const asap = Source_Sans_3({
   subsets: ["latin"],

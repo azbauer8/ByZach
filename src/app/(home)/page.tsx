@@ -8,8 +8,8 @@ import PageLayout from "@/components/PageLayout"
 import Section from "@/components/Section"
 import SocialButtons from "@/components/SocialButtons"
 
-import LastFmCard from "./LastfmCard"
-import TraktCard from "./TraktCard"
+import LastFmCard from "./activity/LastfmCard"
+import TraktCard from "./activity/TraktCard"
 
 export const metadata: Metadata = {
   title: `${pageMetadata.home.sections.header.title} | ${pageMetadata.home.sections.header.subtitle}`,

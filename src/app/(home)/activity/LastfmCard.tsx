@@ -1,11 +1,12 @@
 import Image from "next/image"
 
-import { getLastFm } from "@/lib/activity"
 import { imageSources } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
 import DynamicImage from "@/components/DynamicImage"
 import { ListeningIcon } from "@/components/Icons"
 import { Typography } from "@/components/Typography"
+
+import { getLastFm } from "./getActivity"
 
 export default async function LastFmCard() {
   const data = await getLastFm()
