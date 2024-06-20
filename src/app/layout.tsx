@@ -6,13 +6,13 @@ import type { Metadata, Viewport } from "next"
 import { JetBrains_Mono, Source_Sans_3 } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { ViewTransitions } from "next-view-transitions"
 
 import { cn } from "@/lib/utils"
+import DotPattern from "@/app/_layout/DotPattern"
 import Footer from "@/app/_layout/Footer"
-import NavDock from "@/app/_layout/NavDock"
 import NavDrawer from "@/app/_layout/NavDrawer"
 import Providers from "@/app/_layout/Providers"
+import TopNav from "@/app/_layout/TopNav"
 
 const asap = Source_Sans_3({
   subsets: ["latin"],
@@ -75,32 +75,30 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ViewTransitions>
-      <html lang="en" suppressHydrationWarning>
-        <head />
-        <body
-          className={cn(
-            "bg-accent font-sans text-foreground antialiased dark:bg-[#0a0a0a] md:pb-20 md:pt-5",
-            asap.variable,
-            sourceCode.variable
-          )}
-        >
-          {/* grid background on desktop */}
-          <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#ededea_1px,transparent_1px),linear-gradient(to_bottom,#ededea_1px,transparent_1px)] bg-[size:14px_14px] dark:bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)]" />
-
-          <Providers>
-            <div className="relative mx-auto flex min-h-dvh max-w-3xl flex-col bg-background px-5 pb-20 pt-12 shadow-md md:min-h-fit md:rounded-lg md:border md:py-5">
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body
+        className={cn(
+          "bg-accent font-sans text-foreground antialiased dark:bg-[#0a0a0a] md:py-5",
+          asap.variable,
+          sourceCode.variable
+        )}
+      >
+        <Providers>
+          <div className="z-10 mx-auto flex max-w-3xl flex-col gap-2">
+            <TopNav />
+            <div className="min-h-dvh bg-background px-5 py-5 pb-16 shadow-md md:min-h-fit md:rounded-lg md:border md:pb-5">
               {children}
-              <Footer />
             </div>
-            <NavDrawer />
-            <NavDock />
-          </Providers>
+            <Footer />
+          </div>
+          <NavDrawer />
+          <DotPattern />
+        </Providers>
 
-          <Analytics />
-          <SpeedInsights />
-        </body>
-      </html>
-    </ViewTransitions>
+        <Analytics />
+        <SpeedInsights />
+      </body>
+    </html>
   )
 }
