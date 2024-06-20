@@ -24,45 +24,45 @@ export default function PageLayout({
   updatedAt?: string
 }) {
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col gap-4">
       {/* header */}
-      <div className="space-y-1.5">
+      {previousPage && (
+        <div className="fixed left-3 top-6 hidden w-dvw min-[900px]:block">
+          <div className="mx-auto w-full max-w-4xl">
+            <TooltipProvider delayDuration={0}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="icon"
+                    className="bg-background"
+                  >
+                    <Link href={previousPage.href}>
+                      <Back2Icon />
+                    </Link>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="left">
+                  <p className="text-sm">{previousPage.title}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
+        </div>
+      )}
+      <div className="flex flex-col gap-1.5">
         {previousPage && (
-          <>
-            <Button
-              asChild
-              variant="ghost"
-              className="-ml-2 gap-1 pl-2 pr-2.5 text-base min-[900px]:hidden"
-            >
-              <Link href={previousPage.href}>
-                <BackIcon />
-                {previousPage.title}
-              </Link>
-            </Button>
-            <div className="fixed left-3 top-4 hidden w-dvw min-[900px]:block">
-              <div className="mx-auto w-full max-w-4xl">
-                <TooltipProvider delayDuration={0}>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <Button
-                        asChild
-                        variant="outline"
-                        size="icon"
-                        className="bg-background"
-                      >
-                        <Link href={previousPage.href}>
-                          <Back2Icon />
-                        </Link>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent side="left">
-                      <p className="text-sm">{previousPage.title}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
-            </div>
-          </>
+          <Button
+            asChild
+            variant="ghost"
+            className="-ml-2 w-fit gap-1 pl-2 pr-2.5 text-base min-[900px]:hidden"
+          >
+            <Link href={previousPage.href}>
+              <BackIcon />
+              {previousPage.title}
+            </Link>
+          </Button>
         )}
         <Typography variant="h2">{title}</Typography>
         {subtitle && <Typography affects="lead">{subtitle}</Typography>}

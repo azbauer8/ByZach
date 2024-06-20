@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 export default function TopNav() {
   const pathname = usePathname()
   return (
-    <header className="hidden w-full justify-between gap-1.5 md:flex">
+    <header className="z-10 hidden w-full justify-between gap-1.5 md:flex">
       <div className="flex items-center gap-1">
         {Object.entries(pageMetadata)
           .filter(([, link]) => link !== pageMetadata.colophon)
