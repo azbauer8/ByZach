@@ -5,7 +5,7 @@ export function DotPattern() {
     <svg
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-foreground-muted/50",
+        "pointer-events-none absolute inset-0 -z-10 h-full w-full fill-foreground-muted/60 dark:fill-foreground-muted/30",
         "[mask-image:radial-gradient(black,transparent)]"
       )}
     >

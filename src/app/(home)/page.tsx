@@ -1,6 +1,6 @@
 import type { Metadata } from "next/types"
 
-import { externalLinks, pageMetadata } from "@/lib/metadata"
+import { links, pageMetadata } from "@/lib/metadata"
 import { getMarkdownContent, notionIds } from "@/lib/notion"
 import ContentList from "@/components/ContentList"
 import { Markdown } from "@/components/Markdown"
@@ -22,7 +22,9 @@ export default function Home() {
       subtitle={pageMetadata.home.sections.header.subtitle}
     >
       <About />
-      <SocialButtons links={externalLinks.professional} />
+      <SocialButtons
+        links={Object.entries(links.professional).map(([, link]) => link)}
+      />
       <SiteLinks />
       <Activity />
       <Socials />
@@ -74,7 +76,9 @@ function Activity() {
 function Socials() {
   return (
     <Section title={pageMetadata.home.sections.activity.socials}>
-      <SocialButtons links={externalLinks.personal} />
+      <SocialButtons
+        links={Object.entries(links.personal).map(([, link]) => link)}
+      />
     </Section>
   )
 }

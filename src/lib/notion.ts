@@ -83,7 +83,7 @@ export const getThoughts = async () => {
       image: thought.cover?.external.url,
       createdAt: thought.created_time,
       updatedAt: thought.last_edited_time,
-      link: `/thoughts/${thought.properties.Slug.formula.string}`,
+      href: `/thoughts/${thought.properties.Slug.formula.string}`,
     }))
     .sort(
       (a, b) =>
@@ -120,7 +120,7 @@ export const getThought = async (slug: string) => {
     image: thought.cover?.external.url,
     createdAt: thought.created_time,
     updatedAt: thought.last_edited_time,
-    link: `/thoughts/${thought.properties.Slug.formula.string}`,
+    href: `/thoughts/${thought.properties.Slug.formula.string}`,
   }
 }
 
@@ -144,7 +144,7 @@ export const getSnippets = async () => {
       image: snippet.cover?.external.url,
       createdAt: snippet.created_time,
       updatedAt: snippet.last_edited_time,
-      link: `/snippets/${snippet.properties.Slug.formula.string}`,
+      href: `/snippets/${snippet.properties.Slug.formula.string}`,
     }))
     .sort(
       (a, b) =>
@@ -181,7 +181,7 @@ export const getSnippet = async (slug: string) => {
     image: snippet.cover?.external.url,
     createdAt: snippet.created_time,
     updatedAt: snippet.last_edited_time,
-    link: `/snippets/${snippet.properties.Slug.formula.string}`,
+    href: `/snippets/${snippet.properties.Slug.formula.string}`,
   }
 }
 
@@ -200,7 +200,7 @@ export const getProjects = cache(async () => {
       slug: project.properties.Slug.formula.string,
       title: project.properties.Title.title[0].plain_text,
       subtitle: project.properties.Description.rich_text[0].plain_text,
-      link: project.properties.Link.url,
+      href: project.properties.Link.url,
       extIcon: project.icon?.external.url,
       image: project.cover?.external.url,
       createdAt: project.created_time,
@@ -234,7 +234,7 @@ export const getDiscoveryCategories = cache(async () => {
           ? `${entries.length} discoveries`
           : `${entries.length} discovery`
         : "",
-      link: `/discoveries/${slug}`,
+      href: `/discoveries/${slug}`,
       entries: entries?.length ?? 0,
     })
   }
@@ -262,7 +262,7 @@ export const getDiscoveriesInCategory = cache(async (category: string) => {
       slug: discovery.properties.Slug.formula.string,
       title: discovery.properties.Title.title[0].plain_text,
       subtitle: discovery.properties?.Description?.rich_text?.[0]?.plain_text,
-      link: discovery.properties.Link.url,
+      href: discovery.properties.Link.url,
       extIcon: discovery.icon?.external.url,
       image: discovery.cover?.external.url,
       category: discovery.properties.Tags.multi_select[0].name,
@@ -303,7 +303,7 @@ export const getUses = cache(async () => {
         slug: item.properties.Slug.formula.string,
         title: item.properties.Title.title[0].plain_text,
         subtitle: item.properties.Description.rich_text[0].plain_text,
-        link: item.properties.Link.url,
+        href: item.properties.Link.url,
         extIcon: item.icon?.external.url,
         image: item.cover?.external.url,
         createdAt: item.created_time,

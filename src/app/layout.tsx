@@ -1,4 +1,4 @@
-import { siteMetadata } from "@/lib/metadata"
+import { links, siteMetadata } from "@/lib/metadata"
 
 import "@/layout/styles.css"
 
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     shortcut: siteMetadata.favicon,
   },
   alternates: {
-    canonical: siteMetadata.here.full,
+    canonical: links.here.full,
   },
-  metadataBase: new URL(siteMetadata.here.full),
+  metadataBase: new URL(links.here.full),
   robots: {
     index: true,
     follow: true,
@@ -52,18 +52,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  twitter: {
-    title: siteMetadata.title,
-    card: "summary_large_image",
-  },
-  openGraph: {
-    title: siteMetadata.title,
-    description: siteMetadata.description,
-    url: siteMetadata.here.full,
-    siteName: siteMetadata.title,
-    locale: "en_US",
-    type: "website",
   },
 }
 
@@ -85,7 +73,7 @@ export default function RootLayout({
         )}
       >
         <Providers>
-          <div className="z-10 mx-auto flex max-w-3xl flex-col gap-2">
+          <div className="mx-auto flex max-w-3xl flex-col gap-1.5">
             <TopNav />
             <div className="min-h-dvh bg-background px-5 py-5 pb-16 shadow-md md:min-h-fit md:rounded-lg md:border md:pb-5">
               {children}

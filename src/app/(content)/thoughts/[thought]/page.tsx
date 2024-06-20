@@ -1,4 +1,4 @@
-import { pageMetadata, siteMetadata } from "@/lib/metadata"
+import { pageMetadata } from "@/lib/metadata"
 import { getMarkdownContent, getThought, getThoughts } from "@/lib/notion"
 import { formatDate } from "@/lib/utils"
 import { Markdown } from "@/components/Markdown"
@@ -19,18 +19,6 @@ export async function generateMetadata({
   return {
     title,
     description: subtitle,
-    openGraph: {
-      title,
-      description: subtitle,
-      type: "article",
-      url: `${siteMetadata.here.full}${thought.link}`,
-      publishedTime: thought.updatedAt || undefined,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: subtitle,
-    },
   }
 }
 
@@ -58,7 +46,7 @@ export default async function Thought({
       subtitle={thought.subtitle}
       updatedAt={formatDate(thought.updatedAt)}
       previousPage={{
-        link: pageMetadata.thoughts.link,
+        href: pageMetadata.thoughts.href,
         title: pageMetadata.thoughts.title,
       }}
     >

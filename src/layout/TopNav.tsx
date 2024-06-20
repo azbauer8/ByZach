@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { pageMetadata, siteMetadata } from "@/lib/metadata"
+import { links, pageMetadata } from "@/lib/metadata"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
@@ -16,9 +16,9 @@ export default function TopNav() {
           .filter(([, link]) => link !== pageMetadata.colophon)
           .map(([, link]) => {
             const active =
-              link.link === pageMetadata.home.link
-                ? pathname === link.link
-                : pathname.startsWith(link.link)
+              link.href === pageMetadata.home.href
+                ? pathname === link.href
+                : pathname.startsWith(link.href)
 
             return (
               <Button
@@ -31,7 +31,7 @@ export default function TopNav() {
                 )}
                 asChild
               >
-                <Link href={link.link}>{link.title}</Link>
+                <Link href={link.href}>{link.title}</Link>
               </Button>
             )
           })}
@@ -44,7 +44,7 @@ export default function TopNav() {
           className="h-fit bg-background px-2.5 py-1 text-foreground-muted"
           asChild
         >
-          <Link href={pageMetadata.colophon.link}>
+          <Link href={pageMetadata.colophon.href}>
             {pageMetadata.colophon.title}
           </Link>
         </Button>
@@ -54,8 +54,8 @@ export default function TopNav() {
           className="h-fit bg-background px-2.5 py-1 text-foreground-muted"
           asChild
         >
-          <Link href={siteMetadata.source.link} target="_blank">
-            {siteMetadata.source.title}
+          <Link href={links.source.href} target="_blank">
+            {links.source.title}
           </Link>
         </Button>
       </div>

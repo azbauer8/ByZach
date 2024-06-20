@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { pageMetadata, siteMetadata } from "@/lib/metadata"
+import { links, pageMetadata, siteMetadata } from "@/lib/metadata"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { DrawerIcon } from "@/components/Icons"
@@ -101,15 +101,15 @@ export default function NavDrawer() {
             .filter(([, link]) => link.title !== pageMetadata.colophon.title)
             .map(([, link]) => {
               const active =
-                link.link === pageMetadata.home.link
-                  ? pathname === link.link
-                  : pathname.startsWith(link.link)
+                link.href === pageMetadata.home.href
+                  ? pathname === link.href
+                  : pathname.startsWith(link.href)
 
-              const fullyActive = pathname === link.link
+              const fullyActive = pathname === link.href
 
               return (
                 <Button
-                  key={link.link}
+                  key={link.href}
                   asChild
                   onClick={() => toggleOpen(false)}
                   variant={active ? "outline" : "ghost"}
@@ -120,7 +120,7 @@ export default function NavDrawer() {
                     !fullyActive && "bg-transparent"
                   )}
                 >
-                  <Link href={link.link}>
+                  <Link href={link.href}>
                     <link.icon />
                     {link.title}
                   </Link>
@@ -141,7 +141,7 @@ export default function NavDrawer() {
                 className="h-fit px-2.5 py-1 text-foreground-muted"
                 onClick={() => toggleOpen(false)}
               >
-                <Link href={pageMetadata.colophon.link}>
+                <Link href={pageMetadata.colophon.href}>
                   {pageMetadata.colophon.title}
                 </Link>
               </Button>
@@ -152,8 +152,8 @@ export default function NavDrawer() {
                 className="h-fit px-2.5 py-1 text-foreground-muted"
                 onClick={() => toggleOpen(false)}
               >
-                <Link href={siteMetadata.source.link} target="_blank">
-                  {siteMetadata.source.title}
+                <Link href={links.source.href} target="_blank">
+                  {links.source.title}
                 </Link>
               </Button>
             </div>

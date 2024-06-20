@@ -1,4 +1,4 @@
-import { pageMetadata, siteMetadata } from "@/lib/metadata"
+import { links, pageMetadata, siteMetadata } from "@/lib/metadata"
 import { getMarkdownContent, getSnippet, getSnippets } from "@/lib/notion"
 import { formatDate } from "@/lib/utils"
 import { Markdown } from "@/components/Markdown"
@@ -19,18 +19,6 @@ export async function generateMetadata({
   return {
     title,
     description: subtitle,
-    openGraph: {
-      title,
-      description: subtitle,
-      type: "article",
-      url: `${siteMetadata.here.full}${snippet.link}`,
-      publishedTime: snippet.updatedAt || undefined,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: subtitle,
-    },
   }
 }
 
@@ -58,7 +46,7 @@ export default async function Snippet({
       subtitle={snippet.subtitle}
       updatedAt={formatDate(snippet.updatedAt)}
       previousPage={{
-        link: pageMetadata.snippets.link,
+        href: pageMetadata.snippets.href,
         title: pageMetadata.snippets.title,
       }}
     >

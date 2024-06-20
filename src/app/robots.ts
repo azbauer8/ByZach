@@ -1,4 +1,4 @@
-import { siteMetadata } from "@/lib/metadata"
+import { links } from "@/lib/metadata"
 
 export default function robots() {
   return {
@@ -7,6 +7,6 @@ export default function robots() {
         userAgent: "*",
       },
     ],
-    sitemap: `${siteMetadata.here.full}/sitemap.xml`,
+    sitemap: `${links.here.full}/sitemap.xml`,
   }
 }

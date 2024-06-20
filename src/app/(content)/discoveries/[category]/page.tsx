@@ -44,7 +44,7 @@ export default async function DiscoveryCategory({
     <PageLayout
       title={category}
       previousPage={{
-        link: pageMetadata.discoveries.link,
+        href: pageMetadata.discoveries.href,
         title: pageMetadata.discoveries.title,
       }}
     >

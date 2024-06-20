@@ -102,7 +102,7 @@ export type FormattedNotionResult = {
   slug: string
   title: string
   subtitle: string
-  link: string
+  href: string
   extIcon: string | undefined
   image: string | undefined
   createdAt: string

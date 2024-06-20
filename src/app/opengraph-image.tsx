@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og"
 
-import { pageMetadata, siteMetadata } from "@/lib/metadata"
+import { links, pageMetadata, siteMetadata } from "@/lib/metadata"
 
 export const alt = `${pageMetadata.home.sections.header.title} | ${pageMetadata.home.sections.header.subtitle}`
 export const size = {
@@ -42,7 +42,7 @@ export default async function Image() {
               <img
                 alt="Vercel"
                 height={180}
-                src={`${siteMetadata.here.full}${siteMetadata.favicon}`}
+                src={`${links.here.full}${siteMetadata.favicon}`}
                 width={180}
               />
               <div
@@ -83,7 +83,7 @@ export default async function Image() {
                 fontWeight: 500,
               }}
             >
-              {siteMetadata.here.short}
+              {links.here.short}
             </span>
           </div>
         </div>

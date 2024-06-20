@@ -18,7 +18,7 @@ export default function PageLayout({
   updatedAt,
 }: {
   children: React.ReactNode
-  previousPage?: { link: string; title: string }
+  previousPage?: { href: string; title: string }
   title: string
   subtitle?: string
   updatedAt?: string
@@ -34,7 +34,7 @@ export default function PageLayout({
               variant="ghost"
               className="-ml-2 gap-1 pl-2 pr-2.5 text-base min-[900px]:hidden"
             >
-              <Link href={previousPage.link}>
+              <Link href={previousPage.href}>
                 <BackIcon />
                 {previousPage.title}
               </Link>
@@ -50,7 +50,7 @@ export default function PageLayout({
                         size="icon"
                         className="bg-background"
                       >
-                        <Link href={previousPage.link}>
+                        <Link href={previousPage.href}>
                           <Back2Icon />
                         </Link>
                       </Button>

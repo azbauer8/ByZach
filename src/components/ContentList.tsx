@@ -11,7 +11,7 @@ type ContentListProps = {
   list: {
     title: string
     subtitle: string
-    link: string
+    href: string
     icon?: Icon
     extIcon?: string
     image?: string
@@ -38,7 +38,7 @@ export default function ContentList({
     >
       {list.map((item) => (
         <Button
-          key={item.link}
+          key={item.href}
           asChild
           variant={noBorder ? "ghost" : "outline"}
           className={cn(
@@ -46,7 +46,7 @@ export default function ContentList({
             noBg ? "bg-transparent" : "bg-accent"
           )}
         >
-          <Link href={item.link} target={isExternal ? "_blank" : undefined}>
+          <Link href={item.href} target={isExternal ? "_blank" : undefined}>
             <div className="flex w-full items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 {item?.icon && <item.icon />}

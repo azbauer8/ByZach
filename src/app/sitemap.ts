@@ -1,4 +1,4 @@
-import { pageMetadata, siteMetadata } from "@/lib/metadata"
+import { links, pageMetadata } from "@/lib/metadata"
 import {
   getDiscoveryCategories,
   getProjects,
@@ -9,7 +9,7 @@ import {
 export default async function sitemap() {
   const projects = await getProjects().then((projects) =>
     projects?.map((project) => ({
-      url: `${siteMetadata.here.full}/projects/${project.slug}`,
+      url: `${links.here.full}/projects/${project.slug}`,
       lastModified: project.updatedAt,
     }))
   )
@@ -18,13 +18,13 @@ export default async function sitemap() {
   const usesArray =
     [
       {
-        url: `${siteMetadata.here.full}${pageMetadata.uses.link}`,
+        url: `${links.here.full}${pageMetadata.uses.href}`,
       },
     ] || []
 
   const discoveries = await getDiscoveryCategories().then((discoveries) =>
     discoveries?.map((discovery) => ({
-      url: `${siteMetadata.here.full}${discovery.link}`,
+      url: `${links.here.full}${discovery.href}`,
     }))
   )
 
@@ -32,27 +32,27 @@ export default async function sitemap() {
 
   const thoughts = await getThoughts().then((thought) =>
     thought?.map((thought) => ({
-      url: `${siteMetadata.here.full}${pageMetadata.thoughts.link}/${thought.slug}`,
+      url: `${links.here.full}${pageMetadata.thoughts.href}/${thought.slug}`,
       lastModified: thought.updatedAt,
     }))
   )
 
   const snippets = await getSnippets().then((snippet) =>
     snippet?.map((snippet) => ({
-      url: `${siteMetadata.here.full}${pageMetadata.snippets.link}/${snippet.slug}`,
+      url: `${links.here.full}${pageMetadata.snippets.href}/${snippet.slug}`,
       lastModified: snippet.updatedAt,
     }))
   )
 
   const routes = [
     "",
-    pageMetadata.projects.link,
-    pageMetadata.uses.link,
-    pageMetadata.thoughts.link,
-    pageMetadata.snippets.link,
-    pageMetadata.discoveries.link,
+    pageMetadata.projects.href,
+    pageMetadata.uses.href,
+    pageMetadata.thoughts.href,
+    pageMetadata.snippets.href,
+    pageMetadata.discoveries.href,
   ].map((route) => ({
-    url: `${siteMetadata.here.full}${route}`,
+    url: `${links.here.full}${route}`,
     lastModified: new Date().toISOString().split("T")[0],
   }))
 

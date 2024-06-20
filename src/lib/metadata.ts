@@ -32,21 +32,13 @@ export const siteMetadata = {
   description: `Zach Bauer's Personal Website`,
   footer: "Created by Zach Bauer",
   favicon: "/favicon.png",
-  here: {
-    full: "https://byzach.dev",
-    short: "byzach.dev",
-  },
-  source: {
-    title: "Source",
-    link: "https://github.com/azbauer8/ByZach",
-  },
 }
 
 export const pageMetadata = {
   home: {
     title: "Home",
     subtitle: "",
-    link: "/",
+    href: "/",
     icon: HomeIcon,
     sections: {
       header: {
@@ -67,74 +59,82 @@ export const pageMetadata = {
   colophon: {
     title: "Colophon",
     subtitle: "An overview of how I built this site.",
-    link: "/colophon",
+    href: "/colophon",
     icon: HomeIcon,
   },
   projects: {
     title: "Projects",
     subtitle: "My latest work and experiments.",
-    link: "/projects",
+    href: "/projects",
     icon: ProjectsIcon,
   },
   thoughts: {
     title: "Thoughts",
     subtitle: "Poorly conveyed ideas about web dev and design.",
-    link: "/thoughts",
+    href: "/thoughts",
     icon: ThoughtsIcon,
   },
   snippets: {
     title: "Snippets",
     subtitle: "Bits of code I often refer back to.",
-    link: "/snippets",
+    href: "/snippets",
     icon: SnippetsIcon,
   },
   discoveries: {
     title: "Discoveries",
     subtitle: "Useful links I've found around the web.",
-    link: "/discoveries",
+    href: "/discoveries",
     icon: DiscoveriesIcon,
   },
   uses: {
     title: "Uses",
     subtitle: "Tools and technologies I use on a daily basis.",
-    link: "/uses",
+    href: "/uses",
     icon: UsesIcon,
   },
 }
 
-export const externalLinks = {
-  professional: [
-    {
+export const links = {
+  here: {
+    full: "https://byzach.dev",
+    short: "byzach.dev",
+  },
+  source: {
+    title: "Source",
+    href: "https://github.com/azbauer8/ByZach",
+  },
+  professional: {
+    github: {
       name: "GitHub",
       href: "https://github.com/azbauer8",
       icon: GithubIcon,
     },
-    {
+    email: {
       name: "Email",
       href: "mailto:hi@byzach.dev",
       icon: EmailIcon,
     },
-    {
+    resume: {
       name: "Resume",
       href: "/Resume.pdf",
       icon: ResumeIcon,
     },
-  ],
-  personal: [
-    {
+  },
+  personal: {
+    spotify: {
       name: "Spotify",
       href: "https://open.spotify.com/user/31krvuuup255gx2tkfuueknhctwy",
       icon: SpotifyIcon,
     },
-    {
+    lastfm: {
       name: "Last.fm",
       href: "https://www.last.fm/user/zacharlatanz",
       icon: LastfmIcon,
     },
-    {
+    trakt: {
       name: "Trakt",
       href: "https://trakt.tv/users/zacharlatan",
       icon: TraktIcon,
     },
-  ],
+  },
 }
