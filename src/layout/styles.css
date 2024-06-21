@@ -22,7 +22,6 @@
 }
 
 /* Colors */
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -46,13 +45,11 @@
 }
 
 /* Markdown  Content */
-
 .prose {
   @apply !max-w-none text-pretty break-words;
 }
 
 /* Code Blocks */
-
 code[data-theme*=" "],
 code[data-theme*=" "] span {
   color: var(--shiki-light);

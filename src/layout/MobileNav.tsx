@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { DrawerIcon } from "@/components/Icons"
 import { Typography } from "@/components/Typography"
 
-export default function NavDrawer() {
+export default function MobileNav() {
   const [open, setOpen] = useState(false)
   const [pageTitle, setPageTitle] = useState<string>(pageMetadata.home.title)
   const pathname = usePathname()
@@ -130,9 +130,16 @@ export default function NavDrawer() {
         </div>
         <footer className="border-t py-2.5">
           <div className="flex w-full items-center justify-between gap-2 px-5">
-            <p className="truncate text-sm text-foreground-muted">
-              {siteMetadata.footer}
-            </p>
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="h-fit px-2.5 py-1 text-foreground-muted"
+            >
+              <Link href={links.professional.github.href}>
+                {siteMetadata.footer}
+              </Link>
+            </Button>
             <div className="flex items-center gap-1">
               <Button
                 asChild

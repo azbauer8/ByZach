@@ -7,7 +7,7 @@ import { links, pageMetadata } from "@/lib/metadata"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-export default function TopNav() {
+export default function DesktopNav() {
   const pathname = usePathname()
   return (
     <header className="z-10 hidden w-full justify-between gap-1.5 md:flex">

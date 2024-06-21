@@ -4,11 +4,11 @@ import "@/layout/styles.css"
 
 import type { Metadata, Viewport } from "next"
 import { JetBrains_Mono, Source_Sans_3 } from "next/font/google"
+import DesktopFooter from "@/layout/DesktopFooter"
+import DesktopNav from "@/layout/DesktopNav"
 import DotPattern from "@/layout/DotPattern"
-import Footer from "@/layout/Footer"
-import NavDrawer from "@/layout/NavDrawer"
+import MobileNav from "@/layout/MobileNav"
 import Providers from "@/layout/Providers"
-import TopNav from "@/layout/TopNav"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -74,13 +74,13 @@ export default function RootLayout({
       >
         <Providers>
           <div className="mx-auto flex max-w-3xl flex-col gap-1.5">
-            <TopNav />
+            <DesktopNav />
             <div className="min-h-dvh bg-background px-5 py-5 pb-16 shadow-md md:min-h-fit md:rounded-lg md:border md:pb-5">
               {children}
             </div>
-            <Footer />
+            <DesktopFooter />
           </div>
-          <NavDrawer />
+          <MobileNav />
           <DotPattern />
         </Providers>
 

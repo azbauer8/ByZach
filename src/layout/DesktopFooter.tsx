@@ -3,7 +3,7 @@ import Link from "next/link"
 import { links, siteMetadata } from "@/lib/metadata"
 import { Button } from "@/components/ui/button"
 
-export default function Footer() {
+export default function DesktopFooter() {
   return (
     <footer className="hidden w-full justify-end gap-1 md:flex">
       <Button
