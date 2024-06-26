@@ -1,40 +1,12 @@
-import {
-  createElement,
-  type DetailedHTMLProps,
-  type HTMLAttributes,
-  type ReactNode,
-} from "react"
+import type { DetailedHTMLProps, HTMLAttributes } from "react"
 import type { ImageProps } from "next/image"
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc"
 import rehypePrettyCode from "rehype-pretty-code"
 
-import { slugify } from "@/lib/utils"
 import CopyToClipboard from "@/components/CopyCode"
 import DynamicImage from "@/components/DynamicImage"
 
-function createHeading(level: number) {
-  return ({ children }: { children: ReactNode }) => {
-    const slug = slugify(children?.toString() || "")
-    return createElement(
-      CustomLink,
-      {
-        href: `#${slug}`,
-        id: slug,
-      },
-      createElement(`h${level}`, {}, children)
-    )
-  }
-}
-
 function CustomLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
-  const href = props.href?.toString()
-  if (href?.startsWith("#"))
-    return (
-      <a
-        className="text-foreground no-underline underline-offset-2 hover:underline"
-        {...props}
-      />
-    )
   return (
     <a
       className="text-foreground no-underline underline-offset-2 hover:underline"
@@ -68,12 +40,6 @@ export function Pre({
   )
 }
 const components = {
-  h1: createHeading(1),
-  h2: createHeading(2),
-  h3: createHeading(3),
-  h4: createHeading(4),
-  h5: createHeading(5),
-  h6: createHeading(6),
   Image: RoundedImage,
   a: CustomLink,
   pre: Pre,
