@@ -2,8 +2,7 @@ import "server-only"
 
 export async function getLastFm() {
   const response = await fetch(
-    `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`,
-    { next: { revalidate: 10 } }
+    `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=zacharlatanz&api_key=${process.env.LAST_FM_API}&format=json`
   )
   if (!response.ok) {
     return undefined
@@ -15,10 +14,7 @@ export async function getLastFm() {
     ? "Now Playing"
     : getTimeDiff(latestTrack.date["#text"], "lastfm")
 
-  return {
-    latestTrack,
-    playingWhen,
-  }
+  return { latestTrack, playingWhen }
 }
 
 export async function getTrakt() {
@@ -30,7 +26,6 @@ export async function getTrakt() {
         "trakt-api-key": `${process.env.TRAKT_API}`,
         "trakt-api-version": "2",
       },
-      next: { revalidate: 10 },
     }
   )
   if (!response.ok) {
@@ -64,10 +59,7 @@ export async function getTrakt() {
   }
   const latestPoster = await getTraktPoster(latestData.tmdbId, latestData.type)
   if (!latestPoster) return { data: latestData, poster: "" }
-  return {
-    data: latestData,
-    poster: latestPoster,
-  }
+  return { data: latestData, poster: latestPoster }
 }
 
 async function getTraktPoster(
@@ -138,40 +130,20 @@ function getTimeDiff(givenDate: string, type: "lastfm" | "trakt") {
   return `${daysAgo} days ago`
 }
 
-type LastFmData = {
-  recenttracks: {
-    track: LastFmTrack[]
-  }
-}
+type LastFmData = { recenttracks: { track: LastFmTrack[] } }
 
 type LastFmTrack = {
   name: string
   url: string
   date: { "#text": string }
   "@attr"?: { nowplaying: "true" }
-  artist: {
-    "#text": string
-  }
-  album: {
-    "#text": string
-  }
+  artist: { "#text": string }
+  album: { "#text": string }
   image: [
-    {
-      size: "small"
-      "#text": string
-    },
-    {
-      size: "medium"
-      "#text": string
-    },
-    {
-      size: "large"
-      "#text": string
-    },
-    {
-      size: "extralarge"
-      "#text": string
-    },
+    { size: "small"; "#text": string },
+    { size: "medium"; "#text": string },
+    { size: "large"; "#text": string },
+    { size: "extralarge"; "#text": string },
   ]
 }
 
@@ -185,33 +157,18 @@ type TraktEntry = {
     tagline: string
     overview: string
     year: number
-    ids: {
-      trakt: number
-      tmdb: number
-      slug: string
-      imdb: string
-    }
+    ids: { trakt: number; tmdb: number; slug: string; imdb: string }
   }
   episode?: {
     title: string
     season: number
     number: number
-    ids: {
-      trakt: number
-      tmdb: number
-      slug: string
-      imdb: string
-    }
+    ids: { trakt: number; tmdb: number; slug: string; imdb: string }
   }
   show?: {
     title: string
     year: number
-    ids: {
-      trakt: number
-      tmdb: number
-      slug: string
-      imdb: string
-    }
+    ids: { trakt: number; tmdb: number; slug: string; imdb: string }
   }
 }
 

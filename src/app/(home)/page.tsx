@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import type { Metadata } from "next/types"
 
 import { links, pageMetadata } from "@/lib/metadata"
@@ -14,6 +15,8 @@ import TraktCard from "./activity/TraktCard"
 export const metadata: Metadata = {
   title: `${pageMetadata.home.sections.header.title} | ${pageMetadata.home.sections.header.subtitle}`,
 }
+
+export const experimental_ppr = true
 
 export default function Home() {
   return (
@@ -66,8 +69,12 @@ function Activity() {
       subtitle={pageMetadata.home.sections.activity.subtitle}
     >
       <div className="-mx-2.5 grid grid-cols-1 gap-1 md:grid-cols-2">
-        <LastFmCard />
-        <TraktCard />
+        <Suspense fallback={<div>Loading Last.fm...</div>}>
+          <LastFmCard />
+        </Suspense>
+        <Suspense fallback={<div>Loading Trakt...</div>}>
+          <TraktCard />
+        </Suspense>
       </div>
     </Section>
   )

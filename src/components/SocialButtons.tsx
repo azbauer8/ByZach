@@ -6,11 +6,7 @@ import type { Icon } from "@/components/Icons"
 export default function SocialButtons({
   links,
 }: {
-  links: {
-    name: string
-    href: string
-    icon: Icon
-  }[]
+  links: { name: string; href: string; icon: Icon }[]
 }) {
   return (
     <div className="-mx-2.5 flex flex-wrap items-center gap-1">

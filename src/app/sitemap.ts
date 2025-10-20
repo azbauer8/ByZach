@@ -15,12 +15,7 @@ export default async function sitemap() {
   )
   const projectsArray = projects || []
 
-  const usesArray =
-    [
-      {
-        url: `${links.here.full}${pageMetadata.uses.href}`,
-      },
-    ] || []
+  const usesArray = [{ url: `${links.here.full}${pageMetadata.uses.href}` }]
 
   const discoveries = await getDiscoveryCategories().then((discoveries) =>
     discoveries?.map((discovery) => ({

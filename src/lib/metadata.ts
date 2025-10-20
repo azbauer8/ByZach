@@ -5,6 +5,7 @@ import nowPlaying from "~/public/now_playing.svg"
 import traktFallback from "~/public/trakt_placeholder.png"
 
 import {
+  AppleMusicIcon,
   DiscoveriesIcon,
   EmailIcon,
   GithubIcon,
@@ -13,7 +14,6 @@ import {
   ProjectsIcon,
   ResumeIcon,
   SnippetsIcon,
-  SpotifyIcon,
   ThoughtsIcon,
   TraktIcon,
   UsesIcon,
@@ -41,10 +41,7 @@ export const pageMetadata = {
     href: "/",
     icon: HomeIcon,
     sections: {
-      header: {
-        title: "Zach Bauer",
-        subtitle: "Full Stack Developer",
-      },
+      header: { title: "Zach Bauer", subtitle: "Full Stack Developer" },
       siteLinks: {
         title: "Links",
         subtitle: "Peruse the site, if you so desire.",
@@ -95,36 +92,22 @@ export const pageMetadata = {
 }
 
 export const links = {
-  here: {
-    full: "https://byzach.dev",
-    short: "byzach.dev",
-  },
-  source: {
-    title: "Source",
-    href: "https://github.com/azbauer8/ByZach",
-  },
+  here: { full: "https://byzach.dev", short: "byzach.dev" },
+  source: { title: "Source", href: "https://github.com/azbauer8/ByZach" },
   professional: {
     github: {
       name: "GitHub",
       href: "https://github.com/azbauer8",
       icon: GithubIcon,
     },
-    email: {
-      name: "Email",
-      href: "mailto:hi@byzach.dev",
-      icon: EmailIcon,
-    },
-    resume: {
-      name: "Resume",
-      href: "/Resume.pdf",
-      icon: ResumeIcon,
-    },
+    email: { name: "Email", href: "mailto:hi@byzach.dev", icon: EmailIcon },
+    resume: { name: "Resume", href: "/Resume.pdf", icon: ResumeIcon },
   },
   personal: {
-    spotify: {
-      name: "Spotify",
-      href: "https://open.spotify.com/user/31krvuuup255gx2tkfuueknhctwy",
-      icon: SpotifyIcon,
+    apple_music: {
+      name: "Apple Music",
+      href: "https://music.apple.com/profile/zacharlatan",
+      icon: AppleMusicIcon,
     },
     lastfm: {
       name: "Last.fm",
