@@ -32,6 +32,7 @@ export async function getTrakt() {
     return undefined
   }
   const traktData: TraktEntry[] | undefined = await response.json()
+
   if (!traktData) return
   const latest = traktData[0]
   const latestData = {
@@ -58,8 +59,46 @@ export async function getTrakt() {
         : latest.movie?.ids.tmdb,
   }
   const latestPoster = await getTraktPoster(latestData.tmdbId, latestData.type)
-  if (!latestPoster) return { data: latestData, poster: "" }
-  return { data: latestData, poster: latestPoster }
+
+  const ratingResponse = await fetch(
+    "https://api.trakt.tv/users/zacharlatan/ratings/movies",
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "trakt-api-key": `${process.env.TRAKT_API}`,
+        "trakt-api-version": "2",
+      },
+    }
+  )
+  if (!ratingResponse.ok) {
+    return undefined
+  }
+  const ratingData: TraktRatingEntry[] | undefined = await ratingResponse.json()
+
+  if (!ratingData) return
+  const latestRating = ratingData[0]
+  const latestRatingData = {
+    type: latestRating.type,
+    title: latestRating.movie ? latestRating.movie.title : "",
+    url: `https://trakt.tv/movies/${latestRating.movie?.ids.slug}`,
+    year: latestRating.movie?.year,
+    rating: latestRating.rating,
+    ratedWhen: latestRating.rated_at
+      ? getTimeDiff(latestRating.rated_at, "trakt")
+      : "Currently Watching",
+    tmdbId: latestRating.movie?.ids.tmdb,
+  }
+  const latestRatingPoster = await getTraktPoster(
+    latestRatingData.tmdbId,
+    latestRatingData.type
+  )
+
+  return {
+    data: latestData,
+    poster: latestPoster ?? "",
+    ratingData: latestRatingData,
+    ratingPoster: latestRatingPoster ?? "",
+  }
 }
 
 async function getTraktPoster(
@@ -74,7 +113,6 @@ async function getTraktPoster(
       accept: "application/json",
       Authorization: `Bearer ${process.env.TMDB_API}`,
     },
-    next: { revalidate: 10 },
   }
   const baseData: TraktPosterBase | undefined = await fetch(baseUrl, options)
     .then((res) => res.json())
@@ -166,6 +204,17 @@ type TraktEntry = {
     ids: { trakt: number; tmdb: number; slug: string; imdb: string }
   }
   show?: {
+    title: string
+    year: number
+    ids: { trakt: number; tmdb: number; slug: string; imdb: string }
+  }
+}
+
+type TraktRatingEntry = {
+  rated_at: string
+  rating: number
+  type: "movie" | "episode"
+  movie?: {
     title: string
     year: number
     ids: { trakt: number; tmdb: number; slug: string; imdb: string }

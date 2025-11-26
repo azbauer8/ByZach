@@ -10,7 +10,7 @@ import Section from "@/components/Section"
 import SocialButtons from "@/components/SocialButtons"
 
 import LastFmCard from "./activity/LastfmCard"
-import TraktCard from "./activity/TraktCard"
+import TraktCards from "./activity/TraktCard"
 
 export const metadata: Metadata = {
   title: `${pageMetadata.home.sections.header.title} | ${pageMetadata.home.sections.header.subtitle}`,
@@ -68,12 +68,12 @@ function Activity() {
       title={pageMetadata.home.sections.activity.title}
       subtitle={pageMetadata.home.sections.activity.subtitle}
     >
-      <div className="-mx-2.5 grid grid-cols-1 gap-1 md:grid-cols-2">
+      <div className="-mx-2.5 grid grid-cols-1 gap-1 md:grid-cols-3">
         <Suspense fallback={<div>Loading Last.fm...</div>}>
           <LastFmCard />
         </Suspense>
         <Suspense fallback={<div>Loading Trakt...</div>}>
-          <TraktCard />
+          <TraktCards />
         </Suspense>
       </div>
     </Section>
