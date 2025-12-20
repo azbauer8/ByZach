@@ -4,6 +4,7 @@ import type { Metadata } from "next/types"
 
 import { links, pageMetadata } from "@/lib/metadata"
 import { getMarkdownContent, notionIds } from "@/lib/notion"
+import { Skeleton } from "@/components/ui/skeleton"
 import ContentList from "@/components/ContentList"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
@@ -72,10 +73,43 @@ function Activity() {
       subtitle={pageMetadata.home.sections.activity.subtitle}
     >
       <div className="-mx-2.5 grid grid-cols-1 gap-1 md:grid-cols-3">
-        <Suspense fallback={<div>Loading Last.fm...</div>}>
+        <Suspense
+          fallback={
+            <div className="flex items-center gap-6 px-2.5 py-2">
+              <Skeleton className="aspect-square w-full max-w-[25%]" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-18" />
+                <Skeleton className="h-4 w-30" />
+                <Skeleton className="h-4 w-22" />
+              </div>
+            </div>
+          }
+        >
           <LastFmCard />
         </Suspense>
-        <Suspense fallback={<div>Loading Trakt...</div>}>
+
+        <Suspense
+          fallback={
+            <>
+              <div className="flex items-center gap-6 px-2.5 py-2">
+                <Skeleton className="aspect-2/3 w-full max-w-[25%]" />
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-18" />
+                  <Skeleton className="h-4 w-30" />
+                  <Skeleton className="h-4 w-22" />
+                </div>
+              </div>
+              <div className="flex items-center gap-6 px-2.5 py-2">
+                <Skeleton className="aspect-2/3 w-full max-w-[25%]" />
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-18" />
+                  <Skeleton className="h-4 w-30" />
+                  <Skeleton className="h-4 w-22" />
+                </div>
+              </div>
+            </>
+          }
+        >
           <TraktCards />
         </Suspense>
       </div>
