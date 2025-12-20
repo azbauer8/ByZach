@@ -1,17 +1,17 @@
-import { links, pageMetadata, siteMetadata } from "@/lib/metadata"
+import { cacheLife, cacheTag } from "next/cache"
+
+import { pageMetadata } from "@/lib/metadata"
 import { getMarkdownContent, getSnippet, getSnippets } from "@/lib/notion"
 import { formatDate } from "@/lib/utils"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
 
-export const dynamicParams = false
-
 export async function generateMetadata({
   params,
 }: {
-  params: { snippet: string }
+  params: Promise<{ snippet: string }>
 }) {
-  const snippet = await getSnippet(params.snippet)
+  const snippet = await getSnippet((await params).snippet)
   if (!snippet) return {}
 
   const { subtitle, title } = snippet
@@ -34,9 +34,14 @@ export async function generateStaticParams() {
 export default async function Snippet({
   params,
 }: {
-  params: { snippet: string }
+  params: Promise<{ snippet: string }>
 }) {
-  const snippet = await getSnippet(params.snippet)
+  "use cache"
+  cacheLife("days")
+  cacheTag("cache")
+
+  const snippet = await getSnippet((await params).snippet)
+
   if (!snippet) return null
 
   const mdContent = await getMarkdownContent(snippet.id)

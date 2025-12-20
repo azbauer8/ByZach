@@ -1,3 +1,4 @@
+import { cacheLife, cacheTag } from "next/cache"
 import type { Metadata } from "next/types"
 
 import { pageMetadata } from "@/lib/metadata"
@@ -11,6 +12,10 @@ export const metadata: Metadata = {
 }
 
 export default async function Thoughts() {
+  "use cache"
+  cacheLife("days")
+  cacheTag("cache")
+
   const thoughts = await getThoughts()
   if (!thoughts) return null
 

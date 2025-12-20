@@ -1,4 +1,5 @@
 import { Suspense } from "react"
+import { cacheLife, cacheTag } from "next/cache"
 import type { Metadata } from "next/types"
 
 import { links, pageMetadata } from "@/lib/metadata"
@@ -34,6 +35,10 @@ export default function Home() {
 }
 
 async function About() {
+  "use cache"
+  cacheLife("days")
+  cacheTag("cache")
+
   const aboutContent = await getMarkdownContent(notionIds.about)
   return <Markdown source={aboutContent} />
 }

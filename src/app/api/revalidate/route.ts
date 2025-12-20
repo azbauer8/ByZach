@@ -27,7 +27,7 @@ export async function GET(request: Request) {
 
   console.log("Revalidating...")
   revalidatePath("/", "layout")
-  updateTag("notion")
+  updateTag("cache")
   return Response.json({ revalidated: "all" })
 }
 

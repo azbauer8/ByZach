@@ -1,3 +1,4 @@
+import { cacheLife, cacheTag } from "next/cache"
 import type { Metadata } from "next/types"
 
 import { pageMetadata } from "@/lib/metadata"
@@ -12,6 +13,10 @@ export const metadata: Metadata = {
 }
 
 export default async function Colophon() {
+  "use cache"
+  cacheLife("days")
+  cacheTag("cache")
+
   const pageContent = await getMarkdownContent(notionIds.colophon)
   const pageInfo = await getPageInfo(notionIds.colophon)
   return (

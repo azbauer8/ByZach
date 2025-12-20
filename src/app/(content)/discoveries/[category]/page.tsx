@@ -1,17 +1,18 @@
+import { cacheLife, cacheTag } from "next/cache"
+
 import { pageMetadata } from "@/lib/metadata"
 import { getDiscoveriesInCategory, getDiscoveryCategories } from "@/lib/notion"
 import ContentList from "@/components/ContentList"
 import PageLayout from "@/components/PageLayout"
 
-export const dynamicParams = false
-
 export async function generateMetadata({
   params,
 }: {
-  params: { category: string }
+  params: Promise<{ category: string }>
 }) {
+  const resolvedParams = await params
   const category = await getDiscoveryCategories().then((categories) =>
-    categories?.find((category) => category.slug === params.category)
+    categories?.find((category) => category.slug === resolvedParams.category)
   )
   if (!category) return {}
 
@@ -33,9 +34,13 @@ export async function generateStaticParams() {
 export default async function DiscoveryCategory({
   params,
 }: {
-  params: { category: string }
+  params: Promise<{ category: string }>
 }) {
-  const discoveries = await getDiscoveriesInCategory(params.category)
+  "use cache"
+  cacheLife("days")
+  cacheTag("cache")
+
+  const discoveries = await getDiscoveriesInCategory((await params).category)
   if (!discoveries) return null
 
   const category = discoveries[0]?.category

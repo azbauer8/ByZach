@@ -26,7 +26,7 @@ export const notionIds = {
 export const getMarkdownContent = cache(async (pageId: string) => {
   "use cache"
   cacheLife("days")
-  cacheTag("notion")
+  cacheTag("cache")
 
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -60,7 +60,7 @@ export const getMarkdownContent = cache(async (pageId: string) => {
 export const getPageInfo = cache(async (pageId: string) => {
   "use cache"
   cacheLife("days")
-  cacheTag("notion")
+  cacheTag("cache")
 
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -74,7 +74,7 @@ export const getPageInfo = cache(async (pageId: string) => {
 export const getThoughts = async () => {
   "use cache"
   cacheLife("days")
-  cacheTag("notion")
+  cacheTag("cache")
 
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -106,7 +106,7 @@ export const getThoughts = async () => {
 export const getThought = async (slug: string) => {
   "use cache"
   cacheLife("days")
-  cacheTag("notion")
+  cacheTag("cache")
 
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -143,7 +143,7 @@ export const getThought = async (slug: string) => {
 export const getSnippets = async () => {
   "use cache"
   cacheLife("days")
-  cacheTag("notion")
+  cacheTag("cache")
 
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -175,7 +175,7 @@ export const getSnippets = async () => {
 export const getSnippet = async (slug: string) => {
   "use cache"
   cacheLife("days")
-  cacheTag("notion")
+  cacheTag("cache")
 
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -212,7 +212,7 @@ export const getSnippet = async (slug: string) => {
 export const getProjects = cache(async () => {
   "use cache"
   cacheLife("days")
-  cacheTag("notion")
+  cacheTag("cache")
 
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -243,7 +243,7 @@ export const getProjects = cache(async () => {
 export const getDiscoveryCategories = cache(async () => {
   "use cache"
   cacheLife("days")
-  cacheTag("notion")
+  cacheTag("cache")
 
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -276,7 +276,7 @@ export const getDiscoveryCategories = cache(async () => {
 export const getDiscoveriesInCategory = cache(async (category: string) => {
   "use cache"
   cacheLife("days")
-  cacheTag("notion")
+  cacheTag("cache")
 
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -314,7 +314,7 @@ export const getDiscoveriesInCategory = cache(async (category: string) => {
 export const getUses = cache(async () => {
   "use cache"
   cacheLife("days")
-  cacheTag("notion")
+  cacheTag("cache")
 
   const notion = new Client({
     auth: process.env.NOTION_TOKEN,

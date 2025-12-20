@@ -1,17 +1,17 @@
+import { cacheLife, cacheTag } from "next/cache"
+
 import { pageMetadata } from "@/lib/metadata"
 import { getMarkdownContent, getThought, getThoughts } from "@/lib/notion"
 import { formatDate } from "@/lib/utils"
 import { Markdown } from "@/components/Markdown"
 import PageLayout from "@/components/PageLayout"
 
-export const dynamicParams = false
-
 export async function generateMetadata({
   params,
 }: {
-  params: { thought: string }
+  params: Promise<{ thought: string }>
 }) {
-  const thought = await getThought(params.thought)
+  const thought = await getThought((await params).thought)
 
   if (!thought) return {}
   const { title, subtitle } = thought
@@ -34,9 +34,13 @@ export async function generateStaticParams() {
 export default async function Thought({
   params,
 }: {
-  params: { thought: string }
+  params: Promise<{ thought: string }>
 }) {
-  const thought = await getThought(params.thought)
+  "use cache"
+  cacheLife("days")
+  cacheTag("cache")
+
+  const thought = await getThought((await params).thought)
   if (!thought) return null
 
   const mdContent = await getMarkdownContent(thought.id)
