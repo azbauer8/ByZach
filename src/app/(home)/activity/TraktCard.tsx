@@ -31,7 +31,7 @@ export default async function TraktCards() {
             width={144}
             height={216}
             sizes="100vw"
-            className="aspect-[2/3] max-w-[25%] flex-none items-center justify-center self-center"
+            className="aspect-2/3 max-w-[25%] flex-none items-center justify-center self-center"
           />
 
           <div className="my-auto grow space-y-0.5 text-wrap">
@@ -39,7 +39,7 @@ export default async function TraktCards() {
               <WatchingIcon />
               <Typography affects="small">{data.playingWhen}</Typography>
             </div>
-            <Typography className="font-semibold text-foreground">
+            <Typography className="text-foreground font-semibold">
               {data.title}
             </Typography>
             {data.episode ? (
@@ -78,7 +78,7 @@ export default async function TraktCards() {
               <WatchingIcon />
               <Typography affects="small">{ratingData.ratedWhen}</Typography>
             </div>
-            <Typography className="font-semibold text-foreground">
+            <Typography className="text-foreground font-semibold">
               {ratingData.title}
             </Typography>
 

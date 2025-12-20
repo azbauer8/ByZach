@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache"
+import { revalidatePath, revalidateTag, updateTag } from "next/cache"
 import arcjet, { fixedWindow } from "@arcjet/next"
 
 export async function GET(request: Request) {
@@ -27,6 +27,7 @@ export async function GET(request: Request) {
 
   console.log("Revalidating...")
   revalidatePath("/", "layout")
+  updateTag("notion")
   return Response.json({ revalidated: "all" })
 }
 

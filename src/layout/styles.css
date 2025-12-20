@@ -1,14 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 /* CSS Reset */
 @layer base {
   * {
-    @apply relative min-w-0 border-border;
+    @apply border-border relative min-w-0;
+    @apply border-border outline-border/50;
   }
   body {
     @apply min-h-dvh;
+    @apply bg-background text-foreground;
   }
   h1,
   h2,
@@ -22,31 +25,43 @@
 }
 
 /* Colors */
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 8%;
-    --foreground-muted: 240 4% 46%;
-    --accent: 0 0% 98%;
-    --hover: 0 0% 95%;
-    --border: 0 0% 89.8%;
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(0, 0%, 8%);
+  --foreground-muted: hsl(240, 4%, 46%);
+  --accent: hsl(0, 0%, 98%);
+  --hover: hsl(0, 0%, 95%);
+  --border: hsl(0, 0%, 89.8%);
 
-    --radius: 0.45rem;
-  }
+  --radius: 0.45rem;
+}
 
-  .dark {
-    --background: 0 0% 7%;
-    --foreground: 0 0% 98%;
-    --foreground-muted: 240 5% 65%;
-    --accent: 0 0% 9%;
-    --hover: 0 0% 10%;
-    --border: 0 0% 14.9%;
-  }
+.dark {
+  --background: hsl(0, 0%, 7%);
+  --foreground: hsl(0, 0%, 98%);
+  --foreground-muted: hsl(240, 5%, 65%);
+  --accent: hsl(0, 0%, 9%);
+  --hover: hsl(0, 0%, 10%);
+  --border: hsl(0, 0%, 14.9%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-accent: var(--accent);
+  --color-hover: var(--hover);
+  --color-border: var(--border);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 /* Markdown  Content */
 .prose {
-  @apply !max-w-none text-pretty break-words;
+  @apply max-w-none! text-pretty break-words;
 }
 
 /* Code Blocks */

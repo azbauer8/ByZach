@@ -29,7 +29,7 @@ export function Pre({
   "data-theme": string
 }) {
   return (
-    <div className="flex size-full flex-col divide-y rounded-lg border bg-accent text-foreground">
+    <div className="bg-accent text-foreground flex size-full flex-col divide-y rounded-lg border">
       <div className="flex w-full items-center justify-end px-2 py-0.5">
         <CopyToClipboard />
       </div>
@@ -50,13 +50,11 @@ export function Markdown(props: MDXRemoteProps) {
     <div className="prose prose-neutral text-foreground-muted dark:prose-invert prose-a:no-underline">
       <MDXRemote
         {...props}
-        // @ts-expect-error
         components={{ ...components, ...props.components }}
         options={{
           mdxOptions: {
             rehypePlugins: [
               [
-                // @ts-expect-error
                 rehypePrettyCode,
                 {
                   theme: {

@@ -16,8 +16,6 @@ export const metadata: Metadata = {
   title: `${pageMetadata.home.sections.header.title} | ${pageMetadata.home.sections.header.subtitle}`,
 }
 
-export const experimental_ppr = true
-
 export default function Home() {
   return (
     <PageLayout

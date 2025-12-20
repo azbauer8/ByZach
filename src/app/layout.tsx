@@ -55,8 +55,6 @@ export const metadata: Metadata = {
   },
 }
 
-export const revalidate = 172800 // 2 days
-
 export default function RootLayout({
   children,
 }: {
@@ -67,7 +65,7 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "bg-accent font-sans text-foreground antialiased dark:bg-[#0a0a0a] md:py-5",
+          "bg-accent text-foreground font-sans antialiased md:py-5 dark:bg-[#0a0a0a]",
           asap.variable,
           sourceCode.variable
         )}
@@ -75,7 +73,7 @@ export default function RootLayout({
         <Providers>
           <div className="mx-auto flex max-w-3xl flex-col gap-1.5">
             <DesktopNav />
-            <div className="min-h-dvh bg-background px-5 py-5 pb-16 shadow-md md:min-h-fit md:rounded-lg md:border md:pb-5">
+            <div className="bg-background min-h-dvh px-5 py-5 pb-16 shadow-md md:min-h-fit md:rounded-lg md:border md:pb-5">
               {children}
             </div>
             <DesktopFooter />

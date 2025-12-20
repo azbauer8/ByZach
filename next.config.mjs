@@ -5,8 +5,8 @@ export default {
   typescript: { ignoreBuildErrors: true },
   experimental: {
     webVitalsAttribution: ["FCP", "LCP", "CLS", "FID", "TTFB", "INP"],
-    ppr: "incremental",
   },
+  cacheComponents: true,
   transpilePackages: ["next-mdx-remote"],
   images: {
     dangerouslyAllowSVG: true,
