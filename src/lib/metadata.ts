@@ -11,6 +11,7 @@ import {
   GithubIcon,
   HomeIcon,
   LastfmIcon,
+  LetterboxdIcon,
   ProjectsIcon,
   ResumeIcon,
   SnippetsIcon,
@@ -118,6 +119,11 @@ export const links = {
       name: "Trakt",
       href: "https://trakt.tv/users/zacharlatan",
       icon: TraktIcon,
+    },
+        letterboxd: {
+      name: "Letterboxd",
+      href: "https://letterboxd.com/zacharlatan/",
+      icon: LetterboxdIcon,
     },
   },
 }
