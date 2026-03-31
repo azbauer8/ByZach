@@ -17,21 +17,26 @@ export async function getLastFm() {
   return { latestTrack, playingWhen }
 }
 
+const traktHeaders = {
+  "Content-Type": "application/json",
+  "trakt-api-key": `${process.env.TRAKT_API}`,
+  "trakt-api-version": "2",
+  "User-Agent":
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+}
+
 export async function getTrakt() {
   const response = await fetch(
-    "https://api.trakt.tv/users/zacharlatan/history?extended=full",
+    "https://api.trakt.tv/users/zacharlatan/history",
     {
-      headers: {
-        "Content-Type": "application/json",
-        "trakt-api-key": `${process.env.TRAKT_API}`,
-        "trakt-api-version": "2",
-      },
+      headers: traktHeaders,
     }
   )
   if (!response.ok) {
     return undefined
   }
   const traktData: TraktEntry[] | undefined = await response.json()
+  console.log(traktData)
 
   if (!traktData) return
   const latest = traktData[0]
@@ -63,11 +68,7 @@ export async function getTrakt() {
   const ratingResponse = await fetch(
     "https://api.trakt.tv/users/zacharlatan/ratings/movies",
     {
-      headers: {
-        "Content-Type": "application/json",
-        "trakt-api-key": `${process.env.TRAKT_API}`,
-        "trakt-api-version": "2",
-      },
+      headers: traktHeaders,
     }
   )
   if (!ratingResponse.ok) {

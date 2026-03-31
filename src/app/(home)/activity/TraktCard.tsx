@@ -10,7 +10,6 @@ import { getTrakt } from "./getActivity"
 
 export default async function TraktCards() {
   const traktData = await getTrakt()
-
   if (!traktData) return
   const { data, poster, ratingData, ratingPoster } = traktData
   if (!data) return
