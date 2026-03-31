@@ -36,7 +36,6 @@ export async function getTrakt() {
     return undefined
   }
   const traktData: TraktEntry[] | undefined = await response.json()
-  console.log(traktData)
 
   if (!traktData) return
   const latest = traktData[0]
